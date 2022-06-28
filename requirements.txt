@@ -1,1 +1,13 @@
+# Library dependencies for the python code.  You need to install these with
+# `pip install -r requirements.txt` before you can run this.
 
+1. pyvenv sse
+2. pip install flask-sse gunicorn gevent
+2. pip install gevent 
+3. brew install redis
+4. install elasticsearch
+5. pip install genism
+6. pip install gulp-server
+
+
+Working on it...
