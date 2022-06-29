@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>Welcome to EducationalWeb!</h1>
+  EducationalWeb offers an enhanced way of learning through course slides.
+  <h4>Demo</h4>
+Watch this video to learn how to navigate EducationalWeb
+<br><br>
+  <video style="margin-left: auto;
+    margin-right: auto;
+    display: block;" 
+    class="center" width="700" height="400" controls>
+  <source src="{{base_url}}static/EduWeb_demo.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+  	<br><br>
+ <h4> Below are some features you can try using:</h4>
+<ul>
+<li>Choose a course using the drop-down list in the navigation bar</li>
+<li>Choose a lecture using the drop-down list in the navigation bar</li>
+<li>Sequentially navigate through the lectures/slides using the Next and Prev buttons at the bottom of a slide</li>
+<li>Navigate through slides in the current lecture by clicking on the slide thumbnails in the left panel</li>
+<li>Search for relevant slides using the search bar at the bottom of a slide</li>
+<li>Navigate to a related/recommend slide from the column on the right</li>
+<li>Watch the lecture video by click on the Lecture Video button</li>
+<li>Having difficulty understanding something on the slide? Find an explanation of a term/phrase on the slide by highlighting it and then clicking on the "cap/scholar" button on the top-right of a slide. It will try to retrieve a relevant section from the course textbook that contains an explanation of the selected phrase</li>
+<li> Tell us if you liked an explanation (or not) by clicking on the Helpful/Not Helpful buttons below the explanation</li>
+</ul>
+<br><br>
+
+<h4>Want to learn more about this tool?</h4>
+EducationalWeb is based on the following papers:
+<ul>
+<li> <a href=https://dl.acm.org/doi/10.1145/3330430.3333668> Web of Slides (ACM L@S 2019):</a> Details on the method used for identifying related/recommended slides</li>
+<li> <a href=https://dl.acm.org/doi/10.1145/3330430.3333669>WOSView demo (ACM L@S 2019):</a> Demo paper of the system</li>
+<li> <a href=https://dl.acm.org/doi/10.1145/3386527.3406738>Explanation Mining:</a>Details on the method used to retrieve explanations</li>
+</ul>
+<br>
+<h5>We would love to hear from you. Please leave a feedback by clicking on the "Feedback" button in the navigation bar!</h5>
+</div>
+
+{% endblock %}
