@@ -1,0 +1,1 @@
+Chapter 4 META: A Unified Toolkit for Text Data Management and Analysis : Once these steps are complete, the reader should be able to complete any exercise or run any demo. If any additional files or information are needed, it will be provided in the accompanying section. 

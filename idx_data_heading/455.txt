@@ -1,0 +1,1 @@
+Numeric Attributes : A numeric attribute is quantitative; that is, it is a measurable quantity, represented in integer or real values. Numeric attributes can be interval-scaled or ratio-scaled. 

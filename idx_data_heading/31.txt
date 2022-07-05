@@ -1,0 +1,1 @@
+Chapter 3 Text Data Understanding 41 : A dog is chasing a on the playground Lexical analysis (part-of-speech tagging) 
