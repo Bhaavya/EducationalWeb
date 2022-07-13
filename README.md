@@ -1,6 +1,8 @@
 ## EducationalWeb
 
-### Here are the instructions for getting started with the proejct:
+### Here are the instructions for getting started with the project:
+
+#### Apple/iOS
 
 Step 0: Download the project in a local directory/folder. 
 
@@ -70,5 +72,8 @@ Step 5: Run the program in the local machine
     b. TROUBLESHOOT: If the machine lags and runs forever then run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
         This allow the local host to load everything in a limited time frame.
 
+#### Windows
+
+We will go over how the installation steps for Windows differ from those of Apple
 
 
