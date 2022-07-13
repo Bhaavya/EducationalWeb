@@ -76,4 +76,6 @@ Step 5: Run the program in the local machine
 
 We will go over how the installation steps for Windows differ from those of Apple
 
-### Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). We go over the details here:
+### Here are instructions for data/model-related files:
+
+Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). We go over where to download these files from and which directory to place them in. 
