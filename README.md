@@ -74,7 +74,18 @@ Step 5: Run the program in the local machine
 
 #### Windows
 
-We will go over how the installation steps for Windows differ from those of Apple
+We will go over how the installation steps for Windows differ from those of Apple.
+
+Step 0: Download the project in a local directory/folder (same as above).
+
+Step 1: 
+
+Step 5: In the Ubuntu terminal, run the program on the local machine
+    a) cd into /mnt/c/Users
+    b) From there, cd into wherever you saved the web directory
+    c) Run the following command: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
+    If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
+    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time
 
 ### Here are instructions for data/model-related files:
 
