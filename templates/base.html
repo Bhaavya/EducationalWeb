@@ -20,7 +20,7 @@
    <!-- <script> var socket = io.connect('http://timan.cs.illinois.edu/explanation/');</script>  -->
  
   {% set base_url = 'http://127.0.0.1:8097/' %}
-  {% set pdf_url = 'http://timan108.cs.illinois.edu/pdfjs_csintro/' %}
+  {% set pdf_url = 'http://localhost:8889/' %}
  
 </head>
 <body>
@@ -49,16 +49,26 @@
 
             {% endfor %}
         </ul>
+        <li class="dropdown"><a href="http://127.0.0.1:8097//feedback">Feedback</a>
+        </li>
      
        
       {% block nav %}
       {% endblock %}
     </ul>
     <ul class="nav navbar-nav navbar-right">
-       </li>
-      <li class="dropdown" ><a href="{{base_url}}/feedback">Feedback</a>
-      </li>
+      <li> <div class="row" style="display: flex;">
+        <div class="col-md-12">
+        <div class="input-group add-on">
+          <input class="form-control" placeholder="Search" name="srch-term" id="srch-term1" type="text"> 
+              <div class="input-group-btn">
+                <button class="btn btn-default" onClick="parent.location='https://www.google.com'"  id="submit1" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+            </div>
+        </div>
+        </div> </li>
     </ul>
+
   </nav>
 
 
@@ -67,9 +77,9 @@
       {% endblock %}
 
 </div>
-
-
-
+:
+<input type=button onClick="parent.location='https://www.google.com'"
+ value='click here'>
   </body>
-  <script type="text/javascript" src="http://localhost:8097/static/index.js"></script>
+  <script type="text/javascript" src="http://127.0.0.1:8097/static/index.js"></script>
 </html>
