@@ -6,7 +6,7 @@
 
 Step 0: Download the project in a local directory/folder. 
 
-Step 1: Create a virtual machine in the project and then activate that virtual machine.
+Step 1: Create a virtual environment in the project and then activate it
 
     a. Open the directory where the project is stored in your terminal.
     
