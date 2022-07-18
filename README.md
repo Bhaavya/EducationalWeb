@@ -47,7 +47,7 @@ Step 2: Install Flask SSE, gunicorn, and gevent.
             This command downloads the gunicorn and gevent components in the project directory.
     
 
-Step 4: Make sure you are in this project's directory and env virtual environment is activated before running the commands below.
+Step 4: Make sure you are in the project's directory and the env virtual environment is activated before running the commands below.
 
     a. Run: npm install
             This command installs the node modules directory in the local machine, which will be used to succesfully install the gulp components.
@@ -71,6 +71,12 @@ Step 5: Run the program in the local machine
     
     b. TROUBLESHOOT: If the machine lags and runs forever then run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
         This allow the local host to load everything in a limited time frame.
+
+Additional components for successfully uploading the project in your computer:
+   -> Downloading the following folders from Google Drive and place them in your project's directory:
+    1. static
+    2. pdf.js
+
 
 #### Windows
 
