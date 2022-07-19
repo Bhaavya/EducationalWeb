@@ -72,7 +72,7 @@ Step 5: Run the program in the local machine
     b. TROUBLESHOOT: If the machine lags and runs forever then run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
         This allow the local host to load everything in a limited time frame.
 
-Additional components for successfully uploading the project in your computer:
+### Additional components for successfully uploading the project in your computer:
    -> Downloading the following folders from Google Drive and place them in your project's directory:
     1. static
     2. pdf.js
