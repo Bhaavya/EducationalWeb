@@ -76,7 +76,9 @@ Step 5: Run the program in the local machine
    ###### Downloading the following folders from Google Drive and place them in your project's directory:
     1. static
     2. pdf.js
-
+    3. MACOSX
+    
+    * Please note that some of the folders are large and may need some time to download.
 
 #### Windows
 
