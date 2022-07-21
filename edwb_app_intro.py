@@ -17,7 +17,7 @@ print(__name__,app)
 
 app.secret_key =b'\xaa\x12\xce\xdf\xc3\xb1\x90\xd8!z\xe6\xe9V\x82<r'
 
-srv_url = 'http://localhost:8097/'
+srv_url = 'http://127.0.0.1:8097/'
 # app.config.from_object('config')
 
 # socketio = SocketIO(app,logger=True, engineio_logger=True) 
