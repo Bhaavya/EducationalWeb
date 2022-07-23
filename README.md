@@ -105,6 +105,7 @@ Step 2: Install gulp and redis
              PONG
  
  Step 3: Install Flask SSE, gunicorn, and gevent (same as above)
+ 
     a. Run: pyvenv sse
     
     b. Run: pip install flask-sse gunicorn gevent
