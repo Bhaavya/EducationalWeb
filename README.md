@@ -84,9 +84,38 @@ Step 5: Run the program in the local machine
 
 We will go over how the installation steps for Windows differ from those of Apple.
 
-Step 0: Download the project in a local directory/folder (same as above).
+Step 1: Download the project in a local directory/folder (same as above).
 
-Step 1: 
+Step 2: Install gulp and redis
+
+    a. Run: npm intall --save npm-git-install
+        a.1. Verify successful installation by running: gulp --version
+        
+    b. Run: 
+        b.1. curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+        b.2. echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+        b.3. sudo apt-get update
+        b.4. sudo apt-get install redis
+        
+    c. Start redis server by running: sudo service redis-server start
+    
+    d. Test that redis server is running by connecting with cli:
+        d.1. redis-cli
+             127.0.0.1:8097> ping
+             PONG
+ 
+ Step 3: Install Flask SSE, gunicorn, and gevent (same as above)
+    a. Run: pyvenv sse
+    
+    b. Run: pip install flask-sse gunicorn gevent
+
+Step 4: Install wsl and ubuntu:
+
+    a. Run: sudo apt install net-tools
+    
+    b. Run: sudo apt install wsl
+    
+    c. Run: wsl --install -d Ubuntu
 
 Step 5: In the Ubuntu terminal, run the program on the local machine
 
@@ -96,7 +125,7 @@ Step 5: In the Ubuntu terminal, run the program on the local machine
     
     c. Run the following command: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
     If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
-    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time
+    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time.
 
 ### Here are instructions for data/model-related files:
 
