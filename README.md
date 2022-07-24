@@ -136,6 +136,16 @@ Step 5: In the Ubuntu terminal, run the program on the local machine
     If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
     This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time.
 
+After installation, to start up project:
+
+    1. Run in Ubuntu terminal: sudo service redis-server start 
+    
+    2. In the same Ubuntu terminal, cd into web directory (usually a path beginning with /mnt/c/Users). Then run: redis-server --port 8097
+        2.a. This starts up redis
+    
+    3. In a separate Ubuntu terminal, cd into /pdf.js/build/generic/web. Then run: gulp server
+        3.a. This starts up gulp
+
 ### Here are instructions for data/model-related files:
 
 Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). We go over where to download these files from and which directory to place them in. 
