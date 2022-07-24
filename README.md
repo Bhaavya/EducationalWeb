@@ -40,6 +40,7 @@ Step 2: Now our next step is to turn on the Redis server:
             
     
 Step 2: Install Flask SSE, gunicorn, and gevent.
+
     a. Run: pyvenv sse
             This command downloads the flask sse components in the project directory.
     
