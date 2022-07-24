@@ -39,7 +39,7 @@ Step 2: Now our next step is to turn on the Redis server:
             After running the above command 
             
     
-Step 2: Install Flask SSE, gunicorn, and gevent.
+Step 3: Install Flask SSE, gunicorn, and gevent.
 
     a. Run: pyvenv sse
             This command downloads the flask sse components in the project directory.
@@ -74,6 +74,7 @@ Step 4: Make sure you are in the project's directory and the env virtual environ
         
 
 Step 5: Run the program in the local machine
+
     a.Run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
     
     b. TROUBLESHOOT: If the machine lags and runs forever then run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
