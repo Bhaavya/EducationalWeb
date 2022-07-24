@@ -45,8 +45,14 @@ Step 2: Install Flask SSE, gunicorn, and gevent.
     
     b. Run: pip install flask-sse gunicorn gevent
             This command downloads the gunicorn and gevent components in the project directory.
+            
+    c. Run: pip install --upgrade gensim
+            This command installs the genism components in your project directory.
+            
+    d. Run: pip install elasticsearch==7.15.2
+            This command installs the elasticsearch of version 7.15.2 (Version is important for the search engine to work) components in your project directory.
+  
     
-
 Step 4: Make sure you are in the project's directory and the env virtual environment is activated before running the commands below.
 
     a. Run: npm install
