@@ -118,7 +118,7 @@ def set_sess(url,ses_disp_str):
         session.modified = True
 
 def modify_url_domain(url):
-    return url.replace('http://localhost:8097/','http://localhost:8097/')
+    return url.replace('http://127.0.0.1:8097/','http://127.0.0.1:8097/')
 
 @app.route('/')
 def index():
@@ -137,6 +137,8 @@ def feedback():
         model.load_related_slides()
     vis_urls,vis_strs = get_prev_urls()
     return render_template("feedback.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS)
+
+
 
 def resolve_slide(course_name,lno,type_,slide_name=None,log=False,action=None):
     global COURSE_NAMES,NUM_COURSES
@@ -335,7 +337,7 @@ def log_helper(action,route):
             resolve_slide(route_ele[beg],route_ele[beg+1],'search_results',slide_name=route_ele[beg+2].replace('%20',' '),log=True,action=action)
         else:
 
-            model.log(request.headers.get("X-Forwarded-For").split(',')[0],'',datetime.datetime.now(),action)
+            model.log(request.remote_addr,'',datetime.datetime.now(),action)
 
 @app.route('/log_action',methods=['GET', 'POST'])
 def log_action():
