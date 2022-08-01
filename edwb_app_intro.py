@@ -17,7 +17,7 @@ print(__name__,app)
 
 app.secret_key =b'\xaa\x12\xce\xdf\xc3\xb1\x90\xd8!z\xe6\xe9V\x82<r'
 
-srv_url = 'http://localhost:8097/'
+srv_url = 'http://127.0.0.1:8097/'
 # app.config.from_object('config')
 
 # socketio = SocketIO(app,logger=True, engineio_logger=True) 
@@ -35,7 +35,7 @@ NUM_COURSES = None
 NUM_VIS = 0
 MAX_HIST = 50
 
-IS_LOCAL_SRV = False
+IS_LOCAL_SRV = True
 
 def crossdomain(origin=None, methods=None, headers=None, max_age=21600,
                 attach_to_all=True, automatic_options=True):
@@ -118,7 +118,7 @@ def set_sess(url,ses_disp_str):
         session.modified = True
 
 def modify_url_domain(url):
-    return url.replace('http://localhost:8097/','http://localhost:8097/')
+    return url.replace('http://127.0.0.1:8097/','http://127.0.0.1:8097/')
 
 @app.route('/')
 def index():
@@ -137,6 +137,8 @@ def feedback():
         model.load_related_slides()
     vis_urls,vis_strs = get_prev_urls()
     return render_template("feedback.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS)
+
+
 
 def resolve_slide(course_name,lno,type_,slide_name=None,log=False,action=None):
     global COURSE_NAMES,NUM_COURSES
@@ -157,6 +159,20 @@ def resolve_slide(course_name,lno,type_,slide_name=None,log=False,action=None):
         else:
             model.log(request.headers.get("X-Forwarded-For").split(',')[0],'End',datetime.datetime.now(),action)
     return ret 
+
+@app.route('/searchPage', methods= ["POST"])
+def searchPage():
+    srch_term = request.form.get("srch-term")
+    app.logger.warning('searchPage')
+ 
+    global COURSE_NAMES,NUM_COURSES
+    if COURSE_NAMES is None and NUM_COURSES is None:
+        COURSE_NAMES,NUM_COURSES = model.get_course_names()
+        model.load_related_slides()
+    next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides = resolve_slide('CS 225',3,'drop-down')
+    vis_urls,vis_strs = get_prev_urls()
+    return render_template("searchPage.html",slide_name=next_slide_name,course_name="CS 225",num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides, srch_term=srch_term)
+
 
 @app.route('/slide/<course_name>/<lno>')
 def slide(course_name,lno):
@@ -235,6 +251,7 @@ def end():
 
 @app.route('/google_search', methods=['POST'])
 def google_search():
+    app.logger.warning('google_search')
     raw_results = request.json['results']
     query = request.json['query']
     ranked_index = model.rank_google_result(raw_results, request.json['context'], query)
@@ -246,6 +263,7 @@ def google_search():
 
 @app.route('/txt_search', methods=['POST'])
 def txt_search():
+    app.logger.warning('/txt_search')
     query = request.json['query']
     ranked_result = model.search_txtbook(query)
     # print(ranked_result,'m=======')
@@ -259,10 +277,12 @@ def txt_search():
 def socket_connection(course_name=None, lno=None, slide_name=None, curr_slide=None):
 
     search_string = request.json['searchString']
+
     context = request.json['slidesContext']
-
+    app.logger.warning('explain')
+    app.logger.warning(search_string)
     log_helper(search_string + '###EXPLAIN',request.json['route'])
-
+    app.logger.warning('explain2')
     # socketio.emit('message', {"searchString": search_string, "context": context} ,broadcast=True) 
     print(request.json['url']) 
     if ('CS%20410') in request.json['url']:
@@ -301,8 +321,10 @@ def search_slide(course_name,slide_name,lno):
 @app.route('/search_slides', methods=['POST'])
 def search_results(course_name=None, lno=None, slide_name=None, curr_slide=None):
     search_string = request.json['searchString']
+    app.logger.warning(search_string)
+    app.logger.warning('search_slide')
     log_helper(search_string + '###QUERY',request.json['route'])
-
+    app.logger.warning('search_slide2')
     num_results,results,disp_strs,search_course_names,lnos, snippets,lec_names = model.get_search_results(search_string)
     if not results:
         num_results = 0
@@ -335,7 +357,7 @@ def log_helper(action,route):
             resolve_slide(route_ele[beg],route_ele[beg+1],'search_results',slide_name=route_ele[beg+2].replace('%20',' '),log=True,action=action)
         else:
 
-            model.log(request.headers.get("X-Forwarded-For").split(',')[0],'',datetime.datetime.now(),action)
+            model.log(request.remote_addr,'',datetime.datetime.now(),action)
 
 @app.route('/log_action',methods=['GET', 'POST'])
 def log_action():
