@@ -2,7 +2,7 @@
 
 ### Here are the instructions for getting started with the project:
 
-#### Apple/iOS
+#### MacOS
 
 Step 0: Download the project in a local directory/folder. 
 
