@@ -1,3 +1,5 @@
+from asyncio.log import logger
+from re import search
 import sys
 import os
 import json 
@@ -171,7 +173,7 @@ def searchPage():
         model.load_related_slides()
     next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides = resolve_slide('CS 225',3,'drop-down')
     vis_urls,vis_strs = get_prev_urls()
-    return render_template("searchPage.html",slide_name=next_slide_name,course_name="CS 225",num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides, srch_term=srch_term)
+    return render_template("searchPage.html",slide_name=next_slide_name,course_name= 'Select Course',num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides, srch_term=srch_term)
 
 
 @app.route('/slide/<course_name>/<lno>')
@@ -186,8 +188,18 @@ def slide(course_name,lno):
 
     return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides)
 
-
-
+@app.route('/searchPage/<srch_term>/<course_name>')
+def filter(srch_term, course_name):
+    app.logger.warning(course_name)
+    app.logger.warning(srch_term)
+    global COURSE_NAMES,NUM_COURSES
+    if COURSE_NAMES is None and NUM_COURSES is None:
+        COURSE_NAMES,NUM_COURSES = course_name,1
+        model.load_related_slides()
+    next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides = resolve_slide('CS 225',3,'drop-down')
+    vis_urls,vis_strs = get_prev_urls()
+    return render_template("searchPage.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides, srch_term=srch_term)
+    
 @app.route('/related_slide/<course_name>/<lno>/<slide_name>')
 def related_slide(course_name,slide_name,lno):
     global NUM_VIS
@@ -319,17 +331,38 @@ def search_slide(course_name,slide_name,lno):
     return related_slide(course_name,slide_name,lno)
 
 @app.route('/search_slides', methods=['POST'])
-def search_results(course_name=None, lno=None, slide_name=None, curr_slide=None):
+def search_results(lno=None, slide_name=None, curr_slide=None):
     search_string = request.json['searchString']
+    course_name = request.json['course_name']
+    app.logger.warning(course_name)
     app.logger.warning(search_string)
     app.logger.warning('search_slide')
     log_helper(search_string + '###QUERY',request.json['route'])
     app.logger.warning('search_slide2')
-    num_results,results,disp_strs,search_course_names,lnos, snippets,lec_names = model.get_search_results(search_string)
+    num_results,results,disp_strs,search_course_names,lnos, snippets,lec_names = model.get_search_results(search_string, course_name)
+    '''
+    for i in range(0, len(search_course_names)):
+        if (course_name != search_course_names[i]):
+            app.logger.warning(i)
+            results.pop(i)
+            disp_strs.pop(i)
+            lnos.pop(i)
+            snippets.pop(i)
+            lec_names.pop(i)
+    num_results = len(results)
+    search_course_names.clear()
+    for i in range(0, num_results):
+        search_course_names[i] = course_name
+    
+    app.logger.warning(num_results)
+    app.logger.warning(len(search_course_names))
+    app,logger.warning(search_course_names[0])
+    app.logger.warning(snippets[0])
+    '''
     if not results:
         num_results = 0
         results = []
-    response = jsonify({ 'num_results': num_results, 'results':results, 'disp_strs':disp_strs, 'search_course_names':search_course_names,'lnos':lnos,'course_names':COURSE_NAMES,'num_courses':NUM_COURSES,'snippets':snippets,'lec_names':lec_names
+    response = jsonify({ 'num_results': num_results, 'results':results, 'disp_strs':disp_strs, 'search_course_names': search_course_names,'lnos':lnos,'course_names':COURSE_NAMES,'num_courses':NUM_COURSES,'snippets':snippets,'lec_names':lec_names
     })
     return response
 
