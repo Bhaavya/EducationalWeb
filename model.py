@@ -371,7 +371,7 @@ def search_txtbook(query):
         results.append(res_obj)
     return results
 
-def get_search_results(search):
+def get_search_results(search, course_name):
     # query = metapy.index.Document()
     # query.content(search)
     # print (query,idx,ranker,search)
@@ -408,7 +408,9 @@ def get_search_results(search):
                 # print(lectures,lname)
                 continue
             # print(lnos)
-            if len(results) < 10:
+            print(course_name)
+            if (len(results) < 10 and (course_name == 'Select Course' or course_name == comp[0])):
+                print("In if loop")
                 disp_strs.append(' '.join(comp[0].replace('_','-').split('-')).title() + ' : ' + trim_name(' '.join(comp[1:])))
                 course_names.append(comp[0])
                 lec_names.append(lname)
@@ -519,6 +521,7 @@ def get_context_vector(context, query):
         except KeyError:
             continue
     return np.mean(vecs, axis=0) if len(vecs) > 0 else query_vec
+
 
 
 
