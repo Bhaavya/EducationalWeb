@@ -4,11 +4,20 @@
 
 <div class="jumbotron">
 
-    <h2> 
-       Thank you for searching
-    </h2>
-    
-    <p> {{srch_term}} </p> 
+    <!-- Example split danger button -->
+      <div class="dropdown">
+        
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> {{course_name}}
+        <span class="caret"></span></button>
+         <ul class="dropdown-menu">
+          {% for j in range(num_courses) %}
+
+              <li><a href="{{base_url}}/searchPage/{{srch_term}}/{{course_names[j]}}">{{course_names[j]}}</a></li>
+              {% endfor %}
+        </ul>
+      </div>
+    </form>
+
 
     <div class="row" style="display: flex;padding: 20px;">
         <div class="col-md-9" id="result" padding-bottom="15px">
@@ -18,13 +27,14 @@
   
     $(function() {
             var srch = "{{srch_term}}"
+            var course_name = "{{course_name}}"
             console.log(srch);
             console.log('search2');
             $.ajax({          
     type: "POST", 
     url:"{{base_url}}/search_slides",
     contentType: "application/json;charset=utf-8",
-    data: JSON.stringify({ 'searchString':  srch ,'route':window.location.pathname}),
+    data: JSON.stringify({'course_name': course_name, 'searchString':  srch ,'route':window.location.pathname}),
             
     success: function(data){
       result_section = document.getElementById('result');
@@ -87,6 +97,11 @@
 
 </script>
 
-  
+<script>
+  function myFunction() {
+    var input = document.getElementById('drop')
+    console.log(input)
+  }
+</script>
   
 {% endblock %}
