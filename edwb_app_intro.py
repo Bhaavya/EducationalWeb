@@ -118,7 +118,7 @@ def set_sess(url,ses_disp_str):
         session.modified = True
 
 def modify_url_domain(url):
-    return url.replace('http://localhost:8097/','http://localhost:8097/')
+    return url.replace('http://127.0.0.1:8097/','http://127.0.0.1:8097/')
 
 @app.route('/')
 def index():
@@ -138,6 +138,8 @@ def feedback():
     vis_urls,vis_strs = get_prev_urls()
     return render_template("feedback.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS)
 
+
+
 def resolve_slide(course_name,lno,type_,slide_name=None,log=False,action=None):
     global COURSE_NAMES,NUM_COURSES
     if COURSE_NAMES is None and NUM_COURSES is None:
@@ -156,7 +158,7 @@ def resolve_slide(course_name,lno,type_,slide_name=None,log=False,action=None):
             model.log(request.headers.get("X-Forwarded-For").split(',')[0],ret[0],datetime.datetime.now(),action)
         else:
             model.log(request.headers.get("X-Forwarded-For").split(',')[0],'End',datetime.datetime.now(),action)
-    return ret 
+    return ret
 
 @app.route('/slide/<course_name>/<lno>')
 def slide(course_name,lno):
@@ -263,8 +265,8 @@ def socket_connection(course_name=None, lno=None, slide_name=None, curr_slide=No
 
     log_helper(search_string + '###EXPLAIN',request.json['route'])
 
-    # socketio.emit('message', {"searchString": search_string, "context": context} ,broadcast=True) 
-    print(request.json['url']) 
+    # socketio.emit('message', {"searchString": search_string, "context": context} ,broadcast=True)
+    print(request.json['url'])
     if ('CS%20410') in request.json['url']:
         is_410 = True
         print('true')
@@ -281,7 +283,7 @@ def socket_connection(course_name=None, lno=None, slide_name=None, curr_slide=No
     return 'OK'
 
 @app.route('/search', methods=['POST'])
-def results(course_name=None, lno=None, slide_name=None, curr_slide=None):   
+def results(course_name=None, lno=None, slide_name=None, curr_slide=None):
     data = json.loads(request.data)
     # print(1,1,data)
     querytext = data['searchString']
@@ -335,7 +337,7 @@ def log_helper(action,route):
             resolve_slide(route_ele[beg],route_ele[beg+1],'search_results',slide_name=route_ele[beg+2].replace('%20',' '),log=True,action=action)
         else:
 
-            model.log(request.headers.get("X-Forwarded-For").split(',')[0],'',datetime.datetime.now(),action)
+            model.log(request.remote_addr,'',datetime.datetime.now(),action)
 
 @app.route('/log_action',methods=['GET', 'POST'])
 def log_action():
@@ -345,7 +347,7 @@ def log_action():
     log_helper(action,route)
     resp = jsonify(success=True)
 
-    return resp 
+    return resp
 
 
 if __name__ == '__main__':
