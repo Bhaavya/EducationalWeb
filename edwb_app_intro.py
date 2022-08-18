@@ -23,7 +23,7 @@ srv_url = 'http://127.0.0.1:8097/'
 # socketio = SocketIO(app,logger=True, engineio_logger=True) 
 application = app
 
-from flask import render_template
+from flask import render_template, get_template_attribute
 from flask import request,jsonify,session
 import urllib
 import model
@@ -348,7 +348,6 @@ def log_action():
     resp = jsonify(success=True)
 
     return resp
-
 
 if __name__ == '__main__':
     # socketio.run(app,host='localhost',port=8097)
