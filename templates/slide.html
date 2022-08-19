@@ -247,15 +247,15 @@ $(function() {
 <div class="col-sm-12 main">
   <div style="padding: 10px;">
 
-  <h2>{{' '.join(course_name.split('-')).title()}}  </h2>
+  <h2 id="course_name">{{' '.join(course_name.split('-')).title()}}  </h2>
       <!-- <a href="https://www.coursera.org/learn/cs-410/home/welcome" target="_blank" style="font-size: 15px; text-decoration: underline;">View On Coursera</a> -->
   <!-- </h2> -->
 
 {% if video_link != '#' %}
-  <a href={{video_link}} <button type="button" class="btn pull-right btn-info">Lecture Video</button></a>
+  <a id="video_link" href={{video_link}} <button type="button" class="btn pull-right btn-info">Lecture Video</button></a>
   {% endif %}
 </div>
-  <p style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
+  <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
     <div style="overflow:auto;-webkit-overflow-scrolling:touch">
   <canvas id="the-canvas"></canvas>
   <div class="textLayer"></div>
@@ -268,12 +268,12 @@ $(function() {
   </div>
 
 
-            <div class="sidebar">
-                <ul class="nav nav-sidebar">
+            <div class="sidebar" id="side_bar_container">
+                <ul class="nav nav-sidebar" id="related_slides_bar">
             <h2>Related slides</h2>
 
           {% for i in range(num_related_slides) %}
-    <li>
+    <li class="related_slide_element">
 
       <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}" class="related" data-toggle="popover" style="color:{{disp_color[i]}};" title="<embed type='application/pdf' src={{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit width='220px' height:'100px' >" >{{disp_str[i]}} </a>
 
@@ -303,18 +303,6 @@ $(function() {
 
 <script type="text/javascript" src="http://127.0.0.1:8097/static/explanation_google_search.js"></script>
 
-<!--<div class="col-sm-12 main">-->
-<!--  <h2>{{' '.join(course_name.split('-')).title()}}</h2>-->
-<!--  <p>{{slide_name.split('&#45;&#45;&#45;&#45;')[-1][:-4].title()}}</p>-->
-<!--  <canvas id="the-canvas"></canvas>-->
-<!--  <div class="textLayer"></div>-->
-<!--  <div>-->
-<!--    <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px">Previous</button>-->
-<!--    <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next">Next</button>-->
-<!--    &nbsp; &nbsp;-->
-<!--    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>-->
-<!--  </div>-->
-<!--</div>-->
 <script>
 
 var url = 'http://localhost:8889/static/slides/{{course_name}}/{{lec_name}}.pdf#toolbar=0&navpanes=0&/scrollbar=0&view=FitH';
@@ -396,6 +384,7 @@ function changedSlide(pageNum, oldNum){
 
     pageNum--;
     oldNum--;
+
     lec_slide_list = document.getElementById("lec_slides_list");
     cur_id_name="lec_slide_"+pageNum.toString();
     old_id_name="lec_slide_"+oldNum.toString();
@@ -408,6 +397,45 @@ function changedSlide(pageNum, oldNum){
 
     console.log(cur_selected,cur_selected.offsetTop,lec_slide_list.scrollTop);
     lec_slide_list.scrollTop = (cur_selected.offsetTop + pageNum*120);
+
+
+
+    rel_bar = document.getElementById('side_bar_container');
+
+    rel_list = document.getElementById("related_slides_bar");
+
+    rel_list_elements = document.getElementsByClassName('related_slide_element');
+    console.log(rel_list);
+
+    for (var i = rel_list_elements.length - 1; i >= 0; --i) {
+        rel_list_elements[i].remove();
+    }
+
+    var xmlHttp = new XMLHttpRequest();
+    course = "{{course_name}}";
+    lec = "{{lec_name}}";
+    new_slide_name = course.concat("---").concat(lec).concat("---slide").concat(pageNum.toString()).concat(".pdf");
+    var url = '/get_related_slides/{{course_name}}/{{lno}}/'.concat(new_slide_name);
+    xmlHttp.open( "GET",url, false );
+    xmlHttp.send( null );
+    const responses = JSON.parse(xmlHttp.responseText);
+    document.getElementById("p_slide_name").textContent=new_slide_name.split(".pdf")[0];
+
+    for (var i=0; i<responses["num_related_slides"];i++){
+        var list_obj = document.createElement('li');
+        list_obj.classList.add('related_slide_element');
+
+        var a = document.createElement('a');
+        a.href="{{base_url}}".concat("/").concat("related_slide").concat("/").concat(responses["related_course_names"][i]).concat("/").concat(responses["rel_lnos"][i].toString()).concat("/").concat(responses["related_slides"][i]);
+        a.class = "related";
+        a.id=i.toString();
+        a.style="color:".concat(responses['disp_color'][i]).concat(";");
+        a.textContent=responses['disp_str'][i];
+        list_obj.appendChild(a);
+
+        rel_list.appendChild(list_obj);
+    }
+
 
 }
 

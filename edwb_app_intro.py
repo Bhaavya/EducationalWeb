@@ -160,6 +160,12 @@ def resolve_slide(course_name,lno,type_,slide_name=None,log=False,action=None):
             model.log(request.headers.get("X-Forwarded-For").split(',')[0],'End',datetime.datetime.now(),action)
     return ret
 
+@app.route('/get_related_slides/<course_name>/<lno>/<slide_name>')
+def get_related_slides(course_name, slide_name, lno):
+    next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides = resolve_slide(course_name,lno,'related',slide_name=slide_name)
+    response = jsonify({'related_slides': related_slides, 'num_related_slides':num_related_slides,'related_course_names':related_course_names,'rel_lnos':rel_lnos,'rel_lec_names':rel_lec_names,'disp_color':disp_color,'disp_str':disp_str})
+    return response
+
 @app.route('/slide/<course_name>/<lno>')
 def slide(course_name,lno):
     global NUM_VIS
