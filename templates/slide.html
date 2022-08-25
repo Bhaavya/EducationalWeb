@@ -191,9 +191,9 @@ $(function() {
 
  </script>
 
-<script src="http://127.0.0.1:8097/static/pdfjs-dist/build/pdf.js"></script>
-<link href="http://127.0.0.1:8097/static/canvas.css" rel="stylesheet" type="text/css" />
-<link href="http://127.0.0.1:8097/static/pdf.js/web/viewer.css" rel="stylesheet" type="text/css" />
+<script src="{{base_url}}static/pdfjs-dist/build/pdf.js"></script>
+<link href="{{base_url}}static/canvas.css" rel="stylesheet" type="text/css" />
+<link href="{{base_url}}static/pdf.js/web/viewer.css" rel="stylesheet" type="text/css" />
 
  <div class="container-fluid main_cnt">
   <div id="explanation-container" class="col-sm-12">
@@ -301,11 +301,11 @@ $(function() {
 </div>
     </div>
 
-<script type="text/javascript" src="http://127.0.0.1:8097/static/explanation_google_search.js"></script>
+<script type="text/javascript" src="{{base_url}}static/explanation_google_search.js"></script>
 
 <script>
 
-var url = 'http://localhost:8889/static/slides/{{course_name}}/{{lec_name}}.pdf#toolbar=0&navpanes=0&/scrollbar=0&view=FitH';
+var url = '{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#toolbar=0&navpanes=0&/scrollbar=0&view=FitH';
 <!--The above url indicates that the lecture pdf should be under the course directory-->
 
 console.log('{{course_name}}, {{lec_name}},{{slide_name}},{{lno}},{{lec_slides[1][0]}}');
@@ -313,7 +313,7 @@ console.log('{{course_name}}, {{lec_name}},{{slide_name}},{{lno}},{{lec_slides[1
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'http://127.0.0.1:8097/static/pdfjs-dist/build/pdf.worker.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '{{base_url}}static/pdfjs-dist/build/pdf.worker.js';
 console.log("PDFJS",pdfjsLib);
 
 var pdfDoc = null,

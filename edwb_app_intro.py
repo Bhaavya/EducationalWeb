@@ -8,7 +8,10 @@ from flask import make_response, request, current_app
 from functools import update_wrapper
 from datetime import timedelta
 # from flask_socketio import SocketIO
+from config import Config
 
+config = Config()
+print(config.base_url)
 
 app = Flask(__name__, instance_relative_config=True)
 app.config["REDIS_URL"] = "redis://localhost"
@@ -17,7 +20,7 @@ print(__name__,app)
 
 app.secret_key =b'\xaa\x12\xce\xdf\xc3\xb1\x90\xd8!z\xe6\xe9V\x82<r'
 
-srv_url = 'http://127.0.0.1:8097/'
+# srv_url = 'http://127.0.0.1:8097/'
 # app.config.from_object('config')
 
 # socketio = SocketIO(app,logger=True, engineio_logger=True) 
@@ -127,7 +130,7 @@ def index():
     model.load_related_slides()
     vis_urls,vis_strs = get_prev_urls()
 
-    return render_template("home.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS)
+    return render_template("home.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS, base_url = config.base_url, pdf_url= config.pdf_url)
 
 @app.route('/feedback')
 def feedback():
@@ -136,7 +139,7 @@ def feedback():
         COURSE_NAMES,NUM_COURSES = model.get_course_names()
         model.load_related_slides()
     vis_urls,vis_strs = get_prev_urls()
-    return render_template("feedback.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS)
+    return render_template("feedback.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
 
 
 
@@ -176,7 +179,7 @@ def slide(course_name,lno):
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
 
-    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides)
+    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url)
 
 
 
@@ -190,7 +193,7 @@ def related_slide(course_name,slide_name,lno):
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
 
-    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides)
+    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url)
 
 
 
@@ -207,9 +210,9 @@ def next_slide(course_name,lno,curr_slide):
 
 
     if next_slide_name is not None:
-        return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides )
+        return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url )
     else:
-        return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS)
+        return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
 
 @app.route('/prev_slide/<course_name>/<lno>/<curr_slide>')
 def prev_slide(course_name,lno,curr_slide):
@@ -223,9 +226,9 @@ def prev_slide(course_name,lno,curr_slide):
 
 
     if prev_slide_name is not None:
-        return render_template("slide.html",slide_name=prev_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides)
+        return render_template("slide.html",slide_name=prev_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url)
     else:
-        return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS)
+        return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url=config.base_url, pdf_url=config.pdf_url)
 
 
 @app.route('/end')
@@ -234,7 +237,7 @@ def end():
     if COURSE_NAMES is None and NUM_COURSES is None:
         COURSE_NAMES,NUM_COURSES = model.get_course_names()
     vis_urls,vis_strs = get_prev_urls()
-    return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS)
+    return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
 
 # @socketio.on('connect')
 # def value_changed():
@@ -357,4 +360,4 @@ def log_action():
 
 if __name__ == '__main__':
     # socketio.run(app,host='localhost',port=8097)
-    app.run(host='localhost',port=8097)
+    app.run(host=config.app_host,port=config.app_port)
