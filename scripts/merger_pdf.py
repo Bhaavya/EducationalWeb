@@ -5,17 +5,18 @@ def sort_slide_names(l):
     convert = lambda text: int(text) if text.isdigit() else text 
     alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key) ] 
     sl = sorted(l, key = alphanum_key)
-    try:
-        sl.remove('.DS_Store')
-    except:
-        pass
+#     try:
+#         sl.remove('.DS_Store')
+#     except:
+#         pass
     return sl 
 
 import os
 
-path = "/Users/richameherwal/Desktop/UIUC/research/eduweb/EducationalWeb/pdf.js/static/slides/CS410"
+folder_name = input('Input course name')
+path = "/Users/richameherwal/Desktop/UIUC/research/eduweb/EducationalWeb/pdf.js/static/slides/"+folder_name
 dirs = os.listdir( path )
-dirs.remove('.DS_Store')
+# dirs.remove('.DS_Store')
 
 for lecture in dirs:
     lec_folder= os.listdir(os.path.join(path, lecture))
