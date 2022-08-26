@@ -2,11 +2,11 @@
 
 ### Here are the instructions for getting started with the project:
 
-#### Apple/iOS
+#### MacOS
 
 Step 0: Download the project in a local directory/folder. 
 
-Step 1: Create a virtual machine in the project and then activate that virtual machine.
+Step 1: Create a virtual environment in the project and then activate it
 
     a. Open the directory where the project is stored in your terminal.
     
@@ -39,15 +39,22 @@ Step 2: Now our next step is to turn on the Redis server:
             After running the above command 
             
     
-Step 2: Install Flask SSE, gunicorn, and gevent.
+Step 3: Install Flask SSE, gunicorn, and gevent.
+
     a. Run: pyvenv sse
             This command downloads the flask sse components in the project directory.
     
     b. Run: pip install flask-sse gunicorn gevent
             This command downloads the gunicorn and gevent components in the project directory.
+            
+    c. Run: pip install --upgrade gensim
+            This command installs the genism components in your project directory.
+            
+    d. Run: pip install elasticsearch==7.15.2
+            This command installs the elasticsearch of version 7.15.2 (Version is important for the search engine to work) components in your project directory.
+  
     
-
-Step 4: Make sure you are in this project's directory and env virtual environment is activated before running the commands below.
+Step 4: Make sure you are in the project's directory and the env virtual environment is activated before running the commands below.
 
     a. Run: npm install
             This command installs the node modules directory in the local machine, which will be used to succesfully install the gulp components.
@@ -67,18 +74,57 @@ Step 4: Make sure you are in this project's directory and env virtual environmen
         
 
 Step 5: Run the program in the local machine
+
     a.Run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
     
     b. TROUBLESHOOT: If the machine lags and runs forever then run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
         This allow the local host to load everything in a limited time frame.
 
+##### Additional components for successfully uploading the project in your computer:
+   ###### Downloading the following folders from Google Drive and place them in your project's directory:
+    1. static
+    2. pdf.js
+    3. MACOSX
+    
+    * Please note that some of the folders are large and may need some time to download.
+
 #### Windows
 
 We will go over how the installation steps for Windows differ from those of Apple.
 
-Step 0: Download the project in a local directory/folder (same as above).
+Step 1: Download the project in a local directory/folder (same as above).
 
-Step 1: 
+Step 2: Install gulp and redis
+
+    a. Run: npm intall --save npm-git-install
+        a.1. Verify successful installation by running: gulp --version
+        
+    b. Run: 
+        b.1. curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+        b.2. echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+        b.3. sudo apt-get update
+        b.4. sudo apt-get install redis
+        
+    c. Start redis server by running: sudo service redis-server start
+    
+    d. Test that redis server is running by connecting with cli:
+        d.1. redis-cli
+             127.0.0.1:8097> ping
+             PONG
+ 
+ Step 3: Install Flask SSE, gunicorn, and gevent (same as above)
+ 
+    a. Run: pyvenv sse
+    
+    b. Run: pip install flask-sse gunicorn gevent
+
+Step 4: Install wsl and ubuntu:
+
+    a. Run: sudo apt install net-tools
+    
+    b. Run: sudo apt install wsl
+    
+    c. Run: wsl --install -d Ubuntu
 
 Step 5: In the Ubuntu terminal, run the program on the local machine
 
@@ -88,7 +134,17 @@ Step 5: In the Ubuntu terminal, run the program on the local machine
     
     c. Run the following command: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
     If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
-    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time
+    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time.
+
+After installation, to start up project:
+
+    1. Run in Ubuntu terminal: sudo service redis-server start 
+    
+    2. In the same Ubuntu terminal, cd into web directory (usually a path beginning with /mnt/c/Users). Then run: redis-server --port 8097
+        2.a. This starts up redis
+    
+    3. In a separate Ubuntu terminal, cd into /pdf.js/build/generic/web. Then run: gulp server
+        3.a. This starts up gulp
 
 ### Here are instructions for data/model-related files:
 

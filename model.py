@@ -132,7 +132,8 @@ def get_snippet(slide_name, related_slide_name):
 
 def get_course_names():
     course_names = sorted(os.listdir(slides_path))
-    cn_cpy = list(course_names)
+    # cn_cpy = list(course_names)
+    course_names.remove('.DS_Store')
     # for cn in cn_cpy:
         # if cn!='cs-410':
         # course_names.remove(cn)
@@ -171,10 +172,10 @@ def get_lectures_from_course(course_name):
 def sort_slide_names(l): 
     """ Sort the given iterable in the way that humans expect.""" 
     convert = lambda text: int(text) if text.isdigit() else text 
-    alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key) ] 
+    alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key) ]
     sl = sorted(l, key = alphanum_key)
     try:
-        sl.remove('.DS_Store')
+        sl.remove('.Ds_Store')
     except:
         pass
     return sl 
@@ -207,6 +208,7 @@ def get_disp_str(slide_name):
 
 
 def get_next_slide(course_name,lno,curr_slide=None):
+    # need to get the right lecture and slides
     lectures = sort_slide_names(os.listdir(os.path.join(slides_path, urllib.parse.unquote(course_name))))
     lno = int(lno)
     slides = sort_slide_names(os.listdir(os.path.join(slides_path,urllib.parse.unquote(course_name),lectures[lno])))
