@@ -38,7 +38,7 @@ NUM_COURSES = None
 NUM_VIS = 0
 MAX_HIST = 50
 
-IS_LOCAL_SRV = False
+IS_LOCAL_SRV = config.is_local_srv
 
 def crossdomain(origin=None, methods=None, headers=None, max_age=21600,
                 attach_to_all=True, automatic_options=True):
@@ -121,7 +121,7 @@ def set_sess(url,ses_disp_str):
         session.modified = True
 
 def modify_url_domain(url):
-    return url.replace('http://127.0.0.1:8097/','http://127.0.0.1:8097/')
+    return url.replace(config.base_url,config.target_url)
 
 @app.route('/')
 def index():
