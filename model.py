@@ -166,8 +166,15 @@ def load_related_slides():
                 related_dict[key].append(pdf_name)
     #print(related_slides,related_dict)
 def get_lectures_from_course(course_name):
-    lecs = sort_slide_names(os.listdir(os.path.join(slides_path, urllib.parse.unquote(course_name))))
-    return lecs
+    # remove pdfs from here
+    # lecs = sort_slide_names(os.listdir(os.path.join(slides_path, urllib.parse.unquote(course_name))))
+    lecture_dirs = os.listdir(os.path.join(slides_path, urllib.parse.unquote(course_name)))
+    lecture_dirs = [val for val in lecture_dirs if not val.endswith(".pdf")]
+    lecture_dirs = [val for val in lecture_dirs if not val.startswith(".")]
+
+    lectures = sort_slide_names(lecture_dirs)
+
+    return lectures
 
 def sort_slide_names(l): 
     """ Sort the given iterable in the way that humans expect.""" 
@@ -181,11 +188,12 @@ def sort_slide_names(l):
     return sl 
 
 def get_slide(course_name,slide,lno):
-    lectures = sort_slide_names(os.listdir(os.path.join(slides_path,urllib.parse.unquote(course_name))))
+    # lectures = sort_slide_names(os.listdir(os.path.join(slides_path,urllib.parse.unquote(course_name))))
+    lectures = get_lectures_from_course(course_name)
     lno = int(lno)
     ses_disp_str = get_disp_str(slide)
     related_slides_info = get_related_slides(slide)
-    # print("rel",related_slides_info)
+    #
     same_lecture_slides_info = get_same_lecture_slides(course_name, lno, slide)
     try:
         video_link = video_links[slide.split('---')[1]].strip('\n')
@@ -198,6 +206,9 @@ def get_slide(course_name,slide,lno):
 def get_same_lecture_slides(course_name, lno, slide_name):
     lectures = get_lectures_from_course(course_name)
     lno = int(lno)
+
+    ## This function throws error of list index out of range. The lnos exceed the lectures list.
+    print(lno, lectures)
     slides = sort_slide_names(os.listdir(os.path.join(slides_path,urllib.parse.unquote(course_name),lectures[lno])))
     return get_related_slides_lst(slide_name, slides)
 
@@ -209,10 +220,14 @@ def get_disp_str(slide_name):
 
 def get_next_slide(course_name,lno,curr_slide=None):
     # need to get the right lecture and slides
-    lectures = sort_slide_names(os.listdir(os.path.join(slides_path, urllib.parse.unquote(course_name))))
+
+    # lecture_dirs = os.listdir(os.path.join(slides_path, urllib.parse.unquote(course_name)))
+    # lecture_dirs = [val for val in lecture_dirs if not val.endswith(".pdf")]
+    lectures = get_lectures_from_course(course_name)
     lno = int(lno)
+
     slides = sort_slide_names(os.listdir(os.path.join(slides_path,urllib.parse.unquote(course_name),lectures[lno])))
-   
+
     if curr_slide is not None:
         idx = slides.index(curr_slide)
 
@@ -227,6 +242,7 @@ def get_next_slide(course_name,lno,curr_slide=None):
             next_slide = sort_slide_names(os.listdir(os.path.join(slides_path, urllib.parse.unquote(course_name),lectures[lno+1])))[0]
             lno+=1
     ses_disp_str = get_disp_str(next_slide)
+
     same_lecture_slides_info = get_same_lecture_slides(course_name, lno, next_slide)
 
     related_slides_info = get_related_slides(next_slide)
@@ -239,7 +255,8 @@ def get_next_slide(course_name,lno,curr_slide=None):
     return next_slide, lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info    
 
 def get_prev_slide(course_name,lno,curr_slide):
-    lectures = sort_slide_names(os.listdir(os.path.join(slides_path,  urllib.parse.unquote(course_name))))
+    lectures = get_lectures_from_course(course_name)
+    # lectures = sort_slide_names(os.listdir(os.path.join(slides_path,  urllib.parse.unquote(course_name))))
     lno = int(lno)
     slides = sort_slide_names(os.listdir(os.path.join(slides_path, urllib.parse.unquote(course_name),lectures[lno])))
     idx = slides.index(curr_slide)
@@ -296,7 +313,8 @@ def get_related_slides_lst(slide_name,slides):
             disp_snippets.append(snippet)
             disp_colors.append(color)
             course_names.append(comp[0])
-            lectures = sort_slide_names(os.listdir(os.path.join(slides_path, comp[0])))
+            # lectures = sort_slide_names(os.listdir(os.path.join(slides_path, comp[0])))
+            lectures = get_lectures_from_course(comp[0])
             lname = '---'.join(comp[1:-1])
             # print(lectures,lname)
             lnos.append(lectures.index(lname))
@@ -373,7 +391,7 @@ def search_txtbook(query):
         results.append(res_obj)
     return results
 
-def get_search_results(search):
+def get_search_results(search, course_name):
     # query = metapy.index.Document()
     # query.content(search)
     # print (query,idx,ranker,search)
@@ -410,7 +428,7 @@ def get_search_results(search):
                 # print(lectures,lname)
                 continue
             # print(lnos)
-            if len(results) < 10:
+            if (len(results) < 10 and (course_name == 'Select Course' or course_name == comp[0])):
                 disp_strs.append(' '.join(comp[0].replace('_','-').split('-')).title() + ' : ' + trim_name(' '.join(comp[1:])))
                 course_names.append(comp[0])
                 lec_names.append(lname)

@@ -314,15 +314,41 @@ def search_slide(course_name,slide_name,lno):
 @app.route('/search_slides', methods=['POST'])
 def search_results(course_name=None, lno=None, slide_name=None, curr_slide=None):
     search_string = request.json['searchString']
-    log_helper(search_string + '###QUERY',request.json['route'])
+    course_name = request.json['course_name']
+    # log_helper(search_string + '###QUERY',request.json['route'])
 
-    num_results,results,disp_strs,search_course_names,lnos, snippets,lec_names = model.get_search_results(search_string)
+    num_results,results,disp_strs,search_course_names,lnos, snippets,lec_names = model.get_search_results(search_string, course_name)
     if not results:
         num_results = 0
         results = []
     response = jsonify({ 'num_results': num_results, 'results':results, 'disp_strs':disp_strs, 'search_course_names':search_course_names,'lnos':lnos,'course_names':COURSE_NAMES,'num_courses':NUM_COURSES,'snippets':snippets,'lec_names':lec_names
     })
     return response
+
+@app.route('/searchPage', methods= ["POST"])
+def searchPage():
+    srch_term = request.form.get("srch-term")
+    app.logger.warning('searchPage')
+
+    global COURSE_NAMES,NUM_COURSES
+    if COURSE_NAMES is None and NUM_COURSES is None:
+        COURSE_NAMES,NUM_COURSES = model.get_course_names()
+        model.load_related_slides()
+    next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides = resolve_slide('CS 225',3,'drop-down')
+    vis_urls,vis_strs = get_prev_urls()
+    return render_template("searchPage.html",slide_name=next_slide_name,course_name= 'Select Course',num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides, srch_term=srch_term,base_url = config.base_url, pdf_url= config.pdf_url)
+
+@app.route('/searchPage/<srch_term>/<course_name>')
+def filter(srch_term, course_name):
+    app.logger.warning(course_name)
+    app.logger.warning(srch_term)
+    global COURSE_NAMES,NUM_COURSES
+    if COURSE_NAMES is None and NUM_COURSES is None:
+        COURSE_NAMES,NUM_COURSES = course_name,1
+        model.load_related_slides()
+    next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides = resolve_slide('CS 225',3,'drop-down')
+    vis_urls,vis_strs = get_prev_urls()
+    return render_template("searchPage.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides, srch_term=srch_term,base_url = config.base_url, pdf_url= config.pdf_url)
 
 def log_helper(action,route):
     if action is not None and route is not None:
