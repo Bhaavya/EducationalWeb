@@ -206,9 +206,6 @@ def get_slide(course_name,slide,lno):
 def get_same_lecture_slides(course_name, lno, slide_name):
     lectures = get_lectures_from_course(course_name)
     lno = int(lno)
-
-    ## This function throws error of list index out of range. The lnos exceed the lectures list.
-    print(lno, lectures)
     slides = sort_slide_names(os.listdir(os.path.join(slides_path,urllib.parse.unquote(course_name),lectures[lno])))
     return get_related_slides_lst(slide_name, slides)
 
@@ -362,7 +359,8 @@ def get_related_slides(slide_name):
             disp_snippets.append(snippet)
             disp_colors.append(color)
             course_names.append(comp[0])
-            lectures = sort_slide_names(os.listdir(os.path.join(slides_path, comp[0])))
+            lectures = get_lectures_from_course(comp[0])
+            # lectures = sort_slide_names(os.listdir(os.path.join(slides_path, comp[0])))
             lname = '---'.join(comp[1:-1])
             lnos.append(lectures.index(lname))
             lec_names.append(lname)
@@ -420,7 +418,8 @@ def get_search_results(search, course_name):
 
             comp = r.split('---')
             
-            lectures = sort_slide_names(os.listdir(os.path.join(slides_path, comp[0])))
+            # lectures = sort_slide_names(os.listdir(os.path.join(slides_path, comp[0])))
+            lectures = get_lectures_from_course(comp[0])
             lname = '---'.join(comp[1:-1])
             try:
                 lnos.append(lectures.index(lname))

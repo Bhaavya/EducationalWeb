@@ -318,8 +318,6 @@ $(function() {
 var url = '{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#toolbar=0&navpanes=0&/scrollbar=0&view=FitH';
 <!--The above url indicates that the lecture pdf should be under the course directory-->
 
-console.log('{{course_name}}, {{lec_name}},{{slide_name}},{{lno}},{{lec_slides[1][0]}}');
-
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
 
@@ -429,7 +427,8 @@ function changedSlide(pageNum, oldNum){
     xmlHttp.open( "GET",url, false );
     xmlHttp.send( null );
     const responses = JSON.parse(xmlHttp.responseText);
-    document.getElementById("p_slide_name").textContent=new_slide_name.split(".pdf")[0];
+<!--    slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')-->
+    document.getElementById("p_slide_name").textContent=new_slide_name.split(".pdf")[0].split('---').join(' ').replace('-Slides','');
 
     for (var i=0; i<responses["num_related_slides"];i++){
         var list_obj = document.createElement('li');
