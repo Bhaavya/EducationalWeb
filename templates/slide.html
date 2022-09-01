@@ -115,12 +115,10 @@ $(function() {
             return "bottom";
         }
 
-        return "top"},
+      return "top"},
       container: 'body',
-    trigger : 'hover',
-    html: true
-
-
+      trigger : 'hover',
+      html: true
   });
 });
 
@@ -186,7 +184,7 @@ $(function() {
     }
 });
           })
-        })
+        });
 
 
  </script>
@@ -438,6 +436,7 @@ function changedSlide(pageNum, oldNum){
         a.href="{{base_url}}".concat("/").concat("related_slide").concat("/").concat(responses["related_course_names"][i]).concat("/").concat(responses["rel_lnos"][i].toString()).concat("/").concat(responses["related_slides"][i]);
         a.class = "related";
         a.id=i.toString();
+        $(a.id).modal('toggle');
         a.style="color:".concat(responses['disp_color'][i]).concat(";");
         a.textContent=responses['disp_str'][i];
         list_obj.appendChild(a);
