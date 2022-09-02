@@ -121,7 +121,7 @@ def set_sess(url,ses_disp_str):
         session.modified = True
 
 def modify_url_domain(url):
-    return url.replace(config.base_url,config.target_url)
+    return url.replace(config.local_url,config.target_url)
 
 @app.route('/')
 def index():

@@ -11,9 +11,6 @@
 {% endblock %}
 
 {% block body %}
-<!-- <script type=text/javascript> -->
-  <!-- $SCRIPT_ROOT = {{ request.script_root|tojson|safe }}; -->
-<!-- </script> -->
 
 <script>
 
@@ -122,7 +119,6 @@ $(function() {
   });
 });
 
-
 $(function() {
           $('#submit').bind('click', function() {
             var srch = document.getElementById('srch-term').value
@@ -184,14 +180,14 @@ $(function() {
     }
 });
           })
-        });
-
+        })
+})
 
  </script>
 
 <script src="{{base_url}}static/pdfjs-dist/build/pdf.js"></script>
-<link href="{{base_url}}static/canvas.css" rel="stylesheet" type="text/css" />
 <link href="{{base_url}}static/pdf.js/web/viewer.css" rel="stylesheet" type="text/css" />
+<link href="{{base_url}}static/canvas.css" rel="stylesheet" type="text/css" />
 
  <div class="container-fluid main_cnt">
   <div id="explanation-container" class="col-sm-12">
@@ -314,14 +310,9 @@ $(function() {
 <script>
 
 var url = '{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#toolbar=0&navpanes=0&/scrollbar=0&view=FitH';
-<!--The above url indicates that the lecture pdf should be under the course directory-->
 
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
-
-
 pdfjsLib.GlobalWorkerOptions.workerSrc = '{{base_url}}static/pdfjs-dist/build/pdf.worker.js';
-console.log("PDFJS",pdfjsLib);
-
 var pdfDoc = null,
 pageNum = parseInt('{{slide_name}}'.split('---').pop().split('.')[0].replace('slide',''),10)+1,
 pageRendering = false,
@@ -336,6 +327,7 @@ function renderPage(num) {
    // Using promise to fetch the page
    pdfDoc.getPage(num).then(function(page) {
      var viewport = page.getViewport({scale: scale});
+     console.log(page);
      canvas.height = viewport.height;
      canvas.width = viewport.width;
 
@@ -404,8 +396,6 @@ function changedSlide(pageNum, oldNum){
     console.log(cur_selected,cur_selected.offsetTop,lec_slide_list.scrollTop);
     lec_slide_list.scrollTop = (cur_selected.offsetTop + pageNum*120);
 
-
-
     rel_bar = document.getElementById('side_bar_container');
 
     rel_list = document.getElementById("related_slides_bar");
@@ -421,12 +411,11 @@ function changedSlide(pageNum, oldNum){
     course = "{{course_name}}";
     lec = "{{lec_name}}";
     new_slide_name = course.concat("---").concat(lec).concat("---slide").concat(pageNum.toString()).concat(".pdf");
-    var url = '/get_related_slides/{{course_name}}/{{lno}}/'.concat(new_slide_name);
+    var url = '{{base_url}}/get_related_slides/{{course_name}}/{{lno}}/'.concat(new_slide_name);
     xmlHttp.open( "GET",url, false );
     xmlHttp.send( null );
     const responses = JSON.parse(xmlHttp.responseText);
-<!--    slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')-->
-    document.getElementById("p_slide_name").textContent=new_slide_name.split(".pdf")[0].split('---').join(' ').replace('-Slides','');
+   document.getElementById("p_slide_name").textContent=new_slide_name.split(".pdf")[0].split('---').join(' ').replace('-Slides','');
 
     for (var i=0; i<responses["num_related_slides"];i++){
         var list_obj = document.createElement('li');
@@ -485,8 +474,6 @@ function changedSlide(pageNum, oldNum){
 }).promise.then(function(pdfDoc_) {
    pdfDoc = pdfDoc_;
    console.log(pdfDoc);
-<!--   document.getElementById('page_count').textContent = pdfDoc.numPages;-->
-
    // Initial/first page rendering
    renderPage(pageNum);
  });
