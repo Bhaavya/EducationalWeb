@@ -102,22 +102,12 @@ for (var i = 0; i < relLinks.length; i++) {
     } , true);})
 }
 
-$(function() {
-  $('[data-toggle="popover"]').popover({
-    placement:function (context, source) {
-        var position = $(source).offset();
-
-
-        if (position.top < 400){
-            return "bottom";
-        }
-
-      return "top"},
-      container: 'body',
-      trigger : 'hover',
-      html: true
-  });
-});
+<!--$(".related").popover({-->
+<!--          container: 'body',-->
+<!--          trigger : 'hover',-->
+<!--          html: true,-->
+<!--          placement:'top',-->
+<!--          title:"<embed type='application/pdf' src=http://localhost:8889/static/slides/CS 410/07_7-7-word-association-mining-and-analysis_TM-6-word-relation-corrected/CS 410-&#45;&#45;07_7-7-word-association-mining-and-analysis_TM-6-word-relation-corrected-&#45;&#45;slide0.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;view=Fit width='220px' height:'100px' >"});-->
 
 $(function() {
           $('#submit').bind('click', function() {
@@ -228,10 +218,6 @@ $(function() {
 <iframe src='{{pdf_url}}/static/slides/{{course_name | replace(" ", "%20")}}/{{lec_name| replace(" ", "%20")}}/{{lec_slides[1][i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit' width="190" height="120"></iframe>
 <a  class="{{'current_display' if slide_name==lec_slides[1][i] else ''}}" id="lec_slide_{{i}}" onclick="renderThumbnail({{i+1}})" style="position:absolute; top:0; left:0; display:inline-block; width:190px; height:120px; z-index:5;"></a>
 </div>
-
-        <!-- <a id="lec_slide_{{i}}" style="display: inline-block" class="{{'current_display' if slide_name==lec_slides[1][i] else ''}}" href="{{base_url}}/related_slide/{{course_name}}/{{lec_slides[4][i]}}/{{lec_slides[1][i]}}">
-            <embed type='application/pdf' src={{pdf_url}}/static/slides/{{course_name}}/{{lec_name| replace(" ", "%20")}}/{{lec_slides[1][i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit width='190px' height:'100px' style="pointer-events:none">
-        </a> -->
         {% endfor %}
     </ul>
 </div>
@@ -242,8 +228,6 @@ $(function() {
   <div style="padding: 10px;">
 
   <h2 id="course_name">{{' '.join(course_name.split('-')).title()}}  </h2>
-      <!-- <a href="https://www.coursera.org/learn/cs-410/home/welcome" target="_blank" style="font-size: 15px; text-decoration: underline;">View On Coursera</a> -->
-  <!-- </h2> -->
 
 {% if video_link != '#' %}
   <a id="video_link" href={{video_link}} <button type="button" class="btn pull-right btn-info">Lecture Video</button></a>
@@ -251,15 +235,14 @@ $(function() {
 </div>
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
     <div style="overflow:auto;-webkit-overflow-scrolling:touch">
-  <canvas id="the-canvas"></canvas>
-  <div class="textLayer"></div>
-</div>
-
+        <canvas id="the-canvas"></canvas>
+        <div class="textLayer"></div>
+    </div>
 
   <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px">Previous</button>
   <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next">Next</button>
 
-  </div>
+</div>
 
 
             <div class="sidebar" id="side_bar_container">
@@ -269,8 +252,15 @@ $(function() {
           {% for i in range(num_related_slides) %}
     <li class="related_slide_element">
 
-      <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}" class="related" data-toggle="popover" style="color:{{disp_color[i]}};" title="<embed type='application/pdf' src={{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit width='220px' height:'100px' >" >{{disp_str[i]}} </a>
-
+<!--        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}" data-toggle="popover" class="related" style="color:{{disp_color[i]}};" title="<embed type='application/pdf' src={{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit width='220px' height:'100px' >" >{{disp_str[i]}} </a>-->
+    <div class="popover__wrapper">
+        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">
+        <h2 class="popover__title">{{disp_str[i]}}</h2>
+        </a>
+        <div class="popover__content">
+            <iframe src="{{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit" width='220px' height:'100px'> </iframe>
+        </div>
+    </div>
 
     </li>
     {% endfor %}
@@ -279,20 +269,6 @@ $(function() {
     </div>
      </div>
 
-<!--    <div class="row" style="display: flex;">-->
-<!-- <div class="col-md-12">-->
-<!-- <div class="input-group add-on" >-->
-<!--      <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">-->
-<!--      <div class="input-group-btn">-->
-<!--        <button class="btn btn-default" id="submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!-- </div>-->
-<!--</div>-->
-<!-- <div class="row" style="display: flex;padding: 20px;">-->
-<!--<div class="col-md-9" id="result" padding-bottom="15px">-->
-<!-- </div>-->
-<!--</div>-->
     </div>
 
 <script type="text/javascript" src="{{base_url}}static/explanation_google_search.js"></script>
@@ -378,6 +354,7 @@ function renderThumbnail(num){
     changedSlide(num, pageNum);
     pageNum= num;
 }
+
 function changedSlide(pageNum, oldNum){
 
     pageNum--;
@@ -393,7 +370,6 @@ function changedSlide(pageNum, oldNum){
     var cur_selected = document.getElementById(cur_id_name);
     cur_selected.classList.add("current_display");
 
-    console.log(cur_selected,cur_selected.offsetTop,lec_slide_list.scrollTop);
     lec_slide_list.scrollTop = (cur_selected.offsetTop + pageNum*120);
 
     rel_bar = document.getElementById('side_bar_container');
@@ -401,7 +377,7 @@ function changedSlide(pageNum, oldNum){
     rel_list = document.getElementById("related_slides_bar");
 
     rel_list_elements = document.getElementsByClassName('related_slide_element');
-    console.log(rel_list);
+
 
     for (var i = rel_list_elements.length - 1; i >= 0; --i) {
         rel_list_elements[i].remove();
@@ -415,26 +391,51 @@ function changedSlide(pageNum, oldNum){
     xmlHttp.open( "GET",url, false );
     xmlHttp.send( null );
     const responses = JSON.parse(xmlHttp.responseText);
-   document.getElementById("p_slide_name").textContent=new_slide_name.split(".pdf")[0].split('---').join(' ').replace('-Slides','');
+    document.getElementById("p_slide_name").textContent=new_slide_name.split(".pdf")[0].split('---').join(' ').replace('-Slides','');
 
     for (var i=0; i<responses["num_related_slides"];i++){
         var list_obj = document.createElement('li');
         list_obj.classList.add('related_slide_element');
 
+<!--<div class="popover__wrapper">-->
+<!--        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">-->
+<!--        <h2 class="popover__title">{{disp_str[i]}}</h2>-->
+<!--        </a>-->
+<!--        <div class="popover__content">-->
+<!--            <iframe src="{{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit" width='220px' height:'100px'> </iframe>-->
+<!--        </div>-->
+<!--    </div>-->
+        var div = document.createElement('div');
+        div.classList.add('popover__wrapper');
+
         var a = document.createElement('a');
         a.href="{{base_url}}".concat("/").concat("related_slide").concat("/").concat(responses["related_course_names"][i]).concat("/").concat(responses["rel_lnos"][i].toString()).concat("/").concat(responses["related_slides"][i]);
-        a.class = "related";
-        a.id=i.toString();
-        $(a.id).modal('toggle');
-        a.style="color:".concat(responses['disp_color'][i]).concat(";");
-        a.textContent=responses['disp_str'][i];
-        list_obj.appendChild(a);
+        a.id = i;
 
+        var h2 = document.createElement('h2');
+        h2.classList.add('popover__title');
+        h2.textContent=responses['disp_str'][i];
+
+        a.appendChild(h2);
+
+        var content = document.createElement('div');
+        content.classList.add('popover__content');
+
+        var iframe = document.createElement('iframe');
+        iframe.src = "{{pdf_url}}/static/slides/".concat(responses["related_course_names"][i]).concat("/").concat(responses["rel_lec_names"][i]).concat("/").concat(responses["related_slides"][i]).concat("#toolbar=0&navpanes=0&scrollbar=0&view=Fit");
+
+        content.appendChild(iframe);
+
+        div.appendChild(a);
+        div.append(content);
+
+        list_obj.appendChild(div);
         rel_list.appendChild(list_obj);
     }
 
 
 }
+
 
  function queueRenderPage(num) {
    if (pageRendering) {
@@ -477,6 +478,31 @@ function changedSlide(pageNum, oldNum){
    // Initial/first page rendering
    renderPage(pageNum);
  });
+
+
+</script>
+
+<script>
+
+$(document).ready(function() {
+  $('[data-toggle="popover"]').popover({
+    placement:function (context, source) {
+
+        var position = $(source).offset();
+
+
+        if (position.top < 400){
+            return "bottom";
+        }
+
+        return "top"},
+      container: 'body',
+    trigger : 'hover',
+    html: true
+
+
+  });
+});
 </script>
 {% endblock %}
 
