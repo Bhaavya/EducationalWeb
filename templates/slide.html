@@ -102,13 +102,6 @@ for (var i = 0; i < relLinks.length; i++) {
     } , true);})
 }
 
-<!--$(".related").popover({-->
-<!--          container: 'body',-->
-<!--          trigger : 'hover',-->
-<!--          html: true,-->
-<!--          placement:'top',-->
-<!--          title:"<embed type='application/pdf' src=http://localhost:8889/static/slides/CS 410/07_7-7-word-association-mining-and-analysis_TM-6-word-relation-corrected/CS 410-&#45;&#45;07_7-7-word-association-mining-and-analysis_TM-6-word-relation-corrected-&#45;&#45;slide0.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;view=Fit width='220px' height:'100px' >"});-->
-
 $(function() {
           $('#submit').bind('click', function() {
             var srch = document.getElementById('srch-term').value
@@ -252,8 +245,7 @@ $(function() {
           {% for i in range(num_related_slides) %}
     <li class="related_slide_element">
 
-<!--        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}" data-toggle="popover" class="related" style="color:{{disp_color[i]}};" title="<embed type='application/pdf' src={{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit width='220px' height:'100px' >" >{{disp_str[i]}} </a>-->
-    <div class="popover__wrapper">
+   <div class="popover__wrapper">
         <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">
         <h2 class="popover__title">{{disp_str[i]}}</h2>
         </a>
@@ -397,14 +389,6 @@ function changedSlide(pageNum, oldNum){
         var list_obj = document.createElement('li');
         list_obj.classList.add('related_slide_element');
 
-<!--<div class="popover__wrapper">-->
-<!--        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">-->
-<!--        <h2 class="popover__title">{{disp_str[i]}}</h2>-->
-<!--        </a>-->
-<!--        <div class="popover__content">-->
-<!--            <iframe src="{{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit" width='220px' height:'100px'> </iframe>-->
-<!--        </div>-->
-<!--    </div>-->
         var div = document.createElement('div');
         div.classList.add('popover__wrapper');
 
@@ -482,28 +466,6 @@ function changedSlide(pageNum, oldNum){
 
 </script>
 
-<script>
-
-$(document).ready(function() {
-  $('[data-toggle="popover"]').popover({
-    placement:function (context, source) {
-
-        var position = $(source).offset();
-
-
-        if (position.top < 400){
-            return "bottom";
-        }
-
-        return "top"},
-      container: 'body',
-    trigger : 'hover',
-    html: true
-
-
-  });
-});
-</script>
 {% endblock %}
 
 
