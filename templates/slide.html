@@ -235,6 +235,7 @@ $(function() {
   <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px">Previous</button>
   <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next">Next</button>
     <button type="button" onclick="getSelectedTextnew();" > Explain </button>
+    <button type="button" onclick="downloadFile('{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#pdfjs.action=download','{{lec_name}}.pdf');" > Download </button>
 </div>
 
 
@@ -489,6 +490,23 @@ function getSelectedTextnew() {
      }
      return '';
   }
+
+function downloadFile(url,lecture){
+    const a = document.createElement("a");
+
+    filename = lecture;
+
+    a.href = url;
+    a.target = "_blank";
+
+    if ("download" in a) {
+        a.download = filename;
+      }
+
+    (document.body || document.documentElement).appendChild(a);
+    a.click();
+    a.remove();
+}
 </script>
 
 {% endblock %}
