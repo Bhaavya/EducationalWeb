@@ -234,7 +234,7 @@ $(function() {
 
   <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px">Previous</button>
   <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next">Next</button>
-
+    <button type="button" onclick="getSelectedTextnew();" > Explain </button>
 </div>
 
 
@@ -463,7 +463,32 @@ function changedSlide(pageNum, oldNum){
    renderPage(pageNum);
  });
 
+function getSelectedTextnew() {
+     if (window.getSelection) {
 
+      var text = window.getSelection().toString();
+      console.log(text);
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+  };
+
+      xhttp.open("POST", "{{base_url}}explain", true);
+
+      xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8");
+      console.log("Text content", $(".textLayer").text());
+      xhttp.send(JSON.stringify({ 'url':window.location.href,'searchString':  text,'slidesContext': $(".textLayer").text() ,  'route': window.location.pathname
+}));
+
+      }
+
+     else if (document.selection) {
+       console.log(document.selection)
+       console.log("2")
+       return document.selection.createRange().text;
+     }
+     return '';
+  }
 </script>
 
 {% endblock %}
