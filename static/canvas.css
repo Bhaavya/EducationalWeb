@@ -6,6 +6,10 @@
 body{
     background-color: #fff;
 }
+
+#heading_related{
+    margin-bottom: 50px;
+}
 .popover__title{
   font-size: 14px;
 }
@@ -20,12 +24,15 @@ body{
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  top: -190px;
+  top: -150px;
+  left: 10px;
   background-color: #fff;
   padding: 0.2rem;
-  width: 220px;
 }
 
+#content0{
+    top:70px;
+}
 .popover__content:before {
   position: absolute;
   content: "";
@@ -43,3 +50,4 @@ body{
   transform: translate(0, 10px);
   transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
 }
+

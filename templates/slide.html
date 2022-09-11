@@ -202,22 +202,20 @@ $(function() {
           <button type="button" class="btn btn-danger pull-right" id="notHelpfulButton">Not Helpful</button>
      </div>
      </div>
-    <div class="row main_row" >
-<div class="sidebar" id="lec_slides_list">
+     <div class="row main_row" >
+<div class="col-sm" id="lec_slides_list">
     <ul class="nav nav-sidebar" >
         {% for i in range(lec_slides[0]) %}
 
         <div style="position:relative;">
-<iframe src='{{pdf_url}}/static/slides/{{course_name | replace(" ", "%20")}}/{{lec_name| replace(" ", "%20")}}/{{lec_slides[1][i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit' width="190" height="120"></iframe>
-<a  class="{{'current_display' if slide_name==lec_slides[1][i] else ''}}" id="lec_slide_{{i}}" onclick="renderThumbnail({{i+1}})" style="position:absolute; top:0; left:0; display:inline-block; width:190px; height:120px; z-index:5;"></a>
+<iframe src='{{pdf_url}}/static/slides/{{course_name | replace(" ", "%20")}}/{{lec_name| replace(" ", "%20")}}/{{lec_slides[1][i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit' width="220px" height="150px"></iframe>
+<a  class="{{'current_display' if slide_name==lec_slides[1][i] else ''}}" id="lec_slide_{{i}}" onclick="renderThumbnail({{i+1}})" style="position:absolute; top:0; left:0; display:inline-block; width:220px; height:150px; z-index:5;"></a>
 </div>
         {% endfor %}
     </ul>
 </div>
 
-
-
-<div class="col-sm-12 main">
+<div class="col-sm-8 main">
   <div style="padding: 10px;">
 
   <h2 id="course_name">{{' '.join(course_name.split('-')).title()}}  </h2>
@@ -238,9 +236,9 @@ $(function() {
 </div>
 
 
-            <div class="sidebar" id="side_bar_container">
+<div class="col-sm-3" id="side_bar_container">
                 <ul class="nav nav-sidebar" id="related_slides_bar">
-            <h2>Related slides</h2>
+            <h2 id="heading_related">Related slides</h2>
 
           {% for i in range(num_related_slides) %}
     <li class="related_slide_element">
@@ -249,8 +247,8 @@ $(function() {
         <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">
         <h2 class="popover__title">{{disp_str[i]}}</h2>
         </a>
-        <div class="popover__content">
-            <iframe src="{{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit" width='220px' height:'100px'> </iframe>
+        <div class="popover__content" id="content{{i}}">
+            <iframe src='{{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit' width="220px" height="150px"> </iframe>
         </div>
     </div>
 
@@ -394,7 +392,7 @@ function changedSlide(pageNum, oldNum){
 
         var a = document.createElement('a');
         a.href="{{base_url}}".concat("/").concat("related_slide").concat("/").concat(responses["related_course_names"][i]).concat("/").concat(responses["rel_lnos"][i].toString()).concat("/").concat(responses["related_slides"][i]);
-        a.id = i;
+        a.id= i;
 
         var h2 = document.createElement('h2');
         h2.classList.add('popover__title');
@@ -404,10 +402,12 @@ function changedSlide(pageNum, oldNum){
 
         var content = document.createElement('div');
         content.classList.add('popover__content');
+        content.id="content".concat(i.toString());
 
         var iframe = document.createElement('iframe');
         iframe.src = "{{pdf_url}}/static/slides/".concat(responses["related_course_names"][i]).concat("/").concat(responses["rel_lec_names"][i]).concat("/").concat(responses["related_slides"][i]).concat("#toolbar=0&navpanes=0&scrollbar=0&view=Fit");
-
+        iframe.width="220px";
+        iframe.height="150px";
         content.appendChild(iframe);
 
         div.appendChild(a);
