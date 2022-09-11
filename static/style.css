@@ -16,14 +16,14 @@
     padding-top: 0px;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 700px;
+    height: 720px;
 }
 
 #side_bar_container{
 padding: 15px;
 overflow-y:scroll;
 visibility: visible;
-height: 700px;
+height: 720px;
 }
 
 .main{

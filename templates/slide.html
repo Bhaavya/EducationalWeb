@@ -355,12 +355,14 @@ function changedSlide(pageNum, oldNum){
     old_id_name="lec_slide_"+oldNum.toString();
 
     var old_selected = document.getElementById(old_id_name);
-    old_selected.className = "old_display";
+<!--    old_selected.className = "old_display";-->
+    old_selected.classList.remove("current_display");
 
     var cur_selected = document.getElementById(cur_id_name);
     cur_selected.classList.add("current_display");
 
-    lec_slide_list.scrollTop = (cur_selected.offsetTop + pageNum*120);
+    lec_slide_list.scrollTop = pageNum*150;
+    console.log("Scroll Tp",lec_slide_list.scrollTop,"cur_selected.offsetTop",cur_selected.offsetTop,"Pagenum",pageNum);
 
     rel_bar = document.getElementById('side_bar_container');
 
