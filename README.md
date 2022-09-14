@@ -137,7 +137,7 @@ Step 1:
     
 Step 2:
 
-    1. Run in a separate Ubuntu terminal: sudo service redis-server start 
+    1. In a separate Ubuntu terminal, run: sudo service redis-server start 
     
     2. In the same Ubuntu terminal, cd into web directory (usually a path beginning with /mnt/c/Users). Then run: redis-server --port 8097
         2.a. This starts up redis
@@ -155,6 +155,6 @@ Step 4:
     a. To allow for functionality of search bar(s), connect to vpn.illinois.edu
     
 
-### Here are instructions for data/model-related files:
+### Note data/model-related files:
 
-Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). We go over where to download these files from and which directory to place them in. 
+Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). You may have to download these files separately (please contact one of the owners for more details).
