@@ -225,15 +225,23 @@ $(function() {
   {% endif %}
 </div>
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
-    <button type="button" class="btn btn-primary" onclick="getSelectedTextnew();" > Explain </button><button type="button" class="btn btn-primary" onclick="downloadFile('{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#pdfjs.action=download','{{lec_name}}.pdf');" > Download </button>
-    <div style="overflow:auto;-webkit-overflow-scrolling:touch">
+    <div style="text-align:left">
+    <button type="button" class="btn btn-primary" onclick="getSelectedTextnew();" > Explain </button>
+    <button type="button" class="btn btn-primary" onclick="downloadFile('{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#pdfjs.action=download','{{lec_name}}.pdf');" > Download </button>
+    </div>
+
+    <div style="overflow:auto;-webkit-overflow-scrolling:touch;text-align:center;margin-top: 20px">
         <canvas id="the-canvas"></canvas>
         <div class="textLayer"></div>
     </div>
 
-  <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px">Previous</button>
-  <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next">Next</button>
-</div>
+    <div style="text-alight:center; margin-bottom: 20px;">
+        <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px">Previous</button>
+        <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next">Next</button>
+
+    </div>
+
+  </div>
 
 
 <div class="col-sm-3" id="side_bar_container">
