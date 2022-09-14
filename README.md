@@ -126,25 +126,34 @@ Step 4: Install wsl and ubuntu:
     
     c. Run: wsl --install -d Ubuntu
 
-Step 5: In the Ubuntu terminal, run the program on the local machine
+Running EduWeb on local machine:
 
-    a. cd into /mnt/c/Users
+Step 1:
+
+    a. In a new Ubuntu terminal, cd into pdf.js/build/generic/web
     
-    b. From there, cd into wherever you saved the web directory
+    b. Run the command: gulp server
+        b.1. gulp ensures that the lecture slides appear on the website
     
-    c. Run the following command: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
-    If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
-    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time.
+Step 2:
 
-After installation, to start up project:
-
-    1. Run in Ubuntu terminal: sudo service redis-server start 
+    1. Run in a separate Ubuntu terminal: sudo service redis-server start 
     
     2. In the same Ubuntu terminal, cd into web directory (usually a path beginning with /mnt/c/Users). Then run: redis-server --port 8097
         2.a. This starts up redis
+
+Step 3: 
+
+    a. In a separate Ubuntu terminal, cd into wherever you saved the web directory (usually a path beginning with /mnt/c/Users)
     
-    3. In a separate Ubuntu terminal, cd into /pdf.js/build/generic/web. Then run: gulp server
-        3.a. This starts up gulp
+    b. Run the following command: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
+    If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
+    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time.
+    
+Step 4:
+
+    a. To allow for functionality of search bar(s), connect to vpn.illinois.edu
+    
 
 ### Here are instructions for data/model-related files:
 
