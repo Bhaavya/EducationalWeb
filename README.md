@@ -155,6 +155,6 @@ Step 4:
     a. To allow for functionality of search bar(s), connect to vpn.illinois.edu
     
 
-### Note data/model-related files:
+### Note on data/model-related files:
 
 Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). You may have to download these files separately (please contact one of the owners for more details).
