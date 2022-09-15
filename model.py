@@ -248,7 +248,6 @@ def get_next_slide(course_name,lno,curr_slide=None):
     except Exception as e:
         print(e)
         video_link = '#'
-        print(video_links,next_slide)
     return next_slide, lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info    
 
 def get_prev_slide(course_name,lno,curr_slide):
