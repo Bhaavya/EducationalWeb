@@ -225,9 +225,16 @@ $(function() {
   {% endif %}
 </div>
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
-    <div style="text-align:left">
+    <div class="grid-container" style="text-align:left">
     <button type="button" class="btn btn-primary" onclick="getSelectedTextnew();" > Explain </button>
-    <button type="button" class="btn btn-primary" onclick="downloadFile('{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#pdfjs.action=download','{{lec_name}}.pdf');" > Download </button>
+        <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Download
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a onclick="downloadFile('{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#pdfjs.action=download','{{lec_name}}.pdf');" href="#">Lecture</a></li>
+          <li><a href="#">All Lectures</a></li>
+        </ul>
+      </div>
     </div>
 
     <div style="overflow:auto;-webkit-overflow-scrolling:touch;text-align:center;margin-top: 20px">

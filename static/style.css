@@ -29,6 +29,13 @@ height: 720px;
 .main{
     z-index:0;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 0fr 5fr;
+    grid-gap: 20px;
+}
+
 .main_cnt{
 	border-radius: 25px;
 	background:#eee ; 
