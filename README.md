@@ -146,7 +146,7 @@ Step 3:
 
     a. In a separate Ubuntu terminal, cd into wherever you saved the web directory (usually a path beginning with /mnt/c/Users)
     
-    b. Kill redis (ctrl c)
+    b. Kill redis (ctrl c in the Ubuntu terminal where you started redis)
     
     c. Run the following command: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
     If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
