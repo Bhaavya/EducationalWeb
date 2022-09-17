@@ -226,11 +226,11 @@ $(function() {
 </div>
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
     <div class="grid-container" style="text-align:left">
-    <button type="button" class="btn btn-primary" onclick="getSelectedTextnew();" > Explain </button>
+    <button type="button" class="btn btn-primary" style="position:fixed; top:auto;"onclick="getSelectedTextnew();" > Explain </button>
         <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Download
+        <button class="btn btn-primary dropdown-toggle" type="button" style="position:inherit;left:80px;" data-toggle="dropdown">Download
         <span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" style="left:80px;">
           <li><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}/{{lec_name}}.pdf','{{lec_name}}.pdf');" href="#">Lecture</a></li>
           <li><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}.zip','{{course_name}}.zip');" href="#">All Lectures</a></li>
         </ul>
