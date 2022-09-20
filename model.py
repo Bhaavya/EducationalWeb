@@ -418,7 +418,10 @@ def get_search_results(search, course_name):
             comp = r.split('---')
             
             # lectures = sort_slide_names(os.listdir(os.path.join(slides_path, comp[0])))
-            lectures = get_lectures_from_course(comp[0])
+            try:
+                lectures = get_lectures_from_course(comp[0])
+            except:
+                continue
             lname = '---'.join(comp[1:-1])
             try:
                 lnos.append(lectures.index(lname))

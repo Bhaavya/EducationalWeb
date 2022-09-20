@@ -226,7 +226,7 @@ $(function() {
 </div>
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
     <div class="grid-container" style="text-align:left">
-    <button type="button" class="btn btn-primary" style="position:fixed; top:auto;"onclick="getSelectedTextnew();" > Explain </button>
+    <button type="button" class="btn btn-primary" style="position:fixed; top:auto; z-index:1200;"onclick="getSelectedTextnew();" > Explain </button>
         <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" style="position:inherit;left:80px;" data-toggle="dropdown">Download
         <span class="caret"></span></button>
@@ -500,8 +500,6 @@ function getSelectedTextnew() {
       }
 
      else if (document.selection) {
-       console.log(document.selection)
-       console.log("2")
        return document.selection.createRange().text;
      }
      return '';

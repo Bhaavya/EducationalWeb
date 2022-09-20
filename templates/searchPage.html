@@ -66,8 +66,13 @@
         ['click','contextmenu'].forEach(function(e){a.addEventListener(e, function(){
           searchLog(this.id);
       } , true);})
-      console.log("stuck3");
+
         result_section.appendChild(a);
+        console.log(data['lnos'],data['lec_names'][i].replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/ /g, "%20"));
+        course_name_s =data["search_course_names"][i].replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/ /g, "%20");
+        lecture_name_s = data["lec_names"][i].replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/ /g, "%20");
+        slide_name_s = data['results'][i].replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/ /g, "%20");
+
 
 
         $('#search_'+i).popover({
@@ -75,7 +80,7 @@
           trigger : 'hover',
           html: true,
           placement:'top',
-          title:"<embed type='application/pdf' id='search_slide' src={{pdf_url}}/static/slides/"+data['search_course_names'][i].replace(' ','%20')+'/'+data['lec_names'][i].replace(' ','%20')+'/'+data['results'][i].replace(' ','%20') +"#toolbar=0&navpanes=0&scrollbar=0>"
+          title:"<embed type='application/pdf' id='search_slide' src={{pdf_url}}/static/slides/".concat(course_name_s).concat("/").concat(lecture_name_s).concat('/').concat(slide_name_s).concat("#toolbar=0&navpanes=0&scrollbar=0>")
 
         })
 

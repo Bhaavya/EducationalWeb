@@ -6423,3 +6423,320 @@ information associated with the individual signals. Mathematically, this is most
 127.0.0.1,,2022-09-16 17:02:16.245348,close
 127.0.0.1,,2022-09-16 17:02:16.302605,hide
 127.0.0.1,,2022-09-16 17:02:19.861338,open
+127.0.0.1,,2022-09-16 17:21:01.029558,open
+127.0.0.1,,2022-09-16 17:21:08.586754,close
+127.0.0.1,,2022-09-16 17:21:08.657237,hide
+127.0.0.1,,2022-09-16 17:21:11.594065,open
+127.0.0.1,,2022-09-16 17:21:26.412578,When two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and
+transparently described using complex notation###EXPLAIN
+127.0.0.1,,2022-09-16 17:22:01.840672,Complex variables are used whenever phase information is important. A complex function,
+Z = X+iY consists of two portions, a so-called “real” part of Z, denoted X = Re(Z) and a so-
+called “imaginary” part of Z, denoted Y = Im(Z). The number i  (-1). The magnitude of the
+complex variable, Z is designated as |Z| = (Z) 2 , = (ZZ*), with Z2  ZZ* where Z* is the so-
+called complex conjugate of Z, i.e. Z* = (Z)* = (X+iY)* = XiY, with i* = (i)*  (-1). Thus,
+|Z| = (ZZ*) = (X+iY)(X+iY)* = (X+iY)(XiY) = (X2 + iXY – iXY + Y 2 ) = (X2 +Y2 ).
+Thus the magnitude of Z, |Z| is analogous to the hypotenuse, c of a right triangle (c2 = a2 + b2
+)
+and/or the radius of a circle, r centered at the origin (r2 = x2 + y 2 )###EXPLAIN
+127.0.0.1,,2022-09-16 17:24:34.509940,close
+127.0.0.1,,2022-09-16 17:24:34.559383,hide
+127.0.0.1,,2022-09-16 17:24:38.983453,open
+127.0.0.1,,2022-09-16 17:26:07.643367,close
+127.0.0.1,,2022-09-16 17:26:07.686316,hide
+127.0.0.1,,2022-09-16 17:26:12.940423,open
+127.0.0.1,,2022-09-16 17:26:28.677792,coustical Interfe###EXPLAIN
+127.0.0.1,,2022-09-16 17:26:49.563722, on Complex Variabl###EXPLAIN
+127.0.0.1,,2022-09-16 17:27:43.816516,close
+127.0.0.1,,2022-09-16 17:27:45.000300,hide
+127.0.0.1,,2022-09-16 17:27:47.880203,open
+127.0.0.1,,2022-09-16 17:27:54.310831,When two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and
+transparently described using complex notation###EXPLAIN
+127.0.0.1,,2022-09-16 17:28:02.207471,asics of/Primer on Complex Variables###EXPLAIN
+127.0.0.1,,2022-09-16 17:28:15.887533,Because complex variables Z = X+iY consist of two components, Z can be graphically
+depicted as a 2-component “vector” Z = (X,Y) lying in the so-called complex plane, as shown
+in the figure below. ###EXPLAIN
+127.0.0.1,,2022-09-16 17:28:41.186180,hide
+127.0.0.1,,2022-09-16 17:33:35.482715,unhide
+127.0.0.1,,2022-09-16 17:34:02.006792,hide
+127.0.0.1,,2022-09-16 17:35:54.074220,unhide
+127.0.0.1,,2022-09-16 17:36:14.349619,hide
+127.0.0.1,,2022-09-16 17:38:36.817251,unhide
+127.0.0.1,,2022-09-16 17:38:42.286812,hide
+127.0.0.1,,2022-09-16 17:39:09.345917,unhide
+127.0.0.1,,2022-09-16 17:39:15.840203,coustical Interference Phenomen###EXPLAIN
+127.0.0.1,,2022-09-16 17:40:09.820675,It can be readily seen from the above diagram that the endpoint of the complex “vector”,
+Z = X+iY, lies at a point on the circumference of a circle, centered at (X,Y) = (0,0), with
+“radius” (i.e. magnitude) |Z| = (X2 + Y2 ) ½ and phase angle,
+ (defined relative to the X-axis),
+of
+  tan1 (Y / X) (or equivalently:
+   tan1 (X / Y), defined relative to the Y-axis).###EXPLAIN
+127.0.0.1,,2022-09-16 17:40:56.008265,close
+127.0.0.1,,2022-09-16 17:40:56.082287,hide
+127.0.0.1,,2022-09-16 17:40:59.895236,open
+127.0.0.1,,2022-09-16 17:41:08.743448,Turn text data into high-quality information or actionable
+knowledge###EXPLAIN
+127.0.0.1,,2022-09-16 17:43:41.766210,hide
+127.0.0.1,,2022-09-16 17:43:47.423752,unhide
+127.0.0.1,,2022-09-16 17:44:14.364909,close
+127.0.0.1,,2022-09-16 17:44:14.438776,hide
+127.0.0.1,,2022-09-16 17:44:16.733291,open
+127.0.0.1,,2022-09-16 17:44:20.229244,close
+127.0.0.1,,2022-09-16 17:44:20.297011,hide
+127.0.0.1,,2022-09-16 17:44:23.881370,open
+127.0.0.1,,2022-09-16 17:44:34.801702,e result of G E is a triangular system###EXPLAIN
+127.0.0.1,,2022-09-16 17:44:44.493363,inconsistent###EXPLAIN
+127.0.0.1,,2022-09-16 17:44:57.560126,singular###EXPLAIN
+127.0.0.1,,2022-09-16 18:01:24.846394,open
+127.0.0.1,,2022-09-16 18:01:37.384013,close
+127.0.0.1,,2022-09-16 18:01:37.416118,hide
+127.0.0.1,,2022-09-16 18:01:41.433850,open
+127.0.0.1,,2022-09-16 18:01:58.214755,hide
+127.0.0.1,,2022-09-16 18:08:01.091648,unhide
+127.0.0.1,,2022-09-16 18:08:06.972729,close
+127.0.0.1,,2022-09-16 18:08:07.036265,hide
+127.0.0.1,,2022-09-16 18:14:49.457102,close
+127.0.0.1,,2022-09-16 18:14:50.064157,hide
+127.0.0.1,,2022-09-16 18:14:59.307496,cache_open
+127.0.0.1,,2022-09-16 18:15:00.039008,close
+127.0.0.1,,2022-09-16 18:15:00.242289,hide
+127.0.0.1,,2022-09-16 18:15:57.491251,hide
+127.0.0.1,,2022-09-16 18:16:09.648880,open
+127.0.0.1,,2022-09-16 18:27:23.355039,unhide
+127.0.0.1,,2022-09-16 18:27:38.009396,hide
+127.0.0.1,,2022-09-16 18:30:24.183502,unhide
+127.0.0.1,,2022-09-16 18:30:33.354056,close
+127.0.0.1,,2022-09-16 18:30:34.225131,hide
+127.0.0.1,,2022-09-16 18:33:53.932706,open
+127.0.0.1,,2022-09-16 18:34:37.293220,close
+127.0.0.1,,2022-09-16 18:34:37.626655,hide
+127.0.0.1,,2022-09-16 18:34:50.522122,close
+127.0.0.1,,2022-09-16 18:34:50.843307,hide
+127.0.0.1,,2022-09-16 18:35:26.168197,hide
+127.0.0.1,,2022-09-16 18:35:30.633957,open
+127.0.0.1,,2022-09-16 18:35:34.926557,unhide
+127.0.0.1,,2022-09-16 18:35:41.979082,close
+127.0.0.1,,2022-09-16 18:35:42.078153,hide
+127.0.0.1,,2022-09-16 18:37:07.801272,hide
+127.0.0.1,,2022-09-16 18:37:09.131464,open
+127.0.0.1,,2022-09-16 18:38:02.528537,unhide
+127.0.0.1,,2022-09-16 18:38:05.742301,hide
+127.0.0.1,,2022-09-16 18:49:44.570678,unhide
+127.0.0.1,,2022-09-16 18:49:44.610050,close
+127.0.0.1,,2022-09-16 18:49:45.901749,hide
+127.0.0.1,,2022-09-16 19:15:24.272268,hide
+127.0.0.1,,2022-09-16 19:15:29.436541,open
+127.0.0.1,,2022-09-16 19:22:13.992867,unhide
+127.0.0.1,,2022-09-16 19:22:15.759312,close
+127.0.0.1,,2022-09-16 19:22:17.250251,hide
+127.0.0.1,,2022-09-16 19:22:36.338177,open
+127.0.0.1,,2022-09-16 19:23:04.439702,hide
+127.0.0.1,,2022-09-16 19:23:07.915209,unhide
+127.0.0.1,,2022-09-16 19:23:17.722444,hide
+127.0.0.1,,2022-09-16 19:35:32.134204,unhide
+127.0.0.1,,2022-09-16 19:35:33.312785,close
+127.0.0.1,,2022-09-16 19:35:33.834389,hide
+127.0.0.1,,2022-09-19 13:02:34.008977,open
+127.0.0.1,,2022-09-19 13:02:38.325298,When two (or more)###EXPLAIN
+127.0.0.1,,2022-09-19 13:05:19.886009,0###EXP_###When two (or more)###
+127.0.0.1,,2022-09-19 13:05:24.770847,1###EXP_###When two (or more)###
+127.0.0.1,,2022-09-19 13:05:35.722091,Complex variables are used###EXPLAIN
+127.0.0.1,,2022-09-19 13:06:12.347367,en two (or more) periodic signals are linearly superposed (i.e. added together),###EXPLAIN
+127.0.0.1,,2022-09-19 13:06:27.506087,“vector” Z = (X,Y) lying in the so-called complex plane, as shown
+in the figure below. The real component of Z, ###EXPLAIN
+127.0.0.1,,2022-09-19 13:11:51.724284,coustical Interference Phenomen###EXPLAIN
+127.0.0.1,,2022-09-19 13:12:20.231925,close
+127.0.0.1,,2022-09-19 13:12:20.263535,hide
+127.0.0.1,,2022-09-19 13:12:22.471840,open
+127.0.0.1,,2022-09-19 13:14:38.323810,close
+127.0.0.1,,2022-09-19 13:14:38.357271,hide
+127.0.0.1,,2022-09-19 13:14:40.375456,open
+127.0.0.1,,2022-09-19 13:14:48.664985,close
+127.0.0.1,,2022-09-19 13:14:48.726929,hide
+127.0.0.1,,2022-09-19 13:14:49.575111,open
+127.0.0.1,,2022-09-19 13:14:52.812148,Systems &
+Programming
+Review: Computers are Dumb
+ECE 220: Computer Systems & Programming © 2016-2018 Steven S. Lumetta. All rights reserved. slide 1
+Lend Me Your Brains for a Minute?
+I had a busy break.###EXPLAIN
+127.0.0.1,,2022-09-19 13:15:08.792633,0: Computer Systems &
+Programmin###EXPLAIN
+127.0.0.1,,2022-09-19 13:15:52.897674,close
+127.0.0.1,,2022-09-19 13:15:52.980301,hide
+127.0.0.1,,2022-09-19 13:15:58.873351,open
+127.0.0.1,,2022-09-19 13:16:05.136883,ext analytics###EXPLAIN
+127.0.0.1,,2022-09-19 13:16:14.281436,Text###EXPLAIN
+127.0.0.1,,2022-09-19 13:16:24.895455,gh-quality information or actionable
+knowledge###EXPLAIN
+127.0.0.1,,2022-09-19 13:16:39.490804,mizes human effort (on###EXPLAIN
+127.0.0.1,,2022-09-19 13:16:45.787699,close
+127.0.0.1,,2022-09-19 13:16:45.834234,hide
+127.0.0.1,,2022-09-19 13:16:49.364318,open
+127.0.0.1,,2022-09-19 13:16:54.218030,eal World###EXPLAIN
+127.0.0.1,,2022-09-19 13:17:09.143168,hide
+127.0.0.1,,2022-09-19 13:18:39.582319,unhide
+127.0.0.1,,2022-09-19 16:30:58.297429,hide
+127.0.0.1,,2022-09-19 16:31:29.221949,unhide
+127.0.0.1,,2022-09-19 16:31:30.506613,close
+127.0.0.1,,2022-09-19 16:31:31.736765,hide
+127.0.0.1,,2022-09-19 16:31:35.320575,open
+127.0.0.1,,2022-09-19 16:31:42.011343,close
+127.0.0.1,,2022-09-19 16:31:42.063953,hide
+127.0.0.1,,2022-09-19 16:31:46.518432,open
+127.0.0.1,,2022-09-19 16:31:58.467460,hide
+127.0.0.1,,2022-09-19 16:32:01.362530,unhide
+127.0.0.1,,2022-09-19 16:33:09.975185,hide
+127.0.0.1,,2022-09-19 16:33:25.834119,unhide
+127.0.0.1,,2022-09-19 16:33:34.741199,hide
+127.0.0.1,,2022-09-19 16:36:00.002991,unhide
+127.0.0.1,,2022-09-19 16:36:11.624770,hide
+127.0.0.1,,2022-09-19 16:36:15.152212,unhide
+127.0.0.1,,2022-09-19 16:36:29.499640,hide
+127.0.0.1,,2022-09-19 16:38:43.425554,unhide
+127.0.0.1,,2022-09-19 16:38:46.217917,hide
+127.0.0.1,,2022-09-19 16:39:30.677549,unhide
+127.0.0.1,,2022-09-19 16:39:44.000700,hide
+127.0.0.1,,2022-09-19 16:39:46.853524,unhide
+127.0.0.1,,2022-09-19 16:40:01.438730,Simplest VSM= Bit-Vector###EXPLAIN
+127.0.0.1,,2022-09-19 16:40:07.380632,hide
+127.0.0.1,,2022-09-19 16:51:10.453202,unhide
+127.0.0.1,,2022-09-19 16:51:22.646273,hide
+127.0.0.1,,2022-09-19 16:51:28.243089,unhide
+127.0.0.1,,2022-09-19 16:51:45.310021,hide
+127.0.0.1,,2022-09-19 16:52:30.062748,close
+127.0.0.1,,2022-09-19 16:52:47.878007,cache_open
+127.0.0.1,,2022-09-19 16:52:49.055058,unhide
+127.0.0.1,,2022-09-19 16:53:30.162452,hide
+127.0.0.1,,2022-09-19 16:53:58.477526,unhide
+127.0.0.1,,2022-09-19 16:54:22.404673, 𝒙𝟏𝒚𝟏 + ... + 𝒙𝑵 𝒚𝑵 = 𝒙𝒊
+𝑵
+𝒊=𝟏 ###EXPLAIN
+127.0.0.1,,2022-09-19 16:54:31.855384,Similarity Instantiation: Dot Product###EXPLAIN
+127.0.0.1,,2022-09-19 16:55:03.756057,hide
+127.0.0.1,,2022-09-19 16:55:49.440683,unhide
+127.0.0.1,,2022-09-19 16:56:56.780908,q,d)=q###EXPLAIN
+127.0.0.1,,2022-09-19 16:57:29.157861,###EXPLAIN
+127.0.0.1,,2022-09-19 16:57:36.374224,l_Simples###EXPLAIN
+127.0.0.1,,2022-09-19 16:58:50.140115,hide
+127.0.0.1,,2022-09-19 16:58:52.158544,unhide
+127.0.0.1,,2022-09-19 16:59:03.845964,ector-space-retrieval-model-simplest-###EXPLAIN
+127.0.0.1,,2022-09-19 16:59:57.186025,hide
+127.0.0.1,,2022-09-19 16:59:58.999458,unhide
+127.0.0.1,,2022-09-19 17:00:44.432943,hide
+127.0.0.1,,2022-09-19 17:02:45.477083,unhide
+127.0.0.1,,2022-09-19 17:02:49.839447,hide
+127.0.0.1,,2022-09-19 17:14:52.753157,unhide
+127.0.0.1,,2022-09-19 17:15:09.899846,hide
+127.0.0.1,,2022-09-19 17:24:21.010331,unhide
+127.0.0.1,,2022-09-19 17:33:44.356202,hide
+127.0.0.1,,2022-09-19 17:44:30.873999,open
+127.0.0.1,,2022-09-19 17:44:35.115811,close
+127.0.0.1,,2022-09-19 17:44:35.146961,hide
+127.0.0.1,,2022-09-19 17:44:37.761035,open
+127.0.0.1,,2022-09-19 17:44:56.127896,close
+127.0.0.1,,2022-09-19 17:44:56.233148,hide
+127.0.0.1,,2022-09-19 17:44:58.622662,open
+127.0.0.1,,2022-09-19 17:45:14.759869,even Errede, Department of Physics, University of Illinois at Urbana-
+Champaign, Illinois 2002-2017. All rights reserved###EXPLAIN
+127.0.0.1,,2022-09-19 17:45:32.247788,Imaginary Axis###EXPLAIN
+127.0.0.1,,2022-09-19 17:46:46.790445,1###EXP_###even Errede, Department of Physics, University of Illinois at Urbana-
+Champaign, Illinois 2002-2017. All rights reserved###
+127.0.0.1,,2022-09-19 17:46:46.793863,1###EXP_###Imaginary Axis###
+127.0.0.1,,2022-09-19 17:47:58.408393,hide
+127.0.0.1,,2022-09-19 17:49:23.029691,unhide
+127.0.0.1,,2022-09-19 17:50:10.093440,low. The real component of Z, X = Re(Z) is by convention drawn along the x,
+or horizontal axis (i.e. the abscissa). The imaginary component of Z, Y = Im(Z) is by
+convention drawn along the y, or vertical axis (i.e. the ordinate), as shown in the figure below###EXPLAIN
+127.0.0.1,,2022-09-19 17:50:59.068352,hide
+127.0.0.1,,2022-09-19 17:52:00.262189,unhide
+127.0.0.1,,2022-09-19 17:52:03.587301,hide
+127.0.0.1,,2022-09-19 17:52:41.741049,unhide
+127.0.0.1,,2022-09-20 13:27:46.601649,open
+127.0.0.1,,2022-09-20 13:28:07.134362,close
+127.0.0.1,,2022-09-20 13:28:07.250985,hide
+127.0.0.1,,2022-09-20 13:28:09.432806,open
+127.0.0.1,,2022-09-20 13:28:17.964411,Interference Phenomena###EXPLAIN
+127.0.0.1,,2022-09-20 13:28:31.148977,e, Department of Physics, University of Illinois at Urbana-
+Champaign, Illinois 2002-2017. All rights reserved.###EXPLAIN
+127.0.0.1,,2022-09-20 13:28:46.593587,x variables Z = X+iY consist of two components, Z can be graphically
+depicted as a 2-component “vector” Z = (X,Y) lying in t###EXPLAIN
+127.0.0.1,,2022-09-20 13:29:18.961689,hide
+127.0.0.1,,2022-09-20 13:29:49.342757,unhide
+127.0.0.1,,2022-09-20 13:29:58.561506,f Z, i.e. Z* = (Z)* = (X+iY)* = XiY, with i* = (i)*  (-1). Thus,
+|Z| = (ZZ*) =###EXPLAIN
+127.0.0.1,,2022-09-20 13:31:05.153571,l Interf###EXPLAIN
+127.0.0.1,,2022-09-20 13:34:34.237824,hide
+127.0.0.1,,2022-09-20 13:44:30.374613,unhide
+127.0.0.1,,2022-09-20 13:44:30.378594,close
+127.0.0.1,,2022-09-20 13:44:31.408557,hide
+127.0.0.1,,2022-09-20 13:44:33.516235,open
+127.0.0.1,,2022-09-20 13:44:44.321294,d whenever phase information is important. A complex function,
+Z = X+iY consists of two portions, a so-called “real” part of Z, denoted X = Re(Z) and a so-
+called “imaginary” part of Z, denoted Y = Im(Z). ###EXPLAIN
+127.0.0.1,,2022-09-20 13:49:57.838120,close
+127.0.0.1,,2022-09-20 13:49:58.757231,hide
+127.0.0.1,,2022-09-20 13:50:00.567847,open
+127.0.0.1,,2022-09-20 13:50:06.837154,parently described using complex notation###EXPLAIN
+127.0.0.1,,2022-09-20 13:50:18.426912,(Z) is by convention drawn along the x,
+or horizontal axis (i.e. the abscissa). The imaginary component of Z, Y = Im(Z) is b###EXPLAIN
+127.0.0.1,,2022-09-20 13:51:02.158169,close
+127.0.0.1,,2022-09-20 13:51:02.950312,hide
+127.0.0.1,,2022-09-20 13:51:04.888269,open
+127.0.0.1,,2022-09-20 13:51:11.327037,When two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and
+transparently described using complex notation###EXPLAIN
+127.0.0.1,,2022-09-20 13:51:28.010969,Because complex variables Z = X+iY consist of two components, Z can be graphically
+depicted as a 2-component “vector” Z = (X,Y) lying in the so-called complex plane, as shown
+in the figure below. The real component of Z, X = Re(Z) i###EXPLAIN
+127.0.0.1,,2022-09-20 13:51:38.617094,close
+127.0.0.1,,2022-09-20 13:51:38.684287,hide
+127.0.0.1,,2022-09-20 13:51:48.178168,open
+127.0.0.1,,2022-09-20 13:51:52.448298,University of Illinois at Urbana-Champaign
+Dept. of Electrical and Computer Engineering###EXPLAIN
+127.0.0.1,,2022-09-20 13:52:02.393689,close
+127.0.0.1,,2022-09-20 13:52:02.482156,hide
+127.0.0.1,,2022-09-20 13:52:06.330233,open
+127.0.0.1,,2022-09-20 13:52:11.750630,Text mining  Text analytics###EXPLAIN
+127.0.0.1,,2022-09-20 13:52:21.581227,Turn text data into high-quality information or actionable
+knowledge###EXPLAIN
+127.0.0.1,,2022-09-20 13:52:47.818589,close
+127.0.0.1,,2022-09-20 13:52:47.857369,hide
+127.0.0.1,,2022-09-20 13:52:58.155077,open
+127.0.0.1,,2022-09-20 13:53:04.696771,Job Interviews###EXPLAIN
+127.0.0.1,,2022-09-20 13:53:33.719904,close
+127.0.0.1,,2022-09-20 13:53:33.787565,hide
+127.0.0.1,,2022-09-20 13:53:44.068321,open
+127.0.0.1,,2022-09-20 13:53:51.569755,Distributed Systems###EXPLAIN
+127.0.0.1,,2022-09-20 13:54:09.285159,hide
+127.0.0.1,,2022-09-20 13:54:20.488991,unhide
+127.0.0.1,,2022-09-20 13:54:52.502693,close
+127.0.0.1,,2022-09-20 13:54:52.619721,hide
+127.0.0.1,,2022-09-20 13:54:56.294572,open
+127.0.0.1,,2022-09-20 13:55:06.877385,If we now redefine the variable
+ such that
+  (t +
+), it can then be seen that
+Z(t) = |Z|{Cos(t +
+ )+ iSin(t +
+)}, ###EXPLAIN
+127.0.0.1,,2022-09-20 13:55:26.141500,t can be readily seen from the above diagram that the endpoint of the complex “vector”,
+Z = X+iY, lies at a point on the circumference of a circle, centered at (X,Y) = (0,0), with
+“radius” (i.e. magnitude) |Z| = (X2 + Y2 ) ½ and phase angle,
+ (defined relative to the X-axis),
+of
+  tan1 (Y / X) (or equivalently:
+   tan1 (X / Y), defined relative to the Y-axis)###EXPLAIN
+127.0.0.1,,2022-09-20 13:55:38.621385,diagram that the endpoint of the complex ###EXPLAIN
+127.0.0.1,,2022-09-20 13:55:47.252483,close
+127.0.0.1,,2022-09-20 13:55:47.375645,hide
+127.0.0.1,,2022-09-20 13:56:04.194109,open
+127.0.0.1,,2022-09-20 13:56:19.935471,Operating
+Systems?###EXPLAIN
+127.0.0.1,,2022-09-20 13:57:14.490158,hide
+127.0.0.1,,2022-09-20 13:58:50.086515,unhide
