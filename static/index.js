@@ -1,19 +1,18 @@
 var base_url = 'http://localhost:8097/'
 var hideExp = function(){
     toggleExplanationContainer(false);
-
-//    explanation_container = document.getElementById('explanation-container');
+    toggleNoExplainText(false);
     $("#explanation-container").css("z-index", "-1");
-
+    $(".main_row").css("-webkit-filter","brightness(1.0) blur(0px)");
     helpBut = document.getElementById('helpfulButton');
     notHelpBut = document.getElementById('notHelpfulButton');
-    helpBut.removeEventListener("click", logExp, true); 
-
+    helpBut.removeEventListener("click", logExp, true);
     helpBut.removeEventListener("click", logExp, true); 
     notHelpBut.removeEventListener("contextmenu", logExp, true); 
     notHelpBut.removeEventListener("contextmenu", logExp, true); 
 }
 
+// docDiv is no longer used
 var docDiv = (doc,searchString) => {
     console.log('bb',doc)
     return(`<div class="card">
@@ -39,23 +38,24 @@ var docDiv = (doc,searchString) => {
    
 }
 
-
-
-var test = function(){
-    return "blah";
-}
-
-// var socket = io.connect('http://' + document.domain + ':' + location.port);
-// console.log("io",io)
-
 var toggleNoExplainText = function(isVisible) {
     displayMode = isVisible ? "block" : "none";
-    $("#no-explain-text").css("display", displayMode);
+    $("#no-explain-text").css("display",displayMode);
+    $("#docs-div").css("display", displayMode);
+    $("#explain_title").css("display","None");
+}
+
+var toggleNoExplainTextFiniteSearchString = function(isVisible) {
+    displayMode = isVisible ? "block" : "none";
+    $("#no-explain-results").css("display",displayMode);
+    $("#explain_title").css("display",displayMode);
+    $("#docs-div").css("display", displayMode);
 }
 
 var toggleExplanationContainer = function(isVisible) {
     displayMode = isVisible ? "block" : "none";
     $("#docs-div").css("display", displayMode);
+    $("#explain_title").css("display",displayMode);
     $("#helpfulButton").css("display", displayMode);
     $("#notHelpfulButton").css("display", displayMode);
     $("#google-search-div").css("display","none");
@@ -84,12 +84,14 @@ var displayGoogleSearch = function(results) {
     resultHTML = googleResultsListHMTL(results);
     $("#google-search-div").css("display", "block");
     searchDisplay = document.getElementById("google-search-div");
+    // Clearing the previous content of searchDisplay
     if(searchDisplay.firstChild){
         searchDisplay.removeChild(searchDisplay.firstChild)
     }
     searchDisplay.appendChild(resultHTML);
 }
 
+// googleSearchExp is not used
 var googleSearchExp = function() {
     $("#google-search-div").empty();
     $("#google-search-div").css("display", "block");
@@ -103,31 +105,32 @@ var googleSearchExp = function() {
 }
 
 var doGoogleSearch = function(query,txtbook) {
-    // query = document.getElementById("search-explanation").getAttribute("data-query");
     context = localStorage.getItem("context"); 
-    console.log('dg',context,query)
+
+   // if a valid query exists
     if (query.length > 0) {
+        toggleNoExplainTextFiniteSearchString(false);
+        toggleNoExplainText(false);
         toggleExplanationContainer(true);
-                    toggleNoExplainText(false);
-                    document.getElementById("explain_title").innerHTML = `Explanation for ${query}`;
-                    moreBut = document.getElementById("explain_title");
-                    moreBut.setAttribute("data-query", query);
-                    helpBut = document.getElementById('helpfulButton');
-                    notHelpBut = document.getElementById('notHelpfulButton');
-                    helpBut.addEventListener('click', function() {
-                        logExp('1','',query);
-                    } , true);
+        document.getElementById("explain_title").innerHTML = `Explanation for ${query}`;
+        moreBut = document.getElementById("explain_title");
+        moreBut.setAttribute("data-query", query);
+        helpBut = document.getElementById('helpfulButton');
+        notHelpBut = document.getElementById('notHelpfulButton');
+        helpBut.addEventListener('click', function() {
+            logExp('1','',query);
+        } , true);
 
-                    helpBut.addEventListener('contextmenu', function() {
-                        logExp('1','',query);
-                    } , true);
+        helpBut.addEventListener('contextmenu', function() {
+            logExp('1','',query);
+        } , true);
 
-                    notHelpBut.addEventListener('click', function() {
-                        logExp('0','',query);
-                    } , true);
-                    notHelpBut.addEventListener('contextmenu', function() {
-                        logExp('0','',query);
-                    } , true);
+        notHelpBut.addEventListener('click', function() {
+            logExp('0','',query);
+        } , true);
+        notHelpBut.addEventListener('contextmenu', function() {
+            logExp('0','',query);
+        } , true);
 	 if (txtbook == true){
 		  var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {};
@@ -137,7 +140,7 @@ var doGoogleSearch = function(query,txtbook) {
                 xhttp.send(JSON.stringify({  'query': query}));
 
 	 }
-	    else{
+	 else{
         googleQueryExplanation(query)
             .then((results)=> {
                 var xhttp = new XMLHttpRequest();
@@ -151,7 +154,8 @@ var doGoogleSearch = function(query,txtbook) {
     }
     else{
          toggleExplanationContainer(false);
-                    toggleNoExplainText(true);
+         toggleNoExplainTextFiniteSearchString(false);
+         toggleNoExplainText(true);
     }
 }
 
@@ -161,45 +165,38 @@ $(document).ready(function(){
     source.addEventListener('publish', function(event) {
         var data = JSON.parse(event.data);
         console.log("The server says " + data.message);
+
+        // Change css properties when there is a pop-up
         $("#explanation-container").css("z-index", "1200");
+        $(".main_row").css("-webkit-filter","brightness(0.7) blur(2px)");
+
         if (data.message == "explain"){
             console.log(data.searchString)
-            
-	
-            console.log(data.is_410)
-	    localStorage.setItem("context", data.context)
-              
-
+	        localStorage.setItem("context", data.context)
             doGoogleSearch(data.searchString,data.is_410);
-		
-             }
+        }
         else{
+        // when can server say google-search result?
             if (data.message == "google-search-result"){
-                displayGoogleSearch(data.rankedResult);
+                console.log(data.rankedResult);
+                if (data.rankedResult.length) {
+                    displayGoogleSearch(data.rankedResult);
+                }
+                else{
+                    toggleExplanationContainer(false);
+                    toggleNoExplainText(false);
+                    toggleNoExplainTextFiniteSearchString(true);
+                 }
             }
         }
     }, false);
     source.addEventListener('error', function(event) {
         console.log("Error"+ event)
-        // alert("Failed to connect to event stream. Is Redis running?");
     }, false);
-// var socket = io()
-// socket.connect('http://timan.cs.illinois.edu/', {path:'/eduweb_csintro/socket.io'},{transports: ['websocket']});
 
-// socket.on('message', function(params) {
-//     console.log("1")
-//     console.log(params['searchString'])
-//             localStorage.setItem("context", params['context'])
-//                  // doSearch(searchString);
-
-//                  doGoogleSearch(params['searchString']);
-//             });
-
-// socket.on('google-search-result', function(searchResults) {
-//         displayGoogleSearch(searchResults);
-//     });
-
-toggleNoExplainText(false);
+    // We should be allowed to close No explain text
+    toggleNoExplainTextFiniteSearchString(false);
+    toggleNoExplainText(false);
     toggleExplanationContainer(false);
 });
 
@@ -211,6 +208,8 @@ var logExp = function(isHelpful,expId,expTerm){
             navigator.sendBeacon(base_url.concat('log_action'), logdata);
          
 }
+
+// doSearch is not used anymore
 var doSearch = function(searchString) {
     const data = {
         "searchString": searchString,
@@ -261,8 +260,8 @@ var doSearch = function(searchString) {
           logExp('0',data.file_names,searchString);
       } , true);
        
-  
-        
+
+
          // else{
         //    $("#loadMoreButton").css("display", "none")
         }

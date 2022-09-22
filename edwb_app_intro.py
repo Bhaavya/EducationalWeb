@@ -248,7 +248,9 @@ def end():
 
 @app.route('/google_search', methods=['POST'])
 def google_search():
-    raw_results = request.json['results']
+    raw_results=[]
+    if 'results' in request.json:
+        raw_results = request.json['results']
     query = request.json['query']
     ranked_index = model.rank_google_result(raw_results, request.json['context'], query)
     ranked_result = [raw_results[i] for i in ranked_index]

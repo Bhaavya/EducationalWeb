@@ -6740,3 +6740,847 @@ of
 Systems?###EXPLAIN
 127.0.0.1,,2022-09-20 13:57:14.490158,hide
 127.0.0.1,,2022-09-20 13:58:50.086515,unhide
+127.0.0.1,,2022-09-20 19:32:36.911518,open
+127.0.0.1,,2022-09-20 19:34:42.428852,Slide0###EXPLAIN
+127.0.0.1,,2022-09-20 19:35:57.364101,close
+127.0.0.1,,2022-09-20 19:35:58.221876,hide
+127.0.0.1,,2022-09-20 19:36:05.907202,open
+127.0.0.1,,2022-09-20 19:36:13.474944,More Dynamic Programming###EXPLAIN
+127.0.0.1,,2022-09-20 19:36:23.708767,hide
+127.0.0.1,,2022-09-20 19:38:03.669485,unhide
+127.0.0.1,,2022-09-20 19:39:30.954210,warshall-V3 Slid###EXPLAIN
+127.0.0.1,,2022-09-20 19:39:50.363700,More Dynamic Programming
+Tandy Warnow###EXPLAIN
+127.0.0.1,,2022-09-20 19:40:36.453791,hide
+127.0.0.1,,2022-09-20 19:41:28.978740,unhide
+127.0.0.1,,2022-09-20 19:41:37.023069,Programming###EXPLAIN
+127.0.0.1,,2022-09-20 19:41:46.486866,re Dynamic Programming Algorithms
+Tandy Warnow###EXPLAIN
+127.0.0.1,,2022-09-20 19:41:53.008492,close
+127.0.0.1,,2022-09-20 19:41:53.060979,hide
+127.0.0.1,,2022-09-20 19:41:55.256141,open
+127.0.0.1,,2022-09-20 19:42:01.660674,Z = X+iY consist of two components,###EXPLAIN
+127.0.0.1,,2022-09-20 19:42:24.769659,close
+127.0.0.1,,2022-09-20 19:42:24.799254,hide
+127.0.0.1,,2022-09-20 19:42:26.596982,open
+127.0.0.1,,2022-09-20 19:42:33.926477,Complex variables are used whenever phase information is important. A complex function,
+Z = X+iY consists of two portions, a so-called “real” part of Z, denoted X = Re(Z) a###EXPLAIN
+127.0.0.1,,2022-09-20 19:43:24.303996,close
+127.0.0.1,,2022-09-20 19:43:25.211315,hide
+127.0.0.1,,2022-09-20 19:43:27.042712,open
+127.0.0.1,,2022-09-20 19:43:29.778447,mplex variables are used w###EXPLAIN
+127.0.0.1,,2022-09-20 19:43:38.534035,Because complex variables Z = X+iY consist of two components, Z can be graphically
+depicted as a 2-component “vector” Z = (X,Y) lying in the so-called complex plane, as shown
+in the figure below. The real component of Z, X = Re(Z) is by convention drawn along the x,
+or horizontal axis (i.e. the abscissa). The imaginary component of Z, Y = Im(Z) is by
+convention drawn along the y, or vertical axis (i.e. the ordinate), as shown in the figure below.###EXPLAIN
+127.0.0.1,,2022-09-20 19:43:50.472917,Linearly superpose (i.e. add) two signals with amplitudes A1 (t) and A2 (t), and which have
+similar/comparable frequencies, 2 (t) ~ 1 (t), with instantaneous phase of the second signal
+relative to the first of 21 (t)###EXPLAIN
+127.0.0.1,,2022-09-20 19:43:58.000457,hide
+127.0.0.1,,2022-09-20 19:44:34.746516,unhide
+127.0.0.1,,2022-09-20 19:44:49.361085,hasor 1 at time t = ½beat = 0.025 sec = 1/40th sec will be oriented exactly
+as it was at time t = 0.0 (having precessed exactly N1 = 1 t/2 = 2f1 t/2 = f1 t = 25.0
+revolutions in this time period), however phasor 2 ###EXPLAIN
+127.0.0.1,,2022-09-20 19:48:30.732932,In terms of the phasor diagram, as time progresses, the individual amplitudes A1 (t) and A2 (t)
+actually precess at (angular) rates of 1 = 2f1 and 2 = 2f2 radians per second respectively###EXPLAIN
+127.0.0.1,,2022-09-20 19:48:31.599057,close
+127.0.0.1,,2022-09-20 19:48:31.687545,hide
+127.0.0.1,,2022-09-20 19:48:32.778377,open
+127.0.0.1,,2022-09-20 19:48:34.580790,close
+127.0.0.1,,2022-09-20 19:48:34.604114,hide
+127.0.0.1,,2022-09-20 19:48:36.489285,open
+127.0.0.1,,2022-09-20 19:48:40.813548,asics of/Primer on Complex Variables###EXPLAIN
+127.0.0.1,,2022-09-20 19:48:45.293289,hide
+127.0.0.1,,2022-09-20 19:48:50.776952,unhide
+127.0.0.1,,2022-09-20 19:50:30.537760,hide
+127.0.0.1,,2022-09-20 19:51:45.357957,unhide
+127.0.0.1,,2022-09-20 19:52:06.876315,###EXPLAIN
+127.0.0.1,,2022-09-20 19:52:12.452215,ore) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, fre###EXPLAIN
+127.0.0.1,,2022-09-20 19:52:17.379215,hide
+127.0.0.1,,2022-09-20 19:53:39.069432,unhide
+127.0.0.1,,2022-09-20 19:54:04.855570,hide
+127.0.0.1,,2022-09-20 19:54:08.735554,unhide
+127.0.0.1,,2022-09-20 19:54:40.476522,hide
+127.0.0.1,,2022-09-20 19:55:07.322133,unhide
+127.0.0.1,,2022-09-20 19:55:48.081562,hide
+127.0.0.1,,2022-09-20 19:56:38.265992,unhide
+127.0.0.1,,2022-09-20 19:58:07.874815,close
+127.0.0.1,,2022-09-20 19:58:07.909787,hide
+127.0.0.1,,2022-09-20 19:58:11.175423,open
+127.0.0.1,,2022-09-20 19:58:33.651596,e) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude###EXPLAIN
+127.0.0.1,,2022-09-20 19:59:06.869678,hide
+127.0.0.1,,2022-09-20 19:59:25.412461,unhide
+127.0.0.1,,2022-09-20 19:59:52.372253,hide
+127.0.0.1,,2022-09-20 20:00:01.119599,unhide
+127.0.0.1,,2022-09-20 20:00:10.568261,hide
+127.0.0.1,,2022-09-20 20:00:31.971666,unhide
+127.0.0.1,,2022-09-20 20:00:39.667043,hide
+127.0.0.1,,2022-09-20 20:01:16.458133,unhide
+127.0.0.1,,2022-09-20 20:01:44.943182,re) periodic signal###EXPLAIN
+127.0.0.1,,2022-09-20 20:01:55.680220,close
+127.0.0.1,,2022-09-20 20:01:55.709940,hide
+127.0.0.1,,2022-09-20 20:01:59.376221,open
+127.0.0.1,,2022-09-20 20:02:23.066231,more) periodic signals are linearly sup###EXPLAIN
+127.0.0.1,,2022-09-20 20:03:35.543096,hide
+127.0.0.1,,2022-09-20 20:03:57.040929,unhide
+127.0.0.1,,2022-09-20 20:04:45.647799,hide
+127.0.0.1,,2022-09-20 20:05:20.925320,unhide
+127.0.0.1,,2022-09-20 20:06:07.154145,rt of Z, denoted X = Re(Z) and a so-
+called “imaginary” part of Z, denoted Y = Im(Z). The number i  (-1). The magnitude ###EXPLAIN
+127.0.0.1,,2022-09-20 20:08:09.284843,close
+127.0.0.1,,2022-09-20 20:08:09.307812,hide
+127.0.0.1,,2022-09-20 20:08:11.291642,open
+127.0.0.1,,2022-09-20 20:08:53.525532,en from the above diagram that the endpoint of the complex “vector”,
+Z = X+iY, lies at a point on the circumferen###EXPLAIN
+127.0.0.1,,2022-09-20 20:09:16.200591,en from the above diagram that the endpoint of the complex “vector”,
+Z = X+iY, lies at a point on the circumfere###EXPLAIN
+127.0.0.1,,2022-09-20 20:09:57.552230,hide
+127.0.0.1,,2022-09-20 20:10:08.357027,unhide
+127.0.0.1,,2022-09-20 20:10:23.383254, seen from the abov###EXPLAIN
+127.0.0.1,,2022-09-20 20:10:31.945910,Physics###EXPLAIN
+127.0.0.1,,2022-09-20 20:11:01.728749,Physics###EXPLAIN
+127.0.0.1,,2022-09-20 20:11:16.013013,hide
+127.0.0.1,,2022-09-20 20:11:21.601913,unhide
+127.0.0.1,,2022-09-20 20:12:48.751055,hide
+127.0.0.1,,2022-09-20 20:13:03.623305,unhide
+127.0.0.1,,2022-09-20 20:13:15.968677,ve diagram that the endpoint of###EXPLAIN
+127.0.0.1,,2022-09-20 20:13:20.725015,hide
+127.0.0.1,,2022-09-21 11:17:58.392491,hide
+127.0.0.1,,2022-09-21 11:17:59.589358,open
+127.0.0.1,,2022-09-21 11:18:06.673297,unhide
+127.0.0.1,,2022-09-21 11:18:15.610827,close
+127.0.0.1,,2022-09-21 11:18:15.687505,hide
+127.0.0.1,,2022-09-21 11:18:17.573169,open
+127.0.0.1,,2022-09-21 11:19:06.649449,hide
+127.0.0.1,,2022-09-21 11:19:09.415133,unhide
+127.0.0.1,,2022-09-21 11:19:39.684651,close
+127.0.0.1,,2022-09-21 11:19:39.720913,hide
+127.0.0.1,,2022-09-21 11:19:41.704553,open
+127.0.0.1,,2022-09-21 11:20:09.560514,
+information###EXPLAIN
+127.0.0.1,,2022-09-21 11:20:29.177791,
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and
+transparently described using co###EXPLAIN
+127.0.0.1,,2022-09-21 11:21:18.868460,close
+127.0.0.1,,2022-09-21 11:21:18.918076,hide
+127.0.0.1,,2022-09-21 11:21:22.261543,open
+127.0.0.1,,2022-09-21 11:44:05.243753,hide
+127.0.0.1,,2022-09-21 11:44:10.879615,unhide
+127.0.0.1,,2022-09-21 11:44:12.741590,hide
+127.0.0.1,,2022-09-21 11:44:18.689808,unhide
+127.0.0.1,,2022-09-21 11:44:19.501149,open
+127.0.0.1,,2022-09-21 11:44:20.030523,hide
+127.0.0.1,,2022-09-21 11:44:24.813182,unhide
+127.0.0.1,,2022-09-21 11:44:30.089284,opics Covered###EXPLAIN
+127.0.0.1,,2022-09-21 11:44:33.642476,unhide
+127.0.0.1,,2022-09-21 11:44:33.646567,hide
+127.0.0.1,,2022-09-21 11:44:45.250984,close
+127.0.0.1,,2022-09-21 11:44:45.311034,hide
+127.0.0.1,,2022-09-21 11:44:48.834782,open
+127.0.0.1,,2022-09-21 11:44:57.604209,Text-based prediction###EXPLAIN
+127.0.0.1,,2022-09-21 11:45:00.973805,unhide
+127.0.0.1,,2022-09-21 11:45:00.981241,hide
+127.0.0.1,,2022-09-21 11:45:10.998289,Natural language
+processing & text
+representation###EXPLAIN
+127.0.0.1,,2022-09-21 11:45:12.825308,unhide
+127.0.0.1,,2022-09-21 11:45:12.827841,hide
+127.0.0.1,,2022-09-21 11:45:14.842836,unhide
+127.0.0.1,,2022-09-21 11:45:14.846129,hide
+127.0.0.1,,2022-09-21 11:45:24.398753,close
+127.0.0.1,,2022-09-21 11:45:24.435346,hide
+127.0.0.1,,2022-09-21 11:45:26.371112,open
+127.0.0.1,,2022-09-21 11:45:30.403494,Acoustical Interference Phenomena###EXPLAIN
+127.0.0.1,,2022-09-21 11:45:32.367922,unhide
+127.0.0.1,,2022-09-21 11:45:32.371406,hide
+127.0.0.1,,2022-09-21 11:45:34.897818,hide
+127.0.0.1,,2022-09-21 11:55:40.680569,unhide
+127.0.0.1,,2022-09-21 11:55:45.363961,hide
+127.0.0.1,,2022-09-21 12:01:57.002602,unhide
+127.0.0.1,,2022-09-21 17:57:30.266053,open
+127.0.0.1,,2022-09-21 17:57:40.278347,hide
+127.0.0.1,,2022-09-21 17:58:54.578713,unhide
+127.0.0.1,,2022-09-21 17:58:58.061199,hide
+127.0.0.1,,2022-09-21 17:59:04.938586,unhide
+127.0.0.1,,2022-09-21 17:59:37.407022,hide
+127.0.0.1,,2022-09-21 18:00:54.778008,unhide
+127.0.0.1,,2022-09-21 18:01:02.112871,Text vs. Non-Text Data###EXPLAIN
+127.0.0.1,,2022-09-21 18:01:05.791192,hide
+127.0.0.1,,2022-09-21 18:02:59.778941,unhide
+127.0.0.1,,2022-09-21 18:03:12.003416,hide
+127.0.0.1,,2022-09-22 13:05:20.986489,open
+127.0.0.1,,2022-09-22 13:05:27.274418,Acoustical###EXPLAIN
+127.0.0.1,,2022-09-22 13:05:42.538750,Complex variables are used whenever phase information is important. A complex function,
+Z = X+iY consists of two portions, a so-called “real” part of Z, denoted X = Re(Z) and a so-
+called “imaginary” part of Z, denoted Y = Im(Z). The number i  (-1). The magnitude of the
+complex variable, Z is designated as |Z| = (Z) 2 , = (ZZ*), with Z2  ZZ* where Z* is the so-
+called complex conjugate of Z, i.e. Z* = (Z)* =###EXPLAIN
+127.0.0.1,,2022-09-22 13:05:56.777020,rofessor Steven Errede, Department of Physics, University of Illinois at Urbana-
+Champaign, Illinois 2002-2017. All rights reserved###EXPLAIN
+127.0.0.1,,2022-09-22 13:06:06.089084,Complex###EXPLAIN
+127.0.0.1,,2022-09-22 13:06:14.984130,close
+127.0.0.1,,2022-09-22 13:06:15.079661,hide
+127.0.0.1,,2022-09-22 13:06:16.924040,open
+127.0.0.1,,2022-09-22 13:06:24.632724,
+Basics of/Primer on Complex###EXPLAIN
+127.0.0.1,,2022-09-22 13:06:59.228236,
+When two (or mo###EXPLAIN
+127.0.0.1,,2022-09-22 13:07:07.063687,close
+127.0.0.1,,2022-09-22 13:07:07.094875,hide
+127.0.0.1,,2022-09-22 13:07:10.412095,open
+127.0.0.1,,2022-09-22 13:07:46.991577,Linearly superpose (i.e. add) two signals with amplitudes A1 (t) and A2 (t), and which have
+similar/comparable frequencies, 2 (t) ~ 1 (t), with instantaneous phase of the second signal
+relative to the first of 21 (t)###EXPLAIN
+127.0.0.1,,2022-09-22 13:07:52.985985,###EXPLAIN
+127.0.0.1,,2022-09-22 13:07:54.708504,###EXPLAIN
+127.0.0.1,,2022-09-22 13:08:03.650748,close
+127.0.0.1,,2022-09-22 13:08:03.670905,hide
+127.0.0.1,,2022-09-22 13:08:05.687837,open
+127.0.0.1,,2022-09-22 13:08:54.702186,hide
+127.0.0.1,,2022-09-22 13:15:04.831032,unhide
+127.0.0.1,,2022-09-22 13:15:04.850288,close
+127.0.0.1,,2022-09-22 13:15:05.679382,hide
+127.0.0.1,,2022-09-22 13:15:07.671992,open
+127.0.0.1,,2022-09-22 13:15:11.718454,Acoustical###EXPLAIN
+127.0.0.1,,2022-09-22 13:15:15.574547,###EXPLAIN
+127.0.0.1,,2022-09-22 13:15:57.749471,close
+127.0.0.1,,2022-09-22 13:15:57.785506,hide
+127.0.0.1,,2022-09-22 13:16:00.951071,open
+127.0.0.1,,2022-09-22 13:16:07.165098,###EXPLAIN
+127.0.0.1,,2022-09-22 13:16:14.623877,hide
+127.0.0.1,,2022-09-22 13:16:44.492567,unhide
+127.0.0.1,,2022-09-22 13:17:12.393999,hide
+127.0.0.1,,2022-09-22 13:18:38.072996,unhide
+127.0.0.1,,2022-09-22 13:18:38.076127,close
+127.0.0.1,,2022-09-22 13:18:38.970451,hide
+127.0.0.1,,2022-09-22 13:18:42.257084,open
+127.0.0.1,,2022-09-22 13:18:44.861386,Acoustical###EXPLAIN
+127.0.0.1,,2022-09-22 13:18:48.873527,###EXPLAIN
+127.0.0.1,,2022-09-22 13:19:15.825443,close
+127.0.0.1,,2022-09-22 13:19:15.854267,hide
+127.0.0.1,,2022-09-22 13:19:19.140688,open
+127.0.0.1,,2022-09-22 13:19:23.152921,###EXPLAIN
+127.0.0.1,,2022-09-22 13:19:48.376814,close
+127.0.0.1,,2022-09-22 13:19:48.413180,hide
+127.0.0.1,,2022-09-22 13:19:51.711249,open
+127.0.0.1,,2022-09-22 13:19:55.847080,###EXPLAIN
+127.0.0.1,,2022-09-22 13:20:51.905550,hide
+127.0.0.1,,2022-09-22 13:22:51.055368,unhide
+127.0.0.1,,2022-09-22 13:22:51.478887,close
+127.0.0.1,,2022-09-22 13:22:52.421576,hide
+127.0.0.1,,2022-09-22 13:22:55.638287,open
+127.0.0.1,,2022-09-22 13:22:57.048643,###EXPLAIN
+127.0.0.1,,2022-09-22 13:23:19.423775,hide
+127.0.0.1,,2022-09-22 13:34:12.580149,unhide
+127.0.0.1,,2022-09-22 13:34:12.596037,close
+127.0.0.1,,2022-09-22 13:34:13.469588,hide
+127.0.0.1,,2022-09-22 13:34:15.501114,open
+127.0.0.1,,2022-09-22 13:34:19.461763,###EXPLAIN
+127.0.0.1,,2022-09-22 13:34:57.513622,hide
+127.0.0.1,,2022-09-22 13:36:40.251158,unhide
+127.0.0.1,,2022-09-22 13:36:54.575835,hide
+127.0.0.1,,2022-09-22 13:41:58.995562,unhide
+127.0.0.1,,2022-09-22 13:42:14.494564,hide
+127.0.0.1,,2022-09-22 13:44:16.881391,unhide
+127.0.0.1,,2022-09-22 13:44:16.896842,close
+127.0.0.1,,2022-09-22 13:44:17.683497,hide
+127.0.0.1,,2022-09-22 13:44:21.119413,open
+127.0.0.1,,2022-09-22 13:44:22.446334,###EXPLAIN
+127.0.0.1,,2022-09-22 13:45:13.157018,hide
+127.0.0.1,,2022-09-22 13:47:40.067728,unhide
+127.0.0.1,,2022-09-22 13:47:40.071659,close
+127.0.0.1,,2022-09-22 13:47:40.961923,hide
+127.0.0.1,,2022-09-22 13:47:43.093217,open
+127.0.0.1,,2022-09-22 13:47:44.304351,###EXPLAIN
+127.0.0.1,,2022-09-22 13:47:58.742761,hide
+127.0.0.1,,2022-09-22 13:50:23.052610,unhide
+127.0.0.1,,2022-09-22 13:50:25.990174,hide
+127.0.0.1,,2022-09-22 13:52:24.201215,unhide
+127.0.0.1,,2022-09-22 13:52:24.204514,close
+127.0.0.1,,2022-09-22 13:52:25.096922,hide
+127.0.0.1,,2022-09-22 13:52:27.044525,open
+127.0.0.1,,2022-09-22 13:52:29.525096,Acoustical###EXPLAIN
+127.0.0.1,,2022-09-22 13:52:33.964844,###EXPLAIN
+127.0.0.1,,2022-09-22 13:52:41.726819,Phenomena###EXPLAIN
+127.0.0.1,,2022-09-22 13:52:49.419287,###EXPLAIN
+127.0.0.1,,2022-09-22 13:52:54.569753,hide
+127.0.0.1,,2022-09-22 13:53:52.727470,unhide
+127.0.0.1,,2022-09-22 13:53:52.743062,close
+127.0.0.1,,2022-09-22 13:53:53.590394,hide
+127.0.0.1,,2022-09-22 13:53:55.333881,open
+127.0.0.1,,2022-09-22 13:53:57.290554,###EXPLAIN
+127.0.0.1,,2022-09-22 13:55:00.078180,hide
+127.0.0.1,,2022-09-22 13:56:07.645155,unhide
+127.0.0.1,,2022-09-22 13:56:08.784034,two###EXPLAIN
+127.0.0.1,,2022-09-22 13:56:16.374937,###EXPLAIN
+127.0.0.1,,2022-09-22 13:56:19.626508,close
+127.0.0.1,,2022-09-22 13:56:20.447590,hide
+127.0.0.1,,2022-09-22 13:56:22.383388,open
+127.0.0.1,,2022-09-22 13:56:25.820236,two###EXPLAIN
+127.0.0.1,,2022-09-22 13:56:29.472893,###EXPLAIN
+127.0.0.1,,2022-09-22 13:56:36.916470,hide
+127.0.0.1,,2022-09-22 13:58:22.065790,unhide
+127.0.0.1,,2022-09-22 13:58:26.568678,###EXPLAIN
+127.0.0.1,,2022-09-22 13:59:26.531903,hide
+127.0.0.1,,2022-09-22 14:00:55.243748,unhide
+127.0.0.1,,2022-09-22 14:00:55.264717,close
+127.0.0.1,,2022-09-22 14:00:56.271154,hide
+127.0.0.1,,2022-09-22 14:00:58.284717,open
+127.0.0.1,,2022-09-22 14:01:00.815165,###EXPLAIN
+127.0.0.1,,2022-09-22 14:01:12.849374,Acoustical###EXPLAIN
+127.0.0.1,,2022-09-22 14:01:19.221985,hide
+127.0.0.1,,2022-09-22 14:01:36.145831,unhide
+127.0.0.1,,2022-09-22 14:01:40.768633,close
+127.0.0.1,,2022-09-22 14:01:41.651267,hide
+127.0.0.1,,2022-09-22 14:01:43.518696,open
+127.0.0.1,,2022-09-22 14:01:46.647653,Phenomena###EXPLAIN
+127.0.0.1,,2022-09-22 14:01:50.345958,###EXPLAIN
+127.0.0.1,,2022-09-22 14:02:00.381982,Interference###EXPLAIN
+127.0.0.1,,2022-09-22 14:02:03.336124,###EXPLAIN
+127.0.0.1,,2022-09-22 14:02:07.978102,hen two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and###EXPLAIN
+127.0.0.1,,2022-09-22 14:02:12.910559,###EXPLAIN
+127.0.0.1,,2022-09-22 14:02:17.839214,hide
+127.0.0.1,,2022-09-22 14:02:37.614812,unhide
+127.0.0.1,,2022-09-22 14:02:37.634350,close
+127.0.0.1,,2022-09-22 14:02:38.451788,hide
+127.0.0.1,,2022-09-22 14:02:40.247530,open
+127.0.0.1,,2022-09-22 14:02:42.615172,Interference###EXPLAIN
+127.0.0.1,,2022-09-22 14:02:46.011159,###EXPLAIN
+127.0.0.1,,2022-09-22 14:02:52.985529,Physics###EXPLAIN
+127.0.0.1,,2022-09-22 14:03:07.332246,hide
+127.0.0.1,,2022-09-22 14:05:56.324695,unhide
+127.0.0.1,,2022-09-22 14:05:58.161737,close
+127.0.0.1,,2022-09-22 14:05:59.091669,hide
+127.0.0.1,,2022-09-22 14:06:01.041923,open
+127.0.0.1,,2022-09-22 14:06:04.444197,signals###EXPLAIN
+127.0.0.1,,2022-09-22 14:06:14.904348,###EXPLAIN
+127.0.0.1,,2022-09-22 14:06:31.302615,Physics###EXPLAIN
+127.0.0.1,,2022-09-22 14:06:41.680786,close
+127.0.0.1,,2022-09-22 14:06:41.749675,hide
+127.0.0.1,,2022-09-22 14:06:44.936602,open
+127.0.0.1,,2022-09-22 14:06:53.853026,Text analytics###EXPLAIN
+127.0.0.1,,2022-09-22 14:06:59.060612,###EXPLAIN
+127.0.0.1,,2022-09-22 14:07:58.838082,hide
+127.0.0.1,,2022-09-22 14:12:11.760229,unhide
+127.0.0.1,,2022-09-22 14:12:22.386920,hide
+127.0.0.1,,2022-09-22 14:13:30.500505,unhide
+127.0.0.1,,2022-09-22 14:13:30.504039,close
+127.0.0.1,,2022-09-22 14:13:31.354635,hide
+127.0.0.1,,2022-09-22 14:13:34.561926,open
+127.0.0.1,,2022-09-22 14:14:30.845447,close
+127.0.0.1,,2022-09-22 14:14:31.665598,hide
+127.0.0.1,,2022-09-22 14:14:37.588718,open
+127.0.0.1,,2022-09-22 14:14:48.602097,close
+127.0.0.1,,2022-09-22 14:14:48.663404,hide
+127.0.0.1,,2022-09-22 14:14:52.141966,open
+127.0.0.1,,2022-09-22 14:15:07.842256, are possible###EXPLAIN
+127.0.0.1,,2022-09-22 14:15:15.140154,possible###EXPLAIN
+127.0.0.1,,2022-09-22 14:15:24.813156,close
+127.0.0.1,,2022-09-22 14:15:24.857112,hide
+127.0.0.1,,2022-09-22 14:15:39.993459,open
+127.0.0.1,,2022-09-22 14:15:56.280027,Offer###EXPLAIN
+127.0.0.1,,2022-09-22 14:16:33.091251,hide
+127.0.0.1,,2022-09-22 14:17:06.280510,unhide
+127.0.0.1,,2022-09-22 14:17:06.285168,close
+127.0.0.1,,2022-09-22 14:17:07.213206,hide
+127.0.0.1,,2022-09-22 14:17:29.742129,hide
+127.0.0.1,,2022-09-22 14:17:33.472480,open
+127.0.0.1,,2022-09-22 14:17:37.642271,unhide
+127.0.0.1,,2022-09-22 14:17:44.071274,close
+127.0.0.1,,2022-09-22 14:17:44.214056,hide
+127.0.0.1,,2022-09-22 14:17:48.140735,open
+127.0.0.1,,2022-09-22 14:18:49.817282,hide
+127.0.0.1,,2022-09-22 14:20:28.066689,unhide
+127.0.0.1,,2022-09-22 14:20:28.088553,close
+127.0.0.1,,2022-09-22 14:20:29.050612,hide
+127.0.0.1,,2022-09-22 14:20:32.192214,open
+127.0.0.1,,2022-09-22 14:21:31.911604,close
+127.0.0.1,,2022-09-22 14:21:32.792122,hide
+127.0.0.1,,2022-09-22 14:21:38.328734,open
+127.0.0.1,,2022-09-22 14:22:05.887846,close
+127.0.0.1,,2022-09-22 14:22:05.925027,hide
+127.0.0.1,,2022-09-22 14:22:12.365467,open
+127.0.0.1,,2022-09-22 14:23:06.860299,close
+127.0.0.1,,2022-09-22 14:23:07.716328,hide
+127.0.0.1,,2022-09-22 14:23:13.182630,open
+127.0.0.1,,2022-09-22 14:23:21.884544,close
+127.0.0.1,,2022-09-22 14:23:21.942864,hide
+127.0.0.1,,2022-09-22 14:23:37.675184,open
+127.0.0.1,,2022-09-22 14:24:32.007768,close
+127.0.0.1,,2022-09-22 14:24:32.074388,hide
+127.0.0.1,,2022-09-22 14:24:38.195652,open
+127.0.0.1,,2022-09-22 14:24:47.515828,close
+127.0.0.1,,2022-09-22 14:24:47.555760,hide
+127.0.0.1,,2022-09-22 14:24:52.075891,open
+127.0.0.1,,2022-09-22 14:25:18.745283,close
+127.0.0.1,,2022-09-22 14:25:18.781111,hide
+127.0.0.1,,2022-09-22 14:25:24.768421,open
+127.0.0.1,,2022-09-22 14:26:11.264751,close
+127.0.0.1,,2022-09-22 14:26:11.291144,hide
+127.0.0.1,,2022-09-22 14:26:14.841402,open
+127.0.0.1,,2022-09-22 14:27:45.200941,close
+127.0.0.1,,2022-09-22 14:27:46.184386,hide
+127.0.0.1,,2022-09-22 14:27:49.858138,cache_open
+127.0.0.1,,2022-09-22 14:27:53.870249,close
+127.0.0.1,,2022-09-22 14:27:53.907302,hide
+127.0.0.1,,2022-09-22 14:27:58.658928,open
+127.0.0.1,,2022-09-22 14:28:16.004852,close
+127.0.0.1,,2022-09-22 14:28:16.048477,hide
+127.0.0.1,,2022-09-22 14:28:21.066200,open
+127.0.0.1,,2022-09-22 14:28:25.146481,close
+127.0.0.1,,2022-09-22 14:28:25.190113,hide
+127.0.0.1,,2022-09-22 14:28:28.997243,open
+127.0.0.1,,2022-09-22 14:28:43.347620,close
+127.0.0.1,,2022-09-22 14:28:43.421058,hide
+127.0.0.1,,2022-09-22 14:28:47.186525,open
+127.0.0.1,,2022-09-22 14:28:57.973865,###EXPLAIN
+127.0.0.1,,2022-09-22 14:29:05.373733,9Clicker###EXPLAIN
+127.0.0.1,,2022-09-22 14:29:13.336829,At a given temperature,
+K = 25. If you initially start with
+12 M H2O(
+g) and 12
+M CO(
+g) determine the concentration
+of CO2(
+g) at equilibrium###EXPLAIN
+127.0.0.1,,2022-09-22 14:29:16.749072,###EXPLAIN
+127.0.0.1,,2022-09-22 15:32:24.824057,unhide
+127.0.0.1,,2022-09-22 15:32:26.739297,close
+127.0.0.1,,2022-09-22 15:32:27.926407,hide
+127.0.0.1,,2022-09-22 15:32:31.937064,hide
+127.0.0.1,,2022-09-22 15:32:32.819758,open
+127.0.0.1,,2022-09-22 15:32:56.139470,unhide
+127.0.0.1,,2022-09-22 15:34:03.288995,entration/Time
+9Clicker Question###EXPLAIN
+127.0.0.1,,2022-09-22 15:36:09.945541,close
+127.0.0.1,,2022-09-22 15:36:10.749051,hide
+127.0.0.1,,2022-09-22 15:36:19.159034,open
+127.0.0.1,,2022-09-22 15:36:29.326428,7Reaction Rate O###EXPLAIN
+127.0.0.1,,2022-09-22 15:36:46.297603,7Reaction###EXPLAIN
+127.0.0.1,,2022-09-22 15:36:59.198820,close
+127.0.0.1,,2022-09-22 15:36:59.232073,hide
+127.0.0.1,,2022-09-22 15:37:03.679840,open
+127.0.0.1,,2022-09-22 15:37:12.155670,Change in Concentration/Time###EXPLAIN
+127.0.0.1,,2022-09-22 15:37:40.046390,8Change###EXPLAIN
+127.0.0.1,,2022-09-22 15:37:44.542096,Concentration###EXPLAIN
+127.0.0.1,,2022-09-22 15:37:52.776213,close
+127.0.0.1,,2022-09-22 15:37:52.818268,hide
+127.0.0.1,,2022-09-22 15:37:54.048221,open
+127.0.0.1,,2022-09-22 15:38:04.027328,sandwich###EXPLAIN
+127.0.0.1,,2022-09-22 15:38:41.549239,close
+127.0.0.1,,2022-09-22 15:38:41.617731,hide
+127.0.0.1,,2022-09-22 15:39:06.677382,hide
+127.0.0.1,,2022-09-22 15:39:06.683956,unhide
+127.0.0.1,,2022-09-22 15:39:07.229740,open
+127.0.0.1,,2022-09-22 15:39:11.891529,heuristics###EXPLAIN
+127.0.0.1,,2022-09-22 15:39:49.200642,close
+127.0.0.1,,2022-09-22 15:39:50.062566,hide
+127.0.0.1,,2022-09-22 15:40:14.841381,hide
+127.0.0.1,,2022-09-22 15:40:16.737304,unhide
+127.0.0.1,,2022-09-22 15:40:17.251793,open
+127.0.0.1,,2022-09-22 15:40:20.153752,Learning###EXPLAIN
+127.0.0.1,,2022-09-22 15:41:12.765578,close
+127.0.0.1,,2022-09-22 15:41:13.781402,hide
+127.0.0.1,,2022-09-22 15:41:40.599183,open
+127.0.0.1,,2022-09-22 15:41:43.939619,Learning###EXPLAIN
+127.0.0.1,,2022-09-22 15:42:03.152902,###EXPLAIN
+127.0.0.1,,2022-09-22 15:42:23.980143,###EXPLAIN
+127.0.0.1,,2022-09-22 15:42:30.688368,m he###EXPLAIN
+127.0.0.1,,2022-09-22 15:42:43.550690,
+wang296@illlinois.eduTake advantage of different relevance estimator?
+• Ensemble the cues
+– Linear?
+•
+– Non-linear?
+• Decision tree-like
+𝑎! ×𝐵𝑀25 + 𝛼" ×𝐿𝑀 ###EXPLAIN
+127.0.0.1,,2022-09-22 15:43:47.928993,close
+127.0.0.1,,2022-09-22 15:43:48.881761,hide
+127.0.0.1,,2022-09-22 15:44:16.246164,open
+127.0.0.1,,2022-09-22 15:44:22.526260,elevance
+D(Rep(q), Rep(d))
+Similarity
+P(r=1|q,d) r Î{0,1}
+Probability of Releva###EXPLAIN
+127.0.0.1,,2022-09-22 15:49:19.514037,P(r=1|q,d) r Î{0,1}
+Probability of Relevance
+P(d ®q) or P(q ®d)
+Probabilistic inference
+Different
+rep & similarity
+Vector space
+model
+(Salton et al., 75)
+Prob. distr.
+model
+(Wong & Yao, 89)
+...
+Generative
+Model
+Regression
+Model (Fuhr 8###EXPLAIN
+127.0.0.1,,2022-09-22 15:49:23.646016,close
+127.0.0.1,,2022-09-22 15:49:24.658415,hide
+127.0.0.1,,2022-09-22 15:49:50.829963,open
+127.0.0.1,,2022-09-22 15:49:59.733363,d I do a good job of ranking
+documents?
+• IR evaluations metrics
+– Precision
+– MAP
+– NDCG
+PageRankBM25###EXPLAIN
+127.0.0.1,,2022-09-22 15:52:17.576383,close
+127.0.0.1,,2022-09-22 15:52:18.546791,hide
+127.0.0.1,,2022-09-22 15:52:35.111156,open
+127.0.0.1,,2022-09-22 15:52:41.749158,Learning to Rank
+from heuristics to theoretic approaches
+Guest Lecture by Hongning Wang
+wang296@illlinois.edu###EXPLAIN
+127.0.0.1,,2022-09-22 15:55:04.312687,close
+127.0.0.1,,2022-09-22 15:55:05.149078,hide
+127.0.0.1,,2022-09-22 15:55:21.904466,open
+127.0.0.1,,2022-09-22 15:55:25.201127,earning to Rank
+from heuristics to theoretic approaches
+Guest Lecture by Hongning Wang
+wang296@###EXPLAIN
+127.0.0.1,,2022-09-22 15:55:48.752644,Relevance###EXPLAIN
+127.0.0.1,,2022-09-22 15:56:51.763051,close
+127.0.0.1,,2022-09-22 15:56:52.615343,hide
+127.0.0.1,,2022-09-22 15:57:08.613171,open
+127.0.0.1,,2022-09-22 15:57:12.875058,Learning to Rank
+from heuristics to theoretic approaches
+Guest Lecture by Hongning Wang###EXPLAIN
+127.0.0.1,,2022-09-22 15:57:29.927933,Relevance###EXPLAIN
+127.0.0.1,,2022-09-22 15:58:36.609268,close
+127.0.0.1,,2022-09-22 15:58:37.511273,hide
+127.0.0.1,,2022-09-22 15:58:53.814484,open
+127.0.0.1,,2022-09-22 15:58:56.125819,Rank###EXPLAIN
+127.0.0.1,,2022-09-22 15:59:07.425842,re by Hongning Wang
+wang296###EXPLAIN
+127.0.0.1,,2022-09-22 16:01:37.225859,hide
+127.0.0.1,,2022-09-22 16:02:56.257935,unhide
+127.0.0.1,,2022-09-22 16:02:59.362919,###EXPLAIN
+127.0.0.1,,2022-09-22 16:03:06.295221,Learning###EXPLAIN
+127.0.0.1,,2022-09-22 16:03:11.974971,uest Lecture by Hongning Wang###EXPLAIN
+127.0.0.1,,2022-09-22 16:03:22.697443,
+wang296@illlinois.eduTake advantage of different relevance estimator?
+• Ensemble the cues
+– Linear?
+•
+– Non-linear?
+• Decision tree-like
+𝑎! ×𝐵𝑀25 + 𝛼" ×𝐿𝑀 + 𝛼# ×𝑃𝑎𝑔𝑒𝑅𝑎𝑛𝑘 + 𝛼$ ×𝐻𝐼𝑇𝑆
+BM25>0.5
+LM > 0.1 PageRank
+> 0.3
+True
+FalseTrue
+r= 1.0 r= 0.7
+FalseTrue
+r= 0.4 r= 0.1
+False
+{𝛼! = 0.2, 𝛼 " = 0.2, 𝛼 # = 0.3, 𝛼 $ = 0.1} → {𝑀𝐴𝑃 = 0.12, 𝑁𝐷𝐶𝐺 = 0.5 }
+{𝛼! = 0.1, 𝛼 " = 0.1, 𝛼 # = 0.5, 𝛼 $ = 0.2} → {𝑀𝐴𝑃 = 0.18, 𝑁𝐷𝐶𝐺 = 0.7}
+{𝛼! = 0.4, 𝛼 " = 0.2, 𝛼 # = ###EXPLAIN
+127.0.0.1,,2022-09-22 16:03:44.958003,close
+127.0.0.1,,2022-09-22 16:03:45.793232,hide
+127.0.0.1,,2022-09-22 16:04:13.092696,open
+127.0.0.1,,2022-09-22 16:04:19.765994,𝑋! , 𝑌! , 𝑋" , 𝑌" , ... , (𝑋# , 𝑌# )}, where
+𝑋$ ∈ 𝑅 % , 𝑌$ ∈ 𝑅 &
+• Object function : 𝑂(𝑌 ' , 𝑌)
+• Output: 𝑓 𝑋 → 𝑌, such that 𝑓 =
+argmax ( ! ⊂* 𝑂(𝑓 ' (𝑋), 𝑌)
+𝑂 𝑌 % , 𝑌 = 𝛿(𝑌 % = 𝑌)
+Classification
+http://en.wikipedia.org/wiki/Stat###EXPLAIN
+127.0.0.1,,2022-09-22 16:04:29.151576,eduMachine###EXPLAIN
+127.0.0.1,,2022-09-22 16:04:36.035674,close
+127.0.0.1,,2022-09-22 16:04:36.090174,hide
+127.0.0.1,,2022-09-22 16:04:51.646149,open
+127.0.0.1,,2022-09-22 16:05:00.065295,Relevance Estim###EXPLAIN
+127.0.0.1,,2022-09-22 16:05:12.320414,anguage model###EXPLAIN
+127.0.0.1,,2022-09-22 16:05:18.964450,nt im###EXPLAIN
+127.0.0.1,,2022-09-22 16:05:29.492949,)
+Similarity
+P(r=1|q,d) r Î{0,1}
+Probability of Relevance
+P(d ®q) or P(q ®d)
+Probabilistic inference
+Different
+rep & similarity
+Vector space
+model
+(Salton et al., 75)
+Prob. distr.
+model
+(Wong & Yao, 89)
+...
+Generative
+Model
+Regression
+Model (Fuhr 89)
+Classical
+prob. Model
+(Robertson &
+Sparck Jones, 76)
+Doc
+generation
+Query
+generation
+LM
+approach
+(Ponte & Croft, 98)
+(Lafferty & Zhai, 01a)
+Prob. concept
+space model
+(Wong & Yao, 95)
+Different
+inference system
+Inference
+network
+model
+(Turtle & Croft, 91)
+Div. from Randomness
+(Amati & Rijsbergen 02)
+Learn. To Rank
+(Joachims 02,
+Berges et al. 05)
+Relevance constraints
+[Fang et al. 04]
+Lecture notes from CS598CXZGuest Lecture for Learing to Rank 5Relevance Estimation
+• Query matching
+– Language model
+– BM25
+– Vector space cosine similarity
+• Document importance
+– PageRank
+– HITS
+Guest Lecture for Learing to Rank 6Take advantage of different relevance estimator?
+• Ensemble the cues
+– Linear?
+•
+– Non-linear?
+• Decision ###EXPLAIN
+127.0.0.1,,2022-09-22 16:05:37.169819,close
+127.0.0.1,,2022-09-22 16:05:37.241913,hide
+127.0.0.1,,2022-09-22 16:05:44.407547,open
+127.0.0.1,,2022-09-22 16:05:48.819804,The base case is sometimes more than one value.
+I Sometimes strong induction is needed###EXPLAIN
+127.0.0.1,,2022-09-22 16:05:59.257137,strong induction is needed!Proofs by induction that go wrong
+Is this true?
+All finite###EXPLAIN
+127.0.0.1,,2022-09-22 16:06:06.222417,sider the graph G = (V , E ) with V = {a, b, c, d} and
+E = {(a, b), (c, d)###EXPLAIN
+127.0.0.1,,2022-09-22 16:06:57.122371,Is this true?
+All finite simple graphs with minimum degree at least 1 are
+connected
+Answer:
+Consider the graph G = (V , E ) with V = {a, b, c, d} and
+E = {(a, b), (c, d)}###EXPLAIN
+127.0.0.1,,2022-09-22 16:07:13.371930,ll finite simple graphs with minimum degree at least 1 are
+connected
+Answer:
+Consider the graph G = (V , E ) with V = {a, b, c, d} and
+E = {(a, b), (c, d)}###EXPLAIN
+127.0.0.1,,2022-09-22 16:07:19.550266,
+I Sometimes strong induction is needed!Proofs by induction that go wrong
+Is this true?
+All finite simple graphs with minimum degree at least 1 are
+connectedProofs by induction that go wrong
+Is this true?
+All finite simple graphs with minimum degree at least 1 are
+connected
+Answer:
+Consider the graph G = (V , E ) with V = {a, b, c, d} and###EXPLAIN
+127.0.0.1,,2022-09-22 16:07:26.588223,###EXPLAIN
+127.0.0.1,,2022-09-22 16:07:36.767912,ofs by induction that go w###EXPLAIN
+127.0.0.1,,2022-09-22 16:10:33.459768,close
+127.0.0.1,,2022-09-22 16:10:34.349207,hide
+127.0.0.1,,2022-09-22 16:10:46.640995,open
+127.0.0.1,,2022-09-22 16:11:09.986326,close
+127.0.0.1,,2022-09-22 16:11:10.043085,hide
+127.0.0.1,,2022-09-22 16:11:21.779397,open
+127.0.0.1,,2022-09-22 16:14:21.627961,close
+127.0.0.1,,2022-09-22 16:14:22.470641,hide
+127.0.0.1,,2022-09-22 16:14:35.041131,open
+127.0.0.1,,2022-09-22 16:16:51.221669,close
+127.0.0.1,,2022-09-22 16:16:51.970896,hide
+127.0.0.1,,2022-09-22 16:17:04.900260,open
+127.0.0.1,,2022-09-22 16:17:44.745576,hide
+127.0.0.1,,2022-09-22 16:18:28.906845,unhide
+127.0.0.1,,2022-09-22 16:18:39.234677,hide
+127.0.0.1,,2022-09-22 16:20:22.840928,unhide
+127.0.0.1,,2022-09-22 16:20:22.846246,close
+127.0.0.1,,2022-09-22 16:20:23.796827,hide
+127.0.0.1,,2022-09-22 16:20:35.630394,open
+127.0.0.1,,2022-09-22 16:22:08.844584,unhide
+127.0.0.1,,2022-09-22 16:22:37.018949,s this true?
+All finite simple graphs with minimum degree at least 1 are
+connected
+Answer:
+Consider the graph G = (V , E ) with V = {a, b, c, d} and###EXPLAIN
+127.0.0.1,,2022-09-22 16:22:55.327058,et G = (V , E ) be a simple graph with N vertices with minimum
+degree at least 1.
+By the inductive hypothesis, G is connected.
+Let G ′ be the graph formed by adding one vertex, x, to G .
+If G ′ has minimum degree at least 1, then x must be adjacent to
+some vertex y .
+Since y is connected (via a path) by every other vertex in G , x is
+also connected (via a path) to every other vertex in G ′.
+Hence G ′ is connected.
+Since G was arbitrary, this proves that all simple finite graphs with
+minimum degree 1 are connected.###EXPLAIN
+127.0.0.1,,2022-09-22 16:23:59.355126,hide
+127.0.0.1,,2022-09-22 16:24:09.640959,unhide
+127.0.0.1,,2022-09-22 16:24:11.455154,close
+127.0.0.1,,2022-09-22 16:24:12.256988,hide
+127.0.0.1,,2022-09-22 16:24:15.347782,hide
+127.0.0.1,,2022-09-22 16:24:18.815117,open
+127.0.0.1,,2022-09-22 16:24:43.319214,unhide
+127.0.0.1,,2022-09-22 16:24:47.374112,arned:
+I The base case is sometimes more than one value.
+I Sometimes strong induction is needed!###EXPLAIN
+127.0.0.1,,2022-09-22 16:24:52.861534,###EXPLAIN
+127.0.0.1,,2022-09-22 16:25:03.951748,(a, b), (c, ###EXPLAIN
+127.0.0.1,,2022-09-22 16:25:11.496096,oofs by induction that go wrong
+Is this true?
+All finite simple graphs with minimum degree at least 1 are
+connected
+Answer:
+Consider the graph G = (V , E ) with V = {a, b, c, d} and
+E = {(a, b), (c, d)}###EXPLAIN
+127.0.0.1,,2022-09-22 16:25:22.378109,Proofs by induction that go wrong
+What’s wrong with this proof of this “theorem”?
+Theorem: All finite simple graphs with minimum degree at least 1
+are connected
+Proof: We prove by induction on n, the number of vertices.
+Our Inductive Hypothesis is P(n):
+I all simple graphs with n vertices with minimum degree 1 or
+more are connected.
+The base case is n = 1 and is vacuously true.
+Let N ≥ 1 be arbitrary, and assume P(N) is true###EXPLAIN
+127.0.0.1,,2022-09-22 16:25:29.836426,et G = (V , E ) be a simple graph with N vertices with minimum
+degree at least 1.
+By the inductive hypothesis, G is connected.
+Let G ′ be the graph formed by adding one vertex, x, to G .
+If G ′ has minimum degree at least 1, then x must be adjacent to
+some vertex y .
+Since y is connected (via a path) by every other vertex in G , x is
+also connected (via a path) to every other vertex in G ′.
+Hence G ′ is connected.
+Since G was arbitrary, this proves that all simple finite graphs with
+minimum degree 1 are connected.###EXPLAIN
+127.0.0.1,,2022-09-22 16:25:34.164167,close
+127.0.0.1,,2022-09-22 16:25:34.232217,hide
+127.0.0.1,,2022-09-22 16:25:36.350839,open
+127.0.0.1,,2022-09-22 16:25:42.232969,o portions, a so-called “real” part of Z, denoted X = Re(Z) and a so-
+called “imaginary” part of Z, denoted Y = Im(Z). The number i  (-1). The magnitude of the
+complex variable, Z is designated as |Z| = (Z) 2 , = (ZZ*), with Z2  ZZ* where Z* is the so-
+called complex conjugate of Z, i.e. Z* = (Z)* = (X+iY)* = XiY, with i* = (i)*  (-1). Thus,
+|Z| = (ZZ*) = (X+iY)(X+iY)* = (X+iY)(XiY) = (X2 + i###EXPLAIN
+127.0.0.1,,2022-09-22 16:25:50.002445,
+1
+Acoustical Interference Phenomena
+When two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and
+transparently described using complex notation.
+Basics of/Primer on Complex Variables
+Complex variables are used whenever phase information is important. A complex function,
+Z = X+iY consists of two portions, a so-called “real” part of Z, denoted X = Re(Z) and a so-
+called “imaginary” part of Z, denoted Y = Im(Z). The number i  (-1). The magnitude of the
+complex variable, Z is designated as |Z| = (Z) 2 , = (ZZ*), with Z2  ZZ* where Z* is the so-
+called complex conjugate of Z, i.e. Z* = (Z)* = (X+iY)* = XiY, with i* = (i)*  (-1). Thus,
+|Z| = (ZZ*) = (X+iY)(X+iY)* = (X+iY)(XiY) = (X2 + iXY – iXY + Y 2 ) = (X2 +Y2 ).
+Thus the magnitude of Z, |Z| is analogous to the hypotenuse, c of a right triangle (c2 = a2 + b2
+)
+and/or the radius of a circle, r centered at the origin (r2 = x2 + y 2 ).
+Because complex variables Z = X+iY consist of two components, Z can be graphically
+depicted as a 2-component “vector” Z = (X,Y) lying in the so-called complex plane, as shown
+in the figure below. The real component of Z, X = Re(Z) is by convention drawn along the x,
+or horizontal axis (i.e. the abscissa). The imaginary component of Z, Y = Im(Z) is by###EXPLAIN
+127.0.0.1,,2022-09-22 16:26:04.702891,
+2(t) 
+1(t). Thus, at the (newly) redefined time t* = t –
+1(t)/1 (t) = 0 (and then
+substituting t*  t) the resulting overall, time-redefined amplitude is:
+Ztot(t) = A1 (t)exp{i1 (t)t} + A2 (t)exp{i2 (t)t}exp{i
+21(t)}
+or:
+Ztot(t) = A1 (t)exp{i1 (t)t} + A2 (t)exp{i(2 (t)t + 
+21 (t))}.
+The so-called phasor relation for the two individual complex amplitudes, Z1 (t), Z2 (t) and the
+resulting overall amplitude, Ztot(t) in the complex plane is shown in the figure below.
+The magnitude of the resulting overall amplitude, |Ztot(t)| can be obtained from
+|Ztot(t)|2 = Ztot (t)Z*tot(t)
+= |Z1 (t) + Z2 (t)| 2 = (Z1 (t) + Z2(t))(Z###EXPLAIN
+127.0.0.1,,2022-09-22 16:26:14.688166,close
+127.0.0.1,,2022-09-22 16:26:14.741510,hide
+127.0.0.1,,2022-09-22 16:26:18.133138,open
+127.0.0.1,,2022-09-22 16:27:15.653100,verview of Text Mining and Analyti###EXPLAIN
+127.0.0.1,,2022-09-22 16:27:24.043708,mputer Science
+University of Illinois at Urbana-Champaign###EXPLAIN
+127.0.0.1,,2022-09-22 16:27:32.626922,rld Observed World Text Data
+(English)
+Perceive Express
+1. Mining knowledge
+about language
+(Perspective)
+2. Mining content of text data
+3. Mining knowledge
+about the observer
+4. Infer other real-world variables###EXPLAIN
+127.0.0.1,,2022-09-22 16:27:43.207621,close
+127.0.0.1,,2022-09-22 16:27:43.317319,hide
+127.0.0.1,,2022-09-22 16:27:46.761841,open
+127.0.0.1,,2022-09-22 16:27:50.611439,Context###EXPLAIN
+127.0.0.1,,2022-09-22 16:27:55.152418,e of ###EXPLAIN
+127.0.0.1,,2022-09-22 16:28:01.208663,
+6
+Real World Observed World Text Data
+(English)
+Perceive Express
+1. Mining knowledge
+about language
+(Perspective)
+2. Mining content of text data
+3. Mining knowledge
+about the###EXPLAIN
+127.0.0.1,,2022-09-22 16:28:05.914164,close
+127.0.0.1,,2022-09-22 16:28:05.951312,hide
+127.0.0.1,,2022-09-22 16:28:15.328746,open
+127.0.0.1,,2022-09-22 16:28:23.746375,ape
+ECE 101: Computing Technologies and the Internet of Things slide 1© 2022 Steven S. Lumetta and Romit Roy Choudhury. All rights reserved.What are We Hoping that You will Learn?
+Give you insight as to who does what, how it all fits
+together, and what the future might hold.
+But also to give you a basis for
+computational thinking: what is possible?
+Help you as a citizen in a democracy to make the
+best choices about what is allowable.###EXPLAIN
+127.0.0.1,,2022-09-22 16:28:30.883050,###EXPLAIN
+127.0.0.1,,2022-09-22 16:28:42.106739,close
+127.0.0.1,,2022-09-22 16:28:42.238919,hide
+127.0.0.1,,2022-09-22 16:28:44.439877,open
+127.0.0.1,,2022-09-22 16:28:49.912818,)(XiY) = (X2 + iXY – iXY + Y 2 ) = (X2 +Y2 ).
+Thus the ma###EXPLAIN
+127.0.0.1,,2022-09-22 16:28:57.891723,
+ = 1, which is used in
+obtaining the magnitude of Z, |Z| from Z itself.
+If we now redefine the variable
+ such that
+  (t +
+), it can then be seen that
+Z(t) = |Z|{Cos(t +
+ )+ iSin(t +
+)}, with real component X(t) = Re(Z(t)) = |Z|Cos(t +
+),
+and imaginary component Y(t) = Im(Z(t)) = |Z|Sin(t +
+). At time t = 0, these relations are###EXPLAIN
+127.0.0.1,,2022-09-22 16:29:04.227793,
+###EXPLAIN
