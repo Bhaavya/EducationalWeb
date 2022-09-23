@@ -1,0 +1,53 @@
+#the-canvas {
+  border: 1px solid black;
+  direction: ltr;
+}
+
+body{
+    background-color: #fff;
+}
+
+#heading_related{
+    margin-bottom: 50px;
+}
+.popover__title{
+  font-size: 14px;
+}
+
+.popover__wrapper {
+  position: relative;
+  margin-top: 1.5rem;
+  display: inline-block;
+}
+
+.popover__content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: -150px;
+  left: 10px;
+  background-color: #fff;
+  padding: 0.2rem;
+}
+
+#content0{
+    top:70px;
+}
+.popover__content:before {
+  position: absolute;
+  content: "";
+  right: calc(50% - 10px);
+  border-style: solid;
+  border-color: transparent transparent #bfbfbf transparent;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+.popover__wrapper:hover .popover__content {
+  max-width: 100%;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 10px);
+  transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+

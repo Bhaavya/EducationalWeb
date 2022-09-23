@@ -8,66 +8,48 @@
              {% endfor %}
           </ul>
         </li>
- <!-- </li>
-      <li class="dropdown" ><a href="https://i-share-uiu.primo.exlibrisgroup.com/permalink/01CARLI_UIU/gpjosq/alma99839869412205899">Textbook  </a>
-      </li> -->
-           
 {% endblock %}
 
 {% block body %}
-<!-- <script type=text/javascript> -->
-  <!-- $SCRIPT_ROOT = {{ request.script_root|tojson|safe }}; -->
-<!-- </script> -->
 
 <script>
-// $(document).ready(function() {
-//   $.ajaxSetup({ cache: false,async: false, });
-// });
-// });
-// var pdfjsLib = require("pdf.js/build/generic/build/pdf.js");
-
 
 window.addEventListener( "pageshow", function ( event ) {
-// ie compatibility
-var lec_slide_list = document.getElementById("lec_slides_list");
-        cur_selected = document.getElementsByClassName("current_display")[0];
+    var lec_slide_list = document.getElementById("lec_slides_list");
+    cur_selected = document.getElementsByClassName("current_display")[0];
     lec_slide_list.scrollTop = (cur_selected.offsetTop - 100);
-
-
-  var historyTraversal = event.persisted || 
-                         ( typeof window.performance != "undefined" && 
+    var historyTraversal = event.persisted ||
+                         ( typeof window.performance != "undefined" &&
                               window.performance.navigation.type === 2 );
-  if ( historyTraversal ) {
-    // Synchronous ajax request are deprecated so using navigator send beacon
-    // $.getJSON($SCRIPT_ROOT + '/webofslides/log_action', {
-    //     action: 'back_forward',
-    //     route: window.location.pathname
-    //   });
-    logdata = JSON.stringify({
-      action: 'cache_open',
-      route: window.location.pathname
+    if ( historyTraversal ) {
+        logdata = JSON.stringify({
+        action: 'cache_open',
+        route: window.location.pathname
+        });
+        navigator.sendBeacon('{{base_url}}log_action', logdata);
+    }
+    else{
+        logdata = JSON.stringify({
+        action: 'open',
+        route: window.location.pathname
+        });
+        navigator.sendBeacon('{{base_url}}log_action', logdata);
+    }
     });
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
-  }
-  else{
-    logdata = JSON.stringify({
-      action: 'open',
-      route: window.location.pathname
+
+    window.addEventListener("beforeunload", function(event) {
+        logdata = JSON.stringify({
+        action: 'close',
+        route: window.location.pathname
     });
+
     navigator.sendBeacon('{{base_url}}log_action', logdata);
-  }
-});
-window.addEventListener("beforeunload", function(event) { 
-    logdata = JSON.stringify({
-      action: 'close',
-      route: window.location.pathname
-    });
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
-  
+
 });
 
-var hidden, visibilityChange; 
-if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
+var hidden, visibilityChange;
+
+if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
   hidden = "hidden";
   visibilityChange = "visibilitychange";
 } else if (typeof document.msHidden !== "undefined") {
@@ -77,7 +59,6 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
   hidden = "webkitHidden";
   visibilityChange = "webkitvisibilitychange";
 }
- 
 
 function handleVisibilityChange() {
   console.log(document['hidden'])
@@ -95,22 +76,19 @@ function handleVisibilityChange() {
     });
     navigator.sendBeacon('{{base_url}}log_action', logdata);
   }
-
 }
 
 // Warn if the browser doesn't support addEventListener or the Page Visibility API
 if (typeof document.addEventListener === "undefined" || hidden === undefined) {
   console.log("requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.");
 } else {
-  // Handle page visibility change   
+  // Handle page visibility change
   document.addEventListener(visibilityChange, handleVisibilityChange, false);
-  }                   
+  }
 
 window.addEventListener("DOMContentLoaded", function(event) {
-var relLinks = document.getElementsByClassName("related");
-
-var relLog = function(idx) {
-  console.log('related')
+    var relLinks = document.getElementsByClassName("related");
+    var relLog = function(idx) {
     logdata = JSON.stringify({
       action: 'related_'+idx,
       route: window.location.pathname
@@ -121,53 +99,12 @@ var relLog = function(idx) {
 for (var i = 0; i < relLinks.length; i++) {
     ['click','contextmenu'].forEach(function(e){relLinks[i].addEventListener(e, function(){
     relLog(this.id);
-} , true);})
+    } , true);})
 }
-
-
-
-document.getElementById("next").addEventListener('click',function(){  logdata = JSON.stringify({
-      action: 'next',
-      route: window.location.pathname
-    });
-  console.log('next')
-    navigator.sendBeacon('{{base_url}}log_action', logdata);},true)
-
-
-
-document.getElementById("prev").addEventListener('click',function(){  logdata = JSON.stringify({
-      action: 'prev',
-      route: window.location.pathname
-    });
-
-    navigator.sendBeacon('{{base_url}}log_action', logdata);},true)
-
-
-})
-$(function() {
-  $('[data-toggle="popover"]').popover({
-    placement:function (context, source) {
-
-        var position = $(source).offset();
-
-      
-        if (position.top < 400){
-            return "bottom";
-        }
-
-        return "top"},
-      container: 'body',
-    trigger : 'hover',
-    html: true
-    
-
-  });
-});
-
 
 $(function() {
           $('#submit').bind('click', function() {
-            var srch = document.getElementById('srch-term').value 
+            var srch = document.getElementById('srch-term').value
            $.ajax({
     type: "POST",
     url:"{{base_url}}/search_slides",
@@ -186,7 +123,7 @@ $(function() {
             route: window.location.pathname
           });
           navigator.sendBeacon('{{base_url}}log_action', logdata);
-      }; 
+      };
       h.innerHTML = 'Search Results';
       result_section.appendChild(h);
       for(i=0;i<data['num_results'];i++){
@@ -201,7 +138,7 @@ $(function() {
       } , true);})
 
         result_section.appendChild(a);
-       
+
 
         $('#search_'+i).popover({
           container: 'body',
@@ -209,9 +146,9 @@ $(function() {
           html: true,
           placement:'top',
           title:"<embed type='application/pdf' id='search_slide' src={{pdf_url}}/static/slides/"+data['search_course_names'][i].replace(' ','%20')+'/'+data['lec_names'][i].replace(' ','%20')+'/'+data['results'][i].replace(' ','%20') +"#toolbar=0&navpanes=0&scrollbar=0>"
-          
+
         })
-        
+
 
         b = document.createElement('br');
         result_section.appendChild(b);
@@ -227,12 +164,14 @@ $(function() {
 });
           })
         })
-
+})
 
  </script>
 
+<script src="{{base_url}}static/pdfjs-dist/build/pdf.js"></script>
+<link href="{{base_url}}static/pdf.js/web/viewer.css" rel="stylesheet" type="text/css" />
+<link href="{{base_url}}static/canvas.css" rel="stylesheet" type="text/css" />
 
-    
  <div class="container-fluid main_cnt">
   <div id="explanation-container" class="col-sm-12">
 
@@ -243,14 +182,14 @@ $(function() {
                  <div style="display: flex;justify-content: space-between;">
                      <b id="explain_title" style="font-size:14pt;margin-left: 10px;
                                padding: 10px;"></b>
-                    
+
                      <span id="close" style="cursor:pointer;float:right;background:transparent;display:inline-block;
                                padding:4px; margin:10px; font-size: 12pt; font-weight: bold;" onclick="hideExp()">X</span>
                  </div>
              </div>
              <div class="card-body">
                  <div style="display: flex">
-                 
+
             <div id="google-search-div" style="flex: 1 1 100%"></div>
                 <br>
             </div>
@@ -263,84 +202,322 @@ $(function() {
           <button type="button" class="btn btn-danger pull-right" id="notHelpfulButton">Not Helpful</button>
      </div>
      </div>
-    <div class="row main_row" >
-<div class="sidebar" id="lec_slides_list">
+     <div class="row main_row" >
+<div class="col-sm" id="lec_slides_list">
     <ul class="nav nav-sidebar" >
         {% for i in range(lec_slides[0]) %}
 
         <div style="position:relative;">
-<iframe src='{{pdf_url}}/static/slides/{{course_name | replace(" ", "%20")}}/{{lec_name| replace(" ", "%20")}}/{{lec_slides[1][i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit' width="190" height="120"></iframe>
-<a  class="{{'current_display' if slide_name==lec_slides[1][i] else ''}}" id="lec_slide_{{i}}" href="{{base_url}}/related_slide/{{course_name| replace(" ", "%20") }}/{{lec_slides[4][i] | replace(" ", "%20")}}/{{lec_slides[1][i] | replace(" ", "%20")}}" style="position:absolute; top:0; left:0; display:inline-block; width:190px; height:120px; z-index:5;"></a>
+<iframe src='{{pdf_url}}/static/slides/{{course_name | replace(" ", "%20")}}/{{lec_name| replace(" ", "%20")}}/{{lec_slides[1][i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit' width="220px" height="150px"></iframe>
+<a  class="{{'current_display' if slide_name==lec_slides[1][i] else ''}}" id="lec_slide_{{i}}" onclick="renderThumbnail({{i+1}})" style="position:absolute; top:0; left:0; display:inline-block; width:220px; height:150px; z-index:5;"></a>
 </div>
-
-        <!-- <a id="lec_slide_{{i}}" style="display: inline-block" class="{{'current_display' if slide_name==lec_slides[1][i] else ''}}" href="{{base_url}}/related_slide/{{course_name}}/{{lec_slides[4][i]}}/{{lec_slides[1][i]}}">
-            <embed type='application/pdf' src={{pdf_url}}/static/slides/{{course_name}}/{{lec_name| replace(" ", "%20")}}/{{lec_slides[1][i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit width='190px' height:'100px' style="pointer-events:none">
-        </a> -->
         {% endfor %}
     </ul>
 </div>
 
-
-
-<div class="col-sm-12 main"> 
+<div class="col-sm-8 main">
   <div style="padding: 10px;">
-  
-  <h2>{{' '.join(course_name.split('-')).title()}}  </h2>
-      <!-- <a href="https://www.coursera.org/learn/cs-410/home/welcome" target="_blank" style="font-size: 15px; text-decoration: underline;">View On Coursera</a> -->
-  <!-- </h2> -->
+
+  <h2 id="course_name">{{' '.join(course_name.split('-')).title()}}  </h2>
 
 {% if video_link != '#' %}
-  <a href={{video_link}} <button type="button" class="btn pull-right btn-info">Lecture Video</button></a> 
+  <a id="video_link" href={{video_link}} <button type="button" class="btn pull-right btn-info">Lecture Video</button></a>
   {% endif %}
 </div>
-  <p style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
-    <div style="overflow:auto;-webkit-overflow-scrolling:touch">
-  <iframe id='main_slide' type='application/pdf' src="{{pdf_url}}/build/generic/web/viewer.html?file={{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}/{{slide_name}}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
-  ></iframe>
-</div>
+  <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
+    <div style="text-align:left">
+    <button type="button" class="btn btn-primary" onclick="getSelectedTextnew();" > Explain </button>
+    <button type="button" class="btn btn-primary" onclick="downloadFile('{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#pdfjs.action=download','{{lec_name}}.pdf');" > Download </button>
+    </div>
 
-  
-  <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px" onclick="location.href='{{base_url}}/prev_slide/{{course_name}}/{{lno}}/{{slide_name}}'">Prev Slide</button>
-  <button type="button" id="next" class="btn btn-success pull-right" style="margin-top:20px" onclick="location.href='{{base_url}}/next_slide/{{course_name}}/{{lno}}/{{slide_name}}'">Next Slide</button>
+    <div style="overflow:auto;-webkit-overflow-scrolling:touch;text-align:center;margin-top: 20px">
+        <canvas id="the-canvas"></canvas>
+        <div class="textLayer"></div>
+    </div>
+
+    <div style="text-alight:center; margin-bottom: 20px;">
+        <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px">Previous</button>
+        <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next">Next</button>
+
+    </div>
+
   </div>
 
 
-            <div class="sidebar">
-                <ul class="nav nav-sidebar">
-            <h2>Related slides</h2>
-       
+<div class="col-sm-3" id="side_bar_container">
+                <ul class="nav nav-sidebar" id="related_slides_bar">
+            <h2 id="heading_related">Related slides</h2>
+
           {% for i in range(num_related_slides) %}
-    <li>
-    
-      <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}" class="related" data-toggle="popover" style="color:{{disp_color[i]}};" title="<embed type='application/pdf' src={{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit width='220px' height:'100px' >" >{{disp_str[i]}} </a>
-    
-    
+    <li class="related_slide_element">
+
+   <div class="popover__wrapper">
+        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">
+        <h2 class="popover__title">{{disp_str[i]}}</h2>
+        </a>
+        <div class="popover__content" id="content{{i}}">
+            <iframe src='{{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit' width="220px" height="150px"> </iframe>
+        </div>
+    </div>
+
     </li>
     {% endfor %}
-            
+
         </ul>
     </div>
      </div>
-     
-    <div class="row" style="display: flex;">
- <div class="col-md-12">
- <div class="input-group add-on" >
-      <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-      <div class="input-group-btn">
-        <button class="btn btn-default" id="submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-      </div>
-    </div>
- </div>
-</div>
- <div class="row" style="display: flex;padding: 20px;">
-<div class="col-md-9" id="result" padding-bottom="15px">
- </div>
-</div>
+
     </div>
 
-  <script type="text/javascript" src="http://127.0.0.1:8097/static/explanation_google_search.js"></script>
+<script type="text/javascript" src="{{base_url}}static/explanation_google_search.js"></script>
 
+<script>
+    var search = document.getElementById("srch-term");
+    search.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("submit").click();
+    }
+    });
+</script>
+
+<script>
+
+var url = '{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#toolbar=0&navpanes=0&/scrollbar=0&view=FitH';
+
+var pdfjsLib = window['pdfjs-dist/build/pdf'];
+pdfjsLib.GlobalWorkerOptions.workerSrc = '{{base_url}}static/pdfjs-dist/build/pdf.worker.js';
+var pdfDoc = null,
+pageNum = parseInt('{{slide_name}}'.split('---').pop().split('.')[0].replace('slide',''),10)+1,
+pageRendering = false,
+pageNumPending = null,
+scale = 1,
+canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+
+function renderPage(num) {
+   pageRendering = true;
+   // Using promise to fetch the page
+   pdfDoc.getPage(num).then(function(page) {
+     var viewport = page.getViewport({scale: scale});
+     console.log(page);
+     canvas.height = viewport.height;
+     canvas.width = viewport.width;
+
+     // Render PDF page into canvas context
+     var renderContext = {
+       canvasContext: ctx,
+       viewport: viewport
+     };
+     var renderTask = page.render(renderContext);
+
+     // Wait for rendering to finish
+     renderTask.promise.then(function() {
+       pageRendering = false;
+       if (pageNumPending !== null) {
+         // New page rendering is pending
+         renderPage(pageNumPending);
+         pageNumPending = null;
+       }
+     }).then(function() {
+       // Returns a promise, on resolving it will return text contents of the page
+       return page.getTextContent();
+     }).then(function(textContent) {
+
+       // Assign CSS to the textLayer element
+       var textLayer = document.querySelector(".textLayer");
+
+       textLayer.style.left = canvas.offsetLeft + 'px';
+       textLayer.style.top = canvas.offsetTop + 'px';
+       textLayer.style.height = canvas.offsetHeight + 'px';
+       textLayer.style.width = canvas.offsetWidth + 'px';
+
+       // Pass the data to the method for rendering of text over the pdf canvas.
+       pdfjsLib.renderTextLayer({
+         textContent: textContent,
+         container: textLayer,
+         viewport: viewport,
+         textDivs: []
+       });
+     });
+   });
+
+   // Update page counters
+<!--   document.getElementById('page_num').textContent = num;-->
+ }
+
+function renderThumbnail(num){
+    renderPage(num);
+    changedSlide(num, pageNum);
+    pageNum= num;
+}
+
+function changedSlide(pageNum, oldNum){
+
+    pageNum--;
+    oldNum--;
+
+    lec_slide_list = document.getElementById("lec_slides_list");
+    cur_id_name="lec_slide_"+pageNum.toString();
+    old_id_name="lec_slide_"+oldNum.toString();
+
+    var old_selected = document.getElementById(old_id_name);
+<!--    old_selected.className = "old_display";-->
+    old_selected.classList.remove("current_display");
+
+    var cur_selected = document.getElementById(cur_id_name);
+    cur_selected.classList.add("current_display");
+
+    lec_slide_list.scrollTop = pageNum*150;
+    console.log("Scroll Tp",lec_slide_list.scrollTop,"cur_selected.offsetTop",cur_selected.offsetTop,"Pagenum",pageNum);
+
+    rel_bar = document.getElementById('side_bar_container');
+
+    rel_list = document.getElementById("related_slides_bar");
+
+    rel_list_elements = document.getElementsByClassName('related_slide_element');
+
+
+    for (var i = rel_list_elements.length - 1; i >= 0; --i) {
+        rel_list_elements[i].remove();
+    }
+
+    var xmlHttp = new XMLHttpRequest();
+    course = "{{course_name}}";
+    lec = "{{lec_name}}";
+    new_slide_name = course.concat("---").concat(lec).concat("---slide").concat(pageNum.toString()).concat(".pdf");
+    var url = '{{base_url}}/get_related_slides/{{course_name}}/{{lno}}/'.concat(new_slide_name);
+    xmlHttp.open( "GET",url, false );
+    xmlHttp.send( null );
+    const responses = JSON.parse(xmlHttp.responseText);
+    document.getElementById("p_slide_name").textContent=new_slide_name.split(".pdf")[0].split('---').join(' ').replace('-Slides','');
+
+    for (var i=0; i<responses["num_related_slides"];i++){
+        var list_obj = document.createElement('li');
+        list_obj.classList.add('related_slide_element');
+
+        var div = document.createElement('div');
+        div.classList.add('popover__wrapper');
+
+        var a = document.createElement('a');
+        a.href="{{base_url}}".concat("/").concat("related_slide").concat("/").concat(responses["related_course_names"][i]).concat("/").concat(responses["rel_lnos"][i].toString()).concat("/").concat(responses["related_slides"][i]);
+        a.id= i;
+
+        var h2 = document.createElement('h2');
+        h2.classList.add('popover__title');
+        h2.textContent=responses['disp_str'][i];
+
+        a.appendChild(h2);
+
+        var content = document.createElement('div');
+        content.classList.add('popover__content');
+        content.id="content".concat(i.toString());
+
+        var iframe = document.createElement('iframe');
+        iframe.src = "{{pdf_url}}/static/slides/".concat(responses["related_course_names"][i]).concat("/").concat(responses["rel_lec_names"][i]).concat("/").concat(responses["related_slides"][i]).concat("#toolbar=0&navpanes=0&scrollbar=0&view=Fit");
+        iframe.width="220px";
+        iframe.height="150px";
+        content.appendChild(iframe);
+
+        div.appendChild(a);
+        div.append(content);
+
+        list_obj.appendChild(div);
+        rel_list.appendChild(list_obj);
+    }
+
+
+}
+
+
+ function queueRenderPage(num) {
+   if (pageRendering) {
+     pageNumPending = num;
+   } else {
+     renderPage(num);
+   }
+ }
+
+ /**
+  * Displays previous page.
+  */
+ function onPrevPage() {
+   if (pageNum <= 1) {
+     return;
+   }
+   pageNum--;
+   queueRenderPage(pageNum);
+   changedSlide(pageNum, pageNum+1);
+ }
+ document.getElementById('prev').addEventListener('click', onPrevPage);
+
+ function onNextPage() {
+   if (pageNum >= pdfDoc.numPages) {
+     return;
+   }
+   pageNum++;
+   queueRenderPage(pageNum);
+   changedSlide(pageNum,pageNum-1);
+ }
+ document.getElementById('next').addEventListener('click', onNextPage);
+
+
+ pdfjsLib.getDocument({
+  'url': url,
+  'mode': 'no-cors',
+}).promise.then(function(pdfDoc_) {
+   pdfDoc = pdfDoc_;
+   console.log(pdfDoc);
+   // Initial/first page rendering
+   renderPage(pageNum);
+ });
+
+function getSelectedTextnew() {
+     if (window.getSelection) {
+
+      var text = window.getSelection().toString();
+      console.log(text);
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+  };
+
+      xhttp.open("POST", "{{base_url}}explain", true);
+
+      xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8");
+      console.log("Text content", $(".textLayer").text());
+      xhttp.send(JSON.stringify({ 'url':window.location.href,'searchString':  text,'slidesContext': $(".textLayer").text() ,  'route': window.location.pathname
+}));
+
+      }
+
+     else if (document.selection) {
+       console.log(document.selection)
+       console.log("2")
+       return document.selection.createRange().text;
+     }
+     return '';
+  }
+
+function downloadFile(url,lecture){
+    const a = document.createElement("a");
+
+    filename = lecture;
+
+    a.href = url;
+    a.target = "_blank";
+
+    if ("download" in a) {
+        a.download = filename;
+      }
+
+    (document.body || document.documentElement).appendChild(a);
+    a.click();
+    a.remove();
+}
+</script>
 
 {% endblock %}
 
-  
+
