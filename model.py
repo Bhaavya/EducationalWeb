@@ -467,7 +467,7 @@ def get_vector_similarity(vA, vB):
 
 
 def rank_google_result(raw_results, context, query):
-    print([x['title'] for x in raw_results])
+    # print([x['title'] for x in raw_results])
     documents = list(map(lambda x: " ".join([x['title'], x['snippet']]), raw_results))
     documents = list(map(lambda x: preprocess_string(x), documents))
     
@@ -504,13 +504,14 @@ def count_keyword_match(title, query):
                 continue
             if get_vector_similarity(v1, v2) > 0.5:
                 count += 1
-    print(title, count)
+    # print(title, count)
     return count / len(title_words)
 
 
 def get_ranking_index(similarities, keyword_counts):
-    for i in range(len(similarities)):
-        print(similarities[i], keyword_counts[i])
+    # is this important to print?
+    # for i in range(len(similarities)):
+    #     print(similarities[i], keyword_counts[i])
     scores = [similarities[i] + keyword_counts[i] for i in range(len(similarities))]
     return np.argsort(scores)[::-1]
 
@@ -534,7 +535,8 @@ def get_context_vector(context, query):
         try:
             w_vec = word2vec[w]
             sim = get_vector_similarity(w_vec, query_vec)
-            print(sim, w)
+            # is this imp to to print?
+            # print(sim, w)
             if sim > 0.1:
                 vecs.append(w_vec)
         except KeyError:

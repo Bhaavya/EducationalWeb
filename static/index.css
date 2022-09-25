@@ -54,6 +54,12 @@
     height: 20%;
     }
 
+#explain_button {
+ position:absolute;
+ top:120px;
+ z-index:1200;
+ transition: top 2s;
+}
 
 .card-header{
   /*background-color:rgba(0,0,0,.03);*/
@@ -94,11 +100,13 @@
 #notHelpfulButton {
   display: none;
   margin-bottom: 20px;
+  border: None;
   box-shadow: 0 2px 4px rgba(0,0,0,.11);
 }
 
 #helpfulButton {
   display: none;
   margin-bottom: 20px;
+  border: None;
   box-shadow: 0 2px 4px rgba(0,0,0,.11);
 }
