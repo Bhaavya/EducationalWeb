@@ -171,9 +171,7 @@ $(function() {
 <link href="{{base_url}}static/canvas.css" rel="stylesheet" type="text/css" />
 
 <div id="explanation-container" class="col-sm-12">
-<!--     <h3 id="no-explain-text" style="text-align: center;margin-top:20px;">No Explanation Found</h3>-->
          <div id="docs-div" class="col-md-12 mx-auto">
-         <div class="card">
              <div class="card-header">
                  <div style="display: flex;justify-content: space-between;">
                      <b id="explain_title" style="font-size:14pt;margin-left: 10px;
@@ -186,19 +184,18 @@ $(function() {
              <div class="card-body">
                  <div style="display: flex">
 
-                <div id="no-explain-text" style="display: None"><h3>To find explanations of any text on the slide, please highlight it (click and hold, then drag your mouse) and then click on the explain button.</h3></div>
-                <div id="no-explain-results" style="display: None"><h3>Sorry, no results found.</h3></div>
+                <div id="no-explain-text" style="display: None"><h4>To find explanations of any text on the slide, please highlight it (click and hold, then drag your mouse) and then click on the explain button.</h4></div>
+                <div id="no-explain-results" style="display: None"><h4>Sorry, no results found.</h4></div>
                 <div id="google-search-div" style="flex: 1 1 100%"></div>
                 <br>
             </div>
              </div>
-        </div>
-        </div>
-         <br style="clear: both;">
-      <div style="background-color: #fff">
+             <div>
           <button type="button" class="btn btn-success pull-left" id="helpfulButton"><i class="glyphicon glyphicon-thumbs-up"></i></button>
           <button type="button" class="btn btn-danger pull-right" id="notHelpfulButton"><i class="glyphicon glyphicon-thumbs-down"></i></button>
      </div>
+
+        </div>
      </div>
  <div class="container-fluid main_cnt">
      <div class="row main_row" >

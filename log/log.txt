@@ -8039,3 +8039,243 @@ I Write down what you want to prove as a statement P(n) that
 depends on a parameter n
 I Show that P(n) is true for some base case(s)###EXPLAIN
 127.0.0.1,,2022-09-26 20:53:25.651501,Summary###EXPLAIN
+127.0.0.1,,2022-09-26 20:57:27.113096,unhide
+127.0.0.1,,2022-09-26 20:57:27.117866,close
+127.0.0.1,,2022-09-26 20:57:28.296383,hide
+127.0.0.1,,2022-09-26 20:57:35.305289,open
+127.0.0.1,,2022-09-26 20:57:38.739414,easy###EXPLAIN
+127.0.0.1,,2022-09-26 20:57:48.877751,uppose f : N → {0, 1} is defined by:
+I f (0) = 0
+I f (n) = f (n − 1) if n > 0
+We wish to prove f (n) = 0 for all n ∈ N.
+Let P(n) be the statement “f (n) = 0”###EXPLAIN
+127.0.0.1,,2022-09-26 21:03:14.184859,1###EXP_###easy###
+127.0.0.1,,2022-09-26 21:03:14.187477,1###EXP_###uppose f : N → {0, 1} is defined by:
+I f (0) = 0
+I f (n) = f (n − 1) if n > 0
+We wish to prove f (n) = 0 for all n ∈ N.
+Let P(n) be the statement “f (n) = 0”###
+127.0.0.1,,2022-09-26 21:03:54.804242,hide
+127.0.0.1,,2022-09-26 21:04:03.329963,unhide
+127.0.0.1,,2022-09-26 21:06:03.603833,
+So we want to prove that P(n) is true for all###EXPLAIN
+127.0.0.1,,2022-09-26 21:06:16.281370,hide
+127.0.0.1,,2022-09-26 21:06:18.126639,unhide
+127.0.0.1,,2022-09-26 21:06:20.578719,close
+127.0.0.1,,2022-09-26 21:06:20.616271,hide
+127.0.0.1,,2022-09-26 21:06:26.815992,open
+127.0.0.1,,2022-09-26 21:06:31.082831,Suppose f : N → {0, 1} is defined by:
+I f (0) = 0
+I f (n) = f (n − 1) if n > 0
+We wish to prove f (n) = 0 for all n ∈ N.
+Let P(n) be the statement “f (n) = 0”
+So we want to prove that P(n) is true fo###EXPLAIN
+127.0.0.1,,2022-09-26 21:11:16.599668,unhide
+127.0.0.1,,2022-09-26 21:11:16.602949,close
+127.0.0.1,,2022-09-26 21:11:17.538237,hide
+127.0.0.1,,2022-09-26 21:11:18.912738,open
+127.0.0.1,,2022-09-26 21:11:20.828248,close
+127.0.0.1,,2022-09-26 21:11:20.852976,hide
+127.0.0.1,,2022-09-26 21:11:27.491608,open
+127.0.0.1,,2022-09-26 21:11:30.382457,Suppose###EXPLAIN
+127.0.0.1,,2022-09-26 21:12:01.420633,close
+127.0.0.1,,2022-09-26 21:12:02.255843,hide
+127.0.0.1,,2022-09-26 21:12:07.843877,hide
+127.0.0.1,,2022-09-26 21:12:08.686688,open
+127.0.0.1,,2022-09-26 21:12:22.257294,unhide
+127.0.0.1,,2022-09-26 21:12:25.271664,induction###EXPLAIN
+127.0.0.1,,2022-09-26 21:12:55.392538,close
+127.0.0.1,,2022-09-26 21:12:55.438226,hide
+127.0.0.1,,2022-09-26 21:13:01.063776,open
+127.0.0.1,,2022-09-26 21:13:22.178952,close
+127.0.0.1,,2022-09-26 21:13:22.212763,hide
+127.0.0.1,,2022-09-26 21:13:23.472157,open
+127.0.0.1,,2022-09-26 21:13:28.827119,
+-
+IR '
+is defined by
+dex, y ) =
+( X , -
+y, )2t (Xz -925+43-4332
+The function d : 1123×10 →
+Io , ) has 3 important properties :
+D dcx , b) = db, x) tix , ye IR '
+(symmetry)
+2) d (x , b) =o x -
+- s ( non degeneracy )
+3) tf 49, -2 tlR3 , cdlxiz ) Ed Cx , y ) + d ( y, z ) .
+Z
+( t###EXPLAIN
+127.0.0.1,,2022-09-26 21:13:59.229892,he discretely on X ri the largest possible topology on X , Imax -
+-
+PIX ) ,
+the set of all subsets of X .
+Any topology AT on X in a subset of Imax###EXPLAIN
+127.0.0.1,,2022-09-26 21:14:07.118282,discretely###EXPLAIN
+127.0.0.1,,2022-09-26 21:14:29.289293,close
+127.0.0.1,,2022-09-26 21:14:29.344772,hide
+127.0.0.1,,2022-09-26 21:14:30.282916,open
+127.0.0.1,,2022-09-26 21:14:51.335860,close
+127.0.0.1,,2022-09-26 21:14:51.368797,hide
+127.0.0.1,,2022-09-26 21:14:55.212601,open
+127.0.0.1,,2022-09-26 21:15:00.617241,y strong subject in high school###EXPLAIN
+127.0.0.1,,2022-09-26 21:15:19.661343,close
+127.0.0.1,,2022-09-26 21:15:19.688824,hide
+127.0.0.1,,2022-09-26 21:15:20.423052,open
+127.0.0.1,,2022-09-26 21:15:23.243476,hide
+127.0.0.1,,2022-09-26 21:15:51.162372,unhide
+127.0.0.1,,2022-09-26 21:15:56.913656,###EXPLAIN
+127.0.0.1,,2022-09-26 21:16:02.585784,Part###EXPLAIN
+127.0.0.1,,2022-09-26 21:16:10.899796,hide
+127.0.0.1,,2022-09-26 21:16:32.297815,unhide
+127.0.0.1,,2022-09-27 10:46:20.883796,open
+127.0.0.1,,2022-09-27 10:46:33.419691,edge for optimal decision making
+• Related to text retrieval, which is an essential component in
+any text mining system
+– Text retrieval can be a preprocessor for text mining###EXPLAIN
+127.0.0.1,,2022-09-27 10:46:59.740923,hide
+127.0.0.1,,2022-09-27 10:47:17.076789,unhide
+127.0.0.1,,2022-09-27 10:47:44.279741,hide
+127.0.0.1,,2022-09-27 10:48:05.538892,unhide
+127.0.0.1,,2022-09-27 10:48:17.202225,hide
+127.0.0.1,,2022-09-27 10:48:25.920532,unhide
+127.0.0.1,,2022-09-27 10:50:11.240724,###EXPLAIN
+127.0.0.1,,2022-09-27 10:50:16.134537,close
+127.0.0.1,,2022-09-27 10:50:16.207084,hide
+127.0.0.1,,2022-09-27 10:50:21.358251,open
+127.0.0.1,,2022-09-27 10:50:25.620181,Plan of the Lecture
+I Today’s topic: what is feedback control? past, present,###EXPLAIN
+127.0.0.1,,2022-09-27 10:50:35.565342,Plan of the Lecture
+I Today’s topic: what is feedback control? past, present,
+future
+Goal: get comfortable with the idea of feedback control as a
+means of getting unreliable or unstable components to behave
+reliably###EXPLAIN
+127.0.0.1,,2022-09-27 10:52:00.493973,hide
+127.0.0.1,,2022-09-27 10:52:32.778717,unhide
+127.0.0.1,,2022-09-27 10:54:11.321919,Today’s topic: ###EXPLAIN
+127.0.0.1,,2022-09-27 10:54:35.309872,Plan of the Lecture
+I Today’s topic: what is feedback control? past, present,
+future
+Goal: get comfortable with the idea of feedback control as a
+means of getting unreliable or unstable components to behave
+reliably.
+Recommended reading:
+I FPE, Chap. 1 — some historical background
+I K.J.  ̊Astr ̈om and P.R. Kumar, “Control: a perspective,” to###EXPLAIN
+127.0.0.1,,2022-09-27 10:54:41.723038,Goal: get comfortable with the idea of feedback control as a
+means of getting unreliable or unstable components to behave
+reliably.
+Recommended reading:
+I FPE, Chap. 1 — some historical background
+I K.J.  ̊Astr ̈om and P.R. Kumar, “Control: a perspective,” to###EXPLAIN
+127.0.0.1,,2022-09-27 10:54:49.284731, get comfortable with the idea of feedback control as a
+means of getting unreliable or unstable components to behave
+reliably###EXPLAIN
+127.0.0.1,,2022-09-27 10:54:59.731216,The flush toilet employs a control mechanism that ensures that
+the toilet gets flushed and that the tank is filled to a set
+reference level. Similar systems are used in other applications
+where fluid levels need to be regulated###EXPLAIN
+127.0.0.1,,2022-09-27 11:00:04.644134,Control###EXPLAIN
+127.0.0.1,,2022-09-27 11:00:12.019830,Control All Around Us: The Toilet Tank
+The flush toilet employs a control mechanism that ensures that
+the toilet gets flushed and that the tank is filled to a set
+reference level. Similar systems are used in other applications
+where fluid levels need to be regulated###EXPLAIN
+127.0.0.1,,2022-09-27 11:00:18.155921,###EXPLAIN
+127.0.0.1,,2022-09-27 11:03:56.441883,close
+127.0.0.1,,2022-09-27 11:03:57.606008,hide
+127.0.0.1,,2022-09-27 11:04:03.263170,open
+127.0.0.1,,2022-09-27 11:04:08.030552,###EXPLAIN
+127.0.0.1,,2022-09-27 11:04:31.824640,Plan of the Lecture
+I Today’s topic: what is feedback control? past, present,
+future
+Goal: get comfortable with the idea of feedback control as a
+means of getting unreliable or unstable components to behave
+reliably.
+Recommended reading:
+I FPE, Chap. 1 — some historical background
+I K.J.  ̊Astr ̈om and P.R. Kumar, “Control: a perspective,” to
+appear in Automatica, 2014###EXPLAIN
+127.0.0.1,,2022-09-27 11:04:56.812024,ay’s topic:###EXPLAIN
+127.0.0.1,,2022-09-27 11:06:42.362725,###EXPLAIN
+127.0.0.1,,2022-09-27 11:06:48.966451,oday’s topic: what is feedback control? past, present,
+future
+Goal: get comfortable with the idea of feedback control as a
+means of getting unreliable or unstable components to behave
+reliably.
+Recommended reading:
+I FPE, Chap. 1 — some historical background
+I K.J.  ̊Astr ̈om and P.R. Kumar, “Control: a perspective,” to###EXPLAIN
+127.0.0.1,,2022-09-27 11:07:04.965626,The flush toilet employs a control mechanism that ensures that
+the toilet gets flushed and that the tank is filled to a set
+reference level. Similar systems are used in other applications
+where fluid levels need to be regulated###EXPLAIN
+127.0.0.1,,2022-09-27 11:08:48.769260,hide
+127.0.0.1,,2022-09-27 11:08:48.801560,unhide
+127.0.0.1,,2022-09-27 11:08:59.228193,close
+127.0.0.1,,2022-09-27 11:09:00.114321,hide
+127.0.0.1,,2022-09-27 11:09:06.130702,open
+127.0.0.1,,2022-09-27 11:09:06.816181,###EXPLAIN
+127.0.0.1,,2022-09-27 11:09:31.083958,Today’s topic: what is feedback control? past, present,
+future
+Goal: get comfortable with the idea of feedback control as a
+means of getting unreliable or unstable components to behave
+reliably.
+Recommended reading:###EXPLAIN
+127.0.0.1,,2022-09-27 11:09:37.851592,reading###EXPLAIN
+127.0.0.1,,2022-09-27 11:09:48.105429,The thermostat maintains desired (reference) temperature
+despite disturbances (such as doors opening/closing, variations
+of outside temperature, number of persons in the house, etc.)###EXPLAIN
+127.0.0.1,,2022-09-27 11:10:10.749695,I suddenly realized that if I fed the amplifier
+output back to the input, in reverse phase,
+and kept the device from oscillating ..., I
+would have exactly what I wanted: a means
+of canceling out the distortion in the output.
+... By building an amplifier whose gain is
+deliberately made ... higher than necessary
+and then feeding the output back on the input
+in such a way as to throw away the excess
+gain, it had been found possible to effect
+extraordinary improvement in constancy of
+amplification and freedom from non-linearity.###EXPLAIN
+127.0.0.1,,2022-09-27 11:10:17.623462,hide
+127.0.0.1,,2022-09-27 11:11:19.167845,unhide
+127.0.0.1,,2022-09-27 11:11:22.338095,amplifier###EXPLAIN
+127.0.0.1,,2022-09-27 11:11:35.904106,Goal: get comfortable with the idea of feedback control as a
+means of getting unreliable or unstable components to behave
+reliably.
+Recommended reading:
+I FPE, Chap. 1 — some historical background
+I K.J.  ̊Astr ̈om and P.R. Kumar, “Control: a perspective,” to###EXPLAIN
+127.0.0.1,,2022-09-27 11:11:45.292309,Chap###EXPLAIN
+127.0.0.1,,2022-09-27 11:11:48.014043,1###EXP_###Today’s topic: what is feedback control? past, present,
+future
+Goal: get comfortable with the idea of feedback control as a
+means of getting unreliable or unstable components to behave
+reliably.
+Recommended reading:###
+127.0.0.1,,2022-09-27 11:11:48.016038,1###EXP_###reading###
+127.0.0.1,,2022-09-27 11:11:48.018492,1###EXP_###The thermostat maintains desired (reference) temperature
+despite disturbances (such as doors opening/closing, variations
+of outside temperature, number of persons in the house, etc.)###
+127.0.0.1,,2022-09-27 11:11:48.020253,1###EXP_###I suddenly realized that if I fed the amplifier
+output back to the input, in reverse phase,
+and kept the device from oscillating ..., I
+would have exactly what I wanted: a means
+of canceling out the distortion in the output.
+... By building an amplifier whose gain is
+deliberately made ... higher than necessary
+and then feeding the output back on the input
+in such a way as to throw away the excess
+gain, it had been found possible to effect
+extraordinary improvement in constancy of
+amplification and freedom from non-linearity.###
+127.0.0.1,,2022-09-27 11:11:48.022618,1###EXP_###amplifier###
+127.0.0.1,,2022-09-27 11:11:48.024327,1###EXP_###Goal: get comfortable with the idea of feedback control as a
+means of getting unreliable or unstable components to behave
+reliably.
+Recommended reading:
+I FPE, Chap. 1 — some historical background
+I K.J.  ̊Astr ̈om and P.R. Kumar, “Control: a perspective,” to###
+127.0.0.1,,2022-09-27 11:11:48.026674,1###EXP_###Chap###
