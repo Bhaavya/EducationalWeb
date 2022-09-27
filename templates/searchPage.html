@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% block title %}{{title}}{% endblock %}
 {% block body %}
-
 <div class="jumbotron">
-
     <!-- Example split danger button -->
-      <div class="dropdown">
 
+      <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> {{course_name}}
         <span class="caret"></span></button>
          <ul class="dropdown-menu">
@@ -16,11 +14,18 @@
               {% endfor %}
         </ul>
       </div>
-    </form>
 
+<!--    <div class="popover__wrapper">-->
+<!--        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">-->
+<!--        <h2 class="popover__title">{{disp_str[i]}}</h2>-->
+<!--        </a>-->
+<!--        <div class="popover__content" id="content{{i}}">-->
+<!--            <iframe src='{{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit' width="220px" height="150px"> </iframe>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <div class="row" style="display: flex;padding: 20px;">
-        <div class="col-md-9" id="result" padding-bottom="15px">
+    <div class="row" style="display: flex;padding: 20px;"></div>
+        <div class="col-md-9" id="result" padding-bottom="15px"></div>
 </div>
 
 <script>

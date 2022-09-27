@@ -276,5 +276,3 @@ var doSearch = function(searchString) {
 }
 }
 
-
-

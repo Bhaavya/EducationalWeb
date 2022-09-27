@@ -313,17 +313,40 @@ scale = 1,
 canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
+function toggleNextPrevButtons(num, pdfDoclimit){
+  next_button = document.getElementById('next');
+  prev_button = document.getElementById('prev');
+
+  if (num == pdfDoclimit) {
+    next_button.classList.add('disabled');
+  }
+  else if(next_button.classList.contains('disabled')){
+    next_button.classList.remove('disabled');
+  }
+
+  if (num == 1) {
+    prev_button.classList.add('disabled');
+  }
+  else if(prev_button.classList.contains('disabled')){
+    prev_button.classList.remove('disabled');
+  }
+
+  return;
+}
+
+
 window.addEventListener('load', (event) => {
-  console.log("Loaded");
+  // initialize lecture thumbnails when webpage is loaded
   lec_slide_list = document.getElementById("lec_slides_list");
   lec_slide_list.scrollTop = (pageNum-1)*150;
-  console.log("ScrollTop",lec_slide_list.scrollTop, "PageNum",pageNum );
+  toggleNextPrevButtons(num, pdfDoc.numPages);
 });
 
 
 function renderPage(num) {
    pageRendering = true;
    // Using promise to fetch the page
+   toggleNextPrevButtons(num, pdfDoc.numPages);
    pdfDoc.getPage(num).then(function(page) {
      var viewport = page.getViewport({scale: scale});
 
@@ -477,12 +500,14 @@ function changedSlide(pageNum, oldNum){
  document.getElementById('prev').addEventListener('click', onPrevPage);
 
  function onNextPage() {
-
-   // empty previous child elements of textLayer
-   $("#textLayerid").empty();
+   // if current pageNum requested is not valid, then return
+   // the following two lines is not required as the next will be disabled
    if (pageNum >= pdfDoc.numPages) {
      return;
    }
+
+   // empty previous child elements of textLayer
+   $("#textLayerid").empty();
    pageNum++;
    queueRenderPage(pageNum);
    changedSlide(pageNum,pageNum-1);
