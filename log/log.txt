@@ -8279,3 +8279,163 @@ Recommended reading:
 I FPE, Chap. 1 — some historical background
 I K.J.  ̊Astr ̈om and P.R. Kumar, “Control: a perspective,” to###
 127.0.0.1,,2022-09-27 11:11:48.026674,1###EXP_###Chap###
+127.0.0.1,,2022-09-27 13:35:59.881975,hide
+127.0.0.1,,2022-09-27 13:36:00.553534,open
+127.0.0.1,,2022-09-27 13:36:15.104631,unhide
+127.0.0.1,,2022-09-27 13:38:16.814321,###EXPLAIN
+127.0.0.1,,2022-09-27 13:38:38.634810,Acoustical###EXPLAIN
+127.0.0.1,,2022-09-27 13:38:50.196950,1###EXP_###Acoustical###
+127.0.0.1,,2022-09-27 13:39:10.652062,Acoustical Interference Phenomena
+When two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and
+transparently described using complex notation.
+Basics of/Primer on Complex Variables
+Complex variables are used whenever phase information is important. A complex function,
+Z = X+iY consists of two portions, a so-called “real” part of Z, denoted X = Re(Z) and a so-
+called “imaginary” part of Z, denoted Y = Im(Z). The number i  (-1). The magnitude of the
+complex variable, Z is designated as |Z| = (Z) 2 , = (ZZ*), with Z2  ZZ* where Z* is the so-
+called complex conjugate of Z, i.e. Z* = (Z)* = (X+iY)* = XiY, with i* = (i)*  (-1). Thus,
+|Z| = (ZZ*) = (X+iY)(X+iY)* = (X+iY)(XiY) = (X2 + iXY – iXY + Y 2 ) = (X2 +Y2 ).
+Thus the magnitude of Z, |Z| is analogous to the hypotenuse, c of a right triangle (c2 = a2 + b2
+)
+and/or the radius of a circle, r centered at the origin (r2 = x2 + y 2 )###EXPLAIN
+127.0.0.1,,2022-09-27 13:39:18.703447,hide
+127.0.0.1,,2022-09-27 13:39:26.534649,unhide
+127.0.0.1,,2022-09-27 13:40:39.967124,close
+127.0.0.1,,2022-09-27 13:40:40.036559,hide
+127.0.0.1,,2022-09-27 13:40:46.906090,open
+127.0.0.1,,2022-09-27 13:40:52.044784,FPE, Chap. 1 — some historical background
+I K.J.  ̊Astr ̈om and P.R. Kumar, “Control: a perspective,” to
+appear in Automatica, 2014###EXPLAIN
+127.0.0.1,,2022-09-27 13:47:42.646211,hide
+127.0.0.1,,2022-09-27 13:47:46.321507,unhide
+127.0.0.1,,2022-09-27 13:48:07.445861,hide
+127.0.0.1,,2022-09-27 13:48:10.686169,unhide
+127.0.0.1,,2022-09-27 13:48:35.811672,close
+127.0.0.1,,2022-09-27 13:48:35.909518,hide
+127.0.0.1,,2022-09-27 13:48:40.497779,open
+127.0.0.1,,2022-09-27 13:48:56.379004,close
+127.0.0.1,,2022-09-27 13:48:56.483842,hide
+127.0.0.1,,2022-09-27 13:49:00.817215,open
+127.0.0.1,,2022-09-27 13:49:25.002413,close
+127.0.0.1,,2022-09-27 13:49:25.091972,hide
+127.0.0.1,,2022-09-27 13:49:26.005380,open
+127.0.0.1,,2022-09-27 13:49:32.251347,close
+127.0.0.1,,2022-09-27 13:49:32.323486,hide
+127.0.0.1,,2022-09-27 13:49:33.826397,open
+127.0.0.1,,2022-09-27 13:49:48.835092,close
+127.0.0.1,,2022-09-27 13:49:48.911549,hide
+127.0.0.1,,2022-09-27 13:49:57.195648,close
+127.0.0.1,,2022-09-27 13:50:08.827351,hide
+127.0.0.1,,2022-09-27 13:50:15.096000,open
+127.0.0.1,,2022-09-27 13:50:27.425617,unhide
+127.0.0.1,,2022-09-27 13:50:31.020931,close
+127.0.0.1,,2022-09-27 13:50:31.098210,hide
+127.0.0.1,,2022-09-27 13:50:33.677958,open
+127.0.0.1,,2022-09-27 13:50:37.201104,Acoustical###EXPLAIN
+127.0.0.1,,2022-09-27 13:50:45.306564,Basics of/Primer on Complex Variables###EXPLAIN
+127.0.0.1,,2022-09-27 13:51:06.228528,When two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and
+transparently described using complex notation###EXPLAIN
+127.0.0.1,,2022-09-27 13:51:08.791016,1###EXP_###Acoustical###
+127.0.0.1,,2022-09-27 13:51:08.793109,1###EXP_###Basics of/Primer on Complex Variables###
+127.0.0.1,,2022-09-27 13:51:08.795864,1###EXP_###When two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and
+transparently described using complex notation###
+127.0.0.1,,2022-09-27 13:51:19.753464,1###EXP_###Acoustical###
+127.0.0.1,,2022-09-27 13:51:19.756357,1###EXP_###Basics of/Primer on Complex Variables###
+127.0.0.1,,2022-09-27 13:51:19.758250,1###EXP_###When two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and
+transparently described using complex notation###
+127.0.0.1,,2022-09-27 13:51:56.001434,hide
+127.0.0.1,,2022-09-27 13:52:04.593373,unhide
+127.0.0.1,,2022-09-27 13:53:04.632847,close
+127.0.0.1,,2022-09-27 13:53:04.707738,hide
+127.0.0.1,,2022-09-27 13:53:09.209546,open
+127.0.0.1,,2022-09-27 13:53:43.799697,hide
+127.0.0.1,,2022-09-27 13:53:56.411634,unhide
+127.0.0.1,,2022-09-27 13:54:59.571472,Landscape of Text Mining and Analytics###EXPLAIN
+127.0.0.1,,2022-09-27 13:55:15.457476,ext mining  Text analyt###EXPLAIN
+127.0.0.1,,2022-09-27 16:53:32.667493,open
+127.0.0.1,,2022-09-27 16:54:00.472850,hide
+127.0.0.1,,2022-09-27 16:54:30.940684,unhide
+127.0.0.1,,2022-09-27 16:54:33.190514,close
+127.0.0.1,,2022-09-27 16:54:33.261470,hide
+127.0.0.1,,2022-09-27 16:54:37.283961,open
+127.0.0.1,,2022-09-27 16:55:00.217743,hide
+127.0.0.1,,2022-09-27 16:56:02.023894,unhide
+127.0.0.1,,2022-09-27 16:56:02.027124,close
+127.0.0.1,,2022-09-27 16:56:03.148328,hide
+127.0.0.1,,2022-09-27 16:56:06.710942,open
+127.0.0.1,,2022-09-27 16:56:16.949274,close
+127.0.0.1,,2022-09-27 16:56:17.152783,hide
+127.0.0.1,,2022-09-27 16:57:30.302015,open
+127.0.0.1,,2022-09-27 16:57:36.237333,close
+127.0.0.1,,2022-09-27 16:57:36.481657,hide
+127.0.0.1,,2022-09-27 17:04:22.866959,hide
+127.0.0.1,,2022-09-27 17:04:24.174203,open
+127.0.0.1,,2022-09-27 17:04:26.118043,open
+127.0.0.1,,2022-09-27 17:04:27.446907,hide
+127.0.0.1,,2022-09-27 17:04:27.475935,unhide
+127.0.0.1,,2022-09-27 17:04:41.282624,unhide
+127.0.0.1,,2022-09-27 17:04:41.288280,hide
+127.0.0.1,,2022-09-27 17:04:43.306809,###EXPLAIN
+127.0.0.1,,2022-09-27 17:04:53.481472,close
+127.0.0.1,,2022-09-27 17:04:53.557735,hide
+127.0.0.1,,2022-09-27 17:04:59.149849,open
+127.0.0.1,,2022-09-27 17:05:34.964236,close
+127.0.0.1,,2022-09-27 17:05:35.068383,hide
+127.0.0.1,,2022-09-27 17:05:41.665503,open
+127.0.0.1,,2022-09-27 17:06:00.978378,close
+127.0.0.1,,2022-09-27 17:06:01.314167,hide
+127.0.0.1,,2022-09-27 17:06:05.857608,open
+127.0.0.1,,2022-09-27 17:06:08.771065,###EXPLAIN
+127.0.0.1,,2022-09-27 17:06:22.250559,hide
+127.0.0.1,,2022-09-27 17:06:22.268876,unhide
+127.0.0.1,,2022-09-27 17:06:25.754105,close
+127.0.0.1,,2022-09-27 17:06:26.095505,hide
+127.0.0.1,,2022-09-27 17:06:32.445125,open
+127.0.0.1,,2022-09-27 17:07:24.370222,close
+127.0.0.1,,2022-09-27 17:07:25.432337,hide
+127.0.0.1,,2022-09-27 17:07:32.921262,open
+127.0.0.1,,2022-09-27 17:07:48.665907,close
+127.0.0.1,,2022-09-27 17:07:48.930040,hide
+127.0.0.1,,2022-09-27 17:07:48.943322,unhide
+127.0.0.1,,2022-09-27 17:08:10.303010,close
+127.0.0.1,,2022-09-27 17:08:10.372713,hide
+127.0.0.1,,2022-09-27 17:08:15.242144,open
+127.0.0.1,,2022-09-27 17:08:56.319311,close
+127.0.0.1,,2022-09-27 17:08:56.412404,hide
+127.0.0.1,,2022-09-27 17:09:01.033374,open
+127.0.0.1,,2022-09-27 17:09:05.611625,close
+127.0.0.1,,2022-09-27 17:09:05.694148,hide
+127.0.0.1,,2022-09-27 17:09:11.171076,open
+127.0.0.1,,2022-09-27 17:09:14.548296,close
+127.0.0.1,,2022-09-27 17:09:14.757373,hide
+127.0.0.1,,2022-10-03 10:32:01.093101,open
+127.0.0.1,,2022-10-03 10:33:08.158648,close
+127.0.0.1,,2022-10-03 10:33:08.258118,hide
+127.0.0.1,,2022-10-03 10:33:10.401782,open
+127.0.0.1,,2022-10-03 10:36:58.112692,close
+127.0.0.1,,2022-10-03 10:36:58.995338,hide
+127.0.0.1,,2022-10-03 10:37:00.986429,open
+127.0.0.1,,2022-10-03 10:37:25.285645,
+Complex variables are used whenever phase information is important. A complex function,
+Z = X+iY consists of two portions, a so-called “real” part of Z, denoted X = Re(Z) and a so-
+called “imaginary” part of Z, denoted Y = Im(Z). The number i  (-1). The magnitude of the
+complex variable, Z is designated as |Z| = (Z) 2 , = (ZZ*), with Z2  ZZ* where Z* is the so-
+called complex conjugate of Z, i.e. Z* = (Z)* = (X+iY)* = XiY, with i* = (i)*  (-1). Thus,
+|Z| = (ZZ*) = (X+iY)(X+iY)* = (X+iY)(XiY) = (X2 + iXY – iXY + Y 2 ) = (X2 +Y2 ).###EXPLAIN
+127.0.0.1,,2022-10-03 10:37:52.156322,close
+127.0.0.1,,2022-10-03 10:37:52.224675,hide
+127.0.0.1,,2022-10-03 10:38:07.385392,open
+127.0.0.1,,2022-10-03 10:38:12.650334,close
+127.0.0.1,,2022-10-03 10:38:12.730899,hide
+127.0.0.1,,2022-10-03 10:38:16.398683,open
+127.0.0.1,,2022-10-03 10:38:26.355416,close
+127.0.0.1,,2022-10-03 10:38:26.389990,hide
+127.0.0.1,,2022-10-03 10:38:28.283023,open

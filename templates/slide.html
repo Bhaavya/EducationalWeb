@@ -222,11 +222,11 @@ $(function() {
 </div>
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
     <div class="grid-container" style="text-align:left">
-    <button type="button" class="btn btn-primary" id="explain_button" style="position:absolute; top:120px; z-index:1200;"onclick="getSelectedTextnew();" > <i class="glyphicon glyphicon-book"></i> </button>
+    <button type="button" class="btn btn-primary" id="explain_button" style="position:absolute; top:auto; z-index:1200;"onclick="getSelectedTextnew();" > <i class="glyphicon glyphicon-book"></i> </button>
         <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" style="position:inherit;left:80px;" data-toggle="dropdown"><i class="glyphicon glyphicon-download-alt"></i>
+        <button class="btn btn-primary dropdown-toggle" type="button" style="position:inherit;left:50px;" data-toggle="dropdown"><i class="glyphicon glyphicon-download-alt"></i>
         <span class="caret"></span></button>
-        <ul class="dropdown-menu" style="left:80px;">
+        <ul class="dropdown-menu" style="left:50px;">
           <li><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}/{{lec_name}}.pdf','{{lec_name}}.pdf');" href="#">This Lecture</a></li>
           <li><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}.zip','{{course_name}}.zip');" href="#">All Lectures in {{course_name}}</a></li>
         </ul>
@@ -290,7 +290,7 @@ $(function() {
         $("#explain_button").css("top",window.scrollY.toString()+"px");
      }
      else{
-        $("#explain_button").css("top","120px");
+        $("#explain_button").css("top","auto");
      }
     });
 
@@ -525,7 +525,6 @@ function getSelectedTextnew() {
      if (window.getSelection) {
 
       var text = window.getSelection().toString();
-      console.log(text);
 
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
@@ -534,7 +533,7 @@ function getSelectedTextnew() {
       xhttp.open("POST", "{{base_url}}explain", true);
 
       xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8");
-      console.log("Text content", $(".textLayer").text());
+
       xhttp.send(JSON.stringify({ 'url':window.location.href,'searchString':  text,'slidesContext': $(".textLayer").text() ,  'route': window.location.pathname
 }));
 
