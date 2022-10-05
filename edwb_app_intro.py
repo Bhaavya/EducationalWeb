@@ -268,6 +268,34 @@ def txt_search():
     sse.publish({"message": "google-search-result","rankedResult":ranked_result}, type='publish')
     return 'OK'
 
+@app.route('/explain_function', methods=['POST','OPTIONS'])
+@crossdomain(origin='*')
+def explain_function(course_name = None ):
+    query = request.json['searchString']
+    context = request.json['slidesContext']
+
+    print("Request",query, context)
+
+
+    if ('CS%20410') in request.json['url']:
+        is_410 = True
+    else:
+        is_410 = False
+
+    if is_410:
+        ranked_result = model.search_txtbook(query)
+        # Ask Bhavya: Why does it send google-search result?
+        response = jsonify({"message": "google-search-result","rankedResult":ranked_result})
+    else:
+        raw_results = []
+        if 'results' in request.json:
+            raw_results = request.json['results']
+        ranked_index = model.rank_google_result(raw_results, context, query)
+        ranked_result = [raw_results[i] for i in ranked_index]
+        response = jsonify({"message": "google-search-result","rankedResult":ranked_result})
+
+    return response
+
 
 @app.route('/explain', methods=['POST','OPTIONS'])
 @crossdomain(origin='*')

@@ -33,13 +33,11 @@
     $(function() {
             var srch = "{{srch_term}}"
             var course_name = "{{course_name}}"
-            console.log(srch);
-            console.log('search2');
             $.ajax({
-    type: "POST",
-    url:"{{base_url}}/search_slides",
-    contentType: "application/json;charset=utf-8",
-    data: JSON.stringify({'course_name': course_name, 'searchString':  srch ,'route':window.location.pathname}),
+                    type: "POST",
+                    url:"{{base_url}}/search_slides",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify({'course_name': course_name, 'searchString':  srch ,'route':window.location.pathname}),
 
     success: function(data){
       result_section = document.getElementById('result');
@@ -47,7 +45,7 @@
             result_section.removeChild(result_section.firstChild);
         }
       h = document.createElement('h2');
-      console.log('Search3 ');
+
       var searchLog = function(idx) {
           logdata = JSON.stringify({
             action: 'search_res_'+idx,
@@ -57,14 +55,13 @@
       };
 
       h.innerHTML = 'Search Results';
-      console.log("stuck");
+
       result_section.appendChild(h);
-      console.log("stuck2");
+
       for(i=0;i<data['num_results'];i++){
         console.log("Hello");
         a = document.createElement('a');
         a.setAttribute('href','{{base_url}}/search_slide/'+data['search_course_names'][i]+'/'+data['lnos'][i]+'/'+data['results'][i]);
-        // a.innerHTML = 'Test';
         a.innerHTML = data['disp_strs'][i]
         a.setAttribute('id','search_'+i)
         a.setAttribute('class','search_res');

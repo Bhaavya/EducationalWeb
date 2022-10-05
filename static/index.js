@@ -176,7 +176,7 @@ $(document).ready(function(){
             doGoogleSearch(data.searchString,data.is_410);
         }
         else{
-        // when can server say google-search result?
+        // Ask Bhavya: when can server say google-search result?
             if (data.message == "google-search-result"){
                 console.log(data.rankedResult);
                 if (data.rankedResult.length) {
