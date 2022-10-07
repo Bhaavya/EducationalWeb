@@ -222,7 +222,7 @@ $(function() {
 </div>
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
     <div class="grid-container" style="text-align:left">
-    <button type="button" class="btn btn-primary" id="explain_button" style="position:absolute; top:auto; z-index:1200;"onclick="getSelectedTextnew();" > <i class="glyphicon glyphicon-book"></i> </button>
+    <button type="button" class="btn btn-primary" id="explain_button" style="position:absolute; top:auto; z-index:1200;" > <i class="glyphicon glyphicon-book"></i> </button>
         <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" style="position:inherit;left:50px;" data-toggle="dropdown"><i class="glyphicon glyphicon-download-alt"></i>
         <span class="caret"></span></button>
@@ -519,30 +519,6 @@ function changedSlide(pageNum, oldNum){
    // Initial/first page rendering
    renderPage(pageNum);
  });
-
-function getSelectedTextnew() {
-     if (window.getSelection) {
-
-      var text = window.getSelection().toString();
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-  };
-
-      xhttp.open("POST", "{{base_url}}explain", true);
-
-      xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8");
-
-      xhttp.send(JSON.stringify({ 'url':window.location.href,'searchString':  text,'slidesContext': $(".textLayer").text() ,  'route': window.location.pathname
-}));
-
-      }
-
-     else if (document.selection) {
-       return document.selection.createRange().text;
-     }
-     return '';
-  }
 
 function downloadFile(url,lecture){
     const a = document.createElement("a");
