@@ -131,7 +131,7 @@ $(function() {
 			var postAjaxRequest = function(isGoogleSearch, results) {
 				$.ajax({
 					type: "POST",
-					url: "/explain_function",
+					url: base_url.concat('explain_query'),
 					timeout: 3000,
 					contentType: "application/json;charset=utf-8",
 					data: JSON.stringify({

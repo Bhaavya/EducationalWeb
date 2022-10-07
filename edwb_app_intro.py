@@ -241,9 +241,9 @@ def end():
     vis_urls,vis_strs = get_prev_urls()
     return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
 
-@app.route('/explain_function', methods=['POST','OPTIONS'])
+@app.route('/explain_query', methods=['POST','OPTIONS'])
 @crossdomain(origin='*')
-def explain_function(course_name = None ):
+def explain_query():
     query = request.json['searchString']
     context = request.json['slidesContext']
 
