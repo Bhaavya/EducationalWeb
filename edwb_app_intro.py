@@ -241,41 +241,11 @@ def end():
     vis_urls,vis_strs = get_prev_urls()
     return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
 
-# @socketio.on('connect')
-# def value_changed():
-#     print("connected")
-
-
-@app.route('/google_search', methods=['POST'])
-def google_search():
-    raw_results=[]
-    if 'results' in request.json:
-        raw_results = request.json['results']
-    query = request.json['query']
-    ranked_index = model.rank_google_result(raw_results, request.json['context'], query)
-    ranked_result = [raw_results[i] for i in ranked_index]
-    # print(ranked_result,'m=======')
-    # socketio.emit('google-search-result', ranked_result, broadcast=True)
-    sse.publish({"message": "google-search-result","rankedResult":ranked_result}, type='publish')
-    return 'OK'
-
-@app.route('/txt_search', methods=['POST'])
-def txt_search():
-    query = request.json['query']
-    ranked_result = model.search_txtbook(query)
-    # print(ranked_result,'m=======')
-    # socketio.emit('google-search-result', ranked_result, broadcast=True)
-    sse.publish({"message": "google-search-result","rankedResult":ranked_result}, type='publish')
-    return 'OK'
-
 @app.route('/explain_function', methods=['POST','OPTIONS'])
 @crossdomain(origin='*')
 def explain_function(course_name = None ):
     query = request.json['searchString']
     context = request.json['slidesContext']
-
-    print("Request",query, context)
-
 
     if ('CS%20410') in request.json['url']:
         is_410 = True
@@ -284,8 +254,7 @@ def explain_function(course_name = None ):
 
     if is_410:
         ranked_result = model.search_txtbook(query)
-        # Ask Bhavya: Why does it send google-search result?
-        response = jsonify({"message": "google-search-result","rankedResult":ranked_result})
+        response = jsonify({"message": "textbook-result","rankedResult":ranked_result})
     else:
         raw_results = []
         if 'results' in request.json:
@@ -296,32 +265,6 @@ def explain_function(course_name = None ):
 
     return response
 
-
-@app.route('/explain', methods=['POST','OPTIONS'])
-@crossdomain(origin='*')
-def socket_connection(course_name=None, lno=None, slide_name=None, curr_slide=None):
-
-    search_string = request.json['searchString']
-    context = request.json['slidesContext']
-
-    log_helper(search_string + '###EXPLAIN',request.json['route'])
-
-    # socketio.emit('message', {"searchString": search_string, "context": context} ,broadcast=True)
-    print(request.json['url'])
-    if ('CS%20410') in request.json['url']:
-        is_410 = True
-        print('true')
-    else:
-        is_410 = False
-    sse.publish({"is_410":is_410,"message": "explain","searchString":search_string,"context":context}, type='publish')
-    print(request,search_string,'1')
-    # model.log(request.remote_addr,search_string,datetime.datetime.now(),'search_query')
-    # num_results,results,disp_strs,search_course_names,lnos, snippets,lec_names = model.get_search_results(search_string)
-    # if not results:
-    #   num_results = 0
-    #   results = []
-
-    return 'OK'
 
 @app.route('/search', methods=['POST'])
 def results(course_name=None, lno=None, slide_name=None, curr_slide=None):

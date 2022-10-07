@@ -8551,3 +8551,311 @@ Tandy Warnow
 127.0.0.1,,2022-10-04 20:24:48.845535,Dynamic###EXPLAIN
 127.0.0.1,,2022-10-04 20:25:01.524777,hide
 127.0.0.1,,2022-10-04 20:25:01.619603,unhide
+127.0.0.1,,2022-10-07 09:42:36.744673,open
+127.0.0.1,,2022-10-07 09:42:44.581167,Data Structures###EXPLAIN
+127.0.0.1,,2022-10-07 09:43:23.156544,hide
+127.0.0.1,,2022-10-07 09:45:28.047675,unhide
+127.0.0.1,,2022-10-07 09:45:29.393024,close
+127.0.0.1,,2022-10-07 09:45:30.404439,hide
+127.0.0.1,,2022-10-07 09:45:45.010162,open
+127.0.0.1,,2022-10-07 09:45:47.730945,Data###EXPLAIN
+127.0.0.1,,2022-10-07 09:45:57.703031,hide
+127.0.0.1,,2022-10-07 09:45:57.813164,unhide
+127.0.0.1,,2022-10-07 09:46:46.051376,hide
+127.0.0.1,,2022-10-07 09:46:46.096918,unhide
+127.0.0.1,,2022-10-07 09:47:23.283556,hide
+127.0.0.1,,2022-10-07 09:47:23.311101,unhide
+127.0.0.1,,2022-10-07 09:47:33.152011,hide
+127.0.0.1,,2022-10-07 09:47:33.156386,unhide
+127.0.0.1,,2022-10-07 09:47:33.160162,close
+127.0.0.1,,2022-10-07 09:47:34.147059,hide
+127.0.0.1,,2022-10-07 09:47:42.951937,unhide
+127.0.0.1,,2022-10-07 09:47:50.510092,open
+127.0.0.1,,2022-10-07 09:47:57.470122,Data###EXPLAIN
+127.0.0.1,,2022-10-07 09:48:09.563993,hide
+127.0.0.1,,2022-10-07 09:48:09.623864,unhide
+127.0.0.1,,2022-10-07 09:48:36.810790,hide
+127.0.0.1,,2022-10-07 09:48:37.389529,unhide
+127.0.0.1,,2022-10-07 09:48:38.705062,hide
+127.0.0.1,,2022-10-07 09:48:38.736665,unhide
+127.0.0.1,,2022-10-07 09:48:48.993366,close
+127.0.0.1,,2022-10-07 09:48:49.981797,hide
+127.0.0.1,,2022-10-07 09:49:04.737304,open
+127.0.0.1,,2022-10-07 09:49:07.520761,Data###EXPLAIN
+127.0.0.1,,2022-10-07 09:49:34.087579,s and Btrees###EXPLAIN
+127.0.0.1,,2022-10-07 09:49:49.278032,close
+127.0.0.1,,2022-10-07 09:49:49.408423,hide
+127.0.0.1,,2022-10-07 09:49:53.363095,open
+127.0.0.1,,2022-10-07 09:49:56.354345,Overview###EXPLAIN
+127.0.0.1,,2022-10-07 09:50:12.532265,close
+127.0.0.1,,2022-10-07 09:50:12.587556,hide
+127.0.0.1,,2022-10-07 09:50:16.096574,open
+127.0.0.1,,2022-10-07 09:50:16.138056,close
+127.0.0.1,,2022-10-07 09:50:16.228271,hide
+127.0.0.1,,2022-10-07 09:50:18.247050,open
+127.0.0.1,,2022-10-07 09:50:24.731805,= X+iY consist of two components, Z can be graphically
+depicted as a 2-component “vector” Z = (X,Y) lying in the so-called complex plane, as shown
+in the figure below. The real component of Z, X = Re(Z) is by convention drawn along the x,
+or horizontal axis (i.e. the abscissa). The imaginary component of Z, Y = Im(Z) is by
+convention drawn along the y, or vertical axis (i.e. the ordinate), as shown in the figure below.
+Imaginary Axis:
+Y = Im (Z###EXPLAIN
+127.0.0.1,,2022-10-07 09:50:40.664853,
+When two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individual signals. Mathematically, this is most easily and
+transparently described using complex notation.
+Basics of/Primer on Complex Variables
+Complex variables are used whenever phase information is important. A complex function,
+Z = X+iY consists of two portions, a so-called “real” part of Z, denoted X = Re(Z) and a so-
+called “imaginary” part of Z, denoted Y = Im(Z). The number i  (-1). The magnitude of the
+complex variable, Z is designated as |Z| = (Z) 2 , = (ZZ*), with Z2  ZZ* where Z* is the so-
+called complex conjugate of Z, i.e. Z* = (Z)* = (X+iY)* = XiY, with i* = (i)*  (-1). Thus,
+|Z| = (ZZ*) = (X+iY)(X+iY)* = (X+iY)(XiY) = (X2 + iXY – iXY + Y 2 ) = (X2 +Y2 ).
+Thus the magnitude of Z, |Z| is analogous to the hypotenuse, c of a right triangle (c2 = a2 + b2
+)
+and/or the radius of a circle, r centered at the origin (r2 = x2 + y 2 ).
+Because complex variables Z = X+iY consist of two components, Z can be graphically
+depicted as a 2-component “vector” Z = (X,Y) lying in the so-called complex plane, as shown
+in the figure below. The real component of Z, X = Re(Z) is by convention drawn along the x,
+or horizontal axis (i.e. the abscissa). The imaginary component of Z, Y = Im(Z) is by
+convention drawn along the y, or vertical axis (i.e. the ordinate), as shown in the figure below.
+Imaginary Axis:
+Y = Im (Z)
+Real Axis:
+X=Re (Z)
+Z = X + iY
+
+X
+Y
+|Z| = (X2 + Y2
+) ½###EXPLAIN
+127.0.0.1,,2022-10-07 09:50:53.547663,2 = (Z1 (t) + Z2(t))(Z1(t) + Z2 (t))* = (Z1(t) + Z2 (t))(Z*1 (t) + Z*2(t))
+= Z1 (t)Z*1(t) + Z2 (t)Z*1 (t) + Z1 (t)Z*2 (t) + Z2 (t)Z*2 (t)
+= |Z1 (t)| 2 + |Z2(t)| 2 + 2Re[Z1 (t)Z*2 (t)]
+= A12 (t) + A22
+(t) + 2A1 (t)A2(t)Re[exp{i((2 (t)1 (t))t + 
+21(t))}]
+= A12 (t) + A22
+(t) + 2A1 (t)A2(t)Cos{(###EXPLAIN
+127.0.0.1,,2022-10-07 09:50:57.603255,###EXPLAIN
+127.0.0.1,,2022-10-07 09:51:57.561591,hide
+127.0.0.1,,2022-10-07 09:51:57.565866,unhide
+127.0.0.1,,2022-10-07 09:51:57.581738,close
+127.0.0.1,,2022-10-07 09:51:58.685105,hide
+127.0.0.1,,2022-10-07 09:52:01.072078,open
+127.0.0.1,,2022-10-07 09:52:06.732700, periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individ###EXPLAIN
+127.0.0.1,,2022-10-07 09:52:15.939767,1###EXP_### periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individ###
+127.0.0.1,,2022-10-07 09:52:28.497464,0###EXP_### periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individ###
+127.0.0.1,,2022-10-07 09:52:38.096550,0###EXP_### periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individ###
+127.0.0.1,,2022-10-07 09:52:41.485384,1###EXP_### periodic signals are linearly superposed (i.e. added together),
+the resultant/overall waveform that results depends on the amplitude, frequency and phase
+information associated with the individ###
+127.0.0.1,,2022-10-07 09:52:46.013607,hide
+127.0.0.1,,2022-10-07 09:52:46.064542,unhide
+127.0.0.1,,2022-10-07 09:52:59.487455,hide
+127.0.0.1,,2022-10-07 09:52:59.839166,unhide
+127.0.0.1,,2022-10-07 09:53:01.301785,hide
+127.0.0.1,,2022-10-07 09:53:01.324107,unhide
+127.0.0.1,,2022-10-07 09:53:43.973661,hide
+127.0.0.1,,2022-10-07 09:53:43.976630,unhide
+127.0.0.1,,2022-10-07 09:53:43.984707,close
+127.0.0.1,,2022-10-07 09:53:44.931238,hide
+127.0.0.1,,2022-10-07 09:53:47.058390,open
+127.0.0.1,,2022-10-07 09:53:52.054524,Interference###EXPLAIN
+127.0.0.1,,2022-10-07 09:53:59.820707,hide
+127.0.0.1,,2022-10-07 09:53:59.872671,unhide
+127.0.0.1,,2022-10-07 09:55:29.998489,hide
+127.0.0.1,,2022-10-07 09:55:30.355903,unhide
+127.0.0.1,,2022-10-07 09:55:31.478694,hide
+127.0.0.1,,2022-10-07 09:55:31.510695,unhide
+127.0.0.1,,2022-10-07 09:55:41.093568,hide
+127.0.0.1,,2022-10-07 09:55:41.096310,unhide
+127.0.0.1,,2022-10-07 09:55:41.110548,close
+127.0.0.1,,2022-10-07 09:55:42.017391,hide
+127.0.0.1,,2022-10-07 09:55:44.192203,open
+127.0.0.1,,2022-10-07 09:55:47.002918,more###EXPLAIN
+127.0.0.1,,2022-10-07 09:56:00.350238,hide
+127.0.0.1,,2022-10-07 09:56:00.401179,unhide
+127.0.0.1,,2022-10-07 09:56:13.348732,hide
+127.0.0.1,,2022-10-07 09:56:13.377967,unhide
+127.0.0.1,,2022-10-07 09:56:21.497218,hide
+127.0.0.1,,2022-10-07 09:56:21.507859,unhide
+127.0.0.1,,2022-10-07 09:56:21.511828,close
+127.0.0.1,,2022-10-07 09:56:22.467220,hide
+127.0.0.1,,2022-10-07 09:56:24.600752,open
+127.0.0.1,,2022-10-07 09:56:33.653047,f2 = 2*980 = 1960 radians/sec in our example above) phasor
+1, with higher angular frequency will precess###EXPLAIN
+127.0.0.1,,2022-10-07 09:56:41.872334,progresses###EXPLAIN
+127.0.0.1,,2022-10-07 09:57:04.979500,980 = 1960 radians/sec in our example above) phasor
+1, with higher angular frequency will precess more rapidly than phasor 2 (by the difference in
+angular frequencies,  = (1  2 ) = (2000  1960) = 40 radians/second). Thus, as time
+increases, phasor 1 will lead phasor 2; eventually (at time t = ½beat = 0.025 = 1/40th sec in our
+above example) phasor 2 will be exactly ###EXPLAIN
+127.0.0.1,,2022-10-07 09:57:10.995824, terms of th###EXPLAIN
+127.0.0.1,,2022-10-07 09:59:19.244970,close
+127.0.0.1,,2022-10-07 09:59:20.257371,hide
+127.0.0.1,,2022-10-07 09:59:22.251177,open
+127.0.0.1,,2022-10-07 09:59:28.262959,enoted Y = Im(Z). The number i  (-1). The magnitude of the
+complex variable, Z is designated as |Z| = ###EXPLAIN
+127.0.0.1,,2022-10-07 09:59:52.383338,
+When two (or more) periodic signals are linearly superposed (i.e. added together),
+the resultant/overal###EXPLAIN
+127.0.0.1,,2022-10-07 10:00:01.129005,hide
+127.0.0.1,,2022-10-07 10:00:01.192786,unhide
+127.0.0.1,,2022-10-07 10:00:09.795213,hide
+127.0.0.1,,2022-10-07 10:00:09.835294,unhide
+127.0.0.1,,2022-10-07 10:00:17.993354,close
+127.0.0.1,,2022-10-07 10:00:19.409915,hide
+127.0.0.1,,2022-10-07 10:00:21.553218,open
+127.0.0.1,,2022-10-07 10:00:23.112229,unhide
+127.0.0.1,,2022-10-07 10:00:26.165362,Interference###EXPLAIN
+127.0.0.1,,2022-10-07 10:00:33.078929,1###EXP_###Interference###
+127.0.0.1,,2022-10-07 10:00:49.785796,hide
+127.0.0.1,,2022-10-07 10:00:49.846051,unhide
+127.0.0.1,,2022-10-07 10:02:52.808461,hide
+127.0.0.1,,2022-10-07 10:02:52.842316,unhide
+127.0.0.1,,2022-10-07 10:02:56.771381,1###EXP_###Interference###
+127.0.0.1,,2022-10-07 10:03:28.080541,0###EXP_###Interference###
+127.0.0.1,,2022-10-07 10:03:40.017592,###EXPLAIN
+127.0.0.1,,2022-10-07 10:03:46.768598,ZZ*) = (X###EXPLAIN
+127.0.0.1,,2022-10-07 10:03:57.403617,
+relative to the first of 21 (t):
+Note that at the amplitude level, there is nothing explicitly overt and/or obvious in the above
+mathematical expression for the overall/total/resultant amplitude, Atot(t) that easily explains the
+phenomenon of beats associated with adding together two signals that have comparable
+amplitudes and frequencies.
+However, let us consider the (instantaneous) phasor relationship between the individual
+amplitudes for the two signals, A1 (t) and A2 (t) respectively. Their relative initial phase
+difference at time t = 0 is 21 (t=0) and the resultant/total amplitude, Atot(t=0) is shown in the
+figure below, for time, t = 0:
+From the law of cosines, the magnitude of the total amplitude, Atot(t) at an arbitrary time, t
+is obtained from the following:
+Thus,
+For equal amplitudes, A10 = A20 = A0 , zero relative initial phase, 21 = 0 and constant (i.e.
+time-independent) frequencies, 2 and 1 , this expression reduces to:
+ )()()( 212202 tttCosAtA
+
+  ttCosAtA )()( 1101
+
+   )()()()()()( 2122011021 tttCosAtt###EXPLAIN
+127.0.0.1,,2022-10-07 10:04:07.517769,s) phasor relationship between the individual
+amplitudes for the two signals, A1 (t) and A2 (t) ###EXPLAIN
+127.0.0.1,,2022-10-07 10:04:14.876615,amplitude###EXPLAIN
+127.0.0.1,,2022-10-07 10:04:21.627328,{(2 (t)1 (t))t + 
+21 (t)}/###EXPLAIN
+127.0.0.1,,2022-10-07 10:04:26.817462, (t)###EXPLAIN
+127.0.0.1,,2022-10-07 10:04:32.808869,###EXPLAIN
+127.0.0.1,,2022-10-07 10:04:41.542901,e is nothing explicitly overt and/or obvious in the above
+mathematical expression for the overall/total/resultant amplitude, Atot(t) that easily explains the
+phenomenon of beats associated with adding together two signals that have comparable
+amplitudes and frequencies.
+However, let us consider the (instantaneous) phasor relationship between the individual
+amplitudes for the two signals, A1 (t) and A2 (t) respectively. Their relative initial phase
+difference at time t = 0 is 21 (t=0) and the resultant/total amplitude, Atot(t=0) is shown in the
+figure below, for time, t = 0:
+From the law of cosines, the magnitude of the total amplitude, Atot(t) at an arbitrary time, t
+is obtained from the following:
+Thus,
+For equal amplitudes, A10 = A20 = A0 , zero relative initial phase, 21 = 0 and constant (i.e.
+time-independent) frequencies, 2 and 1 , this expression reduces to:
+ )()()( 212202 tttCosAtA
+
+  ttCosAtA )()( 1101
+
+   )()()()()()( 2122011021 tttCosAttCosAtAtAtAtot###EXPLAIN
+127.0.0.1,,2022-10-07 10:04:52.862793,###EXPLAIN
+127.0.0.1,,2022-10-07 10:05:05.734032,close
+127.0.0.1,,2022-10-07 10:05:05.803396,hide
+127.0.0.1,,2022-10-07 10:05:09.932725,open
+127.0.0.1,,2022-10-07 10:05:50.678472,Text analytics###EXPLAIN
+127.0.0.1,,2022-10-07 10:06:16.041426,hide
+127.0.0.1,,2022-10-07 10:06:16.090607,unhide
+127.0.0.1,,2022-10-07 10:22:12.993878,hide
+127.0.0.1,,2022-10-07 10:22:20.864529,unhide
+127.0.0.1,,2022-10-07 10:22:22.983654,hide
+127.0.0.1,,2022-10-07 10:27:09.186388,unhide
+127.0.0.1,,2022-10-07 10:27:13.672142,close
+127.0.0.1,,2022-10-07 10:27:14.709457,hide
+127.0.0.1,,2022-10-07 10:27:20.673894,open
+127.0.0.1,,2022-10-07 10:27:25.230426,f Text Minin###EXPLAIN
+127.0.0.1,,2022-10-07 10:27:39.158368,hide
+127.0.0.1,,2022-10-07 10:27:47.840739,open
+127.0.0.1,,2022-10-07 10:27:51.696034,_interference_phenomena ###EXPLAIN
+127.0.0.1,,2022-10-07 10:27:53.982837,hide
+127.0.0.1,,2022-10-07 10:27:53.987260,unhide
+127.0.0.1,,2022-10-07 10:27:58.135858,nowledge for optimal decision making
+• Related to text retrieval, which is an essential component in
+any text mining system
+– Text retrieval can be a preprocessor for text mining
+– Text retrieval is###EXPLAIN
+127.0.0.1,,2022-10-07 10:28:00.873303,hide
+127.0.0.1,,2022-10-07 10:28:00.876467,unhide
+127.0.0.1,,2022-10-07 10:28:09.648575,
+ = 1, which is used in
+obtaining the magnitude of Z, |Z| from Z itself.
+If we now re###EXPLAIN
+127.0.0.1,,2022-10-07 10:28:13.681816,hide
+127.0.0.1,,2022-10-07 10:28:13.685318,unhide
+127.0.0.1,,2022-10-07 10:28:17.423699,hide
+127.0.0.1,,2022-10-07 10:28:20.431479,unhide
+127.0.0.1,,2022-10-07 10:28:23.895699,###EXPLAIN
+127.0.0.1,,2022-10-07 10:28:27.715572,hide
+127.0.0.1,,2022-10-07 10:28:42.506228,unhide
+127.0.0.1,,2022-10-07 10:28:50.973657,close
+127.0.0.1,,2022-10-07 10:28:51.300115,hide
+127.0.0.1,,2022-10-07 10:28:57.648463,open
+127.0.0.1,,2022-10-07 10:29:04.198306,close
+127.0.0.1,,2022-10-07 10:29:04.254638,hide
+127.0.0.1,,2022-10-07 10:29:10.898786,open
+127.0.0.1,,2022-10-07 10:29:13.583538,close
+127.0.0.1,,2022-10-07 10:29:13.728444,hide
+127.0.0.1,,2022-10-07 10:29:23.248443,open
+127.0.0.1,,2022-10-07 10:31:55.482173,close
+127.0.0.1,,2022-10-07 10:31:56.361757,hide
+127.0.0.1,,2022-10-07 10:31:57.988184,open
+127.0.0.1,,2022-10-07 10:32:10.217145,close
+127.0.0.1,,2022-10-07 10:32:10.271173,hide
+127.0.0.1,,2022-10-07 10:32:14.236329,open
+127.0.0.1,,2022-10-07 10:33:08.111699,close
+127.0.0.1,,2022-10-07 10:33:08.165248,hide
+127.0.0.1,,2022-10-07 10:33:11.922830,open
+127.0.0.1,,2022-10-07 10:33:24.107115,close
+127.0.0.1,,2022-10-07 10:33:24.147367,hide
+127.0.0.1,,2022-10-07 10:33:26.203622,open
+127.0.0.1,,2022-10-07 10:33:48.640055,close
+127.0.0.1,,2022-10-07 10:33:48.718895,hide
+127.0.0.1,,2022-10-07 10:33:50.331975,open
+127.0.0.1,,2022-10-07 10:34:14.347764,hide
+127.0.0.1,,2022-10-07 10:34:18.720167,unhide
+127.0.0.1,,2022-10-07 10:34:22.333670,hide
+127.0.0.1,,2022-10-07 10:34:44.339528,unhide
+127.0.0.1,,2022-10-07 10:35:15.161602,hide
+127.0.0.1,,2022-10-07 10:35:47.056101,unhide
+127.0.0.1,,2022-10-07 10:36:15.524865,close
+127.0.0.1,,2022-10-07 10:36:16.397930,hide
+127.0.0.1,,2022-10-07 10:36:18.448089,open
+127.0.0.1,,2022-10-07 10:37:28.472353,hide
+127.0.0.1,,2022-10-07 10:41:53.670320,unhide
+127.0.0.1,,2022-10-07 10:41:54.865256,hide
+127.0.0.1,,2022-10-07 10:42:03.974840,unhide
+127.0.0.1,,2022-10-07 10:42:03.979050,close
+127.0.0.1,,2022-10-07 10:42:04.898760,hide
+127.0.0.1,,2022-10-07 10:42:06.723967,open
+127.0.0.1,,2022-10-07 10:42:50.367246,close
+127.0.0.1,,2022-10-07 10:42:50.427302,hide
+127.0.0.1,,2022-10-07 10:42:53.635482,open
+127.0.0.1,,2022-10-07 10:43:02.777474,hide
+127.0.0.1,,2022-10-07 10:43:02.903730,unhide
+127.0.0.1,,2022-10-07 10:43:06.911461,hide
+127.0.0.1,,2022-10-07 10:43:07.924608,unhide
+127.0.0.1,,2022-10-07 10:43:09.553703,hide
+127.0.0.1,,2022-10-07 10:43:09.557109,unhide
