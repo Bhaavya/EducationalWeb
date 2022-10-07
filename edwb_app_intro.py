@@ -244,6 +244,11 @@ def end():
 @app.route('/explain_query', methods=['POST','OPTIONS'])
 @crossdomain(origin='*')
 def explain_query():
+
+    '''
+    This function computes the ranking of the results obtained by google search and from model.py
+    :return: ranked results
+    '''
     query = request.json['searchString']
     context = request.json['slidesContext']
 
