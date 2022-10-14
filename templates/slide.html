@@ -84,6 +84,8 @@ if (typeof document.addEventListener === "undefined" || hidden === undefined) {
   document.addEventListener(visibilityChange, handleVisibilityChange, false);
   }
 
+// Restore logging for related links
+
 window.addEventListener("DOMContentLoaded", function(event) {
     var relLinks = document.getElementsByClassName("related");
     var relLog = function(idx) {
@@ -94,75 +96,12 @@ window.addEventListener("DOMContentLoaded", function(event) {
     navigator.sendBeacon('{{base_url}}log_action', logdata);
 };
 
-for (var i = 0; i < relLinks.length; i++) {
-    ['click','contextmenu'].forEach(function(e){relLinks[i].addEventListener(e, function(){
-    relLog(this.id);
-    } , true);})
-}
 
-$(function() {
-          $('#submit').bind('click', function() {
-            var srch = document.getElementById('srch-term').value
-           $.ajax({
-    type: "POST",
-    url:"{{base_url}}/search_slides",
-    contentType: "application/json;charset=utf-8",
-    data: JSON.stringify({ 'searchString':  srch ,'route':window.location.pathname}),
-
-    success: function(data){
-      result_section = document.getElementById('result');
-      while (result_section.firstChild) {
-            result_section.removeChild(result_section.firstChild);
-        }
-      h = document.createElement('h2');
-      var searchLog = function(idx) {
-          logdata = JSON.stringify({
-            action: 'search_res_'+idx,
-            route: window.location.pathname
-          });
-          navigator.sendBeacon('{{base_url}}log_action', logdata);
-      };
-      h.innerHTML = 'Search Results';
-      result_section.appendChild(h);
-      for(i=0;i<data['num_results'];i++){
-        a = document.createElement('a');
-        a.setAttribute('href','{{base_url}}/search_slide/'+data['search_course_names'][i]+'/'+data['lnos'][i]+'/'+data['results'][i]);
-        // a.innerHTML = 'Test';
-        a.innerHTML = data['disp_strs'][i]
-        a.setAttribute('id','search_'+i)
-        a.setAttribute('class','search_res');
-        ['click','contextmenu'].forEach(function(e){a.addEventListener(e, function(){
-          searchLog(this.id);
-      } , true);})
-
-        result_section.appendChild(a);
-
-
-        $('#search_'+i).popover({
-          container: 'body',
-          trigger : 'hover',
-          html: true,
-          placement:'top',
-          title:"<embed type='application/pdf' id='search_slide' src={{pdf_url}}/static/slides/"+data['search_course_names'][i].replace(' ','%20')+'/'+data['lec_names'][i].replace(' ','%20')+'/'+data['results'][i].replace(' ','%20') +"#toolbar=0&navpanes=0&scrollbar=0>"
-
-        })
-
-
-        b = document.createElement('br');
-        result_section.appendChild(b);
-        p = document.createElement('p');
-        // p.innerHTML = 'test2';
-        p.innerHTML = data['snippets'][i];
-        result_section.appendChild(p);
-      }
-    },
-    failure: function() {
-        alert('Error searching');
-    }
-});
-          })
-        })
-})
+<!--for (var i = 0; i < relLinks.length; i++) {-->
+<!--    ['click','contextmenu'].forEach(function(e){relLinks[i].addEventListener(e, function(){-->
+<!--    relLog(this.id);-->
+<!--    } , true);})-->
+<!--}-->
 
  </script>
 
@@ -275,14 +214,6 @@ $(function() {
 <script type="text/javascript" src="{{base_url}}static/explanation_google_search.js"></script>
 
 <script>
-    var search = document.getElementById("srch-term");
-    search.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("submit").click();
-    }
-    });
-
     document.addEventListener('scroll', (event) => {
      if (window.scrollY > 180){
         console.log(window.scrollY);

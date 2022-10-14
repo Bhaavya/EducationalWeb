@@ -1,19 +1,35 @@
+<!--This File is no longer used-->
+
 {% extends "base.html" %}
 {% block title %}{{title}}{% endblock %}
 {% block body %}
 <div class="jumbotron">
-    <!-- Example split danger button -->
-
       <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> {{course_name}}
         <span class="caret"></span></button>
          <ul class="dropdown-menu">
           {% for j in range(num_courses) %}
-
               <li><a href="{{base_url}}/searchPage/{{srch_term}}/{{course_names[j]}}">{{course_names[j]}}</a></li>
-              {% endfor %}
+             {% endfor %}
         </ul>
       </div>
+    <div class="row" style="display: flex;padding: 20px;"></div>
+        <div class="col-md-9" id="result" padding-bottom="15px"></div>
+</div>
+
+<!--    {% for i in range(num_related_slides) %}-->
+<!--            <li class="related_slide_element">-->
+<!--           <div class="popover__wrapper">-->
+<!--                <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">-->
+<!--                <h2 class="popover__title">{{disp_str[i]}}</h2>-->
+<!--                </a>-->
+<!--                <div class="popover__content" id="content{{i}}">-->
+<!--                    <iframe src='{{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit' width="220px" height="150px"> </iframe>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--    </li>-->
+<!--    {% endfor %}-->
 
 <!--    <div class="popover__wrapper">-->
 <!--        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">-->
@@ -24,9 +40,7 @@
 <!--        </div>-->
 <!--    </div>-->
 
-    <div class="row" style="display: flex;padding: 20px;"></div>
-        <div class="col-md-9" id="result" padding-bottom="15px"></div>
-</div>
+
 
 <script>
 
@@ -58,8 +72,8 @@
 
       result_section.appendChild(h);
 
-      for(i=0;i<data['num_results'];i++){
-        console.log("Hello");
+      for(i=0;i<data['num_results'];i++)
+      {
         a = document.createElement('a');
         a.setAttribute('href','{{base_url}}/search_slide/'+data['search_course_names'][i]+'/'+data['lnos'][i]+'/'+data['results'][i]);
         a.innerHTML = data['disp_strs'][i]
@@ -70,7 +84,7 @@
       } , true);})
 
         result_section.appendChild(a);
-        console.log(data['lnos'],data['lec_names'][i].replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/ /g, "%20"));
+
         course_name_s =data["search_course_names"][i].replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/ /g, "%20");
         lecture_name_s = data["lec_names"][i].replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/ /g, "%20");
         slide_name_s = data['results'][i].replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/ /g, "%20");
@@ -90,7 +104,6 @@
         b = document.createElement('br');
         result_section.appendChild(b);
         p = document.createElement('p');
-        p.innerHTML = 'test2';
         p.innerHTML = data['snippets'][i];
         result_section.appendChild(p);
       }
@@ -102,13 +115,6 @@
           })
 
 
-</script>
-
-<script>
-  function myFunction() {
-    var input = document.getElementById('drop')
-    console.log(input)
-  }
 </script>
 
 {% endblock %}

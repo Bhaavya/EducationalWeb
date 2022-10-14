@@ -1,0 +1,34 @@
+
+{% extends "base.html" %}
+
+{% block body %}
+<link href="{{base_url}}static/canvas.css" rel="stylesheet" type="text/css" />
+<div class="jumbotron">
+    <div class="row" style="display: flex;padding: 20px;">
+    <h2 class="display-4">Search Results for "{{srch_term}}"</h2>
+    <div class="col-md-9" id="result" padding-bottom="15px">
+        {% for i in range(num_results) %}
+        <ul class="search_slide_element" style="margin-top:-1.5em">
+
+        <div class="popover__wrapper">
+            <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">
+            <h2 class="popover__title" style="font-size: 14px">{{disp_str[i]}}</h2>
+            </a>
+
+            <div class="popover__content" id="content{{i}}">
+                <iframe src='{{pdf_url}}/static/slides/{{related_course_names[i]|replace(" ","%20")}}/{{rel_lec_names[i]|replace(" ", "%20")}}/{{related_slides[i]|replace(" ", "%20")}}#toolbar=0&navpanes=0&scrollbar=0&view=Fit' width="220px" height="150px"> </iframe>
+            </div>
+        </div>
+            <p style="font-size: 21px">{{ snippets[i]|safe }}</p>
+
+       </ul>
+    {% endfor %}
+
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+
+
