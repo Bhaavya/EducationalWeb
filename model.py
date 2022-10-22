@@ -35,7 +35,10 @@ related_dict = {}
 # alpha = 0.34
 # ranker_obj = load_ranker(cfg,mu)
 ovideo_links = json.load(open(os.path.join(static_path,'mappings2.json')))
+textbook_links = json.load(open(os.path.join(static_path,'course_textbook_mappings.json')))
 video_links = {}
+
+
 for v,l in ovideo_links.items():
     video_links[v.split('----')[-1][:-4]] = l
 # with open(cfg, 'r') as fin:
@@ -192,12 +195,14 @@ def get_slide(course_name,slide,lno):
     related_slides_info = get_related_slides(slide)
     #
     same_lecture_slides_info = get_same_lecture_slides(course_name, lno, slide)
+    textbook_link = "#"
     try:
         video_link = video_links[slide.split('---')[1]].strip('\n')
+        textbook_link = textbook_links[course_name]
     except:
         video_link = '#'
 
-    return slide,lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info
+    return slide,lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info,textbook_link
 
 
 def get_same_lecture_slides(course_name, lno, slide_name):
@@ -240,12 +245,15 @@ def get_next_slide(course_name,lno,curr_slide=None):
     same_lecture_slides_info = get_same_lecture_slides(course_name, lno, next_slide)
 
     related_slides_info = get_related_slides(next_slide)
+
+    textbook_link = "#"
     try:
         video_link = video_links[next_slide.split('---')[1]].strip('\n')
+        textbook_link = textbook_links[course_name]
     except Exception as e:
         print(e)
         video_link = '#'
-    return next_slide, lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info    
+    return next_slide, lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info,textbook_link
 
 def get_prev_slide(course_name,lno,curr_slide):
     lectures = get_lectures_from_course(course_name)
