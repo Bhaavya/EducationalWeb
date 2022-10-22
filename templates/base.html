@@ -18,6 +18,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
    <!-- <script> var socket = io.connect('http://timan.cs.illinois.edu/explanation/');</script>  -->
+<script src="{{base_url}}static/filter_courses.js"></script>
 </head>
 <body>
 <div class="container" style="width:87%" >
@@ -38,8 +39,9 @@
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Courses <span class="caret"></span></a>
-         <ul class="dropdown-menu" style="background-color: #E8E8E8; opacity: 0.97;max-height:  100vh; overflow:scroll;">
-           {% for j in range(num_courses) %}
+         <ul class="dropdown-menu" id = "course-list" style="background-color: #E8E8E8; opacity: 0.97;max-height:  100vh; overflow:scroll;">
+            <input type = "text" class="search_by_text" placeholder = "Search Courses.." id = "courseSearchInput" onkeyup = "dropdownSearchbarFilterFunction('courseSearchInput','course-list')">
+             {% for j in range(num_courses) %}
             <li><a href="{{base_url}}/slide/{{course_names[j]}}/0">{{' '.join(course_names[j].split('-')).title()}}</a></li>
           
 

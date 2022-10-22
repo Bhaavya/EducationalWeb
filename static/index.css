@@ -111,3 +111,10 @@
   border: None;
   box-shadow: 0 2px 4px rgba(0,0,0,.11);
 }
+
+.search_by_text {
+  box-sizing: border-box;
+  padding: 0.5em;
+  width: auto;
+  margin: 0.5em;
+}
