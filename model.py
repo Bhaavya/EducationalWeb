@@ -87,9 +87,6 @@ def trim_name(slide_name):
     # return ' '.join(new_name)
 
     return ' '.join(slide_name.replace('.txt','').replace('_','-').replace('---',' ').split('-')).title().replace('.Pdf','').replace(' Slides','')
-        
-    
-    
 
 def get_color(slide_course_name, related_slide_course_name):
     if slide_course_name==related_slide_course_name:
