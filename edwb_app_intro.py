@@ -285,7 +285,7 @@ def srch_term_slides(course_name=None):
     if course_name is None:
         course_name = 'Select Course'
 
-    next_slide_name, lno, lec_name, (num_related_slides, related_slides, disp_str, related_course_names, rel_lnos, rel_lec_names, disp_color,disp_snippet), lec_names, lnos, ses_disp_str, video_link, lec_slides = resolve_slide('CS 225', 3, 'drop-down')
+    next_slide_name, lno, lec_name, (num_related_slides, related_slides, disp_str, related_course_names, rel_lnos, rel_lec_names, disp_color,disp_snippet), lec_names, lnos, ses_disp_str, video_link, lec_slides,textbook_link = resolve_slide('CS 225', 3, 'drop-down')
 
     num_results, results, disp_strs, search_course_names, lnos, snippets, lec_names = model.get_search_results(search_string, course_name)
 
@@ -296,7 +296,7 @@ def srch_term_slides(course_name=None):
 
     vis_urls, vis_strs = get_prev_urls()
 
-    return render_template("searchResults.html",course_names= COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,num_vis=NUM_VIS,vis_strs=vis_strs,srch_term= search_string, rel_lec_names=lec_names,snippets=snippets,rel_lnos=lnos,num_results = num_results, related_slides=results,related_course_names= search_course_names,disp_str=disp_strs,base_url = config.base_url, pdf_url= config.pdf_url)
+    return render_template("searchResults.html",course_names= COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,num_vis=NUM_VIS,vis_strs=vis_strs,srch_term= search_string, rel_lec_names=lec_names,snippets=snippets,rel_lnos=lnos,num_results = num_results, related_slides=results,related_course_names= search_course_names,disp_str=disp_strs,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link= textbook_link)
 
 
 
