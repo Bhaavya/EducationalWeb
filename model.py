@@ -393,12 +393,7 @@ def search_txtbook(query):
         results.append(res_obj)
     return results
 
-def get_search_results(search, course_name):
-    # query = metapy.index.Document()
-    # query.content(search)
-    # print (query,idx,ranker,search)
-    # top_docs = ranker.score(idx, query, num_results=50)
-    # top_docs = [slide_titles[x[0]] for x in top_docs]
+def get_search_results(search, course_name, course_list):
     top_docs = []
     res = es.search(index='csintro_slides',body={"query":{'match':{'content':search}},"highlight": {
     "fields": {"content":{}}}},size=50)
@@ -407,9 +402,6 @@ def get_search_results(search, course_name):
     for d in res['hits']['hits']:
         top_docs.append(d[u'_source'][u'label'])
         top_snippets.append(d['highlight']['content'][0])
-
-
-
     
     results = []
     disp_strs = []
@@ -418,10 +410,11 @@ def get_search_results(search, course_name):
     lnos = []
     top_slide_trim_names = []
     lec_names = []
+    count_results= 0
     for idx,r in enumerate(top_docs):
 
             comp = r.split('---')
-            
+
             # lectures = sort_slide_names(os.listdir(os.path.join(slides_path, comp[0])))
             try:
                 lectures = get_lectures_from_course(comp[0])
@@ -430,23 +423,21 @@ def get_search_results(search, course_name):
             lname = '---'.join(comp[1:-1])
             try:
                 lnos.append(lectures.index(lname))
-            except ValueError: #not an "actual" slide 
-                # print(lectures,lname)
+            except ValueError:
                 continue
-            # print(lnos)
-            if (len(results) < 10 and (course_name == 'Select Course' or course_name == comp[0])):
+
+            if (count_results < 10) and (course_name == 'Select Course' or course_name == comp[0]) and (comp[0] in course_list):
                 disp_strs.append(' '.join(comp[0].replace('_','-').split('-')).title() + ' : ' + trim_name(' '.join(comp[1:])))
                 course_names.append(comp[0])
                 lec_names.append(lname)
-            
+                count_results += 1
                 results.append(r)
                 snippets.append(top_snippets[idx])
-                # snippets.append(get_snippet_sentences(r, search))
-    # print(results) 
+
     for x in range(len(results)):
         results[x] = results[x].replace('##', '---') + '.pdf'
 
-    return len(results),results,disp_strs,course_names,lnos, snippets,lec_names
+    return count_results,results,disp_strs,course_names,lnos, snippets,lec_names
 
 def get_explanation(search_string,top_k=10):
     query = metapy.index.Document()

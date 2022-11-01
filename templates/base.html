@@ -30,11 +30,9 @@
     <ul class="nav navbar-nav">
       <li> <a href="{{base_url}}/">About</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Recently Visited Slides <span class="caret"></span></a>
-         <ul class="dropdown-menu" style="background-color: #E8E8E8; opacity: 0.97">
+         <ul class="dropdown-menu" style="background-color: #E8E8E8; opacity: 0.97;max-height:  100vh; overflow:scroll">
            {% for i in range(num_vis)|reverse %}
               <li><a href={{vis_urls[i]}}>{{vis_strs[i]}}</a></li>
-            
-
             {% endfor %}
         </ul>
       </li>
@@ -43,37 +41,53 @@
             <input type = "text" class="search_by_text" placeholder = "Search Courses.." id = "courseSearchInput" onkeyup = "dropdownSearchbarFilterFunction('courseSearchInput','course-list')">
              {% for j in range(num_courses) %}
             <li><a href="{{base_url}}/slide/{{course_names[j]}}/0">{{' '.join(course_names[j].split('-')).title()}}</a></li>
-          
-
             {% endfor %}
         </ul>
-     
-       
       {% block nav %}
       {% endblock %}
     </ul>
+
     <ul class="nav navbar-nav navbar-right">
        </li>
       <li class="dropdown" ><a href="{{base_url}}/feedback">Feedback</a>
       </li>
     </ul>
 
+    <form action = '{{base_url}}srch_term_slides' method="POST">
+
+
     <ul class="nav navbar-nav navbar-right">
-      <li> <div class="row" style="display: flex;">
+        <div class="row" style="display: flex;">
         <div class="col-md-12">
-<!--            Add course drop down menu here-->
-        <form action = '{{base_url}}srch_term_slides' method="POST">
-        <div class="input-group add-on">
-          <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+            <div class="input-group add-on">
+            <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
               <div class="input-group-btn">
                 <button class="btn btn-default"  id="submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>
               </div>
             </div>
-        </div>
-        </div> </li>
-    </ul>
 
-  </nav>
+        </div>
+        </div>
+      </li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="glyphicon glyphicon-filter"></i><span class="caret"></span></a>
+                <ul class="dropdown-menu" id = "filter-course-list" style="background-color: #E8E8E8; opacity: 0.97;max-height:  100vh; overflow:scroll;">
+                <input type="text" class="search_by_text" placeholder="Filter by.." id="filter-course-input" onkeyup="dropdownSearchbarFilterFunction('filter-course-input','filter-course-list')">
+                    {% for j in range(num_courses) %}
+                <li><a> <input type="checkbox" id="courses" name= "courses" value = "{{course_names[j]}}" checked><label> &nbsp; {{course_names[j]}} </label><br></a></li>
+                {% endfor %}
+                </ul>
+                </li>
+
+      </li>
+    </ul>
+ </form>
+
+</nav>
 
 
       {% block body %}
@@ -84,9 +98,9 @@
 
 
 
-  </body>
-  <script type="text/javascript" src="{{base_url}}static/explain.js"></script>
-  <script>
+</body>
+<script type="text/javascript" src="{{base_url}}static/explain.js"></script>
+<script>
     var search = document.getElementById("srch-term");
     search.addEventListener("keypress", function(event) {
       if (event.key === "Enter") {
@@ -95,5 +109,5 @@
 
       }
     });
-    </script>
+</script>
 </html>

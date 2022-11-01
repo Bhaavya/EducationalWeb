@@ -276,8 +276,8 @@ def explain_query():
 @app.route('/srch_term_slides', methods=['POST'])
 def srch_term_slides(course_name=None):
     search_string = request.form.get("srch-term")
+    filtered_courses = request.form.getlist("courses")
 
-    print("Method not allowed",request)
 
     # This needs to come in request, adding placeholder for now
     # course_name = request.json['course_name']
@@ -287,7 +287,7 @@ def srch_term_slides(course_name=None):
 
     next_slide_name, lno, lec_name, (num_related_slides, related_slides, disp_str, related_course_names, rel_lnos, rel_lec_names, disp_color,disp_snippet), lec_names, lnos, ses_disp_str, video_link, lec_slides,textbook_link = resolve_slide('CS 225', 3, 'drop-down')
 
-    num_results, results, disp_strs, search_course_names, lnos, snippets, lec_names = model.get_search_results(search_string, course_name)
+    num_results, results, disp_strs, search_course_names, lnos, snippets, lec_names = model.get_search_results(search_string, course_name, set(filtered_courses))
 
     global COURSE_NAMES, NUM_COURSES
     if COURSE_NAMES is None and NUM_COURSES is None:
