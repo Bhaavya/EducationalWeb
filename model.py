@@ -133,7 +133,10 @@ def get_snippet(slide_name, related_slide_name):
 def get_course_names():
     course_names = sorted(os.listdir(slides_path))
     # cn_cpy = list(course_names)
-    course_names.remove('.DS_Store')
+    try:
+        course_names.remove('.DS_Store')
+    except:
+        pass
     # for cn in cn_cpy:
         # if cn!='cs-410':
         # course_names.remove(cn)
