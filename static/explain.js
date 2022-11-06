@@ -1,4 +1,4 @@
-var base_url = 'http://localhost:8097/';
+var base_url = $('#base-url').data('val');
 
 var hideExp = function() {
 
