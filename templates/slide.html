@@ -460,7 +460,7 @@ function downloadFile(url,lecture){
 
     filename = lecture;
 
-    a.href = url;
+    a.href = url.replace(" ","%20");
     a.target = "_blank";
 
     if ("download" in a) {
