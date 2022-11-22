@@ -166,8 +166,8 @@ window.addEventListener("DOMContentLoaded", function(event) {
         <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" style="position:inherit;left:50px;" data-toggle="dropdown"><i class="glyphicon glyphicon-download-alt"></i>
         <span class="caret"></span></button>
-        <ul class="dropdown-menu" style="left:50px;">
-          <li><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}/{{lec_name}}.pdf','{{lec_name}}.pdf');" href="#">This Lecture</a></li>
+        <ul class="dropdown-menu" style="left:50px; height:auto">
+          <li ><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}/{{lec_name}}.pdf','{{lec_name}}.pdf');" href="#">This Lecture</a></li>
           <li><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}.zip','{{course_name}}.zip');" href="#">All Lectures in {{course_name}}</a></li>
           {% if textbook_link != '#' %}
             <li><a href="{{textbook_link}}" target="_blank">TextBook for {{course_name}}</a></li>
