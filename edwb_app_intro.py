@@ -14,7 +14,6 @@ config = Config()
 print(config.base_url)
 
 app = Flask(__name__, instance_relative_config=True)
-app.config["REDIS_URL"] = "redis://localhost"
 app.register_blueprint(sse, url_prefix='/streamexplainintro')
 print(__name__,app)
 
