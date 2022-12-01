@@ -1,1 +1,0 @@
-Input: k: the number of clusters, D: a data set containing n objects. Output: A set of k clusters. 
