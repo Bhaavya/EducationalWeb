@@ -141,7 +141,18 @@ def feedback():
     vis_urls,vis_strs = get_prev_urls()
     return render_template("feedback.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
 
+# Alex Wang, begin changes
 
+@app.route('/reportBug')
+def reportBug():
+    global COURSE_NAMES,NUM_COURSES
+    if COURSE_NAMES is None and NUM_COURSES is None:
+        COURSE_NAMES,NUM_COURSES = model.get_course_names()
+        model.load_related_slides()
+    vis_urls,vis_strs = get_prev_urls()
+    return render_template("reportBug.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
+
+# Alex Wang, end changes
 
 
 
