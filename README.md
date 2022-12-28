@@ -155,7 +155,6 @@ Step 3:
 Step 4:
 
     a. To allow for functionality of search bar(s), connect to vpn.illinois.edu
-    
 
 ### Note on data/model-related files:
 
