@@ -126,26 +126,37 @@ Step 4: Install wsl and ubuntu:
     
     c. Run: wsl --install -d Ubuntu
 
-Step 5: In the Ubuntu terminal, run the program on the local machine
+Running EduWeb on local machine:
 
-    a. cd into /mnt/c/Users
+Step 1:
+
+    a. In a new Ubuntu terminal, cd into pdf.js/build/generic/web
     
-    b. From there, cd into wherever you saved the web directory
+    b. Run the command: gulp server
+        b.1. gulp ensures that the lecture slides appear on the website
     
-    c. Run the following command: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
-    If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
-    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time.
+Step 2:
 
-After installation, to start up project:
-
-    1. Run in Ubuntu terminal: sudo service redis-server start 
+    1. In a separate Ubuntu terminal, run: sudo service redis-server start 
     
     2. In the same Ubuntu terminal, cd into web directory (usually a path beginning with /mnt/c/Users). Then run: redis-server --port 8097
         2.a. This starts up redis
+
+Step 3: 
+
+    a. In a separate Ubuntu terminal, cd into wherever you saved the web directory (usually a path beginning with /mnt/c/Users)
     
-    3. In a separate Ubuntu terminal, cd into /pdf.js/build/generic/web. Then run: gulp server
-        3.a. This starts up gulp
+    b. Kill redis (ctrl c in the Ubuntu terminal where you started redis)
+    
+    c. Run the following command in the separate Ubuntu terminal: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
+    If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
+    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time.
+    
+Step 4:
 
-### Here are instructions for data/model-related files:
+    a. To allow for functionality of search bar(s), connect to vpn.illinois.edu
+    
 
-Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). We go over where to download these files from and which directory to place them in. 
+### Note on data/model-related files:
+
+Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). You may have to download these files separately (please contact one of the owners for more details).
