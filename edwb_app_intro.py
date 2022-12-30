@@ -186,21 +186,33 @@ def slide(course_name,lno):
     except:
         return render_template("notFound.html")
 
-
-@app.route('/related_slide/<course_name>/<lno>/<slide_name>')
-def related_slide(course_name,slide_name,lno):
+@app.route('/get_search_slide/<course_name>/<lno>/<slide_name>/<idx>')
+def get_search_slide(course_name,slide_name,lno, idx):
     global NUM_VIS
     next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides, textbook_link =resolve_slide(course_name,lno,'related',slide_name=slide_name)
     vis_urls,vis_strs = get_prev_urls()
 
-
+    log_helper('get_searched_slide_' + str(idx), "//get_search_slide/", slide_name)
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
 
     return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link=textbook_link)
 
 
+@app.route('/related_slide/<course_name>/<lno>/<slide_name>/<idx>')
+def related_slide(course_name,slide_name,lno, idx):
+    global NUM_VIS
+    next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides, textbook_link =resolve_slide(course_name,lno,'related',slide_name=slide_name)
+    vis_urls,vis_strs = get_prev_urls()
 
+    log_helper('related_slide' + "_" + idx , "//related_slide/", slide_name)
+    if next_slide_name is not None:
+        set_sess(request.url,ses_disp_str)
+
+    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link=textbook_link)
+
+
+"""
 @app.route('/next_slide/<course_name>/<lno>/<curr_slide>')
 def next_slide(course_name,lno,curr_slide):
     global NUM_VIS
@@ -234,7 +246,6 @@ def prev_slide(course_name,lno,curr_slide):
     else:
         return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url=config.base_url, pdf_url=config.pdf_url)
 
-
 @app.route('/end')
 def end():
     global COURSE_NAMES,NUM_COURSES,NUM_VIS
@@ -242,6 +253,7 @@ def end():
         COURSE_NAMES,NUM_COURSES = model.get_course_names()
     vis_urls,vis_strs = get_prev_urls()
     return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
+"""
 
 @app.route('/explain_query', methods=['POST','OPTIONS'])
 @crossdomain(origin='*')
@@ -253,6 +265,7 @@ def explain_query():
     '''
     query = request.json['searchString']
     context = request.json['slidesContext']
+    log_helper(query + '###EXPLAIN', request.json['route'])
 
     if ('CS%20410') in request.json['url']:
         is_410 = True
@@ -272,12 +285,11 @@ def explain_query():
 
     return response
 
-
 @app.route('/srch_term_slides', methods=['POST'])
 def srch_term_slides(course_name=None):
     search_string = request.form.get("srch-term")
     filtered_courses = request.form.getlist("courses")
-
+    log_helper('search', "//srch_term_slides/", search_string)
 
     # This needs to come in request, adding placeholder for now
     # course_name = request.json['course_name']
@@ -300,24 +312,7 @@ def srch_term_slides(course_name=None):
 
 
 
-# Need to modify this method to fit the course filtering, will ask Sarn to share code
-
-# @app.route('/searchPage/<srch_term>/<course_name>')
-# def filter(srch_term, course_name):
-#     app.logger.warning(course_name)
-#     app.logger.warning(srch_term)
-#     global COURSE_NAMES,NUM_COURSES
-#
-#     if COURSE_NAMES is None and NUM_COURSES is None:
-#         COURSE_NAMES,NUM_COURSES = course_name,1
-#         model.load_related_slides()
-#
-#     next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides = resolve_slide('CS 225',3,'drop-down')
-#     vis_urls,vis_strs = get_prev_urls()
-#
-#     return render_template("searchResults.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides, srch_term=srch_term,base_url = config.base_url, pdf_url= config.pdf_url)
-
-def log_helper(action,route):
+def log_helper(action,route, middle=" "):
     if action is not None and route is not None:
         route_ele = route.split('/')
         if IS_LOCAL_SRV:
@@ -341,14 +336,15 @@ def log_helper(action,route):
             resolve_slide(route_ele[beg],route_ele[beg+1],'search_results',slide_name=route_ele[beg+2].replace('%20',' '),log=True,action=action)
         else:
 
-            model.log(request.remote_addr,'',datetime.datetime.now(),action)
+            model.log(request.remote_addr,middle,datetime.datetime.now(),action)
 
 @app.route('/log_action',methods=['GET', 'POST'])
 def log_action():
     request_dict = json.loads(request.data)
     action = request_dict['action']
     route = request_dict['route']
-    log_helper(action,route)
+    middle = request_dict['middle']
+    log_helper(action,route, middle=middle)
     resp = jsonify(success=True)
 
     return resp
