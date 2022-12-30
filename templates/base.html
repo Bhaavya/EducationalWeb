@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% set base_url = 'http://127.0.0.1:8097/' %}
+  {% set pdf_url = 'http://localhost:8889' %}
 <meta id="base-url" data-val="{{base_url}}">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,8 +50,8 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-       </li>
-      <li class="dropdown" ><a href="{{base_url}}/feedback">Feedback</a>
+       
+      <li class="dropdown"><a href="http://127.0.0.1:8097//feedback" style="padding-left: 40px;">Feedback</a>
       </li>
     </ul>
 
@@ -60,7 +62,12 @@
         <div class="row" style="display: flex;">
         <div class="col-md-12">
             <div class="input-group add-on">
-            <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+              <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" style="
+              width: 280px;
+              border-top-width: 2.5px;
+              border-bottom-width: 2.5px;
+              border-left-width: 2.5px;
+          ">
               <div class="input-group-btn">
                 <button class="btn btn-default"  id="submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>
               </div>
@@ -77,9 +84,12 @@
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="glyphicon glyphicon-filter"></i><span class="caret"></span></a>
                 <ul class="dropdown-menu" id = "filter-course-list" style="background-color: #E8E8E8; opacity: 0.97;max-height:  100vh; overflow:scroll;">
                 <input type="text" class="search_by_text" placeholder="Filter by.." id="filter-course-input" onkeyup="dropdownSearchbarFilterFunction('filter-course-input','filter-course-list')">
+                <li><a > <input type="checkbox" name= "select-all"  id="select-all" checked><label> &nbsp; Select All </label><br></a></li>
                     {% for j in range(num_courses) %}
                 <li><a> <input type="checkbox" id="courses" name= "courses" value = "{{course_names[j]}}" checked><label> &nbsp; {{course_names[j]}} </label><br></a></li>
                 {% endfor %}
+            
+
                 </ul>
                 </li>
 
@@ -101,6 +111,20 @@
 </body>
 <script type="text/javascript" src="{{base_url}}static/explain.js"></script>
 <script>
+  document.addEventListener("keydown", e => {
+    console.log(e);
+    if (e.key === "ArrowRight") {
+      document.getElementById("next").click();
+    }
+    
+    });
+    document.addEventListener("keydown", e => {
+    console.log(e);
+    if (e.key === "ArrowLeft") {
+      document.getElementById("prev").click();
+    }
+    
+    });
     var search = document.getElementById("srch-term");
     search.addEventListener("keypress", function(event) {
       if (event.key === "Enter") {
@@ -109,5 +133,18 @@
 
       }
     });
+
+    $('#select-all').click(function(event) {   
+    if(this.checked) {
+        // Iterate each checkbox
+        $(':checkbox').each(function() {
+            this.checked = true;                        
+        });
+    } else {
+        $(':checkbox').each(function() {
+            this.checked = false;                       
+        });
+    }
+}); 
 </script>
 </html>
