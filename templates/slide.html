@@ -17,12 +17,16 @@
 
 window.addEventListener( "pageshow", function ( event ) {
 
+    course = "{{course_name}}";
+    lec = "{{lec_name}}";
+    new_slide_name = course.concat("---").concat(lec).concat("---slide");
     var historyTraversal = event.persisted ||
                          ( typeof window.performance != "undefined" &&
                               window.performance.navigation.type === 2 );
     if ( historyTraversal ) {
         logdata = JSON.stringify({
         action: 'cache_open',
+        middle: new_slide_name,
         route: window.location.pathname
         });
         navigator.sendBeacon('{{base_url}}log_action', logdata);
@@ -30,6 +34,7 @@ window.addEventListener( "pageshow", function ( event ) {
     else{
         logdata = JSON.stringify({
         action: 'open',
+        middle: new_slide_name,
         route: window.location.pathname
         });
         navigator.sendBeacon('{{base_url}}log_action', logdata);
@@ -39,6 +44,7 @@ window.addEventListener( "pageshow", function ( event ) {
     window.addEventListener("beforeunload", function(event) {
         logdata = JSON.stringify({
         action: 'close',
+        middle: " ",
         route: window.location.pathname
     });
 
@@ -60,10 +66,14 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
 }
 
 function handleVisibilityChange() {
-  console.log(document['hidden'])
+  console.log(document['hidden']);
+  course = "{{course_name}}";
+    lec = "{{lec_name}}";
+    new_slide_name = course.concat("---").concat(lec).concat("---slide").concat((pageNum-1).toString());
   if (document[hidden]) {
       logdata = JSON.stringify({
       action: 'hide',
+      middle: new_slide_name,
       route: window.location.pathname
     });
     navigator.sendBeacon('{{base_url}}log_action', logdata);
@@ -71,6 +81,7 @@ function handleVisibilityChange() {
    else {
       logdata = JSON.stringify({
       action: 'unhide',
+      middle: new_slide_name,
       route: window.location.pathname
     });
     navigator.sendBeacon('{{base_url}}log_action', logdata);
@@ -86,7 +97,7 @@ if (typeof document.addEventListener === "undefined" || hidden === undefined) {
   }
 
 // Restore logging for related links
-
+/*
 window.addEventListener("DOMContentLoaded", function(event) {
     var relLinks = document.getElementsByClassName("related");
     var relLog = function(idx) {
@@ -96,7 +107,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
     });
     navigator.sendBeacon('{{base_url}}log_action', logdata);
 };
-
+*/
 
 <!--for (var i = 0; i < relLinks.length; i++) {-->
 <!--    ['click','contextmenu'].forEach(function(e){relLinks[i].addEventListener(e, function(){-->
@@ -198,7 +209,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
     <li class="related_slide_element">
 
    <div class="popover__wrapper">
-        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">
+        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}/{{i}}" id="{{i}}">
         <h2 class="popover__title">{{disp_str[i]}}</h2>
         </a>
         <div class="popover__content" id="content{{i}}">
@@ -420,11 +431,21 @@ function changedSlide(pageNum, oldNum){
  function onPrevPage() {
    // empty previous child elements of textLayer
    $("#textLayerid").empty();
-
+   course = "{{course_name}}";
+    lec = "{{lec_name}}";
    if (pageNum <= 1) {
      return;
    }
+   
+    
    pageNum--;
+   new_slide_name = course.concat("---").concat(lec).concat("---slide").concat((pageNum-1).toString());
+   logdata = JSON.stringify({
+        action: 'prev',
+        middle: new_slide_name, 
+        route: window.location.pathname
+    });
+    navigator.sendBeacon('{{base_url}}log_action', logdata);
    queueRenderPage(pageNum);
    changedSlide(pageNum, pageNum+1);
  }
@@ -432,11 +453,23 @@ function changedSlide(pageNum, oldNum){
 
  function onNextPage() {
    // if current pageNum requested is not valid, then return
-   // the following two lines is not required as the next will be disabled
+   // the following two lines is not required as the next will be disabled\
+    course = "{{course_name}}";
+    lec = "{{lec_name}}";
+    new_slide_name = course.concat("---").concat(lec).concat("---slide").concat((pageNum).toString());
+    console.log(new_slide_name);
+    logydata = JSON.stringify({
+        // x: '2',
+        action: 'next',
+        middle: new_slide_name, 
+        route: window.location.pathname
+    });
+    navigator.sendBeacon('{{base_url}}log_action', logydata);
+
    if (pageNum >= pdfDoc.numPages) {
      return;
    }
-
+   
    // empty previous child elements of textLayer
    $("#textLayerid").empty();
    pageNum++;
@@ -444,7 +477,6 @@ function changedSlide(pageNum, oldNum){
    changedSlide(pageNum,pageNum-1);
  }
  document.getElementById('next').addEventListener('click', onNextPage);
-
 
  pdfjsLib.getDocument({
   'url': url,
@@ -474,5 +506,7 @@ function downloadFile(url,lecture){
 </script>
 
 {% endblock %}
+
+
 
 
