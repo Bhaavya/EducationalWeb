@@ -21,8 +21,8 @@ related_slides_path = os.path.join(main_path,'pdf.js/static/ranking.csv')
 # ss_corpus_path = os.path.join(static_path,'tf_idf_outputs','ss_corpus.p')
 # paras_folder = os.path.join(main_path,'para_idx_data')
 # cfg = os.path.join(main_path,'para_idx_data','config.toml')
-word2vec_path = os.path.join(static_path,'word2vec_model')
-word2vec = pickle.load(open(word2vec_path, 'rb'))
+#word2vec_path = os.path.join(static_path,'word2vec_model')
+#word2vec = pickle.load(open(word2vec_path, 'rb'))
 related_dict = {}
 # slide_names = open(os.path.join(static_path,'slide_names2.txt'), 'r').readlines()
 # slide_names = [name.strip() for name in slide_names]
@@ -541,6 +541,7 @@ def get_context_vector(context, query):
         except KeyError:
             continue
     return np.mean(vecs, axis=0) if len(vecs) > 0 else query_vec
+
 
 
 
