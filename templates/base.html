@@ -5,7 +5,7 @@
 <head>
   {% set base_url = 'http://127.0.0.1:8097/' %}
   {% set pdf_url = 'http://localhost:8889' %}
-<meta id="base-url" data-val="{{base_url}}">
+<!--<meta id="base-url" data-val="{{base_url}}"-->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="{{base_url}}static/jquery-3.4.1.min.js"></script>
@@ -16,11 +16,11 @@
 <link rel= "stylesheet" type= "text/css" href= "{{base_url}}static/style.css">
 <link rel= "stylesheet" type= "text/css" href= "{{base_url}}static/index.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
-   <!-- <script> var socket = io.connect('http://timan.cs.illinois.edu/explanation/');</script>  -->
-<script src="{{base_url}}static/filter_courses.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"> </script>
 </head>
 <body>
 <div class="container" style="width:87%" >
@@ -66,8 +66,7 @@
               width: 280px;
               border-top-width: 2.5px;
               border-bottom-width: 2.5px;
-              border-left-width: 2.5px;
-          ">
+              border-left-width: 2.5px;">
               <div class="input-group-btn">
                 <button class="btn btn-default"  id="submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>
               </div>
@@ -80,16 +79,13 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="glyphicon glyphicon-filter"></i><span class="caret"></span></a>
+                <li class="button"><a onclick="myFunction()" class="dropdown-toggle" type="button" href="#" data-toggle="tooltip" data-placement="bottom" title="Select courses from dropdown"> <i class="glyphicon glyphicon-filter"></i><span class="caret"></span></a>
                 <ul class="dropdown-menu" id = "filter-course-list" style="background-color: #E8E8E8; opacity: 0.97;max-height:  100vh; overflow:scroll;">
                 <input type="text" class="search_by_text" placeholder="Filter by.." id="filter-course-input" onkeyup="dropdownSearchbarFilterFunction('filter-course-input','filter-course-list')">
                 <li><a > <input type="checkbox" name= "select-all"  id="select-all" checked><label> &nbsp; Select All </label><br></a></li>
                     {% for j in range(num_courses) %}
                 <li><a> <input type="checkbox" id="courses" name= "courses" value = "{{course_names[j]}}" checked><label> &nbsp; {{course_names[j]}} </label><br></a></li>
                 {% endfor %}
-            
-
                 </ul>
                 </li>
 
@@ -110,6 +106,10 @@
 
 </body>
 <script type="text/javascript" src="{{base_url}}static/explain.js"></script>
+<script> $(document).ready(function() {
+  $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+});
+</script>
 <script>
   document.addEventListener("keydown", e => {
     console.log(e);
@@ -146,6 +146,8 @@
         });
     }
 }); 
+function myFunction() {
+      document.getElementById("filter-course-list").classList.toggle("show");
+}
 </script>
 </html>
-
