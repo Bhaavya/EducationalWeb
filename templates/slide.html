@@ -19,7 +19,7 @@ window.addEventListener( "pageshow", function ( event ) {
 
     course = "{{course_name}}";
     lec = "{{lec_name}}";
-    new_slide_name = course.concat("---").concat(lec).concat("---slide");
+    new_slide_name = course.concat("---").concat(lec);
     var historyTraversal = event.persisted ||
                          ( typeof window.performance != "undefined" &&
                               window.performance.navigation.type === 2 );
@@ -44,7 +44,7 @@ window.addEventListener( "pageshow", function ( event ) {
     window.addEventListener("beforeunload", function(event) {
         logdata = JSON.stringify({
         action: 'close',
-        middle: " ",
+        middle: new_slide_name,
         route: window.location.pathname
     });
 
@@ -173,7 +173,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 </div>
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
     <div class="grid-container" style="text-align:left">
-    <button type="button" class="btn btn-primary" id="explain_button" style="position:absolute; top:auto; z-index:1200;" > <i class="glyphicon glyphicon-book"></i> </button>
+    <button type="button" class="btn btn-primary" id="explain_button" style="position:absolute; top:auto; z-index:1200;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Select text from powerpoint"> <i class="glyphicon glyphicon-book"></i> </button>
         <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" style="position:inherit;left:50px;" data-toggle="dropdown"><i class="glyphicon glyphicon-download-alt"></i>
         <span class="caret"></span></button>
@@ -506,6 +506,8 @@ function downloadFile(url,lecture){
 </script>
 
 {% endblock %}
+
+
 
 
 
