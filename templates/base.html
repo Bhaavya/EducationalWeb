@@ -68,7 +68,7 @@
               border-bottom-width: 2.5px;
               border-left-width: 2.5px;">
               <div class="input-group-btn">
-                <button class="btn btn-default"  id="submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <button class="btn btn-default"  id="submit" type="submit"data-toggle="tooltip" data-placement="bottom" title="Search slides"><i class="glyphicon glyphicon-search"></i></button>
               </div>
             </div>
 
@@ -79,7 +79,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-                <li class="button"><a onclick="myFunction()" class="dropdown-toggle" type="button" href="#" data-toggle="tooltip" data-placement="bottom" title="Select courses from dropdown"> <i class="glyphicon glyphicon-filter"></i><span class="caret"></span></a>
+                <li class="button"><a onclick="myFunction()" class="dropdown-toggle" type="button" href="#" data-toggle="tooltip" data-placement="bottom" title="Restrict your searches to the selected courses"> <i class="glyphicon glyphicon-filter"></i><span class="caret"></span></a>
                 <ul class="dropdown-menu" id = "filter-course-list" style="background-color: #E8E8E8; opacity: 0.97;max-height:  100vh; overflow:scroll;">
                 <input type="text" class="search_by_text" placeholder="Filter by.." id="filter-course-input" onkeyup="dropdownSearchbarFilterFunction('filter-course-input','filter-course-list')">
                 <li><a > <input type="checkbox" name= "select-all"  id="select-all" checked><label> &nbsp; Select All </label><br></a></li>
@@ -151,3 +151,4 @@ function myFunction() {
 }
 </script>
 </html>
+
