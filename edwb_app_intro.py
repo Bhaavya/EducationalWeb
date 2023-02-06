@@ -1,3 +1,4 @@
+
 import sys
 import os
 import json 
@@ -144,12 +145,12 @@ def feedback():
 
 
 
-
 def resolve_slide(course_name,lno,type_,slide_name=None,log=False,action=None):
     global COURSE_NAMES,NUM_COURSES
     if COURSE_NAMES is None and NUM_COURSES is None:
         COURSE_NAMES,NUM_COURSES = model.get_course_names()
     if type_ =='drop-down':
+        # print("Hi")
         ret = model.get_next_slide(course_name,lno)
     elif type_ == 'related' or type_=='search_results':
         ret = model.get_slide(course_name,slide_name,lno)
@@ -171,20 +172,7 @@ def get_related_slides(course_name, slide_name, lno):
     response = jsonify({'related_slides': related_slides, 'num_related_slides':num_related_slides,'related_course_names':related_course_names,'rel_lnos':rel_lnos,'rel_lec_names':rel_lec_names,'disp_color':disp_color,'disp_str':disp_str})
     return response
 
-@app.route('/slide/<course_name>/<lno>')
-def slide(course_name,lno):
-    try:
-        global NUM_VIS
-        next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides, textbook_link = resolve_slide(course_name,lno,'drop-down')
-        vis_urls,vis_strs = get_prev_urls()
-
-
-        if next_slide_name is not None:
-            set_sess(request.url,ses_disp_str)
-
-        return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link= textbook_link)
-    except:
-        return render_template("notFound.html")
+ 
 
 @app.route('/get_search_slide/<course_name>/<lno>/<slide_name>/<idx>')
 def get_search_slide(course_name,slide_name,lno, idx):
@@ -211,49 +199,18 @@ def related_slide(course_name,slide_name,lno, idx):
 
     return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link=textbook_link)
 
-
-"""
-@app.route('/next_slide/<course_name>/<lno>/<curr_slide>')
-def next_slide(course_name,lno,curr_slide):
+@app.route('/slide/<course_name>/<lno>')
+def slide(course_name,lno):
     global NUM_VIS
-    next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides = resolve_slide(course_name,lno,'next',slide_name=curr_slide)
-
+    next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides, textbook_link  = resolve_slide(course_name,lno,'drop-down')
     vis_urls,vis_strs = get_prev_urls()
 
 
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
 
+    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url)
 
-    if next_slide_name is not None:
-        return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url )
-    else:
-        return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
-
-@app.route('/prev_slide/<course_name>/<lno>/<curr_slide>')
-def prev_slide(course_name,lno,curr_slide):
-    global NUM_VIS
-    prev_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides=resolve_slide(course_name,lno,'prev',slide_name=curr_slide)
-
-    vis_urls,vis_strs = get_prev_urls()
-
-    if prev_slide_name is not None:
-        set_sess(request.url,ses_disp_str)
-
-
-    if prev_slide_name is not None:
-        return render_template("slide.html",slide_name=prev_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url)
-    else:
-        return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url=config.base_url, pdf_url=config.pdf_url)
-
-@app.route('/end')
-def end():
-    global COURSE_NAMES,NUM_COURSES,NUM_VIS
-    if COURSE_NAMES is None and NUM_COURSES is None:
-        COURSE_NAMES,NUM_COURSES = model.get_course_names()
-    vis_urls,vis_strs = get_prev_urls()
-    return render_template("end.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
-"""
 
 @app.route('/explain_query', methods=['POST','OPTIONS'])
 @crossdomain(origin='*')
@@ -352,3 +309,6 @@ def log_action():
 if __name__ == '__main__':
     # socketio.run(app,host='localhost',port=8097)
     app.run(host=config.app_host,port=config.app_port)
+
+
+
