@@ -174,9 +174,9 @@ window.addEventListener("DOMContentLoaded", function(event) {
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
     <div class="grid-container" style="text-align:left">
     <button type="button" class="btn btn-primary" id="explain_button" style="position:absolute; top:auto; z-index:1200;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Find explanations on google or textbook. To find explanations of any text on the slide, please highlight it (click and hold, then drag your mouse) and then click on the explain button"> <i class="glyphicon glyphicon-book"></i> </button>
-        <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle"  onclick="downDropFunction()" type="button" style="position:inherit;left:50px;"  data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Download Resources"><i class="glyphicon glyphicon-download-alt"></i>
-        
+    <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle"  onclick="downDropFunction()" type="button" style="position:inherit;left:50px;"  data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Download Resources"><i class="glyphicon glyphicon-download-alt"></i>
+    
           <span class="caret"></span></button>
         <ul class="dropdown-menu" id="download_button" style="left:50px; height:auto">
           <li ><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}/{{lec_name}}.pdf','{{lec_name}}.pdf');" href="#">This Lecture</a></li>
@@ -509,7 +509,6 @@ function downloadFile(url,lecture){
 </script>
 
 {% endblock %}
-
 
 
 
