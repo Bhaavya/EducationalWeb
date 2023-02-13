@@ -179,7 +179,7 @@ def get_search_slide(course_name,slide_name,lno, idx):
     global NUM_VIS
     next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides, textbook_link =resolve_slide(course_name,lno,'related',slide_name=slide_name)
     vis_urls,vis_strs = get_prev_urls()
-
+    # 1-indexed idx
     log_helper('get_searched_slide_' + str(idx), "//get_search_slide/", slide_name)
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
@@ -192,8 +192,8 @@ def related_slide(course_name,slide_name,lno, idx):
     global NUM_VIS
     next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides, textbook_link =resolve_slide(course_name,lno,'related',slide_name=slide_name)
     vis_urls,vis_strs = get_prev_urls()
-
-    log_helper('related_slide' + "_" + idx , "//related_slide/", slide_name)
+    #1 indexed idx
+    log_helper('related_slide' + "_" + str(idx) , "//related_slide/", slide_name)
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
 
@@ -211,7 +211,7 @@ def slide(course_name,lno):
 
     return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url)
 
-
+"""
 @app.route('/explain_query', methods=['POST','OPTIONS'])
 @crossdomain(origin='*')
 def explain_query():
@@ -222,6 +222,7 @@ def explain_query():
     '''
     query = request.json['searchString']
     context = request.json['slidesContext']
+    # print("Hooray! explain \n")
     log_helper(query + '###EXPLAIN', request.json['route'])
 
     if ('CS%20410') in request.json['url']:
@@ -241,7 +242,7 @@ def explain_query():
         response = jsonify({"message": "google-search-result","rankedResult":ranked_result})
 
     return response
-
+"""
 @app.route('/srch_term_slides', methods=['POST'])
 def srch_term_slides(course_name=None):
     search_string = request.form.get("srch-term")
@@ -266,7 +267,6 @@ def srch_term_slides(course_name=None):
     vis_urls, vis_strs = get_prev_urls()
 
     return render_template("searchResults.html",course_names= COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,num_vis=NUM_VIS,vis_strs=vis_strs,srch_term= search_string, rel_lec_names=lec_names,snippets=snippets,rel_lnos=lnos,num_results = num_results, related_slides=results,related_course_names= search_course_names,disp_str=disp_strs,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link= textbook_link)
-
 
 
 def log_helper(action,route, middle=" "):
@@ -309,6 +309,7 @@ def log_action():
 if __name__ == '__main__':
     # socketio.run(app,host='localhost',port=8097)
     app.run(host=config.app_host,port=config.app_port)
+
 
 
 
