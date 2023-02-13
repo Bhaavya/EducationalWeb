@@ -106,11 +106,13 @@
 
 </body>
 <script type="text/javascript" src="{{base_url}}static/explain.js"></script>
+<script type="text/javascript" src="{{base_url}}static/filter_courses.js"></script>
 <script> $(document).ready(function() {
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 });
 </script>
 <script>
+  // Click right or left to go next or previous
   document.addEventListener("keydown", e => {
     console.log(e);
     if (e.key === "ArrowRight") {
@@ -133,7 +135,7 @@
 
       }
     });
-
+    // Select all function
     $('#select-all').click(function(event) {   
     if(this.checked) {
         // Iterate each checkbox
@@ -146,8 +148,11 @@
         });
     }
 }); 
+
+//To show the filter dropdown list
 function myFunction() {
-      document.getElementById("filter-course-list").classList.toggle("show");
-}
+    document.getElementById("filter-course-list").classList.toggle("show");
+  }
 </script>
+
 </html>
