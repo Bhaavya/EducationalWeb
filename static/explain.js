@@ -1,4 +1,6 @@
+//used in base.html
 var base_url = $('#base-url').data('val');
+
 
 var hideExp = function() {
 
@@ -21,6 +23,7 @@ var hideExp = function() {
 };
 
 // Function expression for explanation container with no query selected
+// Used by hideExp
 var toggleNoQuery = function(isVisible) {
 	var displayMode = isVisible ? "block" : "none";
 	$("#no-explain-text").css("display", displayMode);
@@ -29,6 +32,7 @@ var toggleNoQuery = function(isVisible) {
 };
 
 // Function expression for explanation container with 0 results
+// Used by hideExp
 var toggleNoResultsFound = function(isVisible) {
 	var displayMode = isVisible ? "block" : "none";
 	$("#no-explain-results").css("display", displayMode);
@@ -37,6 +41,7 @@ var toggleNoResultsFound = function(isVisible) {
 };
 
 // Function expression for explanation container with results
+// Used by hideExp to toggle the explanation 
 var toggleExplanation = function(isVisible) {
 	var displayMode = isVisible ? "block" : "none";
 	$("#docs-div").css("display", displayMode);
@@ -46,6 +51,7 @@ var toggleExplanation = function(isVisible) {
 	$("#google-search-div").css("display", "none"); // Richa: changed from none to displaymode
 };
 
+// Function expression used for looking up in google
 var googleResultItemHTML = (result) => {
     item = document.createElement("li");
     item.innerHTML =`
@@ -55,7 +61,7 @@ var googleResultItemHTML = (result) => {
     `
     return item;
 }
-
+//Used by various functions in explain.js
 var googleResultsListHMTL = (results) => {
     searchList = document.createElement("ul");
     searchList.className = "scrollable-search-list";
@@ -64,7 +70,7 @@ var googleResultsListHMTL = (results) => {
     }
     return searchList;
 }
-
+// Used by explain_button function
 var displaySearch = function(results) {
 	resultHTML = googleResultsListHMTL(results);
 	$("#google-search-div").css("display", "block"); // not needed here
@@ -76,6 +82,7 @@ var displaySearch = function(results) {
 	searchDisplay.appendChild(resultHTML);
 };
 
+// May not be used-> Have to check, looks like used to log helpful button
 var logExp = function(isHelpful, expId, expTerm) {
 	logdata = JSON.stringify({
 		action: isHelpful + '###EXP_###' + expTerm + '###' + expId,
@@ -85,11 +92,13 @@ var logExp = function(isHelpful, expId, expTerm) {
 
 };
 
+//explain button click steps once it is clicked
 $(function() {
 	$('#explain_button').click(function() {
 
 		// initialize query of length 0
 		var query = "";
+		
 
 		// Initialize explanation container visibility
 		toggleNoResultsFound(false);
@@ -99,7 +108,8 @@ $(function() {
 		// get query from window selection
 		if (window.getSelection) {
 			query = window.getSelection().toString();
-		}
+		} 
+		console.log("Turkey");
 
 		// Update the CSS properties of explanation container on popup
 		$("#explanation-container").css("z-index", "1200");
@@ -175,3 +185,5 @@ $(function() {
 
 	});
 });
+
+
