@@ -21,8 +21,8 @@ related_slides_path = os.path.join(main_path,'pdf.js/static/ranking.csv')
 # ss_corpus_path = os.path.join(static_path,'tf_idf_outputs','ss_corpus.p')
 # paras_folder = os.path.join(main_path,'para_idx_data')
 # cfg = os.path.join(main_path,'para_idx_data','config.toml')
-#word2vec_path = os.path.join(static_path,'word2vec_model')
-#word2vec = pickle.load(open(word2vec_path, 'rb'))
+word2vec_path = os.path.join(static_path,'word2vec_model')
+word2vec = pickle.load(open(word2vec_path, 'rb'))
 related_dict = {}
 # slide_names = open(os.path.join(static_path,'slide_names2.txt'), 'r').readlines()
 # slide_names = [name.strip() for name in slide_names]
@@ -101,7 +101,7 @@ def get_color(slide_course_name, related_slide_course_name):
     else:
         return "brown"
 
-#Commented Out -> Couldn'6 find use
+#Commented Out -> Couldn't find uncommented call to this function
 """
 def get_snippet(slide_name, related_slide_name):
     no_keywords = False
@@ -399,8 +399,9 @@ def format_string(matchobj):
     
     return '<span style="background-color: #bddcf5">'+matchobj.group(0)+'</span>'
 """
-#Used by explain query
-"""
+
+#Used by explain query to get the explanation for texts from CS 410 lectures
+
 def search_txtbook(query):
     res = es.search(index='cs410_paras',body={"query":{'match':{'content':query}},"highlight": {
     "fields": {"content":{}}}},size=10)
@@ -415,7 +416,7 @@ def search_txtbook(query):
         res_obj['displayLink'] = '' 
         results.append(res_obj)
     return results
-"""
+
 
 #Used by srch_term_slides
 def get_search_results(search, course_name, course_list):
@@ -493,7 +494,7 @@ def get_vector_similarity(vA, vB):
     return np.dot(vA, vB) / (np.sqrt(np.dot(vA,vA)) * np.sqrt(np.dot(vB,vB)))
 
 #Used by explain query
-"""
+
 def rank_google_result(raw_results, context, query):
     # print([x['title'] for x in raw_results])
     documents = list(map(lambda x: " ".join([x['title'], x['snippet']]), raw_results))
@@ -508,22 +509,22 @@ def rank_google_result(raw_results, context, query):
         similarities = list(map(lambda x: get_vector_similarity(x, context_vector), documents_vectors))
     keyword_counts = list(map(lambda x: count_keyword_match(x['title'], query), raw_results))
     return get_ranking_index(similarities, keyword_counts)
-"""
-"""
+
+
 #Used by count_keyword_match
 def split_to_words(sent):
     return list(filter(lambda x: len(x) > 3, re.findall(r"[\w']+", sent)))
-"""
+
 #Used by count_keyword_match
-"""
+
 def get_vec_from_word(w):
     try:
         return word2vec[w]
     except KeyError:
         return None
-"""
+
 #Used by rank_google_result
-"""
+
 def count_keyword_match(title, query):
     title_words = split_to_words(title.lower()) 
     query_words = split_to_words(query.lower()) 
@@ -540,20 +541,20 @@ def count_keyword_match(title, query):
                 count += 1
     # print(title, count)
     return count / len(title_words)
-"""
+
 
 
 #Used in model.py by rank_google_result
-"""
+
 def get_ranking_index(similarities, keyword_counts):
     # is this important to print?
     # for i in range(len(similarities)):
     #     print(similarities[i], keyword_counts[i])
     scores = [similarities[i] + keyword_counts[i] for i in range(len(similarities))]
     return np.argsort(scores)[::-1]
-"""
+
 #Used in model.py by get_context_vector
-"""
+
 def get_sent_vector(sent):
     accus = []
     count = 0
@@ -564,10 +565,10 @@ def get_sent_vector(sent):
         except KeyError:
             continue
     return np.mean(accus, axis=0) if len(accus) else None
-"""
+
 
 #Used in model.py rank_google_result 
-"""
+
 def get_context_vector(context, query):
     query_vec = get_sent_vector(split_to_words(query))
     if query_vec is None:
@@ -584,6 +585,7 @@ def get_context_vector(context, query):
         except KeyError:
             continue
     return np.mean(vecs, axis=0) if len(vecs) > 0 else query_vec
-"""
+
+
 
 
