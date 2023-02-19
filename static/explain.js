@@ -1,5 +1,5 @@
 //used in base.html
-var base_url = $('#base-url').data('val');
+var base_url = 'http://127.0.0.1:8097/';
 
 
 var hideExp = function() {
@@ -61,7 +61,7 @@ var googleResultItemHTML = (result) => {
     `
     return item;
 }
-//Used by various functions in explain.js
+//Used by displaySearch, which is a helper function for the explain function
 var googleResultsListHMTL = (results) => {
     searchList = document.createElement("ul");
     searchList.className = "scrollable-search-list";
@@ -82,7 +82,7 @@ var displaySearch = function(results) {
 	searchDisplay.appendChild(resultHTML);
 };
 
-// May not be used-> Have to check, looks like used to log helpful button
+ // Used to log helpful button
 var logExp = function(isHelpful, expId, expTerm) {
 	logdata = JSON.stringify({
 		action: isHelpful + '###EXP_###' + expTerm + '###' + expId,
@@ -109,14 +109,14 @@ $(function() {
 		if (window.getSelection) {
 			query = window.getSelection().toString();
 		} 
-		console.log("Turkey");
+		//	console.log("Turkey");
 
 		// Update the CSS properties of explanation container on popup
 		$("#explanation-container").css("z-index", "1200");
 		$(".main_row").css("-webkit-filter", "brightness(0.7) blur(2px)");
 
 		if (query.length > 0) {
-
+			console.log("skoopity");
 			// Adds the explanation header and sets data-query attribute
 			document.getElementById("explain_title").innerHTML = `Explanation for ${query}`;
 			moreBut = document.getElementById("explain_title");
@@ -137,7 +137,8 @@ $(function() {
 			notHelpBut.addEventListener('contextmenu', function() {
 				logExp('0', '', query);
 			}, true);
-
+			//console.log("Before calling explain_query");
+			// console.log(base_url);
 			var postAjaxRequest = function(isGoogleSearch, results) {
 				$.ajax({
 					type: "POST",
@@ -185,5 +186,6 @@ $(function() {
 
 	});
 });
+
 
 
