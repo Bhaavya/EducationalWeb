@@ -211,7 +211,7 @@ def slide(course_name,lno):
 
     return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url)
 
-"""
+
 @app.route('/explain_query', methods=['POST','OPTIONS'])
 @crossdomain(origin='*')
 def explain_query():
@@ -223,7 +223,7 @@ def explain_query():
     query = request.json['searchString']
     context = request.json['slidesContext']
     # print("Hooray! explain \n")
-    log_helper(query + '###EXPLAIN', request.json['route'])
+    log_helper('explain', "//explain_query/", query)
 
     if ('CS%20410') in request.json['url']:
         is_410 = True
@@ -242,7 +242,7 @@ def explain_query():
         response = jsonify({"message": "google-search-result","rankedResult":ranked_result})
 
     return response
-"""
+
 @app.route('/srch_term_slides', methods=['POST'])
 def srch_term_slides(course_name=None):
     search_string = request.form.get("srch-term")
@@ -309,6 +309,8 @@ def log_action():
 if __name__ == '__main__':
     # socketio.run(app,host='localhost',port=8097)
     app.run(host=config.app_host,port=config.app_port)
+
+
 
 
 
