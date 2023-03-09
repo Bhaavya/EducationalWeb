@@ -35,7 +35,10 @@ related_dict = {}
 # alpha = 0.34
 # ranker_obj = load_ranker(cfg,mu)
 ovideo_links = json.load(open(os.path.join(static_path,'mappings2.json')))
+textbook_links = json.load(open(os.path.join(static_path,'course_textbook_mappings.json')))
 video_links = {}
+
+
 for v,l in ovideo_links.items():
     video_links[v.split('----')[-1][:-4]] = l
 # with open(cfg, 'r') as fin:
@@ -87,9 +90,6 @@ def trim_name(slide_name):
     # return ' '.join(new_name)
 
     return ' '.join(slide_name.replace('.txt','').replace('_','-').replace('---',' ').split('-')).title().replace('.Pdf','').replace(' Slides','')
-        
-    
-    
 
 def get_color(slide_course_name, related_slide_course_name):
     if slide_course_name==related_slide_course_name:
@@ -133,7 +133,10 @@ def get_snippet(slide_name, related_slide_name):
 def get_course_names():
     course_names = sorted(os.listdir(slides_path))
     # cn_cpy = list(course_names)
-    course_names.remove('.DS_Store')
+    try:
+        course_names.remove('.DS_Store')
+    except:
+        pass
     # for cn in cn_cpy:
         # if cn!='cs-410':
         # course_names.remove(cn)
@@ -195,12 +198,14 @@ def get_slide(course_name,slide,lno):
     related_slides_info = get_related_slides(slide)
     #
     same_lecture_slides_info = get_same_lecture_slides(course_name, lno, slide)
+    textbook_link = "#"
     try:
         video_link = video_links[slide.split('---')[1]].strip('\n')
+        textbook_link = textbook_links[course_name]
     except:
         video_link = '#'
 
-    return slide,lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info
+    return slide,lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info,textbook_link
 
 
 def get_same_lecture_slides(course_name, lno, slide_name):
@@ -243,12 +248,15 @@ def get_next_slide(course_name,lno,curr_slide=None):
     same_lecture_slides_info = get_same_lecture_slides(course_name, lno, next_slide)
 
     related_slides_info = get_related_slides(next_slide)
+
+    textbook_link = "#"
     try:
         video_link = video_links[next_slide.split('---')[1]].strip('\n')
+        textbook_link = textbook_links[course_name]
     except Exception as e:
         print(e)
         video_link = '#'
-    return next_slide, lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info    
+    return next_slide, lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info,textbook_link
 
 def get_prev_slide(course_name,lno,curr_slide):
     lectures = get_lectures_from_course(course_name)
@@ -388,12 +396,7 @@ def search_txtbook(query):
         results.append(res_obj)
     return results
 
-def get_search_results(search, course_name):
-    # query = metapy.index.Document()
-    # query.content(search)
-    # print (query,idx,ranker,search)
-    # top_docs = ranker.score(idx, query, num_results=50)
-    # top_docs = [slide_titles[x[0]] for x in top_docs]
+def get_search_results(search, course_name, course_list):
     top_docs = []
     res = es.search(index='csintro_slides',body={"query":{'match':{'content':search}},"highlight": {
     "fields": {"content":{}}}},size=50)
@@ -402,9 +405,6 @@ def get_search_results(search, course_name):
     for d in res['hits']['hits']:
         top_docs.append(d[u'_source'][u'label'])
         top_snippets.append(d['highlight']['content'][0])
-
-
-
     
     results = []
     disp_strs = []
@@ -413,32 +413,34 @@ def get_search_results(search, course_name):
     lnos = []
     top_slide_trim_names = []
     lec_names = []
+    count_results= 0
     for idx,r in enumerate(top_docs):
 
             comp = r.split('---')
-            
+
             # lectures = sort_slide_names(os.listdir(os.path.join(slides_path, comp[0])))
-            lectures = get_lectures_from_course(comp[0])
+            try:
+                lectures = get_lectures_from_course(comp[0])
+            except:
+                continue
             lname = '---'.join(comp[1:-1])
             try:
                 lnos.append(lectures.index(lname))
-            except ValueError: #not an "actual" slide 
-                # print(lectures,lname)
+            except ValueError:
                 continue
-            # print(lnos)
-            if (len(results) < 10 and (course_name == 'Select Course' or course_name == comp[0])):
+
+            if (count_results < 10) and (course_name == 'Select Course' or course_name == comp[0]) and (comp[0] in course_list):
                 disp_strs.append(' '.join(comp[0].replace('_','-').split('-')).title() + ' : ' + trim_name(' '.join(comp[1:])))
                 course_names.append(comp[0])
                 lec_names.append(lname)
-            
+                count_results += 1
                 results.append(r)
                 snippets.append(top_snippets[idx])
-                # snippets.append(get_snippet_sentences(r, search))
-    # print(results) 
+
     for x in range(len(results)):
         results[x] = results[x].replace('##', '---') + '.pdf'
 
-    return len(results),results,disp_strs,course_names,lnos, snippets,lec_names
+    return count_results,results,disp_strs,course_names,lnos, snippets,lec_names
 
 def get_explanation(search_string,top_k=10):
     query = metapy.index.Document()
@@ -464,7 +466,7 @@ def get_vector_similarity(vA, vB):
 
 
 def rank_google_result(raw_results, context, query):
-    print([x['title'] for x in raw_results])
+    # print([x['title'] for x in raw_results])
     documents = list(map(lambda x: " ".join([x['title'], x['snippet']]), raw_results))
     documents = list(map(lambda x: preprocess_string(x), documents))
     
@@ -501,13 +503,14 @@ def count_keyword_match(title, query):
                 continue
             if get_vector_similarity(v1, v2) > 0.5:
                 count += 1
-    print(title, count)
+    # print(title, count)
     return count / len(title_words)
 
 
 def get_ranking_index(similarities, keyword_counts):
-    for i in range(len(similarities)):
-        print(similarities[i], keyword_counts[i])
+    # is this important to print?
+    # for i in range(len(similarities)):
+    #     print(similarities[i], keyword_counts[i])
     scores = [similarities[i] + keyword_counts[i] for i in range(len(similarities))]
     return np.argsort(scores)[::-1]
 
@@ -531,7 +534,8 @@ def get_context_vector(context, query):
         try:
             w_vec = word2vec[w]
             sim = get_vector_similarity(w_vec, query_vec)
-            print(sim, w)
+            # is this imp to to print?
+            # print(sim, w)
             if sim > 0.1:
                 vecs.append(w_vec)
         except KeyError:
