@@ -1,6 +1,14 @@
 ## EducationalWeb
 
-### Here are the instructions for getting started with the project:
+### Table of Contents
+- [Project Setup Instructions](#example)
+    - [MacOS](#example)
+    - [Windows](#example)
+- [Additional Notes](#example)
+- [Pre-Deployment Test Checklist](#Test Checklist)
+- [Releases](#Releases)
+
+### Setup Instructions
 
 #### MacOS
 
