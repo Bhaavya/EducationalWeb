@@ -160,3 +160,61 @@ Step 4:
 ### Note on data/model-related files:
 
 Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). You may have to download these files separately (please contact one of the owners for more details).
+
+### Test Checklist 
+
+Please use this checklist before deployment to check for any bugs in the app/code
+Update this checklist before every release.
+
+Menu
+- [ ] Navigate to the course first lecture by clicking on the course from Courses Dropdown
+- [ ] Search for the course in the Courses Dropdown
+- [ ] Navigate to the lecture first slide by clicking on the lecture from Lectures Dropdown
+- [ ] Search for the lecture in the Lectures Dropdown
+
+Scrolling Slide Thumbnail
+- [ ] Clicking on thumbnail of a slide updates the slide in main body and highlights the slide with a yellow border
+
+Main Slide
+- [ ] Download button downloads pdf for lecture
+- [ ] Download button downloads all lectures zip
+- [ ] Select text and click on explain button, should show explanation or no explanation found
+- [ ] Next button  goes to next slide in the pdf
+- [ ] Prev button goes to prev slide in the pdf
+- [ ] Next button disabled when reaching end of pdf
+- [ ] Prev button disable when reaching start of pdf
+
+
+Related Slides Sidebar
+- [ ] Related slide links show on the sidebar for each slide 
+- [ ] Hovering on related slides, show the slide thumbnail
+- [ ] Clicking on a slide link from here updates the pdf in the Main Slide
+
+Search Bar 
+- [ ] Can search and filter by course, with/without spaces
+- [ ] Keyword search and see the list of results 
+
+Feedback and Report Bug Buttons
+- [ ] Clicking Feedback displays the feedback form
+- [ ] Clicking Report Bug displays the report bug form 
+
+
+
+### Releases
+
+**Release v2** 
+
+Deployed on 11/22/22
+
+Changes made:
+- Next/Prev- Next and Prev button style change and disables when reaches the start or end of slides
+Above the slide utility buttons 
+- Changed button/icon styles to explain, download text book, lecture pdfs
+Explanation implementation 
+- Updated the implementation of explain function, it is simplified and covers edge case scenarios. Added asynchronous response for a user explain request , updated from sse event where the server published the same response to all clients.
+Fixed TextLayer Overlapping
+- TextLayer is the layer of text that is parsed from each pdf slide and is an html element that is invisible but selectable. 
+- Fixed Scrolling issue with Sidebar thumbnails
+- Added Search box in courses and lectures dropdown
+- Added course filter in Search bar
+- Decreased latency for slide load in the thumbnails when hovering on slide links 
