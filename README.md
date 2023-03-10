@@ -1,12 +1,12 @@
 ## EducationalWeb
 
 ### Table of Contents
-- [Project Setup Instructions](#example)
-    - [MacOS](#example)
-    - [Windows](#example)
-- [Additional Notes](#example)
-- [Pre-Deployment Test Checklist](#Test Checklist)
-- [Releases](#Releases)
+- [Project Setup Instructions](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#setup-instructions)
+    - [MacOS](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#macos)
+    - [Windows](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#windows)
+- [Additional Notes](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#note-on-datamodel-related-files)
+- [Pre-Deployment Test Checklist](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#test-checklist)
+- [Releases](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#releases)
 
 ### Setup Instructions
 
