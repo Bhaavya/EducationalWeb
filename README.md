@@ -1,16 +1,16 @@
 ## EducationalWeb
 
 ### Table of Contents
-- [Project Setup Instructions](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#setup-instructions)
-    - [MacOS](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#macos)
-    - [Windows](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#windows)
-- [Additional Notes](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#note-on-datamodel-related-files)
-- [Pre-Deployment Test Checklist](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#test-checklist)
-- [Releases](#https://github.com/Bhaavya/EducationalWeb/tree/release_v3#releases)
+- [Project Setup Instructions](#instructions)
+    - [MacOS](#instructions-macos)
+    - [Windows](#instructions-win)
+- [Additional Notes](#additional-notes)
+- [Pre-Deployment Test Checklist](#test-checklist)
+- [Releases](#releases)
 
-### Setup Instructions
+### Setup Instructions <a name="instructions">
 
-#### MacOS
+#### MacOS <a name="instructions-macos">
 
 Step 0: Download the project in a local directory/folder. 
 
@@ -96,7 +96,7 @@ Step 5: Run the program in the local machine
     
     * Please note that some of the folders are large and may need some time to download.
 
-#### Windows
+#### Windows <a name="instructions-win">
 
 We will go over how the installation steps for Windows differ from those of Apple.
 
@@ -165,11 +165,11 @@ Step 4:
     a. To allow for functionality of search bar(s), connect to vpn.illinois.edu
 
 
-### Note on data/model-related files:
+### Note on data/model-related files <a name="additional-notes">
 
 Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). You may have to download these files separately (please contact one of the owners for more details).
 
-### Test Checklist 
+### Test Checklist <a name="test-checklist">
 
 Please use this checklist before deployment to check for any bugs in the app/code
 Update this checklist before every release.
@@ -208,7 +208,7 @@ Feedback and Report Bug Buttons
 
 
 
-### Releases
+### Releases <a name="releases">
 
 **Release v2** 
 
