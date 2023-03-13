@@ -3,9 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% set base_url = 'http://127.0.0.1:8097/' %}
-  {% set pdf_url = 'http://localhost:8889' %}
-<!--<meta id="base-url" data-val="{{base_url}}"-->
+<meta id="base-url" data-val="{{base_url}}">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="{{base_url}}static/jquery-3.4.1.min.js"></script>
@@ -51,7 +49,7 @@
 
     <ul class="nav navbar-nav navbar-right">
        
-      <li class="dropdown"><a href="http://127.0.0.1:8097//feedback" style="padding-left: 40px;">Feedback</a>
+      <li class="dropdown"><a href="{{base_url}}//feedback" style="padding-left: 40px;">Feedback</a>
       </li>
     </ul>
 
@@ -79,7 +77,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-                <li class="button"><a onclick="myFunction()" class="dropdown-toggle" type="button" href="#" data-toggle="tooltip" data-placement="bottom" title="Restrict your searches to the selected courses"> <i class="glyphicon glyphicon-filter"></i><span class="caret"></span></a>
+                <li class="button"><a onclick="showFilterCourseList()" class="dropdown-toggle" type="button" href="#" data-toggle="tooltip" data-placement="bottom" title="Restrict your searches to the selected courses"> <i class="glyphicon glyphicon-filter"></i><span class="caret"></span></a>
                 <ul class="dropdown-menu" id = "filter-course-list" style="background-color: #E8E8E8; opacity: 0.97;max-height:  100vh; overflow:scroll;">
                 <input type="text" class="search_by_text" placeholder="Filter by.." id="filter-course-input" onkeyup="dropdownSearchbarFilterFunction('filter-course-input','filter-course-list')">
                 <li><a > <input type="checkbox" name= "select-all"  id="select-all" checked><label> &nbsp; Select All </label><br></a></li>
@@ -107,6 +105,7 @@
 </body>
 <script type="text/javascript" src="{{base_url}}static/explain.js"></script>
 <script type="text/javascript" src="{{base_url}}static/filter_courses.js"></script>
+<!-- Added tooltips to explain, dowload, and filter buttons-->
 <script> $(document).ready(function() {
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 });
@@ -150,9 +149,7 @@
 }); 
 
 //To show the filter dropdown list
-function myFunction() {
-    document.getElementById("filter-course-list").classList.toggle("show");
-  }
+
 </script>
 
 </html>
