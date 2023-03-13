@@ -26,7 +26,8 @@ window.addEventListener( "pageshow", function ( event ) {
     if ( historyTraversal ) {
         logdata = JSON.stringify({
         action: 'cache_open',
-        middle: new_slide_name,
+        //Added updated_slide to keep track of slide name
+        updated_slide: new_slide_name,
         route: window.location.pathname
         });
         navigator.sendBeacon('{{base_url}}log_action', logdata);
@@ -34,7 +35,7 @@ window.addEventListener( "pageshow", function ( event ) {
     else{
         logdata = JSON.stringify({
         action: 'open',
-        middle: new_slide_name,
+        updated_slide: new_slide_name,
         route: window.location.pathname
         });
         navigator.sendBeacon('{{base_url}}log_action', logdata);
@@ -44,7 +45,7 @@ window.addEventListener( "pageshow", function ( event ) {
     window.addEventListener("beforeunload", function(event) {
         logdata = JSON.stringify({
         action: 'close',
-        middle: new_slide_name,
+        updated_slide: new_slide_name,
         route: window.location.pathname
     });
 
@@ -64,7 +65,7 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
   hidden = "webkitHidden";
   visibilityChange = "webkitvisibilitychange";
 }
-
+//Added updated_slide to keep track of slide name
 function handleVisibilityChange() {
   console.log(document['hidden']);
   course = "{{course_name}}";
@@ -73,7 +74,7 @@ function handleVisibilityChange() {
   if (document[hidden]) {
       logdata = JSON.stringify({
       action: 'hide',
-      middle: new_slide_name,
+      updated_slide: new_slide_name,
       route: window.location.pathname
     });
     navigator.sendBeacon('{{base_url}}log_action', logdata);
@@ -81,7 +82,7 @@ function handleVisibilityChange() {
    else {
       logdata = JSON.stringify({
       action: 'unhide',
-      middle: new_slide_name,
+      updated_slide: new_slide_name,
       route: window.location.pathname
     });
     navigator.sendBeacon('{{base_url}}log_action', logdata);
@@ -210,6 +211,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
     <li class="related_slide_element">
 
    <div class="popover__wrapper">
+    <!--Added index to related slides function-->
         <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}/{{i}}" id="{{i}}">
         <h2 class="popover__title">{{disp_str[i]}}</h2>
         </a>
@@ -333,9 +335,9 @@ function renderPage(num) {
        });
      });
    });
- }
- function downDropFunction() {
-      document.getElementById("download_button").classList.toggle("show");
+}
+function downDropFunction() {
+    document.getElementById("download_button").classList.toggle("show");
 }
 function renderThumbnail(num){
     $("#textLayerid").empty();
@@ -343,7 +345,6 @@ function renderThumbnail(num){
     changedSlide(num, pageNum);
     pageNum= num;
 }
-
 function changedSlide(pageNum, oldNum){
 
     pageNum--;
@@ -439,13 +440,12 @@ function changedSlide(pageNum, oldNum){
    if (pageNum <= 1) {
      return;
    }
-   
-    
+  //Added updated_slide to keep track of slide name
    pageNum--;
-   new_slide_name = course.concat("---").concat(lec).concat("---slide").concat((pageNum-1).toString());
+   new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
    logdata = JSON.stringify({
         action: 'prev',
-        middle: new_slide_name, 
+        updated_slide: new_slide_name, 
         route: window.location.pathname
     });
     navigator.sendBeacon('{{base_url}}log_action', logdata);
@@ -462,9 +462,9 @@ function changedSlide(pageNum, oldNum){
     new_slide_name = course.concat("---").concat(lec).concat("---slide").concat((pageNum).toString());
     console.log(new_slide_name);
     logydata = JSON.stringify({
-        // x: '2',
         action: 'next',
-        middle: new_slide_name, 
+        //Added updated_slide to keep track of slide name
+        updated_slide: new_slide_name, 
         route: window.location.pathname
     });
     navigator.sendBeacon('{{base_url}}log_action', logydata);
@@ -509,6 +509,3 @@ function downloadFile(url,lecture){
 </script>
 
 {% endblock %}
-
-
-
