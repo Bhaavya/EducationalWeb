@@ -150,7 +150,6 @@ def resolve_slide(course_name,lno,type_,slide_name=None,log=False,action=None):
     if COURSE_NAMES is None and NUM_COURSES is None:
         COURSE_NAMES,NUM_COURSES = model.get_course_names()
     if type_ =='drop-down':
-        # print("Hi")
         ret = model.get_next_slide(course_name,lno)
     elif type_ == 'related' or type_=='search_results':
         ret = model.get_slide(course_name,slide_name,lno)
@@ -179,7 +178,7 @@ def get_search_slide(course_name,slide_name,lno, idx):
     global NUM_VIS
     next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides, textbook_link =resolve_slide(course_name,lno,'related',slide_name=slide_name)
     vis_urls,vis_strs = get_prev_urls()
-    # 1-indexed idx
+    # idx  is the ith index at which the selectd slide was displayed in searchResults, it is 0-indexed.
     log_helper('get_searched_slide_' + str(idx), "//get_search_slide/", slide_name)
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
@@ -192,7 +191,7 @@ def related_slide(course_name,slide_name,lno, idx):
     global NUM_VIS
     next_slide_name,lno,lec_name,(num_related_slides,related_slides,disp_str,related_course_names,rel_lnos,rel_lec_names,disp_color,disp_snippet),lec_names,lnos,ses_disp_str,video_link, lec_slides, textbook_link =resolve_slide(course_name,lno,'related',slide_name=slide_name)
     vis_urls,vis_strs = get_prev_urls()
-    #1 indexed idx
+    # idx  is the ith index at which the selectd slide was displayed in related slides, it is 0-indexed.
     log_helper('related_slide' + "_" + str(idx) , "//related_slide/", slide_name)
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
@@ -222,7 +221,6 @@ def explain_query():
     '''
     query = request.json['searchString']
     context = request.json['slidesContext']
-    # print("Hooray! explain \n")
     log_helper('explain', "//explain_query/", query)
 
     if ('CS%20410') in request.json['url']:
@@ -268,8 +266,9 @@ def srch_term_slides(course_name=None):
 
     return render_template("searchResults.html",course_names= COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,num_vis=NUM_VIS,vis_strs=vis_strs,srch_term= search_string, rel_lec_names=lec_names,snippets=snippets,rel_lnos=lnos,num_results = num_results, related_slides=results,related_course_names= search_course_names,disp_str=disp_strs,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link= textbook_link)
 
-
-def log_helper(action,route, middle=" "):
+# Added the destination slide part
+#second_log_black either takes in the destination slide name or takes in the input by the user for search or explain actions
+def log_helper(action,route, second_log_block =" "):
     if action is not None and route is not None:
         route_ele = route.split('/')
         if IS_LOCAL_SRV:
@@ -292,16 +291,16 @@ def log_helper(action,route, middle=" "):
         elif func_type == 'search_slide':
             resolve_slide(route_ele[beg],route_ele[beg+1],'search_results',slide_name=route_ele[beg+2].replace('%20',' '),log=True,action=action)
         else:
-
-            model.log(request.remote_addr,middle,datetime.datetime.now(),action)
+            model.log(request.remote_addr,second_log_block,datetime.datetime.now(),action)
 
 @app.route('/log_action',methods=['GET', 'POST'])
 def log_action():
     request_dict = json.loads(request.data)
     action = request_dict['action']
     route = request_dict['route']
-    middle = request_dict['middle']
-    log_helper(action,route, middle=middle)
+    #updated slide gets the name of the destination slide
+    updated_slide = request_dict['updated_slide']
+    log_helper(action,route, second_log_block = updated_slide)
     resp = jsonify(success=True)
 
     return resp
@@ -309,8 +308,6 @@ def log_action():
 if __name__ == '__main__':
     # socketio.run(app,host='localhost',port=8097)
     app.run(host=config.app_host,port=config.app_port)
-
-
 
 
 
