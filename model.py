@@ -56,9 +56,9 @@ txt_link = "https://i-share-uiu.primo.exlibrisgroup.com/permalink/01CARLI_UIU/gp
 
 #Called in edwb.intro.py by log_helper and resolve_slides
 #Added the destination slide
-def log(ip,to_slide,action,start_time):
+def log(ip,to_slide,second_log_block,start_time):
     with open(log_path,'a+') as f:
-        f.write('{},{},{},{}\n'.format(ip,to_slide,action,start_time))
+        f.write('{},{},{},{}\n'.format(ip,to_slide,second_log_block,start_time))
 
 #Called on model.py by get_snippet but get_snippet is commented out in get_related_slides
 """
@@ -586,5 +586,7 @@ def get_context_vector(context, query):
         except KeyError:
             continue
     return np.mean(vecs, axis=0) if len(vecs) > 0 else query_vec
+
+
 
 
