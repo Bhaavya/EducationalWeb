@@ -586,7 +586,3 @@ def get_context_vector(context, query):
         except KeyError:
             continue
     return np.mean(vecs, axis=0) if len(vecs) > 0 else query_vec
-
-
-
-
