@@ -105,11 +105,7 @@
 </body>
 <script type="text/javascript" src="{{base_url}}static/explain.js"></script>
 <script type="text/javascript" src="{{base_url}}static/filter_courses.js"></script>
-<!-- Added tooltips to explain, dowload, and filter buttons-->
-<script> $(document).ready(function() {
-  $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-});
-</script>
+
 <script>
   // Click right or left to go next or previous
   document.addEventListener("keydown", e => {
@@ -134,6 +130,12 @@
 
       }
     });
+    
+    // Added tooltips to explain, dowload, and filter buttons
+    $(document).ready(function() {
+      $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+
     // Select all function
     $('#select-all').click(function(event) {   
     if(this.checked) {
@@ -153,3 +155,4 @@
 </script>
 
 </html>
+
