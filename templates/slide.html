@@ -65,27 +65,26 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
   hidden = "webkitHidden";
   visibilityChange = "webkitvisibilitychange";
 }
+
+function log_action(new_slide_name,action,route_path, url_path) {
+  console.log("Howdy");
+  logdata = JSON.stringify({
+        action: action,
+        updated_slide: new_slide_name, 
+        route: route_path
+    });
+  navigator.sendBeacon('{{base_url}}log_action', logdata);
+}
+
 //Added updated_slide to keep track of slide name
 function handleVisibilityChange() {
   console.log(document['hidden']);
-  course = "{{course_name}}";
-    lec = "{{lec_name}}";
-    new_slide_name = course.concat("---").concat(lec).concat("---slide").concat((pageNum-1).toString());
+  new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
   if (document[hidden]) {
-      logdata = JSON.stringify({
-      action: 'hide',
-      updated_slide: new_slide_name,
-      route: window.location.pathname
-    });
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
+      log_action(new_slide_name, 'hide', window.location.pathname, '{{base_url}}');
   }
    else {
-      logdata = JSON.stringify({
-      action: 'unhide',
-      updated_slide: new_slide_name,
-      route: window.location.pathname
-    });
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
+    log_action(new_slide_name, 'unhide', window.location.pathname, '{{base_url}}');
   }
 }
 
@@ -109,12 +108,13 @@ window.addEventListener("DOMContentLoaded", function(event) {
     navigator.sendBeacon('{{base_url}}log_action', logdata);
 };
 */
-
+/*
 <!--for (var i = 0; i < relLinks.length; i++) {-->
 <!--    ['click','contextmenu'].forEach(function(e){relLinks[i].addEventListener(e, function(){-->
 <!--    relLog(this.id);-->
 <!--    } , true);})-->
 <!--}-->
+*/
 
  </script>
 
@@ -435,20 +435,12 @@ function changedSlide(pageNum, oldNum){
  function onPrevPage() {
    // empty previous child elements of textLayer
    $("#textLayerid").empty();
-   course = "{{course_name}}";
-    lec = "{{lec_name}}";
    if (pageNum <= 1) {
      return;
    }
-  //Added updated_slide to keep track of slide name
    pageNum--;
    new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
-   logdata = JSON.stringify({
-        action: 'prev',
-        updated_slide: new_slide_name, 
-        route: window.location.pathname
-    });
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
+   log_action(new_slide_name, 'prev', window.location.pathname, '{{base_url}}');
    queueRenderPage(pageNum);
    changedSlide(pageNum, pageNum+1);
  }
@@ -456,26 +448,19 @@ function changedSlide(pageNum, oldNum){
 
  function onNextPage() {
    // if current pageNum requested is not valid, then return
-   // the following two lines is not required as the next will be disabled\
-    course = "{{course_name}}";
-    lec = "{{lec_name}}";
-    new_slide_name = course.concat("---").concat(lec).concat("---slide").concat((pageNum).toString());
-    console.log(new_slide_name);
-    logydata = JSON.stringify({
-        action: 'next',
-        //Added updated_slide to keep track of slide name
-        updated_slide: new_slide_name, 
-        route: window.location.pathname
-    });
-    navigator.sendBeacon('{{base_url}}log_action', logydata);
-
-   if (pageNum >= pdfDoc.numPages) {
-     return;
+         
+     if (pageNum >= pdfDoc.numPages) {
+      return;
    }
+  
+   pageNum++;
+    new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
+    log_action(new_slide_name, 'next', window.location.pathname, '{{base_url}}');
+   
    
    // empty previous child elements of textLayer
-   $("#textLayerid").empty();
-   pageNum++;
+   
+   
    queueRenderPage(pageNum);
    changedSlide(pageNum,pageNum-1);
  }
