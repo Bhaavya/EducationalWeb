@@ -1,4 +1,3 @@
-
 import sys
 import os
 import json 
@@ -268,7 +267,7 @@ def srch_term_slides(course_name=None):
 
 # Added the destination slide part
 #second_log_black either takes in the destination slide name or takes in the input by the user for search or explain actions
-def log_helper(action,route, second_log_block =" "):
+def log_helper(action = None,route = None, second_log_block =None):
     if action is not None and route is not None:
         route_ele = route.split('/')
         if IS_LOCAL_SRV:
