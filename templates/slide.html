@@ -16,41 +16,21 @@
 <script>
 
 window.addEventListener( "pageshow", function ( event ) {
-
-    course = "{{course_name}}";
-    lec = "{{lec_name}}";
-    new_slide_name = course.concat("---").concat(lec);
+    new_slide_name = "{{course_name}}".concat("---").concat("{{lec_name}}");
     var historyTraversal = event.persisted ||
                          ( typeof window.performance != "undefined" &&
                               window.performance.navigation.type === 2 );
     if ( historyTraversal ) {
-        logdata = JSON.stringify({
-        action: 'cache_open',
-        //Added updated_slide to keep track of slide name
-        updated_slide: new_slide_name,
-        route: window.location.pathname
-        });
-        navigator.sendBeacon('{{base_url}}log_action', logdata);
+      log_action(new_slide_name, 'cache_open', window.location.pathname);
     }
-    else{
-        logdata = JSON.stringify({
-        action: 'open',
-        updated_slide: new_slide_name,
-        route: window.location.pathname
-        });
-        navigator.sendBeacon('{{base_url}}log_action', logdata);
+    else {
+      log_action(new_slide_name, 'open', window.location.pathname);
     }
     });
-
-    window.addEventListener("beforeunload", function(event) {
-        logdata = JSON.stringify({
-        action: 'close',
-        updated_slide: new_slide_name,
-        route: window.location.pathname
-    });
-
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
-
+    
+window.addEventListener("beforeunload", function(event) {
+  new_slide_name = "{{course_name}}".concat("---").concat("{{lec_name}}");  
+  log_action(new_slide_name, 'close', window.location.pathname);
 });
 
 var hidden, visibilityChange;
@@ -66,24 +46,15 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
   visibilityChange = "webkitvisibilitychange";
 }
 
-function log_action(new_slide_name,action,route_path, url_path) {
-  logdata = JSON.stringify({
-        action: action,
-        updated_slide: new_slide_name, 
-        route: route_path
-    });
-  navigator.sendBeacon('{{base_url}}log_action', logdata);
-}
-
 //Added updated_slide to keep track of slide name
 function handleVisibilityChange() {
   console.log(document['hidden']);
   new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
   if (document[hidden]) {
-      log_action(new_slide_name, 'hide', window.location.pathname, '{{base_url}}');
+      log_action(new_slide_name, 'hide', window.location.pathname);
   }
    else {
-    log_action(new_slide_name, 'unhide', window.location.pathname, '{{base_url}}');
+    log_action(new_slide_name, 'unhide', window.location.pathname);
   }
 }
 
@@ -94,26 +65,6 @@ if (typeof document.addEventListener === "undefined" || hidden === undefined) {
   // Handle page visibility change
   document.addEventListener(visibilityChange, handleVisibilityChange, false);
   }
-
-// Restore logging for related links
-/*
-window.addEventListener("DOMContentLoaded", function(event) {
-    var relLinks = document.getElementsByClassName("related");
-    var relLog = function(idx) {
-    logdata = JSON.stringify({
-      action: 'related_'+idx,
-      route: window.location.pathname
-    });
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
-};
-*/
-/*
-<!--for (var i = 0; i < relLinks.length; i++) {-->
-<!--    ['click','contextmenu'].forEach(function(e){relLinks[i].addEventListener(e, function(){-->
-<!--    relLog(this.id);-->
-<!--    } , true);})-->
-<!--}-->
-*/
 
  </script>
 
@@ -229,6 +180,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
     </div>
 
 <script type="text/javascript" src="{{base_url}}static/explanation_google_search.js"></script>
+
 
 <script>
     document.addEventListener('scroll', (event) => {
@@ -439,7 +391,7 @@ function changedSlide(pageNum, oldNum){
    }
    pageNum--;
    new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
-   log_action(new_slide_name, 'prev', window.location.pathname, '{{base_url}}');
+   log_action(new_slide_name, 'prev', window.location.pathname);
    queueRenderPage(pageNum);
    changedSlide(pageNum, pageNum+1);
  }
@@ -447,19 +399,18 @@ function changedSlide(pageNum, oldNum){
 
  function onNextPage() {
    // if current pageNum requested is not valid, then return
-         
-     if (pageNum >= pdfDoc.numPages) {
+   if (pageNum >= pdfDoc.numPages) {
       return;
    }
-  
+   $("#textLayerid").empty();
    pageNum++;
-    new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
-    log_action(new_slide_name, 'next', window.location.pathname, '{{base_url}}');
-   
-   
+   new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
+   log_action(new_slide_name, 'next', window.location.pathname);
+    
+    
    // empty previous child elements of textLayer
-   
-   
+    
+    
    queueRenderPage(pageNum);
    changedSlide(pageNum,pageNum-1);
  }
