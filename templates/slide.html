@@ -2,8 +2,9 @@
 {% extends "base.html" %}
 {% block nav %}
 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lectures <span class="caret"></span></a>
-         <ul class="dropdown-menu" style="height:auto; max-width: 850px;  max-height:  100vh; overflow:scroll;opacity:0.97;background-color: #E8E8E8;">
-{% for i in lnos %}
+         <ul class="dropdown-menu" id = "lecture-list" style="width: 500px;overflow:scroll;opacity:0.97;background-color: #E8E8E8;">
+         <input type = "text" class="search_by_text" placeholder = "Search Lectures.." id = "lectureSearchInput" onkeyup = "dropdownSearchbarFilterFunction('lectureSearchInput','lecture-list')">
+             {% for i in lnos %}
             <li><a href="{{base_url}}/slide/{{course_name}}/{{i}}">{{' '.join(lec_names[i].replace('.txt','').replace('_','-').split('-')).title()}}</a></li>
              {% endfor %}
           </ul>
@@ -15,9 +16,7 @@
 <script>
 
 window.addEventListener( "pageshow", function ( event ) {
-    var lec_slide_list = document.getElementById("lec_slides_list");
-    cur_selected = document.getElementsByClassName("current_display")[0];
-    lec_slide_list.scrollTop = (cur_selected.offsetTop - 100);
+
     var historyTraversal = event.persisted ||
                          ( typeof window.performance != "undefined" &&
                               window.performance.navigation.type === 2 );
@@ -86,6 +85,8 @@ if (typeof document.addEventListener === "undefined" || hidden === undefined) {
   document.addEventListener(visibilityChange, handleVisibilityChange, false);
   }
 
+// Restore logging for related links
+
 window.addEventListener("DOMContentLoaded", function(event) {
     var relLinks = document.getElementsByClassName("related");
     var relLog = function(idx) {
@@ -96,75 +97,12 @@ window.addEventListener("DOMContentLoaded", function(event) {
     navigator.sendBeacon('{{base_url}}log_action', logdata);
 };
 
-for (var i = 0; i < relLinks.length; i++) {
-    ['click','contextmenu'].forEach(function(e){relLinks[i].addEventListener(e, function(){
-    relLog(this.id);
-    } , true);})
-}
 
-$(function() {
-          $('#submit').bind('click', function() {
-            var srch = document.getElementById('srch-term').value
-           $.ajax({
-    type: "POST",
-    url:"{{base_url}}/search_slides",
-    contentType: "application/json;charset=utf-8",
-    data: JSON.stringify({ 'searchString':  srch ,'route':window.location.pathname}),
-
-    success: function(data){
-      result_section = document.getElementById('result');
-      while (result_section.firstChild) {
-            result_section.removeChild(result_section.firstChild);
-        }
-      h = document.createElement('h2');
-      var searchLog = function(idx) {
-          logdata = JSON.stringify({
-            action: 'search_res_'+idx,
-            route: window.location.pathname
-          });
-          navigator.sendBeacon('{{base_url}}log_action', logdata);
-      };
-      h.innerHTML = 'Search Results';
-      result_section.appendChild(h);
-      for(i=0;i<data['num_results'];i++){
-        a = document.createElement('a');
-        a.setAttribute('href','{{base_url}}/search_slide/'+data['search_course_names'][i]+'/'+data['lnos'][i]+'/'+data['results'][i]);
-        // a.innerHTML = 'Test';
-        a.innerHTML = data['disp_strs'][i]
-        a.setAttribute('id','search_'+i)
-        a.setAttribute('class','search_res');
-        ['click','contextmenu'].forEach(function(e){a.addEventListener(e, function(){
-          searchLog(this.id);
-      } , true);})
-
-        result_section.appendChild(a);
-
-
-        $('#search_'+i).popover({
-          container: 'body',
-          trigger : 'hover',
-          html: true,
-          placement:'top',
-          title:"<embed type='application/pdf' id='search_slide' src={{pdf_url}}/static/slides/"+data['search_course_names'][i].replace(' ','%20')+'/'+data['lec_names'][i].replace(' ','%20')+'/'+data['results'][i].replace(' ','%20') +"#toolbar=0&navpanes=0&scrollbar=0>"
-
-        })
-
-
-        b = document.createElement('br');
-        result_section.appendChild(b);
-        p = document.createElement('p');
-        // p.innerHTML = 'test2';
-        p.innerHTML = data['snippets'][i];
-        result_section.appendChild(p);
-      }
-    },
-    failure: function() {
-        alert('Error searching');
-    }
-});
-          })
-        })
-})
+<!--for (var i = 0; i < relLinks.length; i++) {-->
+<!--    ['click','contextmenu'].forEach(function(e){relLinks[i].addEventListener(e, function(){-->
+<!--    relLog(this.id);-->
+<!--    } , true);})-->
+<!--}-->
 
  </script>
 
@@ -172,12 +110,8 @@ $(function() {
 <link href="{{base_url}}static/pdf.js/web/viewer.css" rel="stylesheet" type="text/css" />
 <link href="{{base_url}}static/canvas.css" rel="stylesheet" type="text/css" />
 
- <div class="container-fluid main_cnt">
-  <div id="explanation-container" class="col-sm-12">
-
-     <h3 id="no-explain-text" style="text-align: center;margin-top:20px;">No Explanation Found</h3>
+<div id="explanation-container" class="col-sm-12">
          <div id="docs-div" class="col-md-12 mx-auto">
-         <div class="card">
              <div class="card-header">
                  <div style="display: flex;justify-content: space-between;">
                      <b id="explain_title" style="font-size:14pt;margin-left: 10px;
@@ -190,18 +124,20 @@ $(function() {
              <div class="card-body">
                  <div style="display: flex">
 
-            <div id="google-search-div" style="flex: 1 1 100%"></div>
+                <div id="no-explain-text" style="display: None"><h4>To find explanations of any text on the slide, please highlight it (click and hold, then drag your mouse) and then click on the explain button.</h4></div>
+                <div id="no-explain-results" style="display: None"><h4>Sorry, no results found.</h4></div>
+                <div id="google-search-div" style="flex: 1 1 100%"></div>
                 <br>
             </div>
              </div>
-        </div>
-        </div>
-      <br style="clear: both;">
-      <div>
-          <button type="button" class="btn btn-success pull-left" id="helpfulButton">Helpful</button>
-          <button type="button" class="btn btn-danger pull-right" id="notHelpfulButton">Not Helpful</button>
+             <div>
+          <button type="button" class="btn btn-success pull-left" id="helpfulButton"><i class="glyphicon glyphicon-thumbs-up"></i></button>
+          <button type="button" class="btn btn-danger pull-right" id="notHelpfulButton"><i class="glyphicon glyphicon-thumbs-down"></i></button>
      </div>
+
+        </div>
      </div>
+ <div class="container-fluid main_cnt">
      <div class="row main_row" >
 <div class="col-sm" id="lec_slides_list">
     <ul class="nav nav-sidebar" >
@@ -225,19 +161,29 @@ $(function() {
   {% endif %}
 </div>
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
-    <div style="text-align:left">
-    <button type="button" class="btn btn-primary" onclick="getSelectedTextnew();" > Explain </button>
-    <button type="button" class="btn btn-primary" onclick="downloadFile('{{pdf_url}}/static/slides/{{course_name}}/{{lec_name}}.pdf#pdfjs.action=download','{{lec_name}}.pdf');" > Download </button>
+    <div class="grid-container" style="text-align:left">
+    <button type="button" class="btn btn-primary" id="explain_button" style="position:absolute; top:auto; z-index:1200;" > <i class="glyphicon glyphicon-book"></i> </button>
+        <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" style="position:inherit;left:50px;" data-toggle="dropdown"><i class="glyphicon glyphicon-download-alt"></i>
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu" style="left:50px; height:auto">
+          <li ><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}/{{lec_name}}.pdf','{{lec_name}}.pdf');" href="#">This Lecture</a></li>
+          <li><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}.zip','{{course_name}}.zip');" href="#">All Lectures in {{course_name}}</a></li>
+          {% if textbook_link != '#' %}
+            <li><a href="{{textbook_link}}" target="_blank">TextBook for {{course_name}}</a></li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
 
     <div style="overflow:auto;-webkit-overflow-scrolling:touch;text-align:center;margin-top: 20px">
         <canvas id="the-canvas"></canvas>
-        <div class="textLayer"></div>
+        <div id="textLayerid" class="textLayer"></div>
     </div>
 
-    <div style="text-alight:center; margin-bottom: 20px;">
-        <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px">Previous</button>
-        <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next">Next</button>
+    <div style="margin:auto;width:fit-content;">
+        <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px; margin-right:2em;"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next"><i class="glyphicon glyphicon-chevron-right"></i></button>
 
     </div>
 
@@ -272,13 +218,16 @@ $(function() {
 <script type="text/javascript" src="{{base_url}}static/explanation_google_search.js"></script>
 
 <script>
-    var search = document.getElementById("srch-term");
-    search.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("submit").click();
-    }
+    document.addEventListener('scroll', (event) => {
+     if (window.scrollY > 180){
+        console.log(window.scrollY);
+        $("#explain_button").css("top",window.scrollY.toString()+"px");
+     }
+     else{
+        $("#explain_button").css("top","auto");
+     }
     });
+
 </script>
 
 <script>
@@ -295,13 +244,43 @@ scale = 1,
 canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
+function toggleNextPrevButtons(num, pdfDoclimit){
+  next_button = document.getElementById('next');
+  prev_button = document.getElementById('prev');
+
+  if (num == pdfDoclimit) {
+    next_button.classList.add('disabled');
+  }
+  else if(next_button.classList.contains('disabled')){
+    next_button.classList.remove('disabled');
+  }
+
+  if (num == 1) {
+    prev_button.classList.add('disabled');
+  }
+  else if(prev_button.classList.contains('disabled')){
+    prev_button.classList.remove('disabled');
+  }
+
+  return;
+}
+
+
+window.addEventListener('load', (event) => {
+  // initialize lecture thumbnails when webpage is loaded
+  lec_slide_list = document.getElementById("lec_slides_list");
+  lec_slide_list.scrollTop = (pageNum-1)*150;
+  toggleNextPrevButtons(num, pdfDoc.numPages);
+});
+
 
 function renderPage(num) {
    pageRendering = true;
    // Using promise to fetch the page
+   toggleNextPrevButtons(num, pdfDoc.numPages);
    pdfDoc.getPage(num).then(function(page) {
      var viewport = page.getViewport({scale: scale});
-     console.log(page);
+
      canvas.height = viewport.height;
      canvas.width = viewport.width;
 
@@ -327,7 +306,7 @@ function renderPage(num) {
 
        // Assign CSS to the textLayer element
        var textLayer = document.querySelector(".textLayer");
-
+       console.log("TextLayer", textLayer);
        textLayer.style.left = canvas.offsetLeft + 'px';
        textLayer.style.top = canvas.offsetTop + 'px';
        textLayer.style.height = canvas.offsetHeight + 'px';
@@ -342,12 +321,10 @@ function renderPage(num) {
        });
      });
    });
-
-   // Update page counters
-<!--   document.getElementById('page_num').textContent = num;-->
  }
 
 function renderThumbnail(num){
+    $("#textLayerid").empty();
     renderPage(num);
     changedSlide(num, pageNum);
     pageNum= num;
@@ -363,14 +340,12 @@ function changedSlide(pageNum, oldNum){
     old_id_name="lec_slide_"+oldNum.toString();
 
     var old_selected = document.getElementById(old_id_name);
-<!--    old_selected.className = "old_display";-->
     old_selected.classList.remove("current_display");
 
     var cur_selected = document.getElementById(cur_id_name);
     cur_selected.classList.add("current_display");
 
-    lec_slide_list.scrollTop = pageNum*150;
-    console.log("Scroll Tp",lec_slide_list.scrollTop,"cur_selected.offsetTop",cur_selected.offsetTop,"Pagenum",pageNum);
+    lec_slide_list.scrollTop = (pageNum-1)*150;
 
     rel_bar = document.getElementById('side_bar_container');
 
@@ -443,6 +418,9 @@ function changedSlide(pageNum, oldNum){
   * Displays previous page.
   */
  function onPrevPage() {
+   // empty previous child elements of textLayer
+   $("#textLayerid").empty();
+
    if (pageNum <= 1) {
      return;
    }
@@ -453,9 +431,14 @@ function changedSlide(pageNum, oldNum){
  document.getElementById('prev').addEventListener('click', onPrevPage);
 
  function onNextPage() {
+   // if current pageNum requested is not valid, then return
+   // the following two lines is not required as the next will be disabled
    if (pageNum >= pdfDoc.numPages) {
      return;
    }
+
+   // empty previous child elements of textLayer
+   $("#textLayerid").empty();
    pageNum++;
    queueRenderPage(pageNum);
    changedSlide(pageNum,pageNum-1);
@@ -468,44 +451,16 @@ function changedSlide(pageNum, oldNum){
   'mode': 'no-cors',
 }).promise.then(function(pdfDoc_) {
    pdfDoc = pdfDoc_;
-   console.log(pdfDoc);
    // Initial/first page rendering
    renderPage(pageNum);
  });
-
-function getSelectedTextnew() {
-     if (window.getSelection) {
-
-      var text = window.getSelection().toString();
-      console.log(text);
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-  };
-
-      xhttp.open("POST", "{{base_url}}explain", true);
-
-      xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8");
-      console.log("Text content", $(".textLayer").text());
-      xhttp.send(JSON.stringify({ 'url':window.location.href,'searchString':  text,'slidesContext': $(".textLayer").text() ,  'route': window.location.pathname
-}));
-
-      }
-
-     else if (document.selection) {
-       console.log(document.selection)
-       console.log("2")
-       return document.selection.createRange().text;
-     }
-     return '';
-  }
 
 function downloadFile(url,lecture){
     const a = document.createElement("a");
 
     filename = lecture;
 
-    a.href = url;
+    a.href = url.replace(" ","%20");
     a.target = "_blank";
 
     if ("download" in a) {

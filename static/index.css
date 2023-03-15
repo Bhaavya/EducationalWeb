@@ -28,7 +28,7 @@
 }
 
 #docs-div{
-      padding-top: 20px;
+    padding-top: 20px;
     padding-bottom: 20px;
     padding-right: 0;
     padding-left: 0;
@@ -39,9 +39,27 @@
  text-align: left;
  box-shadow: 0 2px 4px rgba(0,0,0,.11);
  height: 260px;
+ background-color: #ff0;
  
 }
 
+#explanation-container {
+    scroll-behavior: smooth;
+    position: fixed;
+    top: auto;
+    z-index: -1;
+    width: 50%;
+    /* overflow: auto; */
+    left: 480px;
+    height: 20%;
+    }
+
+#explain_button {
+ position:absolute;
+ top:120px;
+ z-index:1200;
+ transition: top 2s;
+}
 
 .card-header{
   /*background-color:rgba(0,0,0,.03);*/
@@ -54,11 +72,14 @@
 
 .card-body{
       /*background-color: rgba(0,0,0,.01)*/
-      background-color: white;
-      overflow: auto;
-      height: 85%;
+      background-color:#fff;
       border-bottom-right-radius: 10px;
       border-bottom-left-radius: 10px;
+      padding: 0.5em;
+      padding-left: 1.5em;
+      overflow-y: scroll;
+      height: 200px;
+      margin-bottom: 0.5em;
 }
 
 .header-item{
@@ -80,11 +101,20 @@
 #notHelpfulButton {
   display: none;
   margin-bottom: 20px;
+  border: None;
   box-shadow: 0 2px 4px rgba(0,0,0,.11);
 }
 
 #helpfulButton {
   display: none;
   margin-bottom: 20px;
+  border: None;
   box-shadow: 0 2px 4px rgba(0,0,0,.11);
+}
+
+.search_by_text {
+  box-sizing: border-box;
+  padding: 0.5em;
+  width: auto;
+  margin: 0.5em;
 }
