@@ -130,7 +130,7 @@ def index():
     model.load_related_slides()
     vis_urls,vis_strs = get_prev_urls()
 
-    return render_template("home.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS, base_url = config.base_url, pdf_url= config.pdf_url)
+    return render_template("home.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS, base_url = config.base_url, pdf_url= config.pdf_url, API_KEY = config.API_KEY, CX = config.CX, GOOGLE_SEARCH_API = config.GOOGLE_SEARCH_API)
 
 @app.route('/feedback')
 def feedback():
@@ -139,7 +139,7 @@ def feedback():
         COURSE_NAMES,NUM_COURSES = model.get_course_names()
         model.load_related_slides()
     vis_urls,vis_strs = get_prev_urls()
-    return render_template("feedback.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url)
+    return render_template("feedback.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url, API_KEY = config.API_KEY, CX = config.CX, GOOGLE_SEARCH_API = config.GOOGLE_SEARCH_API)
 
 
 
@@ -182,7 +182,7 @@ def get_search_slide(course_name,slide_name,lno, idx):
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
 
-    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link=textbook_link)
+    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link=textbook_link, API_KEY = config.API_KEY, CX = config.CX, GOOGLE_SEARCH_API = config.GOOGLE_SEARCH_API)
 
 
 @app.route('/related_slide/<course_name>/<lno>/<slide_name>/<idx>')
@@ -195,7 +195,7 @@ def related_slide(course_name,slide_name,lno, idx):
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
 
-    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link=textbook_link)
+    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link=textbook_link, API_KEY = config.API_KEY, CX = config.CX, GOOGLE_SEARCH_API = config.GOOGLE_SEARCH_API)
 
 @app.route('/slide/<course_name>/<lno>')
 def slide(course_name,lno):
@@ -207,7 +207,7 @@ def slide(course_name,lno):
     if next_slide_name is not None:
         set_sess(request.url,ses_disp_str)
 
-    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url)
+    return render_template("slide.html",slide_name=next_slide_name,course_name=course_name,num_related_slides=num_related_slides,related_slides = related_slides,disp_str=disp_str,disp_color=disp_color,disp_snippet=disp_snippet,related_course_names=related_course_names,lno=lno,lec_name=lec_name,lec_names=lec_names,lnos=lnos,course_names=COURSE_NAMES,num_courses=NUM_COURSES,rel_lnos=rel_lnos,rel_lec_names=rel_lec_names,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,video_link=video_link,lec_slides=lec_slides,base_url = config.base_url, pdf_url= config.pdf_url, API_KEY = config.API_KEY, CX = config.CX, GOOGLE_SEARCH_API = config.GOOGLE_SEARCH_API)
 
 
 @app.route('/explain_query', methods=['POST','OPTIONS'])
@@ -263,7 +263,7 @@ def srch_term_slides(course_name=None):
 
     vis_urls, vis_strs = get_prev_urls()
 
-    return render_template("searchResults.html",course_names= COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,num_vis=NUM_VIS,vis_strs=vis_strs,srch_term= search_string, rel_lec_names=lec_names,snippets=snippets,rel_lnos=lnos,num_results = num_results, related_slides=results,related_course_names= search_course_names,disp_str=disp_strs,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link= textbook_link)
+    return render_template("searchResults.html",course_names= COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,num_vis=NUM_VIS,vis_strs=vis_strs,srch_term= search_string, rel_lec_names=lec_names,snippets=snippets,rel_lnos=lnos,num_results = num_results, related_slides=results,related_course_names= search_course_names,disp_str=disp_strs,base_url = config.base_url, pdf_url= config.pdf_url, textbook_link= textbook_link, API_KEY = config.API_KEY, CX = config.CX, GOOGLE_SEARCH_API = config.GOOGLE_SEARCH_API)
 
 # Added the destination slide part
 #second_log_black either takes in the destination slide name or takes in the input by the user for search or explain actions
@@ -307,3 +307,7 @@ def log_action():
 if __name__ == '__main__':
     # socketio.run(app,host='localhost',port=8097)
     app.run(host=config.app_host,port=config.app_port)
+
+
+
+
