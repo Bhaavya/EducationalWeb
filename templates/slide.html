@@ -16,34 +16,21 @@
 <script>
 
 window.addEventListener( "pageshow", function ( event ) {
-
+    new_slide_name = "{{course_name}}".concat("---").concat("{{lec_name}}");
     var historyTraversal = event.persisted ||
                          ( typeof window.performance != "undefined" &&
                               window.performance.navigation.type === 2 );
     if ( historyTraversal ) {
-        logdata = JSON.stringify({
-        action: 'cache_open',
-        route: window.location.pathname
-        });
-        navigator.sendBeacon('{{base_url}}log_action', logdata);
+      log_action(new_slide_name, 'cache_open', window.location.pathname);
     }
-    else{
-        logdata = JSON.stringify({
-        action: 'open',
-        route: window.location.pathname
-        });
-        navigator.sendBeacon('{{base_url}}log_action', logdata);
+    else {
+      log_action(new_slide_name, 'open', window.location.pathname);
     }
     });
-
-    window.addEventListener("beforeunload", function(event) {
-        logdata = JSON.stringify({
-        action: 'close',
-        route: window.location.pathname
-    });
-
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
-
+    
+window.addEventListener("beforeunload", function(event) {
+  new_slide_name = "{{course_name}}".concat("---").concat("{{lec_name}}");  
+  log_action(new_slide_name, 'close', window.location.pathname);
 });
 
 var hidden, visibilityChange;
@@ -59,21 +46,15 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
   visibilityChange = "webkitvisibilitychange";
 }
 
+//Added updated_slide to keep track of slide name
 function handleVisibilityChange() {
-  console.log(document['hidden'])
+  console.log(document['hidden']);
+  new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
   if (document[hidden]) {
-      logdata = JSON.stringify({
-      action: 'hide',
-      route: window.location.pathname
-    });
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
+      log_action(new_slide_name, 'hide', window.location.pathname);
   }
    else {
-      logdata = JSON.stringify({
-      action: 'unhide',
-      route: window.location.pathname
-    });
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
+    log_action(new_slide_name, 'unhide', window.location.pathname);
   }
 }
 
@@ -84,25 +65,6 @@ if (typeof document.addEventListener === "undefined" || hidden === undefined) {
   // Handle page visibility change
   document.addEventListener(visibilityChange, handleVisibilityChange, false);
   }
-
-// Restore logging for related links
-
-window.addEventListener("DOMContentLoaded", function(event) {
-    var relLinks = document.getElementsByClassName("related");
-    var relLog = function(idx) {
-    logdata = JSON.stringify({
-      action: 'related_'+idx,
-      route: window.location.pathname
-    });
-    navigator.sendBeacon('{{base_url}}log_action', logdata);
-};
-
-
-<!--for (var i = 0; i < relLinks.length; i++) {-->
-<!--    ['click','contextmenu'].forEach(function(e){relLinks[i].addEventListener(e, function(){-->
-<!--    relLog(this.id);-->
-<!--    } , true);})-->
-<!--}-->
 
  </script>
 
@@ -162,11 +124,12 @@ window.addEventListener("DOMContentLoaded", function(event) {
 </div>
   <p id="p_slide_name" style="margin-left: 15px; ">{{slide_name.split('---')|join(" ")|replace('.pdf',' ')|title|replace('-Slides','')}} </p>
     <div class="grid-container" style="text-align:left">
-    <button type="button" class="btn btn-primary" id="explain_button" style="position:absolute; top:auto; z-index:1200;" > <i class="glyphicon glyphicon-book"></i> </button>
-        <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" style="position:inherit;left:50px;" data-toggle="dropdown"><i class="glyphicon glyphicon-download-alt"></i>
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu" style="left:50px; height:auto">
+    <button type="button" class="btn btn-primary" id="explain_button" style="position:absolute; top:auto; z-index:1200;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Find explanations on google or textbook. To find explanations of any text on the slide, please highlight it (click and hold, then drag your mouse) and then click on the explain button"> <i class="glyphicon glyphicon-book"></i> </button>
+    <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle"  onclick="downDropFunction()" type="button" style="position:inherit;left:50px;"  data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Download Resources"><i class="glyphicon glyphicon-download-alt"></i>
+    
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu" id="download_button" style="left:50px; height:auto">
           <li ><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}/{{lec_name}}.pdf','{{lec_name}}.pdf');" href="#">This Lecture</a></li>
           <li><a onclick="downloadFile('{{base_url}}static/zipped_lectures/{{course_name}}.zip','{{course_name}}.zip');" href="#">All Lectures in {{course_name}}</a></li>
           {% if textbook_link != '#' %}
@@ -182,8 +145,8 @@ window.addEventListener("DOMContentLoaded", function(event) {
     </div>
 
     <div style="margin:auto;width:fit-content;">
-        <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px; margin-right:2em;"><i class="glyphicon glyphicon-chevron-left"></i></button>
-        <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next"><i class="glyphicon glyphicon-chevron-right"></i></button>
+        <button type="button" id="prev" class="btn btn-success pull-left" style="margin-top: 20px; margin-right:2em;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Previous"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        <button type="button" class="btn btn-success pull-right" style="margin-top:20px" id="next"data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Next"><i class="glyphicon glyphicon-chevron-right"></i></button>
 
     </div>
 
@@ -198,7 +161,8 @@ window.addEventListener("DOMContentLoaded", function(event) {
     <li class="related_slide_element">
 
    <div class="popover__wrapper">
-        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}" id="{{i}}">
+    <!--Added index to related slides function-->
+        <a href="{{base_url}}/related_slide/{{related_course_names[i]}}/{{rel_lnos[i]}}/{{related_slides[i]}}/{{i}}" id="{{i}}">
         <h2 class="popover__title">{{disp_str[i]}}</h2>
         </a>
         <div class="popover__content" id="content{{i}}">
@@ -214,9 +178,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
      </div>
 
     </div>
-
-<script type="text/javascript" src="{{base_url}}static/explanation_google_search.js"></script>
-
 <script>
     document.addEventListener('scroll', (event) => {
      if (window.scrollY > 180){
@@ -321,15 +282,16 @@ function renderPage(num) {
        });
      });
    });
- }
-
+}
+function downDropFunction() {
+    document.getElementById("download_button").classList.toggle("show");
+}
 function renderThumbnail(num){
     $("#textLayerid").empty();
     renderPage(num);
     changedSlide(num, pageNum);
     pageNum= num;
 }
-
 function changedSlide(pageNum, oldNum){
 
     pageNum--;
@@ -420,11 +382,12 @@ function changedSlide(pageNum, oldNum){
  function onPrevPage() {
    // empty previous child elements of textLayer
    $("#textLayerid").empty();
-
    if (pageNum <= 1) {
      return;
    }
    pageNum--;
+   new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
+   log_action(new_slide_name, 'prev', window.location.pathname);
    queueRenderPage(pageNum);
    changedSlide(pageNum, pageNum+1);
  }
@@ -432,19 +395,22 @@ function changedSlide(pageNum, oldNum){
 
  function onNextPage() {
    // if current pageNum requested is not valid, then return
-   // the following two lines is not required as the next will be disabled
    if (pageNum >= pdfDoc.numPages) {
-     return;
+      return;
    }
-
-   // empty previous child elements of textLayer
    $("#textLayerid").empty();
    pageNum++;
+   new_slide_name= "{{course_name}}".concat("---").concat("{{lec_name}}").concat("---slide").concat((pageNum-1).toString());
+   log_action(new_slide_name, 'next', window.location.pathname);
+    
+    
+   // empty previous child elements of textLayer
+    
+    
    queueRenderPage(pageNum);
    changedSlide(pageNum,pageNum-1);
  }
  document.getElementById('next').addEventListener('click', onNextPage);
-
 
  pdfjsLib.getDocument({
   'url': url,
@@ -474,5 +440,3 @@ function downloadFile(url,lecture){
 </script>
 
 {% endblock %}
-
-

@@ -54,11 +54,14 @@ es = Elasticsearch('http://128.174.136.29:9200')
 txt_link = "https://i-share-uiu.primo.exlibrisgroup.com/permalink/01CARLI_UIU/gpjosq/alma99839869412205899"
 
 
-
-def log(ip,to_slide,action,start_time):
+#Called in edwb.intro.py by log_helper and resolve_slides
+#Added the destination slide
+def log(ip,to_slide,second_log_block,start_time):
     with open(log_path,'a+') as f:
-        f.write('{},{},{},{}\n'.format(ip,to_slide,action,start_time))
-        
+        f.write('{},{},{},{}\n'.format(ip,to_slide,second_log_block,start_time))
+
+#Called on model.py by get_snippet but get_snippet is commented out in get_related_slides
+"""
 def get_snippet_sentences(slide_name, matching_keywords):
     idx = slide_names.index(slide_name)
     content = ss_corpus[idx].split(' ')
@@ -75,7 +78,8 @@ def get_snippet_sentences(slide_name, matching_keywords):
             text += content[c] + ' '
     text += '......'
     return text
-
+"""
+#Called in model.py by get_disp_str(slide_name), get_related_slide, get_related_slides_lst(slide_name,slides), get_related_slides(slide_name)
 def trim_name(slide_name):
     # name = slide_name.split(' ')
     # new_name = []
@@ -91,12 +95,15 @@ def trim_name(slide_name):
 
     return ' '.join(slide_name.replace('.txt','').replace('_','-').replace('---',' ').split('-')).title().replace('.Pdf','').replace(' Slides','')
 
+# Used by get_related_slides_lst
 def get_color(slide_course_name, related_slide_course_name):
     if slide_course_name==related_slide_course_name:
         return "blue"
     else:
         return "brown"
 
+#Commented Out -> Couldn't find uncommented call to this function
+"""
 def get_snippet(slide_name, related_slide_name):
     no_keywords = False
     related_slide_name = related_slide_name.replace('---', '##')[:-4]
@@ -122,7 +129,7 @@ def get_snippet(slide_name, related_slide_name):
     snippet_sentence =  get_snippet_sentences(related_slide_name, matching_words)
 
     return (('Slide title : ' + title_mapping[related_slide_name][:-1] +'\n' + 'Matching keywords: ' + keywords + '\n' + 'Snippet:' + snippet_sentence),no_keywords)
-
+"""
 # idx = metapy.index.make_inverted_index('slides-config.toml')
 # ranker = metapy.index.OkapiBM25()
 # slide_titles = []
@@ -130,6 +137,7 @@ def get_snippet(slide_name, related_slide_name):
 #     for line in f:
 #         slide_titles.append(line[:-1])
 
+#Used by index, resolve slides to get the course names
 def get_course_names():
     course_names = sorted(os.listdir(slides_path))
     # cn_cpy = list(course_names)
@@ -143,7 +151,7 @@ def get_course_names():
     num_course = len(course_names)
     return course_names,num_course
 
-
+#Used by index, related_slides to load related slides u
 def load_related_slides():
     global related_dict
     with open(related_slides_path,'r') as f:
@@ -168,6 +176,8 @@ def load_related_slides():
             if os.path.exists(os.path.join(slides_path,course_name,lec_name,pdf_name)):
                 related_dict[key].append(pdf_name)
     #print(related_slides,related_dict)
+
+#Used in lot of functions in this page
 def get_lectures_from_course(course_name):
     # remove pdfs from here
     # lecs = sort_slide_names(os.listdir(os.path.join(slides_path, urllib.parse.unquote(course_name))))
@@ -179,6 +189,8 @@ def get_lectures_from_course(course_name):
 
     return lectures
 
+
+#Used in lot of functions in this page
 def sort_slide_names(l): 
     """ Sort the given iterable in the way that humans expect.""" 
     convert = lambda text: int(text) if text.isdigit() else text 
@@ -190,6 +202,7 @@ def sort_slide_names(l):
         pass
     return sl 
 
+#Used by resolve slides
 def get_slide(course_name,slide,lno):
     # lectures = sort_slide_names(os.listdir(os.path.join(slides_path,urllib.parse.unquote(course_name))))
     lectures = get_lectures_from_course(course_name)
@@ -207,19 +220,20 @@ def get_slide(course_name,slide,lno):
 
     return slide,lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info,textbook_link
 
-
+# Used by get_slide
 def get_same_lecture_slides(course_name, lno, slide_name):
     lectures = get_lectures_from_course(course_name)
     lno = int(lno)
     slides = sort_slide_names(os.listdir(os.path.join(slides_path,urllib.parse.unquote(course_name),lectures[lno])))
     return get_related_slides_lst(slide_name, slides)
 
+#Used by get_next_slide and get_prev_slide
 def get_disp_str(slide_name):
     comp = slide_name.split('---')
     slide_name = ' '.join(comp[1:])
     return ' '.join(comp[0].replace('_','-').split('-')).title() + ' : ' + trim_name(slide_name)
 
-
+#Used by resolve slides
 def get_next_slide(course_name,lno,curr_slide=None):
     # need to get the right lecture and slides
 
@@ -258,6 +272,7 @@ def get_next_slide(course_name,lno,curr_slide=None):
         video_link = '#'
     return next_slide, lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info,textbook_link
 
+#Used by resolve slides
 def get_prev_slide(course_name,lno,curr_slide):
     lectures = get_lectures_from_course(course_name)
     # lectures = sort_slide_names(os.listdir(os.path.join(slides_path,  urllib.parse.unquote(course_name))))
@@ -282,6 +297,7 @@ def get_prev_slide(course_name,lno,curr_slide):
     same_lecture_slides_info = get_same_lecture_slides(course_name, lno, prev_slide)
     return prev_slide, lno,lectures[lno],related_slides_info,lectures,range(len(lectures)),ses_disp_str,video_link,same_lecture_slides_info   
 
+#Used by get_same_lecture_slides
 def get_related_slides_lst(slide_name,slides):
     
     filtered_related_slides = []
@@ -328,6 +344,8 @@ def get_related_slides_lst(slide_name,slides):
         filtered_related_slides = []
     return len(disp_strs),filtered_related_slides,disp_strs,course_names,lnos,lec_names,disp_colors,disp_snippets
 
+
+# Used by lot of functions in this page
 def get_related_slides(slide_name):
     if related_dict=={}:
         load_related_slides()
@@ -376,10 +394,14 @@ def get_related_slides(slide_name):
         filtered_related_slides = []
     return len(disp_strs),filtered_related_slides,disp_strs,course_names,lnos,lec_names,disp_colors,disp_snippets
 
+#Used in get_explanation
+"""
 def format_string(matchobj):
     
     return '<span style="background-color: #bddcf5">'+matchobj.group(0)+'</span>'
+"""
 
+#Used by explain query to get the explanation for texts from CS 410 lectures
 
 def search_txtbook(query):
     res = es.search(index='cs410_paras',body={"query":{'match':{'content':query}},"highlight": {
@@ -396,6 +418,8 @@ def search_txtbook(query):
         results.append(res_obj)
     return results
 
+
+#Used by srch_term_slides
 def get_search_results(search, course_name, course_list):
     top_docs = []
     res = es.search(index='csintro_slides',body={"query":{'match':{'content':search}},"highlight": {
@@ -442,6 +466,10 @@ def get_search_results(search, course_name, course_list):
 
     return count_results,results,disp_strs,course_names,lnos, snippets,lec_names
 
+
+#Could not find a call to this function so commented it out for now
+"""
+
 def get_explanation(search_string,top_k=10):
     query = metapy.index.Document()
     query.content(search_string)
@@ -461,9 +489,12 @@ def get_explanation(search_string,top_k=10):
         if cnt>0:
             formatted_exp = sub_str
     return formatted_exp,'#'.join(file_names)
+"""
+#Used by other commented out functions such as count_keyword_match and get_contex_vector
 def get_vector_similarity(vA, vB):
     return np.dot(vA, vB) / (np.sqrt(np.dot(vA,vA)) * np.sqrt(np.dot(vB,vB)))
 
+#Used by explain query
 
 def rank_google_result(raw_results, context, query):
     # print([x['title'] for x in raw_results])
@@ -480,14 +511,20 @@ def rank_google_result(raw_results, context, query):
     keyword_counts = list(map(lambda x: count_keyword_match(x['title'], query), raw_results))
     return get_ranking_index(similarities, keyword_counts)
 
+
+#Used by count_keyword_match
 def split_to_words(sent):
     return list(filter(lambda x: len(x) > 3, re.findall(r"[\w']+", sent)))
+
+#Used by count_keyword_match
 
 def get_vec_from_word(w):
     try:
         return word2vec[w]
     except KeyError:
         return None
+
+#Used by rank_google_result
 
 def count_keyword_match(title, query):
     title_words = split_to_words(title.lower()) 
@@ -507,12 +544,17 @@ def count_keyword_match(title, query):
     return count / len(title_words)
 
 
+
+#Used in model.py by rank_google_result
+
 def get_ranking_index(similarities, keyword_counts):
     # is this important to print?
     # for i in range(len(similarities)):
     #     print(similarities[i], keyword_counts[i])
     scores = [similarities[i] + keyword_counts[i] for i in range(len(similarities))]
     return np.argsort(scores)[::-1]
+
+#Used in model.py by get_context_vector
 
 def get_sent_vector(sent):
     accus = []
@@ -524,6 +566,9 @@ def get_sent_vector(sent):
         except KeyError:
             continue
     return np.mean(accus, axis=0) if len(accus) else None
+
+
+#Used in model.py rank_google_result 
 
 def get_context_vector(context, query):
     query_vec = get_sent_vector(split_to_words(query))
@@ -541,6 +586,3 @@ def get_context_vector(context, query):
         except KeyError:
             continue
     return np.mean(vecs, axis=0) if len(vecs) > 0 else query_vec
-
-
-

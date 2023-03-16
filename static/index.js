@@ -1,4 +1,14 @@
-var base_url = $('#base-url').data('val');
+//NOT BEING USED in base.html anymore, replaced by explain.js
+
+// var base_url = $('#base-url').data('val');
+
+
+
+
+//Used in slide.html to hide explanation
+//Repeated
+
+/*
 var hideExp = function(){
     toggleExplanationContainer(false);
     toggleNoExplainText(false);
@@ -11,8 +21,9 @@ var hideExp = function(){
     notHelpBut.removeEventListener("contextmenu", logExp, true); 
     notHelpBut.removeEventListener("contextmenu", logExp, true); 
 }
-
+*/
 // docDiv is no longer used
+/*
 var docDiv = (doc,searchString) => {
     console.log('bb',doc)
     return(`<div class="card">
@@ -38,6 +49,8 @@ var docDiv = (doc,searchString) => {
    
 }
 
+
+// Helper function for  hideExp
 var toggleNoExplainText = function(isVisible) {
     displayMode = isVisible ? "block" : "none";
     $("#no-explain-text").css("display",displayMode);
@@ -45,6 +58,7 @@ var toggleNoExplainText = function(isVisible) {
     $("#explain_title").css("display","None");
 }
 
+//Helper function for  hideExp
 var toggleNoExplainTextFiniteSearchString = function(isVisible) {
     displayMode = isVisible ? "block" : "none";
     $("#no-explain-results").css("display",displayMode);
@@ -52,6 +66,7 @@ var toggleNoExplainTextFiniteSearchString = function(isVisible) {
     $("#docs-div").css("display", displayMode);
 }
 
+// Helper function for  hideExp
 var toggleExplanationContainer = function(isVisible) {
     displayMode = isVisible ? "block" : "none";
     $("#docs-div").css("display", displayMode);
@@ -61,6 +76,7 @@ var toggleExplanationContainer = function(isVisible) {
     $("#google-search-div").css("display","none");
 }
 
+// Used by displayGoogleSearch for displaying result link of a goo
 var googleResultItemHTML = (result) => {
     item = document.createElement("li");
     item.innerHTML =`
@@ -71,6 +87,7 @@ var googleResultItemHTML = (result) => {
     return item;
 }
 
+//Used by displayGoogleSearch for appendig google Result to searchList
 var googleResultsListHMTL = (results) => {
     searchList = document.createElement("ul");
     searchList.className = "scrollable-search-list";
@@ -80,6 +97,7 @@ var googleResultsListHMTL = (results) => {
     return searchList;
 }
 
+// Used for displaying result 
 var displayGoogleSearch = function(results) {
     resultHTML = googleResultsListHMTL(results);
     $("#google-search-div").css("display", "block");
@@ -91,7 +109,10 @@ var displayGoogleSearch = function(results) {
     searchDisplay.appendChild(resultHTML);
 }
 
+
+
 // googleSearchExp is not used
+/*
 var googleSearchExp = function() {
     $("#google-search-div").empty();
     $("#google-search-div").css("display", "block");
@@ -103,6 +124,10 @@ var googleSearchExp = function() {
             })
     }
 }
+*/
+
+
+/*
 
 var doGoogleSearch = function(query,txtbook) {
     context = localStorage.getItem("context"); 
@@ -160,6 +185,9 @@ var doGoogleSearch = function(query,txtbook) {
 }
 
 
+
+
+
 $(document).ready(function(){
     var source = new EventSource(base_url.concat('streamexplainintro'));
     source.addEventListener('publish', function(event) {
@@ -200,6 +228,7 @@ $(document).ready(function(){
     toggleExplanationContainer(false);
 });
 
+// Logs if explanation is helpful -> Could not Locate in Slides.html
 var logExp = function(isHelpful,expId,expTerm){
     logdata = JSON.stringify({
             action: isHelpful+'###EXP_###'+expTerm+'###'+expId,
@@ -209,7 +238,10 @@ var logExp = function(isHelpful,expId,expTerm){
          
 }
 
+*/
+
 // doSearch is not used anymore
+/*
 var doSearch = function(searchString) {
     const data = {
         "searchString": searchString,
@@ -275,4 +307,5 @@ var doSearch = function(searchString) {
     });
 }
 }
+*/
 

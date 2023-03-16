@@ -4,6 +4,9 @@
 <html lang="en">
 <head>
 <meta id="base-url" data-val="{{base_url}}">
+<meta id="API-KEY" data-val="{{API_KEY}}">
+<meta id="GOOGLE-SEARCH-API" data-val="{{GOOGLE_SEARCH_API}}">
+<meta id="CX" data-val="{{CX}}">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="{{base_url}}static/jquery-3.4.1.min.js"></script>
@@ -14,11 +17,11 @@
 <link rel= "stylesheet" type= "text/css" href= "{{base_url}}static/style.css">
 <link rel= "stylesheet" type= "text/css" href= "{{base_url}}static/index.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
-   <!-- <script> var socket = io.connect('http://timan.cs.illinois.edu/explanation/');</script>  -->
-<script src="{{base_url}}static/filter_courses.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"> </script>
 </head>
 <body>
 <div class="container" style="width:87%" >
@@ -60,9 +63,13 @@
         <div class="row" style="display: flex;">
         <div class="col-md-12">
             <div class="input-group add-on">
-            <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+              <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" style="
+              width: 280px;
+              border-top-width: 2.5px;
+              border-bottom-width: 2.5px;
+              border-left-width: 2.5px;">
               <div class="input-group-btn">
-                <button class="btn btn-default"  id="submit" type="submit" style="margin-right: 1em"><i class="glyphicon glyphicon-search"></i></button>
+                <button class="btn btn-default"  id="submit" type="submit"data-toggle="tooltip" data-placement="bottom" title="Search slides"><i class="glyphicon glyphicon-search"></i></button>
               </div>
             </div>
         </div>
@@ -71,9 +78,10 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="glyphicon glyphicon-filter"></i><span class="caret"></span></a>
+                <li class="button"><a onclick="showFilterCourseList()" class="dropdown-toggle" type="button" href="#" data-toggle="tooltip" data-placement="bottom" title="Restrict your searches to the selected courses"> <i class="glyphicon glyphicon-filter"></i><span class="caret"></span></a>
                 <ul class="dropdown-menu" id = "filter-course-list" style="background-color: #E8E8E8; opacity: 0.97;max-height:  100vh; overflow:scroll;">
                 <input type="text" class="search_by_text" placeholder="Filter by.." id="filter-course-input" onkeyup="dropdownSearchbarFilterFunction('filter-course-input','filter-course-list')">
+                <li><a > <input type="checkbox" name= "select-all"  id="select-all" checked><label> &nbsp; Select All </label><br></a></li>
                     {% for j in range(num_courses) %}
                 <li><a> <input type="checkbox" id="courses" name= "courses" value = "{{course_names[j]}}" checked><label> &nbsp; {{course_names[j]}} </label><br></a></li>
                 {% endfor %}
@@ -97,7 +105,26 @@
 
 </body>
 <script type="text/javascript" src="{{base_url}}static/explain.js"></script>
+<script type="text/javascript" src="{{base_url}}static/log.js"></script>
+<script type="text/javascript" src="{{base_url}}static/filter_courses.js"></script>
+<script type="text/javascript" src="{{base_url}}static/explanation_google_search.js"></script>
+
 <script>
+  // Click right or left to go next or previous
+  document.addEventListener("keydown", e => {
+    console.log(e);
+    if (e.key === "ArrowRight") {
+      document.getElementById("next").click();
+    }
+    
+    });
+    document.addEventListener("keydown", e => {
+    console.log(e);
+    if (e.key === "ArrowLeft") {
+      document.getElementById("prev").click();
+    }
+    
+    });
     var search = document.getElementById("srch-term");
     search.addEventListener("keypress", function(event) {
       if (event.key === "Enter") {
@@ -106,5 +133,25 @@
 
       }
     });
+    
+    // Added tooltips to explain, dowload, and filter buttons
+    $(document).ready(function() {
+      $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+
+    // Select all function
+    $('#select-all').click(function(event) {   
+    if(this.checked) {
+        // Iterate each checkbox
+        $(':checkbox').each(function() {
+            this.checked = true;                        
+        });
+    } else {
+        $(':checkbox').each(function() {
+            this.checked = false;                       
+        });
+    }
+}); 
+
 </script>
 </html>
