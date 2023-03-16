@@ -338,7 +338,7 @@ function changedSlide(pageNum, oldNum){
         div.classList.add('popover__wrapper');
 
         var a = document.createElement('a');
-        a.href="{{base_url}}".concat("/").concat("related_slide").concat("/").concat(responses["related_course_names"][i]).concat("/").concat(responses["rel_lnos"][i].toString()).concat("/").concat(responses["related_slides"][i]);
+        a.href="{{base_url}}".concat("/").concat("related_slide").concat("/").concat(responses["related_course_names"][i]).concat("/").concat(responses["rel_lnos"][i].toString()).concat("/").concat(responses["related_slides"][i]).concat("/").concat(i);
         a.id= i;
 
         var h2 = document.createElement('h2');
