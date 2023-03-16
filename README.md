@@ -1,8 +1,16 @@
 ## EducationalWeb
 
-### Here are the instructions for getting started with the project:
+### Table of Contents
+- [Project Setup Instructions](#instructions)
+    - [MacOS](#instructions-macos)
+    - [Windows](#instructions-win)
+- [Additional Notes](#additional-notes)
+- [Pre-Deployment Test Checklist](#test-checklist)
+- [Releases](#releases)
 
-#### MacOS
+### Setup Instructions <a name="instructions">
+
+#### MacOS <a name="instructions-macos">
 
 Step 0: Download the project in a local directory/folder. 
 
@@ -88,7 +96,7 @@ Step 5: Run the program in the local machine
     
     * Please note that some of the folders are large and may need some time to download.
 
-#### Windows
+#### Windows <a name="instructions-win">
 
 We will go over how the installation steps for Windows differ from those of Apple.
 
@@ -126,26 +134,95 @@ Step 4: Install wsl and ubuntu:
     
     c. Run: wsl --install -d Ubuntu
 
-Step 5: In the Ubuntu terminal, run the program on the local machine
+Running EduWeb on local machine:
 
-    a. cd into /mnt/c/Users
+Step 1:
+
+    a. In a new Ubuntu terminal, cd into pdf.js/build/generic/web
     
-    b. From there, cd into wherever you saved the web directory
+    b. Run the command: gulp server
+        b.1. gulp ensures that the lecture slides appear on the website
     
-    c. Run the following command: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
-    If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
-    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time.
+Step 2:
 
-After installation, to start up project:
-
-    1. Run in Ubuntu terminal: sudo service redis-server start 
+    1. In a separate Ubuntu terminal, run: sudo service redis-server start 
     
     2. In the same Ubuntu terminal, cd into web directory (usually a path beginning with /mnt/c/Users). Then run: redis-server --port 8097
         2.a. This starts up redis
+
+Step 3: 
+
+    a. In a separate Ubuntu terminal, cd into wherever you saved the web directory (usually a path beginning with /mnt/c/Users)
+
+    b. Kill redis (ctrl c in the Ubuntu terminal where you started redis)
     
-    3. In a separate Ubuntu terminal, cd into /pdf.js/build/generic/web. Then run: gulp server
-        3.a. This starts up gulp
+    c. Run the following command in the separate Ubuntu terminal: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097
+    If the program times out, run: gunicorn edwb_app_intro:app --worker-class gevent --bind 127.0.0.1:8097 --timeout 600
+    This means the program will run for 600 extra seconds before timing out. Feel free to increase this number to allow for more time.
+    
+Step 4:
 
-### Here are instructions for data/model-related files:
+    a. To allow for functionality of search bar(s), connect to vpn.illinois.edu
 
-Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). We go over where to download these files from and which directory to place them in. 
+
+### Note on data/model-related files <a name="additional-notes">
+
+Since GitHub has file size limits, we cannot upload some of the data and model-related files to GitHub. They must be uploaded separately (for instance, via Google Drive). You may have to download these files separately (please contact one of the owners for more details).
+
+### Test Checklist <a name="test-checklist">
+
+Please use this checklist before deployment to check for any bugs in the app/code
+Update this checklist before every release.
+
+Menu
+- [ ] Navigate to the course first lecture by clicking on the course from Courses Dropdown
+- [ ] Search for the course in the Courses Dropdown
+- [ ] Navigate to the lecture first slide by clicking on the lecture from Lectures Dropdown
+- [ ] Search for the lecture in the Lectures Dropdown
+
+Scrolling Slide Thumbnail
+- [ ] Clicking on thumbnail of a slide updates the slide in main body and highlights the slide with a yellow border
+
+Main Slide
+- [ ] Download button downloads pdf for lecture
+- [ ] Download button downloads all lectures zip
+- [ ] Select text and click on explain button, should show explanation or no explanation found
+- [ ] Next button  goes to next slide in the pdf
+- [ ] Prev button goes to prev slide in the pdf
+- [ ] Next button disabled when reaching end of pdf
+- [ ] Prev button disable when reaching start of pdf
+
+
+Related Slides Sidebar
+- [ ] Related slide links show on the sidebar for each slide 
+- [ ] Hovering on related slides, show the slide thumbnail
+- [ ] Clicking on a slide link from here updates the pdf in the Main Slide
+
+Search Bar 
+- [ ] Can search and filter by course, with/without spaces
+- [ ] Keyword search and see the list of results 
+
+Feedback and Report Bug Buttons
+- [ ] Clicking Feedback displays the feedback form
+- [ ] Clicking Report Bug displays the report bug form 
+
+
+
+### Releases <a name="releases">
+
+**Release v2** 
+
+Deployed on 11/22/22
+
+Changes made:
+- Next/Prev- Next and Prev button style change and disables when reaches the start or end of slides
+Above the slide utility buttons 
+- Changed button/icon styles to explain, download text book, lecture pdfs
+Explanation implementation 
+- Updated the implementation of explain function, it is simplified and covers edge case scenarios. Added asynchronous response for a user explain request , updated from sse event where the server published the same response to all clients.
+Fixed TextLayer Overlapping
+- TextLayer is the layer of text that is parsed from each pdf slide and is an html element that is invisible but selectable. 
+- Fixed Scrolling issue with Sidebar thumbnails
+- Added Search box in courses and lectures dropdown
+- Added course filter in Search bar
+- Decreased latency for slide load in the thumbnails when hovering on slide links 

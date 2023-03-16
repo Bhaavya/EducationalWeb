@@ -14,7 +14,6 @@ config = Config()
 print(config.base_url)
 
 app = Flask(__name__, instance_relative_config=True)
-app.config["REDIS_URL"] = "redis://localhost"
 app.register_blueprint(sse, url_prefix='/streamexplainintro')
 print(__name__,app)
 
@@ -141,7 +140,18 @@ def feedback():
     vis_urls,vis_strs = get_prev_urls()
     return render_template("feedback.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url, API_KEY = config.API_KEY, CX = config.CX, GOOGLE_SEARCH_API = config.GOOGLE_SEARCH_API)
 
-
+@app.route('/reportBug')
+def reportBug():
+    """
+    Renders Report Bug Google Form. Function called when report bug button is clicked from Navbar
+    :return: None
+    """
+    global COURSE_NAMES,NUM_COURSES
+    if COURSE_NAMES is None and NUM_COURSES is None:
+        COURSE_NAMES,NUM_COURSES = model.get_course_names()
+        model.load_related_slides()
+    vis_urls,vis_strs = get_prev_urls()
+    return render_template("reportBug.html",course_names=COURSE_NAMES,num_courses=NUM_COURSES,vis_urls=vis_urls,vis_strs=vis_strs,num_vis=NUM_VIS,base_url = config.base_url, pdf_url= config.pdf_url, API_KEY = config.API_KEY, CX = config.CX, GOOGLE_SEARCH_API = config.GOOGLE_SEARCH_API)
 
 
 def resolve_slide(course_name,lno,type_,slide_name=None,log=False,action=None):

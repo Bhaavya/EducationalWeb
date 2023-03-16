@@ -1,1 +1,0 @@
-Text objects Categorization system : Categorization results Training data (known categories)  

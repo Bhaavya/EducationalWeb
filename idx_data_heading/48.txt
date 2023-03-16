@@ -1,1 +1,0 @@
-3.2. : Does poor NLP performance mean poor retrieval performance? Explain.  
