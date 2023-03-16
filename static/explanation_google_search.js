@@ -1,8 +1,11 @@
-const GOOGLE_SEARCH_API = `https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest` 
-const CX = "e21570fed0b80d48e";
-const API_KEY = "AIzaSyBwl-LW7fwnPurP3tc2wycQ7f_m0rTPHpg";
 
-//Used by slide.html file
+
+const GOOGLE_SEARCH_API  = $('#GOOGLE-SEARCH-API').data('val');
+const CX = $('#CX').data('val');
+const API_KEY = $('#API-KEY').data('val');
+
+//Used by explain.js file
+//Called in slide.html
 
 
 // Used for gapi.load("client", init)
