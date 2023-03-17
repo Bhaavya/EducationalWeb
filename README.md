@@ -180,6 +180,9 @@ Menu
 - [ ] Navigate to the lecture first slide by clicking on the lecture from Lectures Dropdown
 - [ ] Search for the lecture in the Lectures Dropdown
 
+Recently Visited Slides
+- [ ] Clicking on a recently visited slide from dropdown updates the slide in the Main body 
+ 
 Scrolling Slide Thumbnail
 - [ ] Clicking on thumbnail of a slide updates the slide in main body and highlights the slide with a yellow border
 
@@ -187,11 +190,10 @@ Main Slide
 - [ ] Download button downloads pdf for lecture
 - [ ] Download button downloads all lectures zip
 - [ ] Select text and click on explain button, should show explanation or no explanation found
-- [ ] Next button  goes to next slide in the pdf
-- [ ] Prev button goes to prev slide in the pdf
+- [ ] Next button and keyboard "**>**" arrow goes to next slide in the pdf
+- [ ] Prev button and keyboard "**<**" arrow goes to prev slide in the pdf
 - [ ] Next button disabled when reaching end of pdf
 - [ ] Prev button disable when reaching start of pdf
-
 
 Related Slides Sidebar
 - [ ] Related slide links show on the sidebar for each slide 
@@ -206,7 +208,18 @@ Feedback and Report Bug Buttons
 - [ ] Clicking Feedback displays the feedback form
 - [ ] Clicking Report Bug displays the report bug form 
 
+Logging 
 
+Schema used 
+```
+HOST,KEYWORD (in case of search),TIMESTAMP,ACTION_TYPE 
+```
+- [ ] Logs with above schema when using Search functionality (ACTION_TYPE: search)
+- [ ] Logs with above schema when using the Explain functionality (ACTION_TYPE: explain)
+- [ ] Logs with above schema when changing to new slides (ACTION_TYPE: open/close)
+- [ ] Logs with above schema when changing to slides using Next/Prev button (ACTION_TYPE: next/prev)
+- [ ] Logs with above schema when clicking on related slides from sidebar (ACTION_TYPE: related_slide_<idx>)
+- [ ] Logs with above schema when hiding/unhiding slides (ACTION_TYPE: hide/unhide)
 
 ### Releases <a name="releases">
 
