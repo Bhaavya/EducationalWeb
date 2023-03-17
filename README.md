@@ -247,3 +247,20 @@ Fixed TextLayer Overlapping
 - Added Search box in courses and lectures dropdown
 - Added course filter in Search bar
 - Decreased latency for slide load in the thumbnails when hovering on slide links 
+
+**Release v3** 
+
+Changes
+
+Major 
+- Refactored code and cleaned directories and files not used
+- Added and updated logging code for related slides, search, explain, next/prev functionalities
+
+Minor 
+- Added arrow keys for to navigate next/prev slides 
+- Added report bug button and embedded form
+- Added tooltips 
+- Added gitignore file 
+- Removed config.py file 
+
+
