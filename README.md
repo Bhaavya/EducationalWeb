@@ -195,6 +195,14 @@ Main Slide
 - [ ] Next button disabled when reaching end of pdf
 - [ ] Prev button disable when reaching start of pdf
 
+Tooltips
+
+- [ ] On Hover search icon - show tooltip for search
+- [ ] On Hover search filter - show tooltip
+- [ ] On Hover download slides button - show tooltip
+- [ ] On Hover explain button - show tooltip
+- [ ] On Hover next/prev button - show tooltip
+
 Related Slides Sidebar
 - [ ] Related slide links show on the sidebar for each slide 
 - [ ] Hovering on related slides, show the slide thumbnail
