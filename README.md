@@ -82,11 +82,10 @@ Step 5: Run the program in the local machine
 
 ##### Additional components for successfully uploading the project in your computer:
    ###### Downloading the following folders from Google Drive and place them in your project's directory:
-    1. static
-    2. pdf.js
-    3. MACOSX
+    1. static: https://drive.google.com/drive/folders/1DWezr42-F94et4V9odmc_ukY5mb4Khlu?usp=sharing 
     
-    * Please note that some of the folders are large and may need some time to download.
+Step 6: From pdf.js/build/generic/web directory, run gulp server (this must be running for the slides to load)
+
 
 #### Windows
 
